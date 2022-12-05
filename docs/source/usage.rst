@@ -27,4 +27,4 @@ For example:
 
 >>> from fnpcell import all as fp
 >>> ...
->>> fp.export_gds(library, file="example_01.gds")
+>>> fp.export_gds(library, file="gds_file_name.gds")
