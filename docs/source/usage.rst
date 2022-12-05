@@ -13,8 +13,8 @@ To use PhotoCAD, first install it using pip:
    (.venv) $ pip install fnpcell
    (.venv) $ pip install gpdk
 
-Creating recipes
-----------------
+Exporting a GDSII file
+----------------------
 
 To export a gds file,
 you can use the ``fp.export_gds()`` function:

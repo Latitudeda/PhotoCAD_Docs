@@ -1,7 +1,7 @@
 API
 ===
 
-.. autosummary::
-   :toctree: generated
+.. toctree::
 
-   fnpcell
+   fnpcell.all
+   gpdk.technology
