@@ -3,5 +3,5 @@ API
 
 .. toctree::
 
-   fnpcell.all
-   gpdk.technology
+   fnpcell/all
+   gpdk/technology
