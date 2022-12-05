@@ -6,29 +6,25 @@ Usage
 Installation
 ------------
 
-To use Lumache, first install it using pip:
+To use PhotoCAD, first install it using pip:
 
 .. code-block:: console
 
-   (.venv) $ pip install lumache
+   (.venv) $ pip install fnpcell
+   (.venv) $ pip install gpdk
 
 Creating recipes
 ----------------
 
-To retrieve a list of random ingredients,
-you can use the ``lumache.get_random_ingredients()`` function:
+To export a gds file,
+you can use the ``fp.export_gds()`` function:
 
-.. autofunction:: lumache.get_random_ingredients
 
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :py:func:`lumache.get_random_ingredients`
-will raise an exception.
+The ``file`` parameter should be either string or ``pathlib.Path`` or some other file-like object.
 
-.. autoexception:: lumache.InvalidKindError
 
 For example:
 
->>> import lumache
->>> lumache.get_random_ingredients()
-['shells', 'gorgonzola', 'parsley']
-
+>>> from fnpcell import all as fp
+>>> ...
+>>> fp.export_gds(library, file="example_01.gds")
