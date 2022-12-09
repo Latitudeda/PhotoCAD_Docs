@@ -1,5 +1,5 @@
 Welcome to PhotoCAD's documentation!
-===================================
+====================================
 
 **PhotoCAD** is a computer-aided design platform for photonic
 integrated circuit layout design based on Python language. The PhotoCAD
