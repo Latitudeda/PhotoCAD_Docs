@@ -48,7 +48,7 @@
 
 图例展示
 
-.. image:: bend_circular.png
+.. |image| image:: ../images/bend_circular.png
 
 直波导
 >>>>>>>>>
@@ -85,6 +85,6 @@
 
 图例展示
 
-.. image:: straight.png
+.. image:: ../images/straight.png
 
 
