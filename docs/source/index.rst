@@ -48,5 +48,6 @@ Contents
 
 .. toctree::
 
-   usage
-   api
+    usage
+    api
+    Tutorials/Quickstart
