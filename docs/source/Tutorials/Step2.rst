@@ -12,7 +12,7 @@
 定向耦合器
 >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-导入步骤一(:doc:`Step1`)创建的基础模块，这里用到弯曲波导和直波导::
+导入步骤1（:doc:`Step1`）创建的基础模块，这里用到弯曲波导和直波导::
 
     from step.step1.straight import Straight
     from step.step1.bend_circular import BendCircular
@@ -92,7 +92,7 @@
 多模干涉仪
 >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-导入步骤一(:doc:`Step1`)创建的基础模块，这里用到直波导和过渡波导::
+导入步骤1（:doc:`Step1`）创建的基础模块，这里用到直波导和过渡波导::
 
     from step.step1.straight import Straight
     from step.step1.taper_linear import TaperLinear
