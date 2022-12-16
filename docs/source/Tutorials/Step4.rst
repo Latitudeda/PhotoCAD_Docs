@@ -1,156 +1,134 @@
-步骤2： 利用基础模块搭建基本链路
+步骤4： 常用图形的绘制以及通过布尔运算实现版图设计
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 前言
 ---------------------------
+本案例展示了常用图形的绘制以及通过布尔运算实现复杂结构的版图设计。
 
-本案例利用基础模块实现了两个个基本链路的搭建，包括：
+本小节主要内容包括：
 
-- 定向耦合器_
-- 多模干涉仪_
+- 常用图形绘制_
+- 布尔运算_
+- 案例展示_
 
-定向耦合器
+首先是常用图形的绘制，这里主要展示：
+
+- 矩形_
+- 圆形_
+- 多边形_
+- 圆环_
+- 规则多边形_
+
+布尔运算是版图设计的重要设计手段，特别是针对复杂结构的设计。常见的图形间的布尔运算主要包括：
+
+- 并集_
+- 交集_
+- 差集_
+- 异或集_
+
+
+常用图形绘制
 >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-导入步骤一(:doc:`Step1`)创建的基础模块，这里用到弯曲波导和直波导::
+矩形
+:::::::::::::::::::::::::::
 
-    from step.step1.straight import Straight
-    from step.step1.bend_circular import BendCircular
+代码::
 
-定义定向耦合器类，方便后面直接调用::
+    rect = fp.el.Rect(width=10, height=5, center=(0,0), layer=TECH.LAYER.M1_DRW)
 
-    class DirectionalCouplerBend(fp.PCell):
+圆形
+:::::::::::::::::::::::::::
 
-        coupler_spacing: float = fp.PositiveFloatParam(default=0.7, doc="Spacing between the two waveguide centre lines.")
-        coupler_length: float = fp.PositiveFloatParam(default=6, doc="Length of the directional coupler")
-        bend_radius: float = fp.PositiveFloatParam(required=False, doc="Bend radius for the auto-generated bends")
-        straight_after_bend: float = fp.PositiveFloatParam(default=6, doc="Length of the straight waveguide after the bend")
-        waveguide_type: CoreCladdingWaveguideType = fp.WaveguideTypeParam(type=CoreCladdingWaveguideType, doc="Waveguide parameters")
-        port_names: fp.IPortOptions = fp.PortOptionsParam(count=4, default=["op_0", "op_1", "op_2", "op_3"])
+代码::
 
-        def _default_waveguide_type(self):
-            return get_technology().WG.FWG.C.WIRE
+    circ = fp.el.Circle(radius=10, initial_degrees=0, final_degrees=120, layer=TECH.LAYER.M1_DRW)
 
-        def build(self) -> Tuple[fp.InstanceSet, fp.ElementSet, fp.PortSet]:
-            insts, elems, ports = super().build()
-            # fmt: off
-            coupler_spacing = self.coupler_spacing
-            coupler_length = self.coupler_length
-            bend_radius = self.bend_radius
-            straight_after_bend = self.straight_after_bend
-            waveguide_type = self.waveguide_type
-            port_names = self.port_names
+多边形
+:::::::::::::::::::::::::::
 
-            if bend_radius is None:
-                bend_radius = cast(float, waveguide_type.BEND_CIRCULAR.radius_eff)  # type: ignore
+代码::
 
-            dy = coupler_spacing / 2 + waveguide_type.core_width
+    poly = fp.el.Polygon(raw_shape=[(-5, 0), (-5, 10), (5, 15), (15, -10)], layer=TECH.LAYER.M1_DRW)
 
-            left_straight_after_bend = Straight(name="lafterbend", length=straight_after_bend, waveguide_type=waveguide_type)
-            right_straight_after_bend = Straight(name="rafterbend",length=straight_after_bend, waveguide_type=waveguide_type)
-            left_bend = BendCircular(name="lbend", degrees=90, radius=bend_radius, waveguide_type=waveguide_type)
-            right_bend = BendCircular(name="rbend", degrees=90, radius=bend_radius, waveguide_type=waveguide_type)
-            straight_coupler = Straight(name="coupler", length=coupler_length, anchor=fp.Anchor.CENTER, waveguide_type=waveguide_type, transform=fp.translate(0, -dy))
+圆环
+:::::::::::::::::::::::::::
+代码::
 
-            bottom_half = fp.Connected(
-                name="bottom",
-                joints=[
-                    straight_coupler["op_0"] <= left_bend["op_0"],
-                    left_bend["op_1"] <= left_straight_after_bend["op_1"],
-                    #
-                    straight_coupler["op_1"] <= right_bend["op_1"],
-                    right_bend["op_0"] <= right_straight_after_bend["op_0"],
-                ],
-                ports=[
-                    left_straight_after_bend["op_0"],
-                    right_straight_after_bend["op_1"],
-                ],
-            )
-            insts += bottom_half
-            top_half = bottom_half.v_mirrored()
-            insts += top_half
-            ports += top_half["op_0"].with_name(port_names[0])
-            ports += bottom_half["op_0"].with_name(port_names[1]),
-            ports += bottom_half["op_1"].with_name(port_names[2]),
-            ports += top_half["op_1"].with_name(port_names[3]),
+    ring = fp.el.Ring(inner_radius=5, outer_radius=10, layer=TECH.LAYER.M1_DRW)
 
-            # fmt: on
-            return insts, elems, ports
+规则多边形
+:::::::::::::::::::::::::::
 
-调用类，生成定向耦合器版图文件并显示图例::
+代码::
 
-    library += DirectionalCouplerBend(name="f", coupler_spacing=0.5, coupler_length=6, bend_radius=10, straight_after_bend=6, waveguide_type=TECH.WG.FWG.C.WIRE)
-    fp.export_gds(library, file=gds_file)
-    fp.plot(library) += BendCircular(name="s", radius=15, waveguide_type=TECH.WG.FWG.C.WIRE)
-    fp.export_gds(library, file=gds_file)
-    fp.plot(library)
+        rpoly = fp.el.RegularPolygon(sides=6, side_length=5, layer=TECH.LAYER.M1_DRW)
 
-定向耦合器图例展示
+上述案例展示如下：
 
-.. image:: ../images/DirectionalCoupler.png
+.. image:: ../images/element.png
 
-多模干涉仪
+布尔运算
 >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-导入步骤一(:doc:`Step1`)创建的基础模块，这里用到直波导和过渡波导::
+并集
+:::::::::::::::::::::::::::
 
-    from step.step1.straight import Straight
-    from step.step1.taper_linear import TaperLinear
+代码::
 
-定义多模干涉仪类，方便后面直接调用::
+        bool = rect | circ
 
-    class MMI1x2(fp.PCell):
-        mid_wav_core_width: float = fp.PositiveFloatParam(default=5)
-        wav_core_width: float = fp.PositiveFloatParam(default=1.5)
-        length: float = fp.PositiveFloatParam(default=10)
-        transition_length: float = fp.PositiveFloatParam(default=5)
-        trace_spacing: float = fp.PositiveFloatParam(default=1)
-        waveguide_type: CoreCladdingWaveguideType = fp.WaveguideTypeParam(type=CoreCladdingWaveguideType)
+交集
+:::::::::::::::::::::::::::
 
-        def _default_waveguide_type(self):
-            return get_technology().WG.FWG.C.WIRE
+代码::
 
+    bool = rect & circ
+
+差集
+:::::::::::::::::::::::::::
+
+代码::
+
+    bool = rect - circ
+
+异或集
+:::::::::::::::::::::::::::
+代码::
+
+    bool = rect ^ circ
+
+上述案例展示如下：
+
+.. image:: ../images/boolean.png
+
+案例展示
+>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+将步骤3（:doc:`Step1`）U型定长MZI结构导入，绘制版图::
+
+    class CircuitBool(fp.IWaveguideLike, fp.PCell):
         def build(self) -> Tuple[fp.InstanceSet, fp.ElementSet, fp.PortSet]:
             insts, elems, ports = super().build()
-            # fmt: off
-            mid_wav_core_width = self.mid_wav_core_width
-            wav_core_width=self.wav_core_width
-            length = self.length
-            transition_length = self.transition_length
-            trace_spacing = self.trace_spacing
-            waveguide_type = self.waveguide_type
+            TECH = get_technology()
 
-            center_force_cladding_width = mid_wav_core_width+waveguide_type.cladding_width
-            center_type = waveguide_type.updated(core_layout_width=mid_wav_core_width, cladding_layout_width=center_force_cladding_width)
-            center = Straight(length=length, waveguide_type=center_type, anchor=fp.Anchor.START)
-            insts += center
+            device = MZI()
+            ports += device.ports
+            insts += device
+            cor = device.polygon_set(layer=TECH.LAYER.FWG_COR)
+            # elems += cor
+            cld = device.polygon_set(layer=TECH.LAYER.FWG_CLD)
+            tre = fp.el.PolygonSet.boolean_sub(cld, cor, layer=TECH.LAYER.FWG_TRE)
+            elems += tre.translated(0, -500)
 
-            wide_type = waveguide_type.updated(core_layout_width=wav_core_width, cladding_layout_width=waveguide_type.cladding_width + wav_core_width)
-            narrow_type = waveguide_type
-            taper_left = TaperLinear(length=transition_length, left_type=narrow_type, right_type=wide_type, anchor=fp.Anchor.END)
-            taper_right = TaperLinear(length=transition_length, left_type=wide_type, right_type=narrow_type, anchor=fp.Anchor.START)
-
-
-            taper_left_inst = taper_left.translated(0, 0)
-            insts += taper_left_inst
-            ports += taper_left_inst["op_0"].with_name("op_0")
-
-            taper_right_inst1 = taper_right.translated(length, -(wav_core_width+trace_spacing)/2)
-            insts += taper_right_inst1
-            ports += taper_right_inst1["op_1"].with_name(f"op_1")
-            taper_right_inst2 = taper_right.translated(length, (wav_core_width+trace_spacing)/2)
-            insts += taper_right_inst2
-            ports += taper_right_inst2["op_1"].with_name(f"op_2")
-
-            # fmt: on
             return insts, elems, ports
 
-调用类，生成MMI版图文件并显示图例::
+上面代码通过布尔运算实现两种版图，一种包含所有图层信息，一种为刻蚀层掏空型，具体如图所示：
 
-    library += MMI1x2()
-    fp.export_gds(library, file=gds_file)
-    fp.plot(library)
-    
-多模干涉仪图例展示
+包含所有图层信息的版图：
 
-.. image:: ../images/MMI12.png
+.. image:: ../images/initial_circuit.png
+
+刻蚀层掏空型版图案例展示：
+
+.. image:: ../images/bool_circuit.png
