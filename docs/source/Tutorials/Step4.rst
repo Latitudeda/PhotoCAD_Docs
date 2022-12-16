@@ -129,6 +129,10 @@
 
 .. image:: ../images/initial_circuit.png
 
-刻蚀层掏空型版图案例展示：
+局部展示如下：
+
+.. image:: ../images/initial_circuit_part.png
+
+刻蚀层掏空型版图案例局部展示：
 
 .. image:: ../images/bool_circuit.png
