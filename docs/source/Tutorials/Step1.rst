@@ -11,7 +11,7 @@
 - Taper过渡波导_
 
 弯曲波导
->>>>>>>>>>>>>>>>>>>>>>>>>>>
+---------------------------
 定义弯曲波导类::
 
     class BendCircular(fp.IWaveguideLike, fp.PCell):
@@ -51,7 +51,7 @@
 .. image:: ../images/bend_circular.png
 
 直波导
->>>>>>>>>>>>>>>>>>>>>>>>>>>
+---------------------------
 定义直波导类::
 
     class Straight(fp.IWaveguideLike, fp.PCell):
@@ -88,7 +88,7 @@
 .. image:: ../images/straight.png
 
 Taper过渡波导
->>>>>>>>>>>>>>>>>>>>>>>>>>>
+---------------------------
 定义Taper过渡波导导类::
 
     class TaperLinear(fp.IWaveguideLike, fp.PCell):
