@@ -51,3 +51,4 @@ Contents
     usage
     api
     Tutorials/Quickstart
+    gpdk/QuickCreatePDK
