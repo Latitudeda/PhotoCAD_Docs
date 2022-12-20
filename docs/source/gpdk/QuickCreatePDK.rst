@@ -7,13 +7,14 @@
 
 层级目录：
 
-- components
-- routing
-- technology
-- util
+- components：用于存放基础组件
+- routing：自动布局布线
+- technology：版图底层相关
+- util：配置文件
 
 .. toctree::
 
+    components
     technology
 
 
