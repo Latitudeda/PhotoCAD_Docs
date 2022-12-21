@@ -14,6 +14,7 @@ components
 .. toctree::
 
     straight
+    bend_euler
 
 
 
