@@ -130,6 +130,6 @@ bend_euler
 
 这个类里面定义的仿真可以用于整体链路的仿真。
 
-运行案例，得到的版图文件为::
+运行案例，得到的版图文件为:
 
 .. image:: ../images/comp_bend_euler.png

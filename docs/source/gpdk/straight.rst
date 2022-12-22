@@ -98,6 +98,6 @@ straight
         straight = Straight(length=length, waveguide_type=waveguide_type, port_names=port_names).rotated(radians=orientation).translated(*start)
         return straight
 
-运行案例，得到的版图文件为::
+运行案例，得到的版图文件为:
 
 .. image:: ../images/comp_straight.png
