@@ -14,6 +14,7 @@ components
     straight
     bend_euler
     grating_coupler
+    mmi
 
 
 
