@@ -3,7 +3,7 @@ auto_transitioned
 
 器件与器件连接时，很多时候我们会面临端口不匹配问题，此时需要引入taper波导实现过渡。自动端口转换函数为我们提供了端口转换的快速方法。
 
-自动端口转换定于如下::
+自动端口转换定义如下::
 
     @dataclass(eq=False)
     class AutoTransitioned(PCell):
