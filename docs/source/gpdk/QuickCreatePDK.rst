@@ -10,6 +10,8 @@
 - technology：版图底层相关
 - util：配置文件
 
+.. image:: ../images/GPDK.png
+
 .. toctree::
 
     components

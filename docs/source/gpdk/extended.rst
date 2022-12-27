@@ -72,5 +72,6 @@ Extended类定义如下::
     fp.export_gds(library, file=gds_file)
 
 下面分别展示了MMI结构以及对应的经过端口延长后结构的版图，其中mmi结构的创建可以参见（:doc:`mmi`）:
+
 .. image:: ../images/comp_mmi.png
 .. image:: ../images/routing_extended.png
