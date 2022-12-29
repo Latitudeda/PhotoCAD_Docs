@@ -1,4 +1,4 @@
-generate_layers_and_display_from_csv_py
+generate_layers_and_display_from_csv_py.rst
 ============================================================
 
 该脚本可以实现将layers.csv文件（:doc:`layers_csv`）转换成GPDK需要用到的脚本文件layers.py以及display.py。
