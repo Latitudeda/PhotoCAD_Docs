@@ -10,8 +10,8 @@ PhotoCAD产品手册资料
     PICircuits/PICircuits
     gpdk/QuickCreatePDK
     WaveguideRouting/Summary
-    Api/api
-    AboutUS
+    api/api
     fnpcell/all
+    AboutUS
 
 

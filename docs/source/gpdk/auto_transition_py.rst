@@ -1,62 +1,74 @@
 auto_transition_py
 ============================================================
 
-该脚本主要定义了多种波导类型以及宽度等相应的配置。
+该脚本主要定义了端口连接时的波导类型与默认弯曲波导::
 
-最终生成的csv::
+脚本为::
 
-    NAME,CONFIGURATION
-    FWG.C.WIRE_TETM,"core_layout_width=0.64, cladding_layout_width=4.54, core_design_width=0.54, cladding_design_width=4.54, port_names=('op_0', 'op_1')"
-    FWG.C.WIRE_TETM.BEND_CIRCULAR,radius_eff=10
-    FWG.C.WIRE_TETM.BEND_EULER,"radius_min=3.27, l_max=5"
-    FWG.C.WIRE,"core_layout_width=0.55, cladding_layout_width=4.45, core_design_width=0.45, cladding_design_width=4.45, port_names=('op_0', 'op_1')"
-    FWG.C.WIRE.BEND_CIRCULAR,radius_eff=3.225
-    FWG.C.WIRE.BEND_EULER,"radius_min=3.225, l_max=5"
-    FWG.C.EXPANDED_TETM,"core_layout_width=1.7000000000000002, cladding_layout_width=5.6, core_design_width=1.6, cladding_design_width=5.6, port_names=('op_0', 'op_1')"
-    FWG.C.EXPANDED_TETM.BEND_CIRCULAR,radius_eff=3.8
-    FWG.C.EXPANDED_TETM.BEND_EULER,"radius_min=3.8, l_max=10"
-    FWG.C.EXPANDED,"core_layout_width=0.9, cladding_layout_width=4.8, core_design_width=0.8, cladding_design_width=4.8, port_names=('op_0', 'op_1')"
-    FWG.C.EXPANDED.BEND_CIRCULAR,radius_eff=3.4
-    FWG.C.EXPANDED.BEND_EULER,"radius_min=3.4, l_max=10"
-    FWG.O.WIRE_TETM,"core_layout_width=0.532, cladding_layout_width=3.632, core_design_width=0.43200000000000005, cladding_design_width=3.632, port_names=('op_0', 'op_1')"
-    FWG.O.WIRE,"core_layout_width=0.4600000000000001, cladding_layout_width=3.5600000000000005, core_design_width=0.36000000000000004, cladding_design_width=3.5600000000000005, port_names=('op_0', 'op_1')"
-    FWG.O.EXPANDED_TETM,"core_layout_width=1.3800000000000003, cladding_layout_width=4.4799999999999995, core_design_width=1.2800000000000002, cladding_design_width=4.4799999999999995, port_names=('op_0', 'op_1')"
-    FWG.O.EXPANDED,"core_layout_width=0.7400000000000001, cladding_layout_width=3.84, core_design_width=0.6400000000000001, cladding_design_width=3.84, port_names=('op_0', 'op_1')"
-    MWG.C.WIRE_TETM,"core_layout_width=1.3499999999999999, cladding_layout_width=11.2, core_design_width=1.2, cladding_design_width=11.2, port_names=('op_0', 'op_1')"
-    MWG.C.WIRE_TETM.BEND_CIRCULAR,radius_eff=6.6
-    MWG.C.WIRE_TETM.BEND_EULER,"radius_min=6.6, l_max=15"
-    MWG.C.WIRE,"core_layout_width=1.15, cladding_layout_width=11.0, core_design_width=1, cladding_design_width=11.0, port_names=('op_0', 'op_1')"
-    MWG.C.WIRE.BEND_CIRCULAR,radius_eff=6.5
-    MWG.C.WIRE.BEND_EULER,"radius_min=6.5, l_max=15"
-    MWG.C.EXPANDED_TETM,"core_layout_width=3.15, cladding_layout_width=13.0, core_design_width=3.0, cladding_design_width=13.0, port_names=('op_0', 'op_1')"
-    MWG.C.EXPANDED_TETM.BEND_CIRCULAR,radius_eff=7.5
-    MWG.C.EXPANDED_TETM.BEND_EULER,"radius_min=7.5, l_max=25"
-    MWG.C.EXPANDED,"core_layout_width=1.65, cladding_layout_width=11.5, core_design_width=1.5, cladding_design_width=11.5, port_names=('op_0', 'op_1')"
-    MWG.C.EXPANDED.BEND_CIRCULAR,radius_eff=6.75
-    MWG.C.EXPANDED.BEND_EULER,"radius_min=6.75, l_max=25"
-    MWG.O.WIRE_TETM,"core_layout_width=1.1099999999999999, cladding_layout_width=8.959999999999999, core_design_width=0.96, cladding_design_width=8.959999999999999, port_names=('op_0', 'op_1')"
-    MWG.O.WIRE,"core_layout_width=0.9500000000000001, cladding_layout_width=8.8, core_design_width=0.8, cladding_design_width=8.8, port_names=('op_0', 'op_1')"
-    MWG.O.EXPANDED_TETM,"core_layout_width=2.5500000000000003, cladding_layout_width=10.4, core_design_width=2.4000000000000004, cladding_design_width=10.4, port_names=('op_0', 'op_1')"
-    MWG.O.EXPANDED,"core_layout_width=1.35, cladding_layout_width=9.200000000000001, core_design_width=1.2000000000000002, cladding_design_width=9.200000000000001, port_names=('op_0', 'op_1')"
-    SLOT.C.WIRE,"core_layout_width=1.15, slot_layout_width=0.3, cladding_layout_width=11.0, core_design_width=1.0, slot_design_width=0.3, cladding_design_width=11.0, port_names=('op_0', 'op_1')"
-    SLOT.O.WIRE,"core_layout_width=0.9500000000000001, slot_layout_width=0.24, cladding_layout_width=8.8, core_design_width=0.8, slot_design_width=0.24, cladding_design_width=8.8, port_names=('op_0', 'op_1')"
-    SWG.C.WIRE_TETM,"core_layout_width=1.3499999999999999, cladding_layout_width=11.2, core_design_width=1.2, cladding_design_width=11.2, port_names=('op_0', 'op_1')"
-    SWG.C.WIRE_TETM.BEND_CIRCULAR,radius_eff=6.6
-    SWG.C.WIRE_TETM.BEND_EULER,"radius_min=6.6, l_max=15"
-    SWG.C.WIRE,"core_layout_width=1.15, cladding_layout_width=11.0, core_design_width=1.0, cladding_design_width=11.0, port_names=('op_0', 'op_1')"
-    SWG.C.WIRE.BEND_CIRCULAR,radius_eff=6.5
-    SWG.C.WIRE.BEND_EULER,"radius_min=6.5, l_max=15"
-    SWG.C.EXPANDED_TETM,"core_layout_width=3.15, cladding_layout_width=13.0, core_design_width=3.0, cladding_design_width=13.0, port_names=('op_0', 'op_1')"
-    SWG.C.EXPANDED_TETM.BEND_CIRCULAR,radius_eff=7.5
-    SWG.C.EXPANDED_TETM.BEND_EULER,"radius_min=7.5, l_max=25"
-    SWG.C.EXPANDED,"core_layout_width=3.15, cladding_layout_width=13.0, core_design_width=3.0, cladding_design_width=13.0, port_names=('op_0', 'op_1')"
-    SWG.C.EXPANDED.BEND_CIRCULAR,radius_eff=7.5
-    SWG.C.EXPANDED.BEND_EULER,"radius_min=7.5, l_max=25"
-    SWG.O.WIRE_TETM,"core_layout_width=1.1099999999999999, cladding_layout_width=8.959999999999999, core_design_width=0.96, cladding_design_width=8.959999999999999, port_names=('op_0', 'op_1')"
-    SWG.O.WIRE,"core_layout_width=0.9500000000000001, cladding_layout_width=8.8, core_design_width=0.8, cladding_design_width=8.8, port_names=('op_0', 'op_1')"
-    SWG.O.EXPANDED_TETM,"core_layout_width=2.5500000000000003, cladding_layout_width=10.4, core_design_width=2.4000000000000004, cladding_design_width=10.4, port_names=('op_0', 'op_1')"
-    SWG.O.EXPANDED,"core_layout_width=1.35, cladding_layout_width=9.200000000000001, core_design_width=1.2000000000000002, cladding_design_width=9.200000000000001, port_names=('op_0', 'op_1')"
-    SWGR.C.WIRE,"core_layout_width=1.15, cladding_layout_width=11.0, core_design_width=1.0, cladding_design_width=11.0, port_names=('op_0', 'op_1'), period=1.0, duty_cycle=0.5"
-    SWGR.O.WIRE,"core_layout_width=0.9500000000000001, cladding_layout_width=8.8, core_design_width=0.8, cladding_design_width=8.8, port_names=('op_0', 'op_1'), period=1.0, duty_cycle=0.5"
+    from typing import Tuple, cast
+    from fnpcell.pdk.technology import all as fpt
+    from .interfaces import CoreCladdingWaveguideType
+    from .wg import WG
 
-通过csv文件我们可以查看各种类型波导的配置包括尺寸以及仿真信息。
+    def _c_fwg2mwg(end_types: Tuple[fpt.IWaveguideType, fpt.IWaveguideType]):
+        from ..components.transition.fwg2mwg_transition import FWG2MWGTransition
+
+        a = end_types[0]
+        b = end_types[1]
+        assert isinstance(a, WG.FWG.C)
+        assert isinstance(b, WG.MWG.C)
+
+        return FWG2MWGTransition(name="auto", length=20, fwg_type=a, mwg_type=b), ("op_0", "op_1")
+
+
+    def _c_fwg2swg(end_types: Tuple[fpt.IWaveguideType, fpt.IWaveguideType]):
+        from ..components.transition.fwg2swg_transition import FWG2SWGTransition
+
+        a = end_types[0]
+        b = end_types[1]
+        assert isinstance(a, WG.FWG.C)
+        assert isinstance(b, WG.SWG.C)
+
+        return FWG2SWGTransition(name="auto", length=20, fwg_type=a, swg_type=b), ("op_0", "op_1")
+
+
+    def _c_swg2mwg(end_types: Tuple[fpt.IWaveguideType, fpt.IWaveguideType]):
+        from ..components.transition.swg2mwg_transition import SWG2MWGTransition
+
+        a = end_types[0]
+        b = end_types[1]
+        assert isinstance(a, WG.SWG.C)
+        assert isinstance(b, WG.MWG.C)
+
+        return SWG2MWGTransition(name="auto", swg_length=10, mwg_length=10, swg_type=a, mwg_type=b), ("op_0", "op_1")
+
+
+    class _Taper:
+        def __init__(self, slope: float) -> None:
+            self.slope = slope
+
+        def __call__(self, end_types: Tuple[fpt.IWaveguideType, fpt.IWaveguideType]):
+            from ..components.taper.taper_linear import TaperLinear
+
+            a = cast(CoreCladdingWaveguideType, end_types[0])
+            b = cast(CoreCladdingWaveguideType, end_types[1])
+            k = self.slope
+            length = max(0.01, abs(a.core_width - b.core_width) / k)
+            return TaperLinear(name="auto", length=length, left_type=a, right_type=b), ("op_0", "op_1")
+
+
+    class AUTO_TRANSITION:
+        @fpt.classconst
+        @classmethod
+        def DEFAULT(cls):
+            return fpt.AutoTransition().updated(
+                [
+                    (WG.FWG.C >> WG.MWG.C, _c_fwg2mwg),
+                    (WG.FWG.C >> WG.SWG.C, _c_fwg2swg),
+                    (WG.SWG.C >> WG.MWG.C, _c_swg2mwg),
+                    #
+                    (WG.FWG.C >> WG.FWG.C, _Taper(0.2)),
+                    (WG.SWG.C >> WG.SWG.C, _Taper(0.2)),
+                    (WG.MWG.C >> WG.MWG.C, _Taper(0.2)),
+                ]
+            )
