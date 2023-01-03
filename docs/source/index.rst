@@ -13,6 +13,5 @@ PhotoCAD产品手册资料
     Api/api
     AboutUS
     fnpcell/all
-    `fnpcell <https://www.lovewhisper.top/fnpcell/index.html>`_
 
 
