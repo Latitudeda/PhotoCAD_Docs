@@ -8,6 +8,7 @@ PhotoCAD产品手册资料
 
     Tutorials/Quickstart
     PICircuits/PICircuits
+    PICircuits/TICircuits
     gpdk/QuickCreatePDK
     WaveguideRouting/Summary
     api/api

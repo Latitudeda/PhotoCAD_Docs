@@ -3,8 +3,6 @@ auto_transition_py
 
 该脚本主要定义了端口连接时的波导类型与默认弯曲波导::
 
-脚本为::
-
     from typing import Tuple, cast
     from fnpcell.pdk.technology import all as fpt
     from .interfaces import CoreCladdingWaveguideType
