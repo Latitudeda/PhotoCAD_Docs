@@ -6,7 +6,6 @@ fnpcell API
 
 .. toctree::
     :maxdepth: 5
-    :hidden:
 
     fnpcell_all/index
     fnpcell_ansi/index

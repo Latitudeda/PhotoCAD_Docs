@@ -6,7 +6,6 @@ Sub-modules
 
 .. toctree::
     :maxdepth: 5
-    :hidden:
 
     all
     arc
