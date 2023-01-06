@@ -12,6 +12,7 @@ PhotoCAD产品手册资料
     gpdk/QuickCreatePDK
     WaveguideRouting/Summary
     api/api
+    fnpcell/index
     fnpcell/all
     AboutUS
 
