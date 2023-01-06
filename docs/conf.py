@@ -12,12 +12,22 @@ version = '1.5.0'
 # -- General configuration
 
 extensions = [
+    'multiproject',
     'sphinx.ext.duration',
     'sphinx.ext.doctest',
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
 ]
+
+multiproject_projects = {
+    "en": {
+        "use_config_file": False,
+    },
+    "zh": {
+        "use_config_file": False,
+    },
+}
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
