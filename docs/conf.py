@@ -37,7 +37,7 @@ intersphinx_disabled_domains = ['std']
 
 templates_path = ['_templates']
 html_js_files = [
-    'assets/js/jquery-3.6.3.min.js',
+    'https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.2.min.js',
 ]
 
 # -- Options for HTML output
