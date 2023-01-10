@@ -4,7 +4,7 @@ Step 1: Build basic building blocks
 This case implements the construction of three basic building blocks, including:
 
 - Bend_
-- Straight_waveguide_
+- Straight_
 - Taper_
 
 Bend
@@ -46,7 +46,7 @@ call class, generate the bend waveguide layout file and plot::
 Bend waveguide
 
 
-Straight Waveguide
+Straight
 -----------------------------------
 Define Straight waveguide::
 
