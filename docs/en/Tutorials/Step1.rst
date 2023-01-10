@@ -4,7 +4,7 @@ Step 1: Build basic building blocks
 This case implements the construction of three basic building blocks, including:
 
 - Bend_
-- Straight waveguide_
+- Straight_waveguide_
 - Taper_
 
 Bend
