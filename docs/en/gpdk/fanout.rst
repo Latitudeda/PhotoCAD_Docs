@@ -1,9 +1,9 @@
 fanout
 ====================
 
-fanout可以实现器件端口到光栅耦合器的自动布局布线。
+fanout enables automatic layout routing of device ports to grating couplers.
 
-fanout类定义如下::
+class fanout is defined as follows::
 
     @dataclass(eq=False)
     class HFanout(PCell):
@@ -326,20 +326,20 @@ fanout类定义如下::
             ports += connected.ports
             return insts, elems, ports
 
-主要参数描述::
+Parameters definition::
 
-    device: 器件
-    left_spacing: 左侧端口的间距
-    right_spacing: 右侧端口的间距
-    bend_degrees: 弯曲波导弯曲角度
-    device_left_ports: 需要配置的端口，从上至下
-    device_right_ports: 需要配置的端口，从下至上
-    left_distance: 左侧输出端口的距离
-    right_distance: 右侧输出端口的距离
-    left_waveguide_type: 左侧波导类型
-    right_waveguide_type: 右侧波导类型
+    device: device whose ports need fanout
+    left_spacing: spacing between left ports
+    right_spacing: spacing between right ports
+    bend_degrees: angle of the bend waveguides, defaults to 30 degrees
+    device_left_ports: all device left ports from top to bottom
+    device_right_ports: all device right ports from bottom to top
+    left_distance: distance between device left ports
+    right_distance: distance between device right ports
+    left_waveguide_type: type of left waveguide
+    right_waveguide_type: type of right waveguide
 
-调用案例::
+call examples::
 
     gds_file = Path(__file__).parent / "local" / Path(__file__).with_suffix(".gds").name
     from gpdk.technology.bend_factory import EulerBendFactory
@@ -360,7 +360,7 @@ fanout类定义如下::
         ]
     fp.export_gds(library, file=gds_file)
 
-下面分别展示了MMI结构以及对应的经过端口延长后结构的版图，其中mmi结构的创建可以参见（:doc:`mmi`）:
+The following shows the MMI circuit and the corresponding layout of the circuit after fanout, where the building of the mmi structure can be seen here（:doc:`mmi`）:
 
 .. image:: ../images/comp_mmi.png
 .. image:: ../images/routing_fanout.png
