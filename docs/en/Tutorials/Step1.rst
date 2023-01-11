@@ -43,7 +43,9 @@ call class, generate the bend waveguide layout file and plot::
         fp.export_gds(library, file=gds_file)
         fp.plot(library)
         
-Bend waveguide
+Bend waveguide:
+
+.. image:: ../images/bend_circular.png
 
 
 Straight
@@ -79,7 +81,9 @@ call class, generate the staright waveguide layout file and plot::
         fp.export_gds(library, file=gds_file)
         fp.plot(library)
 
-Straight waveguide
+Straight waveguide:
+
+.. image:: ../images/straight.png
 
 Taper
 --------------------------------------
@@ -122,6 +126,8 @@ call class, generate the taper waveguide layout file and plot::
     fp.export_gds(library, file=gds_file)
     fp.plot(library)
     
-Taper waveguide
+Taper waveguide:
+
+.. image:: ../images/taper_linear.png
 
 
