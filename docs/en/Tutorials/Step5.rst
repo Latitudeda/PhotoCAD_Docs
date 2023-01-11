@@ -3,7 +3,7 @@ Step 5: Example(MMI Tree)
 
 This case uses the MMI circuit in Step 2 (:doc:`Step2`) to implement a cascade MMI tree and realize the layout drawing.
 
-Import the MMI circuit created in step 2 (:doc:`Step2`)::
+Import the MMI circuit created in Step 2 (:doc:`Step2`)::
 
     from step.step2.mmi1x2 import MMI1x2
 
