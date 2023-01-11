@@ -1,12 +1,12 @@
 auto_link_py
 ============================================================
 
-该脚本主要定义了多种波导类型之间连接时过渡波导的类型::
+This function mainly defines the type of transition waveguide when connecting between multiple waveguide types:
 
     from >> to,  default link_type, default bend_factory
-    端口1 >> 端口2,默认连接类型,默认弯曲波导
+    port 1 >> port 2, default waveguide link type, default bend waveguide type
 
-默认方法有两种，用户也可以自行定义::
+There are two default methods, and users can also define their own::
 
     class LINKING_POLICY:
         @fpt.classconst
@@ -79,6 +79,6 @@ auto_link_py
                 ]
             )
 
-设置的默认规则为::
+Default rule set ::
 
     DEFAULT = LESS_TRANS
