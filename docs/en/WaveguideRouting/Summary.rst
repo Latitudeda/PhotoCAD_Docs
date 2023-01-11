@@ -1,7 +1,7 @@
-波导布线详解
+Waveguide Routing explanation
 ====================
 
-这一部分将端口间连接的各类方法作了总结对比。
+This section summarizes and compares the various methods of port connection.
 
 .. image:: ../images/Waveguide_routing.png
 
