@@ -1,9 +1,9 @@
 horizontalized
 ====================
 
-弯曲波导端口水平化。
+Bending waveguide port horizontalization.
 
-首先我们需要定义Horizontalized方法::
+First we need to define the Horizontalized method::
 
     @dataclass(eq=False)
     class Horizontalized(PCell):
@@ -63,7 +63,7 @@ horizontalized
             insts += content
             return insts, elems, ports
 
-其中，组件部分所调用的函数定义如下::
+The functions called by the component part are defined as follows::
 
     from gpdk.components.fixed_terminator_te_1550.fixed_terminator_te_1550 import Fixed_Terminator_TE_1550
     from gpdk.components.ring_filter.ring_filter import RingFilter
@@ -102,7 +102,7 @@ horizontalized
         instance = Fixed_Terminator_TE_1550().h_mirrored()  # type: ignore
         return instance, "op_0"
 
-调用方法实现自动布局布线，并生成版图文件::
+Call Horizontalized to achieve automatic layout routing and generate the layout file::
 
     from pathlib import Path
     gds_file = Path(__file__).parent / "local" / Path(__file__).with_suffix(".gds").name
@@ -114,7 +114,7 @@ horizontalized
     fp.export_gds(library, file=gds_file)
 
 
-案例如下图所示：
+The case is shown in the figure below.
 
 .. image:: ../images/routing_horizontalized_init.png
 .. image:: ../images/routing_horizontalized.png
