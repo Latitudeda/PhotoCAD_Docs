@@ -1,9 +1,9 @@
 layers_csv
 ====================
 
-layers.csv文件是用户可编辑修改层级信息的文件。
+The layers.csv file is a file where users can edit and modify layer information.
 
-文件内容格式如下::
+The file content format is as follows::
 
     LAYER,DATATYPE,NAME,DESCRIPTION,PROCESS,PROCESS_DESCRIPTION,PURPOSE,PURPOSE_DESCRIPTION,FILL_COLOR,FILL_PATTERN,STROKE_COLOR
     1,1,FWG_COR,"Full Etch waveguide core",FWG,"Full etch",COR,"Waveguide core",BLUE,DIAGONAL,BLUE
@@ -59,16 +59,17 @@ layers.csv文件是用户可编辑修改层级信息的文件。
     91,35,FLYLINE_MARK,"Flyline for insufficient space in AutoLink",FLYLINE,"Fly line",MARK,"Mark"
     92,35,ERROR_MARK,"Error mark",ERROR,"Error",MARK,"Mark"
 
-数据从前至后分别表示，数据间以英文制表符“,”间隔，具体可查看csv文件的格式标准。
+The data are represented separately from front to back, with "," spacing between the data, see the formatting standards for csv files for details.
 
-- 层
-- 数据类型
-- 层名
-- 描述
-- 工艺
-- 工艺描述
-- 目的
-- 目的描述
-- 填充颜色
-- 填充图形
-- 描边颜色
+LAYER,DATATYPE,NAME,DESCRIPTION,PROCESS,PROCESS_DESCRIPTION,PURPOSE,PURPOSE_DESCRIPTION,FILL_COLOR,FILL_PATTERN,STROKE_COLOR
+- LAYER
+- DATATYPE
+- NAME
+- DESCRIPTION
+- PROCESS
+- PROCESS_DESCRIPTION
+- PURPOSE
+- PURPOSE_DESCRIPTION
+- FILL_COLOR
+- FILL_PATTERN
+- STROKE_COLOR
