@@ -1,4 +1,4 @@
 util
 ====================
 
-util主要是GPDK配置文件。
+File "util" is mainly a GPDK configuration file.
