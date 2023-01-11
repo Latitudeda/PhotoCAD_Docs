@@ -1,9 +1,9 @@
 extended
 ====================
 
-端口延长。
+Port extension
 
-Extended类定义如下::
+class Extended is defined as follows::
 
     @dataclass(eq=False)
     class Extended(PCell):
@@ -58,11 +58,11 @@ Extended类定义如下::
             ports += connected.ports
             return insts, elems, ports
 
-方法需要定义器件以及各端口延长的尺度，同时可以定义生成波导的类型::
+The function allows user to define different lengths of each port extension, while the type of the generated waveguide can also be defined::
 
     Extended(device=Mmi(waveguide_type=TECH.WG.FWG.C.WIRE), lengths={"*": 10, "op_0": 20, "op_1": 30})
 
-最后生成版图文件::
+Finally generate the layout file::
 
     gds_file = Path(__file__).parent / "local" / Path(__file__).with_suffix(".gds").name
     library = fp.Library()
@@ -71,7 +71,7 @@ Extended类定义如下::
     library += Extended(device=Mmi(waveguide_type=TECH.WG.FWG.C.WIRE), lengths={"*": 10, "op_0": 20, "op_1": 30})
     fp.export_gds(library, file=gds_file)
 
-下面分别展示了MMI结构以及对应的经过端口延长后结构的版图，其中mmi结构的创建可以参见（:doc:`mmi`）:
+The following shows the MMI circuit and the corresponding layout of the structure after the port extension, where the building of the MMI circuit can be seen here（:doc:`mmi`）:
 
 .. image:: ../images/comp_mmi.png
 .. image:: ../images/routing_extended.png
