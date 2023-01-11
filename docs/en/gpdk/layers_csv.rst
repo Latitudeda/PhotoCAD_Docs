@@ -61,7 +61,7 @@ The file content format is as follows::
 
 The data are represented separately from front to back, with "," spacing between the data, see the formatting standards for csv files for details.
 
-LAYER,DATATYPE,NAME,DESCRIPTION,PROCESS,PROCESS_DESCRIPTION,PURPOSE,PURPOSE_DESCRIPTION,FILL_COLOR,FILL_PATTERN,STROKE_COLOR
+
 - LAYER
 - DATATYPE
 - NAME
