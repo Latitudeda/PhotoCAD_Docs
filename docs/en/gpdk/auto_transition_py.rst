@@ -1,7 +1,7 @@
 auto_transition_py
 ============================================================
 
-该脚本主要定义了端口连接时的波导类型与默认弯曲波导::
+This function mainly defines the waveguide type and the default bend waveguide when the port is connected::
 
     from typing import Tuple, cast
     from fnpcell.pdk.technology import all as fpt
