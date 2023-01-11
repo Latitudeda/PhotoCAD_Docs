@@ -1,9 +1,9 @@
 comp_scan
 ====================
 
-在模块中定义组件，通过该方法可以实现各模块中组件分别自动布线操作。
+Define the components in the blocks, and this method enables the automatic routing operation of the component in each blocks separately.
 
-首先我们需要定义模块::
+First we need to define the blocks::
 
     blocks = [
         Alignment(
@@ -38,7 +38,7 @@ comp_scan
         ),
     ]
 
-其中，组件部分所调用的函数定义如下::
+The functions called by the component part are defined as follows::
 
     from gpdk.components.fixed_terminator_te_1550.fixed_terminator_te_1550 import Fixed_Terminator_TE_1550
     from gpdk.components.ring_filter.ring_filter import RingFilter
@@ -77,7 +77,7 @@ comp_scan
         instance = Fixed_Terminator_TE_1550().h_mirrored()  # type: ignore
         return instance, "op_0"
 
-调用comp_scan方法实现自动布局布线::
+Call comp_scan method for automatic layout routing::
 
     library += CompScan(name="comp_scan", spacing=255, width=2000, blocks=blocks, fiber_coupler_factory=term_factory)
     library += CompScan(name="comp_scan", spacing=255, width=2000, blocks=blocks, fiber_coupler_adapter=Fixed_Terminator_TE_1550())
@@ -94,12 +94,12 @@ comp_scan
         fiber_coupler_factory=gc_factory,
     )
 
-最后生成版图文件::
+Finally generate the layout file::
 
     gds_file = Path(__file__).parent / "local" / Path(__file__).with_suffix(".gds").name
     library = fp.Library()
     fp.export_gds(library, file=gds_file)
 
-最终生成的版图文件如下图所示：
+The final generated layout file is shown below：
 
 .. image:: ../images/routing_comp_scan.png
