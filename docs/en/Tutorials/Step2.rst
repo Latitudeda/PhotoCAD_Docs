@@ -1,4 +1,4 @@
-Step2: Build basic circuits with basic building blocks 
+Step 2: Build basic circuits with basic building blocks 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This case implements the building of two basic circuits using the base building blocks, including:
