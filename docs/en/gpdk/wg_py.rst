@@ -1,9 +1,9 @@
 wg_py
 ============================================================
 
-该脚本主要定义了多种波导类型以及宽度等相应的配置。
+The file mainly defines various waveguide types and their corresponding configurations such as width。
 
-最终生成的csv::
+The final generated csv::
 
     NAME,CONFIGURATION
     FWG.C.WIRE_TETM,"core_layout_width=0.64, cladding_layout_width=4.54, core_design_width=0.54, cladding_design_width=4.54, port_names=('op_0', 'op_1')"
@@ -59,4 +59,4 @@ wg_py
     SWGR.C.WIRE,"core_layout_width=1.15, cladding_layout_width=11.0, core_design_width=1.0, cladding_design_width=11.0, port_names=('op_0', 'op_1'), period=1.0, duty_cycle=0.5"
     SWGR.O.WIRE,"core_layout_width=0.9500000000000001, cladding_layout_width=8.8, core_design_width=0.8, cladding_design_width=8.8, port_names=('op_0', 'op_1'), period=1.0, duty_cycle=0.5"
 
-通过csv文件我们可以查看各种类型波导的配置包括尺寸以及仿真信息。
+The csv file allows us to view the configuration of various types of waveguides including dimensions and simulation information.
