@@ -1,7 +1,7 @@
 Step3 : Build complex circuits using basic building blocks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In Step2（:doc:`Step2`）, we have built the basic circuit using the basic building blocks. In this section, we comtinue to build some complex circuits through the connection of these basic circuits to achieve more functionality, such as the MZI circuit. The connections between the basic circuits are provided in three main ways:
+In Step2（:doc:`Step2`）, we have built the basic circuit using the basic building blocks. In this section, we continue to build some complex circuits through the connection of these basic circuits to achieve more functionality, such as the MZI circuit. The connections between the basic circuits are provided in three main ways:
 
 - target_length_
 - waypoints_
