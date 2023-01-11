@@ -1,4 +1,4 @@
-Step4 : Drawing of common shapes and layout design by Boolean operations
+Step 4: Drawing of common shapes and layout design by Boolean operations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This case shows the drawing of common graphics and the layout design of complex structures by Boolean operations.
