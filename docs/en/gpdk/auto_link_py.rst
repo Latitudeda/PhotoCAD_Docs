@@ -1,7 +1,7 @@
 auto_link_py
 ============================================================
 
-This function mainly defines the type of transition waveguide when connecting between multiple waveguide types:
+This function mainly defines the type of transition waveguide when connecting between multiple waveguide types::
 
     from >> to,  default link_type, default bend_factory
     port 1 >> port 2, default waveguide link type, default bend waveguide type
