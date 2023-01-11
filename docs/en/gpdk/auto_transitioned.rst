@@ -1,9 +1,9 @@
 auto_transitioned
 ====================
 
-器件与器件连接时，很多时候我们会面临端口不匹配问题，此时需要引入taper波导实现过渡。自动端口转换函数为我们提供了端口转换的快速方法。
+When connecting components to components, many times we face the port mismatch problem, and then we need to introduce taper waveguide to achieve the transition. The automatic port transition function provides us with a fast method for port transition.
 
-自动端口转换定义如下::
+Automatic port transition is defined as follows::
 
     @dataclass(eq=False)
     class AutoTransitioned(PCell):
@@ -51,12 +51,12 @@ auto_transitioned
 
             return insts, elems, ports
 
-更多时候，我们了解如何使用即可::
+After defing the automatic transition, we can directly use it when designing the layout::
 
     library += AutoTransitioned(device=Mmi(waveguide_type=TECH.WG.FWG.C.WIRE), waveguide_types={"*": TECH.WG.SWG.C.WIRE})
     fp.export_gds(library, file=gds_file)
 
-下面分别展示了MMI结构以及对应的经过自动端口转换后结构的版图，其中mmi结构的创建可以参见（:doc:`mmi`）：
+The following shows the MMI structure and the corresponding layout of the circuit after the automatic port transition, where the mmi structure can be seen here（:doc:`mmi`）：
 
 .. image:: ../images/comp_mmi.png
 .. image:: ../images/routing_autotranstioned.png
