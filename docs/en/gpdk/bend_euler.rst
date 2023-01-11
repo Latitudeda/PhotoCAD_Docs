@@ -1,11 +1,11 @@
 bend_euler
 ====================
 
-实践证明，作为非线性曲率的欧拉弯曲拥有更好的传输性能。本小节将创建欧拉弯曲组件。
+Euler bending as a nonlinear curvature has proven to have better transmission properties. This section will create Euler bending components.
 
-创建步骤如下:
+Steps are as follows:
 
-导入库::
+Import Library::
 
     from dataclasses import dataclass
     from functools import cached_property
@@ -15,7 +15,7 @@ bend_euler
     from gpdk.technology import get_technology, PCell
     from gpdk.technology.interfaces import CoreCladdingWaveguideType
 
-定义欧拉弯曲类::
+Define BendEuler class::
 
     @dataclass(eq=False)
     class BendEuler(fp.IWaveguideLike, PCell):
@@ -75,7 +75,7 @@ bend_euler
             ports += wg.ports
             return insts, elems, ports
 
-定义90度欧拉弯曲类::
+Define BendEuler art 90 degree angle::
 
     @dataclass(eq=False)
     class BendEuler90(BendEuler):
@@ -122,14 +122,14 @@ bend_euler
 
             return insts, elems, ports
 
-这个类定义通过以下方法调用实现版图设计::
+This class definition implements layout design through the following calls::
 
     library += BendEuler()
     library += BendEuler90()
     fp.export_gds(library, file=gds_file)
 
-这个类里面定义的仿真可以用于整体链路的仿真。
+The simulation defined inside this class can be used for the simulation of the overall link.
 
-运行案例，得到的版图文件为:
+Run and plot:
 
 .. image:: ../images/comp_bend_euler.png
