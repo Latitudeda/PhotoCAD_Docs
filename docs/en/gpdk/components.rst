@@ -1,14 +1,14 @@
 components
 ====================
 
-这一章旨在帮助用户快速创建PDK的组件。
+This chapter is designed to help users quickly create components for PDK.
 
-主要从以下几个组件案例的创建，帮助用户理解创建的过程。
+The following component examples are mainly created to help users understand the process of building the components.
 
-- 直波导
-- 欧拉弯曲
-- 光栅耦合器
-- 多模干涉仪
+- Straight_waveguide
+- Euler_Bend
+- Grating_Coupler
+- MMI
 
 .. toctree::
 
