@@ -4,7 +4,7 @@ Quick Guide to Creating Circuit
 This section is a quick guide to creating circuits and is designed for users to quickly learn the design of a circuit from the basic components to the complete circuit.
 
 .. image:: ../images/Picture2.png
-.. image:: ../docs/zh/images/MMI_boolean.png
+
 
 Steps to create a circuit.
 
