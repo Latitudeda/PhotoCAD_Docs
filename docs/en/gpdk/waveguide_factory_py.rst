@@ -1,17 +1,17 @@
 waveguide_factory_py
 ============================================================
 
-该脚本主要为实现自动布线中端口获取以及弯曲布线提供更智能的方案。主要包括：
+This script mainly provides a more intelligent solution for implementing port acquisition and bend routing in automatic waveguide routing. The main components are.
 
-- 直波导_
-- 弯曲波导_
-- 欧拉弯曲_
-- 案例
+- Straight_
+- CircularBend_
+- EulerBend_
+- Examples_
 
-直波导
+Straight
 ---------------------------
 
-类定义::
+Define class StraightFactory ::
 
     @dataclass(frozen=True)
     class StraightFactory(fpt.IStraightWaveguideFactory):
@@ -21,12 +21,12 @@ waveguide_factory_py
             straight = Straight(length=length, waveguide_type=type)
             return straight, ("op_0", "op_1")
 
-返回直波导与端口信息，为自动布线时端口连接提供支持。
+Returns straight waveguide and port information to provide support for port connections during automatic routing.
 
-弯曲波导
+CircularBend
 ---------------------------
 
-类定义::
+Define class CircularBendFactory::
 
     @dataclass(frozen=True)
     class CircularBendFactory(fpt.IBendWaveguideFactory):
@@ -56,17 +56,17 @@ waveguide_factory_py
 
             return bend, radius_eff, ("op_0", "op_1")
 
-可以选择设定的参数为
+The parameters that can be set optionally are
 
-- radius_eff 半径
-- waveguide_type 波导类型
+- radius_eff 
+- waveguide_type 
 
-返回弯曲波导以及半径与端口信息。
+Returns the bend waveguide and the radius and port information.
 
-欧拉弯曲
+EulerBend
 ---------------------------
 
-类定义::
+Define class EulerBendFactory::::
 
     @dataclass(frozen=True)
     class EulerBendFactory(fpt.IBendWaveguideFactory):
@@ -98,18 +98,18 @@ waveguide_factory_py
 
             return bend, bend.raw_curve.radius_eff, ("op_0", "op_1")
 
-可以选择设定的参数为:
+The parameters that can be set optionally are
 
-- radius_min 最小半径
-- l_max 欧拉螺旋在半弯曲中的最大长度
-- waveguide_type 波导类型
+- radius_min : Minimum radius in the Euler bend
+- l_max : Maximum length of Euler spiral in half bend
+- waveguide_type : Type of the Euler bend waveguide
 
-返回欧拉弯曲，以及欧拉弯的等效半径以及相应的端口信息。
+Returns the Euler bend, along with the equivalent radius of the Euler bend and the corresponding port information.
 
-案例
+Examples
 ---------------------------
 
-原始模型::
+Original circuit::
 
     from pathlib import Path
 
@@ -134,7 +134,7 @@ waveguide_factory_py
     fp.export_gds(library, file=gds_file)
     fp.plot(library)
 
-通过欧拉弯曲'EulerBendFactory()'引导走线的模型::
+Circuit for routing the ports by Euler bending 'EulerBendFactory()'::
 
     from pathlib import Path
 
@@ -166,7 +166,7 @@ waveguide_factory_py
     fp.export_gds(library, file=gds_file)
     fp.plot(library)
 
-最终走线结果对比：
+Comparison of final circuit results：
 
 .. image:: ../images/Waveguide_Factory_init.png
 .. image:: ../images/Waveguide_Factory_Euler.png
