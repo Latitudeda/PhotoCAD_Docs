@@ -1,11 +1,11 @@
-mmi
+MMI
 ====================
 
-多模干涉仪是光子继承链路的主要组件之一。
+The multimode interferometer (MMI) is one of the main components of the photonic integrated circuit.
 
-创建步骤如下:
+The building steps are as follows:
 
-导入库::
+Import library::
 
     from dataclasses import dataclass
     from typing import Tuple
@@ -15,7 +15,7 @@ mmi
     from gpdk.technology import get_technology, PCell
     from gpdk.technology.interfaces import CoreCladdingWaveguideType
 
-定义mmi类::
+Define class MMI::
 
     @dataclass(eq=False)
     class Mmi(PCell):
@@ -89,18 +89,19 @@ mmi
             # fmt: on
             return insts, elems, ports
 
-定义一个1*2的mmi类::
+Define a MMI 1x2 class::
 
     @dataclass(eq=False)
     class Mmi1x2(Mmi, locked=True):
         n_inputs: int = fp.PositiveIntParam(default=1)
         n_outputs: int = fp.PositiveIntParam(default=2)
 
-这个类定义通过以下方法调用实现版图设计::
+This class definition implements layout design through the following calls::
+
 
     library += Mmi1x2()
     fp.export_gds(library, file=gds_file)
 
-运行案例，得到的版图文件为:
+Run and plot:
 
 .. image:: ../images/comp_mmi.png
