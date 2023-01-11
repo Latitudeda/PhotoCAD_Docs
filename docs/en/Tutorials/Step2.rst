@@ -82,7 +82,9 @@ call class, generate directional coupler layout file and plot::
     fp.plot(library)
 
 
-Directional Coupler
+Directional Coupler:
+
+.. image:: ../images/DirectionalCoupler.png
 
 
 MMI
@@ -146,7 +148,9 @@ call class, generate MMI layout file and plot::
     fp.export_gds(library, file=gds_file)
     fp.plot(library)
 
-MMI
+MMI:
+
+.. image:: ../images/MMI12.png
     
             
         
