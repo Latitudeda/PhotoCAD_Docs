@@ -17,6 +17,7 @@ Import library::
 
 
 Define class GratingCoupler::
+
     @dataclass(eq=False)
     class GratingCoupler(PCell, band="C"):
         """
