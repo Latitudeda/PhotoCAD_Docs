@@ -1,14 +1,14 @@
-快速配置PDK
+Create a customized PDK
 ====================
 
-这一章旨在帮助用户快速创建使用自己工艺流程的PDK，从而实现自动布局布线。
+This chapter is designed to help users quickly create PDKs that use their own process flows to automate layout routing.
 
-层级目录：
+Contents：
 
-- components：用于存放基础组件
-- routing：自动布局布线
-- technology：版图底层相关
-- util：配置文件
+- components：store base components
+- routing：automatic layout routing
+- technology：layout base layer related
+- util：configuraton file
 
 .. image:: ../images/GPDK.png
 
