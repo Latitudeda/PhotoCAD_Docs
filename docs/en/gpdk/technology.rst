@@ -1,8 +1,8 @@
 technology
 ===================================
 
-technology主要存放的是底层相关的一些脚本。
-下面通过经常会使用的部分进行介绍。
+File "technology" mainly stores some scripts related to the underlying layer.
+The following is an introduction through the parts that will be used frequently.
 
 - layers.csv
 - generate_layers_and_display_from_csv.py
@@ -13,7 +13,7 @@ technology主要存放的是底层相关的一些脚本。
 - auto_link.py
 - auto_transition.py
 
-文件layers.csv为用户配置文件，通过文件generate_layers_and_display_from_csv.py可以将用户配置的csv文件自动转换成layers.py和display.py文件。
+The file layers.csv is a user configuration file, and the user-configured csv file can be automatically converted into layers.py and display.py files by the file generate_layers_and_display_from_csv.py.
 
 .. toctree::
 
