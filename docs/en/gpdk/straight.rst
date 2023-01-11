@@ -1,11 +1,11 @@
 straight
 ====================
 
-直波导是光子集成链路不可或缺的组件。
+The straight waveguide is an indispensable component of the photonic integration circuit.
 
-创建步骤如下:
+The building steps are as follows:
 
-导入库::
+Import library::
 
     from dataclasses import dataclass
     from functools import cached_property
@@ -15,7 +15,7 @@ straight
     from fnpcell.interfaces import angle_between, distance_between
     from gpdk.technology import get_technology, PCell
 
-定义直波导类::
+Define class Straight::
 
     @dataclass(eq=False)
     class Straight(fp.IWaveguideLike, PCell):
@@ -75,16 +75,16 @@ straight
                 }
             }
             return fp.sim.SMatrixWavelengthModel(wl, S, metadata=metadata)
-
-这个类定义通过以下方法调用实现版图设计::
+            
+This class definition implements the layout design through the following calls::
 
     TECH = get_technology()
         straight = Straight(name="s", length=10, waveguide_type=TECH.WG.FWG.C.WIRE)
     fp.plot(straight)
 
-这个类里面定义的仿真可以用于整体链路的仿真。
+The simulation defined inside this class can be used for the simulation of the overall circuit.
 
-此外，还需要定义端口之间直波导链接的函数::
+In addition, it is necessary to define the function of the straight waveguide connection between the ports::
 
     def StraightBetween(
         *,
@@ -98,6 +98,6 @@ straight
         straight = Straight(length=length, waveguide_type=waveguide_type, port_names=port_names).rotated(radians=orientation).translated(*start)
         return straight
 
-运行案例，得到的版图文件为:
+Run and plot:
 
 .. image:: ../images/comp_straight.png
