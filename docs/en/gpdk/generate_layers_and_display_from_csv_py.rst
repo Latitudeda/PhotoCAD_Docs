@@ -1,9 +1,9 @@
 generate_layers_and_display_from_csv_py.rst
 ============================================================
 
-该脚本可以实现将layers.csv文件（:doc:`layers_csv`）转换成GPDK需要用到的脚本文件layers.py以及display.py。
+This function enables to convert the layers.csv file (:doc:`layers_csv`) into the script files layers.py and display.py that GPDK needs to use.
 
-代码如下::
+::
 
     from pathlib import Path
 
@@ -28,4 +28,4 @@ generate_layers_and_display_from_csv_py.rst
         fp.util.generate_display_from_csv(csv_file=csv_file, display_file=display_file, overwrite=True)
         fp.util.generate_lyp_from_csv(csv_file=csv_file, lyp_file=lyp_file, overwrite=True)
 
-用户只需要了解用途即可。
+Users only need to understand the purpose。
