@@ -1,11 +1,11 @@
 grating_coupler
 ====================
 
-光栅耦合器可以将光源从光纤中耦合到片上，并将片上光源耦合到光纤中的重要组件。
+The grating coupler is an important component that couples the light source from the fiber to the chip or couples the on-chip light source to the fiber.
 
-创建步骤如下:
+The building steps are as follows:
 
-导入库::
+Import library::
 
     from dataclasses import dataclass
     import math
@@ -15,8 +15,8 @@ grating_coupler
     from gpdk.technology import get_technology, PCell
     from gpdk.technology.interfaces import CoreCladdingWaveguideType
 
-定义光栅耦合器类::
 
+Define class GratingCoupler::
     @dataclass(eq=False)
     class GratingCoupler(PCell, band="C"):
         """
@@ -143,13 +143,13 @@ grating_coupler
             return insts, elems, ports
 
 
-这个类定义通过以下方法调用实现版图设计::
+This class definition implements the layout design through the following calls::
 
     library += GratingCoupler()
     fp.export_gds(library, file=gds_file)
 
-这个类里面定义的仿真可以用于整体链路的仿真。
+The simulation defined inside this class can be used for the simulation of the whole circuit.
 
-运行案例，得到的版图文件为:
+Run and plot:
 
 .. image:: ../images/comp_grating_coupler.png
