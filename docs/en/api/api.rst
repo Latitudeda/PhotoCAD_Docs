@@ -1,11 +1,11 @@
-常用接口
+Commonly used interfaces
 ====================
 
-用户常用的接口函数主要是以下三类：
+The three main types of interface functions commonly used by users are as follows:
 
-- 图形
-- 链路
-- 工具
+- Geometry
+- Link
+- Tool
 
 .. toctree::
 
