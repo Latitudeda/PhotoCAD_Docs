@@ -1,18 +1,18 @@
-可编程光子集成链路
+Programmable Photonic Integrated Circuit
 ====================
 
-可编程光子链路是光子学发展的一门重要学科，这一部分主要详细讲解如何搭建可重构式可编程光子链路。
+Programmable photonic circuits are an important discipline in the development of photonics, and this section focuses on how to build reconfigurable programmable photonic circuits in detail.
 
-这一部分以矩形网络为例，旨在搭建可重构式矩形光网络。可重构参数包括：
+This section aims to build reconfigurable rectangular optical networks using rectangular networks as an example. The reconfigurable parameters include:
 
-- 基础模块
-- 网络大小
-- 设计参数
+- Basic Module
+- Network Size
+- Design Parameters
 
-第一部分 构建矩形网络
+Part I. Building a Rectangular Network
 ---------------------------
 
-导入必要库文件::
+Importing library files::
 
     from dataclasses import dataclass
     from typing import Mapping, cast
@@ -23,7 +23,7 @@
     from h_fanout import HFanout
     from gpdk.technology.waveguide_factory import EulerBendFactory
 
-定义可编程光子链路类::
+Define class PICircuit::
 
     @dataclass(eq=False)
     class PICircuit(fp.PCell):
@@ -208,7 +208,7 @@
             # fmt: on
             return insts, elems, ports
 
-主函数中调用，并利用‘Hfanout’函数实现端口光栅耦合器设计::
+Call the main function and use the 'Hfanout' function to implement the grating coupler design::
 
     if __name__ == "__main__":
         from pathlib import Path
@@ -242,40 +242,40 @@
         fp.export_gds(library, file=gds_file)
         fp.plot(library)
 
-第二部分 参数说明
+Part II. Parameter Description
 ---------------------------
 
-- row_number 光网络横向网格数
-- column_number 光网络竖向网络数
-- basic_comp 基础模块器件，这里选用的是微环调制器
-- spacing 组件间距设置
+- row_number : Number of horizontal grids of optical network
+- column_number : Number of vertical grids of optical network
+- basic_comp : The base module device, chosen here is the microring modulator
+- spacing : Component spacing setting
 
-第三部分 测试说明
+Part III. Test Description
 ---------------------------
 
-首先2*2方形网络
+First, a 2*2 square network:
 
 .. image:: ../images/PIC_square_22.png
 
-其自动生成版图如下所示
+The automatic generation of the layout is shown below:
 
 .. image:: ../images/PIC_square_22GDS.png
 
-继续测试5*4矩形网络
+Continue testing 5*4 rectangular network:
 
 .. image:: ../images/PIC_square_54.png
 
-其自动生成版图如下所示
+The automatic generation of the layout is shown below:
 
 .. image:: ../images/PIC_square_54GDS.png
 
-最后，为了展示PhotoCAD在可编程光子集成链路设计领域的巨大潜力，我们设计了20*30的光网络以及100*100的光网络。
+Finally, to demonstrate the great potential of PhotoCAD in the field of programmable photonic integrated link design, we designed a 20*30 optical network as well as a 100*100 optical network.
 
 .. image:: ../images/PIC_square_3020.png
 
 .. image:: ../images/PIC_square_100100.png
 
-第四部分 总结
+Part IV. Summary
 ---------------------------
 
-PhotoCAD设计大规模可编程光子链路版图性能优异，根据官方提供的可重构代码，我们可以轻松的实现各种复杂网络。
+PhotoCAD designs massively programmable photonic circuit plates with excellent performance, and according to the official reconfigurable code provided, we can easily implement various complex networks.
