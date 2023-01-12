@@ -1,7 +1,7 @@
 Multi-port to multi-port
 ====================
 
-.. image:: ../images/multiport_to_multiport_method.png
+
 
 There are two types of connections from multi-port to multi-port.
 
