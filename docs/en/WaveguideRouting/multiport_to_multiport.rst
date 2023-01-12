@@ -1,33 +1,33 @@
-多端口至多端口
+Multi-port to multi-port
 ====================
 
 .. image:: ../images/multiport_to_multiport_method.png
 
-多端口至多端口一共有三种连接方式：
+There are two types of connections from multi-port to multi-port.
 
 - fp.Linked
 - fp.creat_links
 
-下面是两种方案的对比
+Here's a comparison of the two options
 
 .. image:: ../images/multiport_to_multiport.png
 
-布线方案Linked代码示例 (推荐度★★★)::
+fp.Linked example (Recommendation★★★)::
 
-    # 调用Linked方法实现器件端口间的互连
+    # Interconnecting device ports by calling the Linked method
     device = fp.Linked(
-        # 定义自动布线中直波导的类型
+        # Define the type of straight waveguide in automatic routing
         link_type=TECH.WG.FWG.C.EXPANDED,
-        # 定义自动布线时bend的类型
+        # Define the type of bend in automatic routing
         bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR,
 
-        # 在links中定义器件端口之间的连接关系
+        # Define the connection between device ports in links
         links=[
-            # 使用 >> 符号定义连接关系
+            # Use >> to define connections between two ports
             gc1["op_0"] >> fp.Waypoint(-50, -50, 0) >> gc4["op_0"],
-            # 使用fp.Waypoint(x,y)方法定义路径点
+            # Use fp.Waypoint(x,y) to define the path point
             gc2["op_0"] >> fp.Waypoint(0, 50, 0) >> gc5["op_0"],
-            # 使用LinkBetween方法来单独定义一段连接，可以通过参数修改直波导和bend的类型
+            # Use LinkBetween to define a separate segment of the connection, and you can modify the type of the straight waveguide and bend with parameters
             fp.LinkBetween(
                 start=gc3["op_0"],
                 end=gc6["op_0"],
@@ -39,26 +39,26 @@
         ports=[],
     )
 
-    # 将linked返回的器件添加到insts
+    # Add the device returned by Linked to insts
     insts += device
 
 .. image:: ../images/multiport_to_multiport_example_1.png
 
-布线方案creat_links代码示例 (推荐度★★★★★)::
+fp.create_links example (Recommendation★★★★★)::
 
-    # 调用create_links方法实现器件端口间的互连
+    # Interconnecting device ports by calling the create_links method
     device = fp.create_links(
-        # 定义自动布线中直波导的类型
+        # Define the type of straight waveguide in automatic routing
         link_type=TECH.WG.FWG.C.EXPANDED,
-        # 定义自动布线时bend的类型
+        # Define the type of bend in automatic routing
         bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR,
-        # 在specs中定义器件端口之间的连接关系
+        # Define the connection between device ports in specs
         specs=[
-            # 使用 >> 符号定义连接关系
+            # Use >> to define connections between two ports
             gc1["op_0"] >> fp.Waypoint(-50, -50, 0) >> gc4["op_0"],
-            # 使用fp.Waypoint(x,y)方法定义路径点
+            # Use fp.Waypoint(x,y) to define the path point
             gc2["op_0"] >> fp.Waypoint(0, 50, 0) >> gc5["op_0"],
-            # 使用LinkBetween方法来单独定义一段连接，可以通过参数修改直波导和bend的类型
+            # Use LinkBetween to define a separate segment of the connection, and you can modify the type of the straight waveguide and bend with parameters
             fp.LinkBetween(
                 start=gc3["op_0"],
                 end=gc6["op_0"],
@@ -68,18 +68,18 @@
             )
         ],
     )
-    # 获取并打印三段连线的线路长度
+    # Get and print the length of the three connected links
     length_1 = device[0].curve_length
     length_2 = device[1].curve_length
     length_3 = device[2].curve_length
     print(f"{length_1} \n {length_2} \n {length_3}")
-    # 将create_links返回的器件添加到insts
+    # Add the device returned by create_links to insts
     insts += device
 
 .. image:: ../images/multiport_to_multiport_example_2.png
 
 .. image:: ../images/multiport_to_multiport_example_messagebox.png
 
-消息框可以看出打印了三段连线各自的长度。
+The message box shows that the lengths of each of the three connected links are printed.
 
-详细参见代码中注释部分。
+See the comments section in the code for details.
