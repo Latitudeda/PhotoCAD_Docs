@@ -10,7 +10,7 @@ There are two types of connections from multi-port to multi-port.
 
 Here's a comparison of the two options
 
-.. image:: ../images/multiport_to_multiport.png
+.. image:: ../images/multiport_to_multiport_.png
 
 fp.Linked example (Recommendation★★★)::
 
