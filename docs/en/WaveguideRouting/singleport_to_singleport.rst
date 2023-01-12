@@ -1,17 +1,17 @@
-单端口至单端口
+Single-port to Single-port
 ====================
 
 .. image:: ../images/one_port_to_one_port_method.png
 
-单端口至单端口一共有三种连接方式：
+There are a total of three types of connections from single port to single port:
 
 - fp.LinkBetween
 - TECH.LINKER
 - >>
 
-下面是三种方案的对比
+Here's a comparison of the three options
 
-.. image:: ../images/one_port_to_one_port.png
+.. image:: ../images/one_port_to_one_port_.png
 
 其中，LinkBetween方法相对灵活，LINKER方法代码相对简短整洁。
 
