@@ -1,4 +1,4 @@
-Waveguide Routing explanation
+Waveguide Routing 
 ====================
 
 This section summarizes and compares the various methods of port connection.
