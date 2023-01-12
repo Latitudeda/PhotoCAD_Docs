@@ -1,39 +1,41 @@
-布线路径选择
+Routing path selection
 ====================
 
-路径选择一共有两种方式方式：
+There are two ways to choose a path.
 
 - waypoints
 - waylines
 
-路径点和路径线都作为参数用在布线方法中来辅助波导走线和避让；
+Waypoints and waylines are used as parameters in the routing method to aid in waveguide alignment and avoidance.；
 
-路径点和路径线不能同时使用；
+Waypoints and waylines cannot be used at the same time；
 
-路径点可以设置走线角度，路径线可以更简洁的做90度的走线。
+Waylpoints can set the turning angle, waylines can be more concise to do 90 degrees of turning.
 
-下面是两种方案的对比
+Here's a comparison of the two options
 
-.. image:: ../images/routing_way.png
+.. image:: ../images/routing_way_en.png
 
-.. image:: ../images/routing_way_examples.png
 
-waylines代码示例1::
+
+waylines example1
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+::
 
     device = fp.LinkBetween(
         start=gc1["op_0"],
         end=gc2["op_0"],
         link_type=TECH.WG.SWG.C.EXPANDED,
         bend_factory=TECH.WG.SWG.C.WIRE.BEND_CIRCULAR,
-        # 通过设置waylines让波导依次经过x=-50，y=50和x=50这三条线
+        # By setting waylines so that the waveguide passes through the x=-50, y=50 and x=50 lines in turn
         waylines=[fp.until_x(-50), fp.until_y(50), fp.until_x(50)]
     )
 
 .. image:: ../images/routing_way_line1.png
 
-通过设置waylines让波导先经过x=-50这条线，再经过y=50, x=50这两条线。
+By setting waylines so that the wave guide first passes through the line x=-50 and then through the lines y=50, x=50.
 
-waylines代码示例1::
+waylines example2::
 
     device = fp.LinkBetween(
         start=gc1["op_0"],
@@ -41,26 +43,26 @@ waylines代码示例1::
         link_type=TECH.WG.FWG.C.WIRE,
         bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR,
         waylines=[
-            fp.until_x(x=-100),  # 经过直线x=-100
-            fp.until_y(y=fp.START+100),  # 拿到起始端口的纵坐标Y，此处Y=0，并经过直线y=Y+100
-            fp.until_x(x=fp.PREV+100),  # 拿到上一次转弯时的横坐标X，此处X=-100，并经过直线x=X+100
-            fp.until_y(y=fp.END+50),  # 拿到终止端口的纵坐标Y，此处Y=0，并经过直线y=Y+50
-            fp.until_x(x=fp.PREV+100)  # 拿到上一次转弯时的横坐标X，此处X=0，并经过直线x=X+100
+            fp.until_x(x=-100),  # Pass through the line x = -100
+            fp.until_y(y=fp.START+100),  # Take the vertical coordinate Y of the starting port, where Y=0, and pass through the line y=Y+100
+            fp.until_x(x=fp.PREV+100),  # Take the horizontal coordinate X of the last turn, here X = -100, and pass through the line x = X + 100
+            fp.until_y(y=fp.END+50),  # Take the vertical coordinate Y of the termination port, where Y=0, and pass through the line y=Y+50
+            fp.until_x(x=fp.PREV+100)  # Take the horizontal coordinate X of the last turn, where X=0, and pass through the line x=X+100
                   ]
     )
 
 .. image:: ../images/routing_way_line2.png
 
-这里fp.END用来获取end端口的位置，同理可以用fp.START来获取起始端口的位置。另外fp.PREV来实时获得上一个拐点的位置，可以让用户基于上一个拐点来进行后续操作。
+Here fp.END is used to get the position of the end port, and similarly fp.START can be used to get the position of the start port. Also fp.PREV to get the position of the last turning point in real time, which allows the user to design based on the last turning point.
 
-waypoints代码示例::
+waypoints example::
 
     device = fp.LinkBetween(
         start=gc1["op_0"],
         end=gc2["op_0"],
         link_type=TECH.WG.SWG.C.EXPANDED,
         bend_factory=TECH.WG.SWG.C.WIRE.BEND_CIRCULAR,
-        # 设置waypoints引导布线经过路径点，p.Waypoints括号中的三个值分别表示x,y,angle
+        # Set waypoints to guide the waveguide through the path points, the three values in the fp.Waypoints brackets represent x,y,angle respectively.
         waypoints=[
            fp.Waypoint(-50, 10, 90),
            fp.Waypoint(0, 50, 0),
@@ -71,11 +73,11 @@ waypoints代码示例::
 
 .. image:: ../images/routing_way_point.png
 
-设置waypoints引导布线经过路径点；fp.Waypoints括号中的三个值分别表示位置(x,y)和角度angle,angle代表以某个角度经过某个点。
+Set waypoints to guide the waveguide through the path points, the three values in the fp.Waypoints brackets represent x,y,angle respectively.
 
-对于两个端口为U型连接的情况，可以在linkbetween和LINKER中设置target_length参数来定义目标长度，波导将自动延长直波导至对应长度，其中target_length为整个布线波导的总长度。
+For the case where the two ports are connected in U-shape, the target length can be defined by setting the target_length parameter in linkbetween and LINKER, and the waveguide will automatically extend the straight waveguide to the corresponding length, where target_length is the total length of the entire wiring waveguide.
 
-Target_length代码示例::
+Target_length example::
 
     device = fp.LinkBetween(
         start=gc1["op_0"],
