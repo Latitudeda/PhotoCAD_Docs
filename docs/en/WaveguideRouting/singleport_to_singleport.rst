@@ -1,7 +1,6 @@
 Single-port to Single-port
 ====================
 
-.. image:: ../images/one_port_to_one_port_method.png
 
 There are a total of three types of connections from single port to single port:
 
@@ -11,27 +10,29 @@ There are a total of three types of connections from single port to single port:
 
 Here's a comparison of the three options
 
-.. image:: ../images/one_port_to_one_port_.png
+.. image:: ../images/one_port_to_one_port_en.png
 
-其中，LinkBetween方法相对灵活，LINKER方法代码相对简短整洁。
+Among them, LinkBetween is relatively flexible and LINKER is relatively short and neat.
 
-方法案例::
+Examples
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+::
 
-    # 调用create_links方法实现器件端口间的互连
+    # Interconnecting device ports by calling fp.create_links 
     device = fp.create_links(
-        link_type=TECH.WG.FWG.C.EXPANDED, # 定义自动布线中直波导的类型
-        bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR, # 定义自动布线时bend的类型
-        # 在specs中定义器件端口之间的连接关系
+        link_type=TECH.WG.FWG.C.EXPANDED, # Define the type of straight waveguide in automatic routing
+        bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR, # Define the type of bend during automatic routing
+        # Define the connection relationship between device ports in specs
         specs=[
-            # 使用 >> 符号定义连接关系
+            # Use >> to define connection relationships
             gc1["op_0"] >> fp.Waypoint(-50, -50, 0) >> gc4["op_0"],
-            # 使用LINKER方法定义指定器件端口的互联
+            # Use LINKER to define the interconnection of the specified device port
             TECH.LINKER.SWG_WIRE_FWG_EULER(
                 start=gc2["op_0"],
                 end=gc5["op_0"],
                 waypoints=[fp.Waypoint(0, 50, 0)]
             ),
-            # 使用LinkBetween方法来单独定义一段连接，可以通过参数修改直波导和bend的类型
+            # Use LinkBetween to define a separate segment of the connection, and you can modify the type of the straight waveguide and bend with parameters.
             fp.LinkBetween(
                 start=gc3["op_0"],
                 end=gc6["op_0"],
@@ -41,18 +42,19 @@ Here's a comparison of the three options
             ),
         ],
     )
-    # 将Linked返回的器件添加到insts
+    # Add the devices returned by Linked to insts
     insts += device
 
 .. image:: ../images/one_port_to_one_port_examples.png
 
-两种方法具体区别在于：
 
-LinkBetween需要设定linktype和bendfactory来定义布线中的波导和bend；
+The differences between the two methods are:
 
-LINKER是已经配置好的搭配方案，无需再次定义linktype和bendfactory。
+1. LinkBetween requires setting the waveguide type and bendfactory to define the waveguide and bend in the routing.
 
-代码详解::
+2. LINKER is already configured in the technology file, no need to define waveguide type and bendfactory again.
+
+Code details::
 
     from dataclasses import dataclass
     from fnpcell import all as fp
@@ -65,9 +67,9 @@ LINKER是已经配置好的搭配方案，无需再次定义linktype和bendfacto
             insts, elems, ports = super().build()
             TECH = get_technology()
             # fmt: off
-            # 调用器件
+            # call devices
             GC = pdk.GratingCoupler(waveguide_type=TECH.WG.FWG.C.WIRE)
-            # 将器件摆放在不同的位置并将其添加到insts
+            # Place the devices in different locations and add them to insts
             gc1 = GC.h_mirrored().translated(-100, -100)
             insts += gc1
             gc2 = GC.h_mirrored().translated(-100, 0)
@@ -80,21 +82,21 @@ LINKER是已经配置好的搭配方案，无需再次定义linktype和bendfacto
             insts += gc5
             gc6 = GC.translated(100, 150)
             insts += gc6
-            # 调用create_links方法实现器件端口间的互连
+            # Interconnecting device ports by calling the create_links method
             device = fp.create_links(
-                link_type=TECH.WG.FWG.C.EXPANDED, # 定义自动布线中直波导的类型
-                bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR, # 定义自动布线时bend的类型
-                # 在specs中定义器件端口之间的连接关系
+                link_type=TECH.WG.FWG.C.EXPANDED, # Define the type of straight waveguide in automatic routing
+                bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR, # Define the type of bend during auto routing
+                # Define the connection relationship between device ports in specs
                 specs=[
-                    # 使用 >> 符号定义连接关系
+                    # Use >> to define connection relationships
                     gc1["op_0"] >> fp.Waypoint(-50, -50, 0) >> gc4["op_0"],
-                    # 使用LINKER方法定义指定器件端口的互联
+                    # Use LINKER to define the interconnection of the specified device port
                     TECH.LINKER.SWG_WIRE_FWG_EULER(
                         start=gc2["op_0"],
                         end=gc5["op_0"],
                         waypoints=[fp.Waypoint(0, 50, 0)]
                     ),
-                   # 使用LinkBetween方法来单独定义一段连接，可以通过参数修改直波导和bend的类型
+                   # Use LinkBetween to define a separate segment of the connection, and you can modify the type of the straight waveguide and bend with parameters.
                     fp.LinkBetween(
                         start=gc3["op_0"],
                         end=gc6["op_0"],
@@ -104,7 +106,7 @@ LINKER是已经配置好的搭配方案，无需再次定义linktype和bendfacto
                     ),
                 ],
             )
-            # 将Linked返回的器件添加到insts
+            # Add the devices returned by Linked to insts
             insts += device
 
             # fmt: on
@@ -127,4 +129,4 @@ LINKER是已经配置好的搭配方案，无需再次定义linktype和bendfacto
         fp.export_gds(library, file=gds_file)
         fp.plot(library)
 
-详细参见代码中注释部分
+See the comments section in the code for details
