@@ -1,7 +1,7 @@
-图形类api
+Graphics API
 ====================
 
-图形类api主要包含
+The graphics api mainly contains
 
 gpdk.components.Straight
 
