@@ -4,6 +4,9 @@ Module fnpcell.element.qr_code
 Classes
 ---------
 
+ErrorCorrection
++++++++++++++++++
+
 ::
     
     class ErrorCorrection(i: int, fb: int)
@@ -11,12 +14,14 @@ Classes
 An enumeration.
 
 Ancestors
-+++++++++++++
+____________
 
-enum.Enum
+::
+    
+    enum.Enum
 
 Class variables
-+++++++++++++++++
+__________________
 
 ::
     
@@ -33,10 +38,10 @@ Class variables
                     error_correction: ErrorCorrection = ErrorCorrection.HIGH, 
                     transform: Affine2D = Affine2D.identity())
 
-    QRCode(args: Any, *kwargs: Any)
+QRCode(args: Any, \*kwargs: Any)
 
 Ancestors
-++++++++++
+_____________
 
 ::
     
@@ -44,7 +49,7 @@ Ancestors
     IPrimitive, ILayered, IElement, IRunnable, IAffineTransformable
 
 Class variables
-+++++++++++++++++
+__________________
 
 ::
     
@@ -56,7 +61,7 @@ Class variables
     var transform: Affine2D
 
 Static methods
-++++++++++++++++++
+_________________
 
 ::
     
@@ -79,14 +84,14 @@ Returns an Affine2D that is the result of the matrix product of the given transf
 the translation transformation at the given origin, It …
 
 Instance variables
-++++++++++++++++++++
+_____________________
 
 ::
     
     var content: Tuple[IPrimitive, ...]
 
 Methods
-+++++++++
+________
 
 ::
     
@@ -160,6 +165,9 @@ Vertical mirrored.
     
     def with_layer(self, layer: ILayer)
 
+QRCodeModel
+++++++++++++++
+
 ::
     
     class QRCodeModel(version: int, errcorlvl: ErrorCorrection, 
@@ -184,7 +192,7 @@ data codeword bytes, and mask number. This is a low-level API that most users
 should not use directly. A mid-level API is the encode_segments() function.
 
 Class variables
-+++++++++++++++++
+__________________
 
 ::
     
@@ -192,7 +200,7 @@ Class variables
     var MIN_VERSION: int
 
 Static methods
-++++++++++++++++
+________________
 
 ::
     
@@ -230,7 +238,7 @@ The smallest possible QR Code version is automatically chosen for the output. Th
 of the result may be higher than the ecl argument if it can be done without increasing the version.
 
 Methods
-++++++++
+________
 
 ::
     
@@ -264,6 +272,9 @@ Returns this QR Code's size, in the range [21, 177].
 
 Returns this QR Code's version number, in the range [1, 40].
 
+Segment
++++++++++
+
 ::
     
     class Segment(mode: SegmentMode, numch: int, bitdata: Sequence[int])
@@ -280,7 +291,7 @@ The character count (numch) must agree with the mode and the bit buffer length,
 but the constraint isn't checked. The given bit buffer is cloned and stored.
 
 Static methods
-++++++++++++++++
+_________________
 
 ::
     
@@ -334,7 +345,7 @@ Returns a new mutable list of zero or more segments to represent the given Unico
 The result may use various segment modes and switch modes to optimize the length of the bit stream.
 
 Methods
-+++++++++++
+____________
 
 ::
     
@@ -354,6 +365,9 @@ Returns the mode field of this segment.
 
 Returns the character count field of this segment.
 
+SegmentMode
++++++++++++++
+
 ::
     
     class SegmentMode(modebits: int, charcounts: Tuple[int, int, int])
@@ -361,14 +375,14 @@ Returns the character count field of this segment.
 Describes how a segment's data bits are interpreted. Immutable.
 
 Ancestors
-+++++++++++
+___________
 
 ::
     
     enum.Enum
 
 Class variables
-+++++++++++++++++
+________________
 
 ::
     
@@ -379,7 +393,7 @@ Class variables
     var NUMERIC
 
 Methods
-+++++++++
+________
 
 ::
     

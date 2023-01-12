@@ -4,6 +4,9 @@ Module fnpcell.cell.port
 Functions
 -----------
 
+new_port
++++++++++++
+
 ::
     
     def new_port(*, name: Union[None, str, Hidden], position: Optional[Tuple[float, float]] = None,
@@ -16,6 +19,9 @@ Orientation in radians.
 Classes
 ---------
 
+OwnedPort
++++++++++++
+
 ::
     
     class OwnedPort(name: Optional[str], raw: IPort, owner: ICellRef,
@@ -26,7 +32,7 @@ OwnedPort with owner attribute can appoint to it's owner,
 owner is a CellRef Any modification will create new OwnedPort instead of modify the original OwnedPort.
 
 Ancestors
-++++++++++
+___________
 
 ::
     
@@ -34,7 +40,7 @@ Ancestors
     ITerminal, IUpdatable, IRay, IPositioned, IRunnable
 
 Class variables
-++++++++++++++++
+__________________
 
 ::
     
@@ -45,7 +51,7 @@ Class variables
     var raw: IPort
 
 Static methods
-++++++++++++++++
+_________________
 
 ::
     
@@ -54,7 +60,7 @@ Static methods
 Return OwnedPort.
 
 Instance variables
-++++++++++++++++++++
+_____________________
 
 ::
     
@@ -87,7 +93,7 @@ Return pin shape.
 Return waveguide_type.
 
 Methods
-+++++++++
+___________
 
 ::
     
@@ -157,6 +163,9 @@ Owner vertical mirrored.
 
 Return a new OwnedPort with the given orientation.
 
+Port
+++++++
+
 ::
     
     class Port(name: Optional[str], position: Tuple[float, float], orientation: float,
@@ -172,14 +181,14 @@ Usage::
     port = fp.Port(name="op_0", position=(0, 0),...)
 
 Ancestors
-+++++++++++
+__________
 
 ::
     
     fnpcell.cell.port._PortMixin, IPort, ITerminal, IUpdatable, IRay, IPositioned, IRunnable
 
 Class variables
-++++++++++++++++
+___________________
 
 ::
     
@@ -191,7 +200,7 @@ Class variables
     var waveguide_type: IWaveguideType
 
 Instance variables
-+++++++++++++++++++
+_____________________
 
 ::
     
@@ -200,7 +209,7 @@ Instance variables
 Return port composite on the basis of waveguide_type.
 
 Methods
-+++++++++
+__________
 
 ::
     

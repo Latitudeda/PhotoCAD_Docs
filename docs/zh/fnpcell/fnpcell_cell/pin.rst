@@ -4,6 +4,9 @@ Module fnpcell.cell.pin
 Functions
 ----------
 
+new_pin
++++++++++++
+
 ::
 
     def new_pin(*, name: Union[None, str, Hidden], position: Optional[Tuple[float, float]] = None,
@@ -14,6 +17,9 @@ Create a new electrial pin.
 
 Classes
 --------
+
+OwnedPin
+++++++++++
 
 ::
 
@@ -26,7 +32,7 @@ OwnedPin with owner attribute can appoint to it's owner,
 owner is a CellRef Any modification will create new OwnedPin instead of modify the original OwnedPin.
 
 Ancestors
-+++++++++++
+____________
 
 ::
     
@@ -34,7 +40,7 @@ Ancestors
     IUpdatable, IRay, IPositioned, IRunnable
 
 Class variables
-+++++++++++++++++
+__________________
 
 ::
 
@@ -45,7 +51,7 @@ Class variables
     var raw: IPin
 
 Static methods
-+++++++++++++++
+_________________
 
 ::
 
@@ -54,7 +60,7 @@ Static methods
 Return OwnedPin.
 
 Instance variables
-+++++++++++++++++++
+_____________________
 
 ::
 
@@ -87,7 +93,7 @@ Return pin position.
 Return pin shape.
 
 Methods
-++++++++
+_________
 
 ::
     
@@ -157,6 +163,9 @@ Owner vertical mirrored.
 
 Return a new OwnedPin with the given orientation.
 
+Pin
++++++
+
 ::
     
     class Pin(name: Optional[str], position: Tuple[float, float], shape: IShape,
@@ -172,14 +181,14 @@ Usage::
     pin = fp.Pin(name="ep_0", position=(0, 0),...)
 
 Ancestors
-+++++++++++
+___________
 
 ::
     
     fnpcell.cell.pin._PinMixin, IPin, ITerminal, IUpdatable, IRay, IPositioned, IRunnable
 
 Class variables
-++++++++++++++++
+__________________
 
 ::
 
@@ -191,7 +200,7 @@ Class variables
     var shape: IShape
     
 Instance variables
-++++++++++++++++++++
+_____________________
 
 ::
 
@@ -200,7 +209,7 @@ Instance variables
 Return composite.
 
 Methods
-++++++++
+_________
 
 ::
 

@@ -4,6 +4,9 @@ Module fnpcell.element.text
 Functions
 -----------
 
+new_text
+++++++++++
+
 ::
     
     def new_text(content: str, *, text_anchor: Anchor = Anchor.START, 
@@ -16,6 +19,9 @@ Create a text with layer.
 Classes
 ----------
 
+Text
+++++++++
+
 ::
     
     class Text(content: str, text_anchor: Anchor, vertical_align: VertialAlign, transform: Affine2D, layer: ILayer)
@@ -23,14 +29,14 @@ Classes
     Text(args: Any, *kwargs: Any)
 
 Ancestors
-+++++++++++++
+__________
 
 ::
     
     TransformMixin, IUpdatable, IPrimitive, ILayered, IElement, IRunnable, IAffineTransformable
 
 Class variables
-+++++++++++++++++
+_________________
 
 ::
     
@@ -41,7 +47,7 @@ Class variables
     var vertical_align: VertialAlign
 
 Static methods
-++++++++++++++++++
+________________
 
 ::
     
@@ -64,7 +70,7 @@ Returns an Affine2D that is the result of the matrix product of the given transf
 the translation transformation at the given origin, It …
 
 Methods
-++++++++
+___________
 
 ::
     

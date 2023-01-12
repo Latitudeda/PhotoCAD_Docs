@@ -4,6 +4,9 @@ Module fnpcell.element.circle
 Functions
 -----------
 
+Circle
+++++++++
+
 ::
     
     def Circle(*, radius: float, initial_radians: Optional[float] = None,

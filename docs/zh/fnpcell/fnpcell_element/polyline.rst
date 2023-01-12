@@ -4,6 +4,9 @@ Module fnpcell.element.polyline
 Functions
 ----------
 
+new_polyline
++++++++++++++
+
 ::
     
     def new_polyline(raw_polyline_points: Iterable[Tuple[float, float]], *,
@@ -21,6 +24,9 @@ Create a polyline with layer.
 Classes
 ----------
 
+Polyline
++++++++++++
+
 ::
     
     class Polyline(*args: Any, **kwargs: Any)
@@ -28,7 +34,7 @@ Classes
 Polygon is a class for defining a polygon.
 
 Ancestors
-+++++++++++++
+____________
 
 ::
     
@@ -36,14 +42,14 @@ Ancestors
     IPrimitive, ILayered, IElement, IRunnable, IAffineTransformable
 
 Subclasses
-++++++++++++
+_____________
 
 ::
     
     Curve fnpcell.element.polyline._ImmutablePolyline
 
 Class variables
-+++++++++++++++++
+__________________
 
 ::
     
@@ -57,7 +63,7 @@ Class variables
     var taper_function: ITaperCallable
 
 Static methods
-++++++++++++++++
+_________________
 
 ::
     
@@ -80,7 +86,7 @@ Returns an Affine2D that is the result of the matrix product of the given transf
 the translation transformation at the given origin, It …
 
 Instance variables
-+++++++++++++++++++
+_____________________
 
 ::
     
@@ -93,7 +99,7 @@ Instance variables
     var shape: IShape
 
 Methods
-++++++++
+_________
 
 ::
     

@@ -4,27 +4,45 @@ Module fnpcell.element.dmtx_code
 Functions
 ----------
 
+encode_text_mode
++++++++++++++++++++
+
 ::
     
     def encode_text_mode(msg: str, codepage: Dict[str, bytes], magic: bytes, multiset: bool)
 
 Encode to datamatrix text modes (C40, TEXT, X12).
 
+encode_to_C40
++++++++++++++++
+
 ::
     
     def encode_to_C40(msg: str)
+
+encode_to_X12
++++++++++++++++
 
 ::
     
     def encode_to_X12(msg: str)
 
+encode_to_ascii
++++++++++++++++++
+
 ::
     
     def encode_to_ascii(msg: str)
 
+def encode_to_edifact
++++++++++++++++++++++++
+
 ::
     
     def encode_to_edifact(msg: str)
+
+encode_to_text
+++++++++++++++++
 
 ::
     
@@ -32,15 +50,24 @@ Encode to datamatrix text modes (C40, TEXT, X12).
 
 Encode to datamatrix.text.
 
+pack
++++++
+
 ::
     
     def pack(ascii: bytes, tail: bytes = b'')
+
+pack_words
++++++++++++++
 
 ::
     
     def pack_words(raw: bytes)
 
 3 raw bytes to 2 encoded bytes stuffing for datamatrix text modes.
+
+tokenize
++++++++++
 
 ::
     
@@ -49,15 +76,18 @@ Encode to datamatrix.text.
 Classes
 ---------
 
+DataMatrixCode
++++++++++++++++
+
 ::
     
     class DataMatrixCode(data: str, layer: ILayer, invert: bool = False, pixel_size: float = 5,
                          transform: Affine2D = Affine2D.identity())
     
-    DataMatrixCode(args: Any, *kwargs: Any)
+DataMatrixCode(args: Any, \*kwargs: Any)
 
 Ancestors
-+++++++++++
+____________
 
 ::
     
@@ -65,7 +95,7 @@ Ancestors
     ILayered, IElement, IRunnable, IAffineTransformable
 
 Class variables
-+++++++++++++++++
+_________________
 
 ::
     
@@ -76,7 +106,7 @@ Class variables
     var transform: Affine2D
 
 Static methods
-++++++++++++++++
+_________________
 
 ::
     
@@ -99,14 +129,14 @@ Returns an Affine2D that is the result of the matrix product of the given transf
 the translation transformation at the given origin, It …
 
 Instance variables
-++++++++++++++++++++
+____________________
 
 ::
     
     var content : Tuple[IPrimitive, ...]
 
 Methods
-++++++++
+________
 
 ::
     
@@ -178,6 +208,9 @@ Vertical mirrored.
     
     def with_layer(self, layer: ILayer)
 
+DataMatrixCodeModel
++++++++++++++++++++++
+
 ::
     
     class DataMatrixCodeModel(data: str, rect: bool = False)
@@ -186,14 +219,14 @@ Create a datamatrix code for message 'msg'. Set rect=True for a rectangular data
 Default is False, resulting in a square datamatrix.
 
 Class variables
-++++++++++++++++
+__________________
 
 ::
     
     var m: Dict[int, Dict[int, bool]]
 
 Instance variables
-++++++++++++++++++++
+______________________
 
 ::
     

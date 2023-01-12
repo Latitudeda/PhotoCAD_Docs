@@ -4,6 +4,9 @@ Module fnpcell.element.rect
 Functions
 -----------
 
+Rect
++++++++
+
 ::
     
     def Rect(*, width: float, height: float, corner_radius: Union[float, Iterable[float]] = 0,

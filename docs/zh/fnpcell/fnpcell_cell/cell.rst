@@ -4,6 +4,9 @@ Module fnpcell.cell.cell
 Classes
 ---------
 
+Cell
+++++++++
+
 ::
 
     class Cell(content: Tuple[IElement, ...], ports: Tuple[ITerminal, ...], 
@@ -14,14 +17,14 @@ Cell is for defining a cell with name content and ports.
 Any modification will create new cell instead of modify the original cell. A cell is a composite with ports.
 
 Ancestors
-++++++++++
+___________
 
 ::
 
     fnpcell.cell.cell._CellMixin, ICell, IUpdatable, IRunnableContainer, typing.Generic, IRunnableb
     
 Class variables
-++++++++++++++++
+__________________
 
 ::
 
@@ -31,7 +34,7 @@ Class variables
     var ports: Tuple[ITerminal, ...]
 
 Methods
-++++++++
+__________
 
 ::
 

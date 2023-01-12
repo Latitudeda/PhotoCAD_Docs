@@ -4,6 +4,9 @@ Module fnpcell.element.group
 Functions
 -----------
 
+new_group
+++++++++++++
+
 ::
     
     def new_group(*primitives: IPrimitive, origin: Optional[Tuple[float, float]] = None,
@@ -15,6 +18,9 @@ This is a container of primitives(eg. primitive is a polygon with layer.).
 Classes
 ----------
 
+Group
+++++++++
+
 ::
     
     class Group(content: Tuple[IPrimitive, ...], transform: Affine2D)
@@ -22,7 +28,7 @@ Classes
 Group is a dataclass for defining a Group.
 
 Ancestors
-+++++++++++
+____________
 
 ::
     
@@ -30,7 +36,7 @@ Ancestors
     IPrimitive, ILayered, IElement, IRunnable, IAffineTransformable
 
 Class variables
-+++++++++++++++++
+__________________
 
 ::
     
@@ -38,7 +44,7 @@ Class variables
     var transform: Affine2D
 
 Static methods
-+++++++++++++++++
+_________________
 
 ::
     
@@ -61,7 +67,7 @@ Returns an Affine2D that is the result of the matrix product of the given transf
 the translation transformation at the given origin, It …
 
 Instance variables
-+++++++++++++++++++
+____________________
 
 ::
     
@@ -70,7 +76,7 @@ Instance variables
 Return layer.
 
 Methods
-++++++++
+________
 
 ::
     

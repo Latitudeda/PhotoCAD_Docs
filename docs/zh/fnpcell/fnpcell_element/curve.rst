@@ -4,6 +4,9 @@ Module fnpcell.element.curve
 Functions
 ----------
 
+new_curve
++++++++++++
+
 ::
     
     def new_curve(raw_curve: ICurve, *, stroke_width: float = 1, final_stroke_width: Optional[float] = None,
@@ -18,6 +21,9 @@ default stroke_width=1 default stroke_offset=0 default miter_limit=0.5.
 Classes
 ----------
 
+Curve
+++++++++
+
 ::
     
     class Curve(raw_curve: ICurve, stroke_width: float, final_stroke_width: float,
@@ -28,7 +34,7 @@ Classes
 Curve is Subclass of polyline.
 
 Ancestors
-++++++++++
+____________
 
 
 ::
@@ -37,7 +43,7 @@ Ancestors
     ICurveLike, IPolygon, IPrimitive, ILayered, IElement, IRunnable, IAffineTransformable
 
 Class variables
-+++++++++++++++++
+__________________-
 
 ::
     
@@ -54,7 +60,7 @@ Class variables
     var transform: Affine2D
 
 Static methods
-++++++++++++++++
+_________________
 
 ::
     
@@ -77,7 +83,7 @@ Returns an Affine2D that is the result of the matrix product of the given transf
 the translation transformation at the given origin, It …
 
 Methods
-+++++++++
+________
 
 ::
     

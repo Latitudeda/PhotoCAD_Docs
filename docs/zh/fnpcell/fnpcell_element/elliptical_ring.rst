@@ -4,6 +4,9 @@ Module fnpcell.element.elliptical_ring
 Functions
 -----------
 
+EllipticalRing
++++++++++++++++
+
 ::
     
     def EllipticalRing(*, outer_radius: Union[float, Iterable[float]], inner_radius: Union[float, Iterable[float]] = (0, 0),

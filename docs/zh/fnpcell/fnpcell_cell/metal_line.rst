@@ -4,6 +4,9 @@ Module fnpcell.cell.metal_line
 Classes
 ---------
 
+MetalLine
++++++++++++
+
 ::
 
     class MetalLine(cell: ICell, raw_curve: ICurve, type: IMetalLineType,
@@ -15,7 +18,7 @@ MetalLine is for defining a MetalLine.
 Any modification will create new MetalLine instead of modify the original MetalLine.
 
 Ancestors
-+++++++++++
+____________
 
 ::
 
@@ -23,7 +26,7 @@ Ancestors
     TransformMixin, ICellRef, IUpdatable, IElement, IRunnable, IAffineTransformable
 
 Class variables
-++++++++++++++++
+___________________
 
 ::
 
@@ -38,7 +41,7 @@ Class variables
     var type: IMetalLineType
 
 Static methods
-+++++++++++++++
+________________
 
 ::
 
@@ -61,7 +64,7 @@ Returns an Affine2D that is the result of the matrix product of the given transf
 and the translation transformation at the given origin, It …
 
 Instance variables
-+++++++++++++++++++++
+_____________________
 
 ::
 
@@ -78,7 +81,7 @@ Return curve length.
 Return owned ports of the cell reference.
 
 Methods
-++++++++
+__________
 
 ::
 

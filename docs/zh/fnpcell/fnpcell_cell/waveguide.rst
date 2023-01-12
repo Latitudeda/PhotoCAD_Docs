@@ -4,6 +4,9 @@ Module fnpcell.cell.waveguide
 Classes
 --------
 
+Waveguide
++++++++++++
+
 ::
     
     class Waveguide(cell: ICell, raw_curve: ICurve, type: IWaveguideType, offset: float = 0,
@@ -14,7 +17,7 @@ Waveguide is for defining a Waveguide.
 Any modification will create new Waveguide instead of modify the original Waveguide.
 
 Ancestors
-++++++++++
+____________
 
 ::
     
@@ -22,7 +25,7 @@ Ancestors
     ICellRef, IUpdatable, IElement, IRunnable, IAffineTransformable
 
 Class variables
-+++++++++++++++++
+_________________
 
 ::
     
@@ -37,7 +40,7 @@ Class variables
     var type: IWaveguideType
 
 Static methods
-+++++++++++++++++++
+________________
 
 ::
     
@@ -61,7 +64,7 @@ Returns an Affine2D that is the result of the matrix product of the given transf
 and the translation transformation at the given origin, It …
 
 Instance variables
-++++++++++++++++++++
+____________________
 
 ::
     
@@ -78,7 +81,7 @@ Return curve length.
 Return owned ports of the cell reference.
 
 Methods
-+++++++++
+__________
 
 ::
     

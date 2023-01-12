@@ -4,6 +4,9 @@ Module fnpcell.cell.composite
 Functions
 -----------
 
+new_composite
++++++++++++++++
+
 ::
 
     def new_composite(*elements: Union[None, IElement, IComposite, ICell, Iterable[ForwardRef('_T')]],
@@ -14,6 +17,9 @@ Create a composite of elements.
 Classes
 --------
 
+Composite
+++++++++++
+
 ::
 
     class Composite(content: Tuple[IElement, ...], transform: Affine2D = Affine2D.identity())
@@ -23,7 +29,7 @@ Composite is a collection of elements, just like Group is a collection of
 primitives (primitive is polygon with layer).
 
 Ancestors
-++++++++++
+___________
 
 ::
     
@@ -31,7 +37,7 @@ Ancestors
     IComposite, IRunnableContainer, typing.Generic, IElement, IRunnable, IAffineTransformable
 
 Class variables
-+++++++++++++++++
+________________
         
 ::
     
@@ -40,7 +46,7 @@ Class variables
     var transform : Affine2D
 
 Static methods
-+++++++++++++++
+_______________
 
 ::
     
@@ -63,7 +69,7 @@ Returns an Affine2D that is the result of the matrix product of the given transf
 and the translation transformation at the given origin, It …
 
 Methods
-++++++++
+_________
 
 ::
     

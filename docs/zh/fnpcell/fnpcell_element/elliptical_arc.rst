@@ -4,6 +4,9 @@ Module fnpcell.element.elliptical_arc
 Functions
 -----------
 
+EllipticalArc
+++++++++++++++++
+
 ::
     
     def EllipticalArc(*, radius: Union[float, Iterable[float]], stroke_width: float = 1,
