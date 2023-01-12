@@ -1,4 +1,4 @@
-Routing path selection
+Routing Path Selection
 ====================
 
 There are two ways to choose a path.
