@@ -6,7 +6,7 @@ Reconfigurable multi-level cross circuits are a necessary part of designing comp
 The base modules include:
 
 - MMI1×2
-- cross waveguide
+- Cross
 
 Part I. Parameter Description
 ---------------------------
