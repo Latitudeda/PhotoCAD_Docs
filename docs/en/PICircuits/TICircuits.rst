@@ -1,24 +1,24 @@
-可重构多级交叉链路
+Reconfigurable multi-level cross-circuit
 ====================
 
-可重构多级交叉链路是设计复杂链路的必要部分，本章节使用AMF PDK实现了可重构式多级交叉链路的设计，用户可以通过简单修改脚本实现复杂设计。
+Reconfigurable multi-level cross circuits are a necessary part of designing complex circuits. This section implements the design of reconfigurable multi-level cross circuits using the AMF PDK, which allows users to implement complex designs by simply modifying the script.
 
-基础模块包括：
+The base modules include:
 
-- 多模干涉仪1×2
-- 交叉波导
+- MMI1×2
+- cross waveguide
 
-第一部分 参数说明
+Part I. Parameter Description
 ---------------------------
 
-- spacing = 200 组件间距设置
-- row_number = 8 单元数
-- basic_comp_y = RingModulator(transform=fp.rotate(degrees=90)) 基础单元
+- spacing = 200 : Component spacing setting
+- row_number = 8 : Number of units
+- basic_comp_y = RingModulator(transform=fp.rotate(degrees=90)) : Basic Component
 
-第二部分 原理说明
+Part II. Principle Description
 ---------------------------
 
-通过模块数，计算层级以及分支数::
+Count the number of levels as well as the number of branches by the number of modules::
 
     def sp_num(order):
         spnum=0
@@ -35,10 +35,9 @@
             else:
                 return mmi_tree_order
 
-第三部分 测试说明
+Part III. Test Description
 ---------------------------
-
-下面分别展示不同层级数的版图设计，仅仅需要修改简单参数即可：
+The following shows the design of the layout for different number of layers, respectively, with only simple parameters to be modified:
 
 .. image:: ../images/TIC_8.png
 
@@ -46,7 +45,7 @@
 
 .. image:: ../images/TIC_32.png
 
-第四部分 总结
+Part IV. Summary
 ---------------------------
 
-PhotoCAD在设计大规模可重构光电子链路有着巨大的优势，欢迎用户购买软件，同时提供定制链路服务。
+PhotoCAD has tremendous advantages in designing large-scale reconfigurable optoelectronic links. Users are welcome to purchase the software, and custom circuit services are also available.
