@@ -217,15 +217,98 @@ In the above code, w_si_3 is equal to h_si_3, below we change w_si_:
 
 Run to obtain the following layout.
 
-**gap** and "gap_monitor" control the gaps labeled in the figure below, respectively, with gap controlling the bottom and gap_monitor controlling the top.
+**gap** and **gap_monitor** control the gaps labeled in the figure below, respectively, with gap controlling the bottom and gap_monitor controlling the top.
+
+The following diagram illustrates the parameters of **r_mh_in**, **w_mh**, **min_mh_degrees**, **dx** and **dy** in the program. It should be noted that the value of **min_mh_degrees** has a positive or negative nature and needs to be taken into account when designing.
+
+The following code sets the origin of the entire device and adds a ring structure with radius **ring_radius** to **insts**, which has no ports structure and is named "ring'.
+      
+      
+::
+
+        x0 = 0
+        y0 = ring_radius + gap + core_width
+        ring = waveguide_type(curve=fp.g.EllipticalArc(radius=ring_radius, origin=(x0, y0))).with_ports((None, None)).with_name("ring")
+        insts += ring
+        
+**y0** is the radius of the ring + the spacing below + the width of the core, the actual position of the origin of the entire device becomes:      
       
       
       
-      
-      
-      
-      
-      
+The following code adds four taper structures to the **si_etch2_layer** layer. **length** is the total length of the taper, **stroke_width** can be interpreted as the width of the left end of the taper, and **final_stroke_width** is the width of the right end.
+
+::
+
+        taper2 = fp.el.Line(length=taper_length, stroke_width=taper_big_end, final_stroke_width=taper_small_end, layer=si_etch2_layer, origin=(x0 + w_si_3 / 2, 0))
+        elems += taper2
+        taper3 = fp.el.Line(length=taper_length, stroke_width=taper_big_end, final_stroke_width=taper_small_end, layer=si_etch2_layer, origin=(x0 + w_si_3 / 2, y_offset))
+        elems += taper3
+        taper0 = fp.el.Line(length=taper_length, stroke_width=taper_small_end, final_stroke_width=taper_big_end, layer=si_etch2_layer, anchor=fp.Anchor.END, origin=(x0 - w_si_3 / 2, y_offset))
+        elems += taper0
+        taper1 = fp.el.Line(length=taper_length, stroke_width=taper_small_end, final_stroke_width=taper_big_end, layer=si_etch2_layer, anchor=fp.Anchor.END, origin=(x0 - w_si_3 / 2, 0))
+        elems += taper1
+        ring_mh = fp.el.EllipticalArc(radius=r_mh, stroke_width=w_mh, layer=mh_layer, final_degrees=max_mh_degrees - min_mh_degrees, transform=fp.rotate(degrees=min_mh_degrees).translate(x0, y0))
+        elems += ring_mh
+        
+Here we remove the **anchor** parameter from **taper1** and run the result compared with the original result, we can see that the taper has moved. Here the user can interpret this as the origin point is at the center of the right end of the taper when **anchor=fp.Anchor.END** is not added, and if **anchor=fp.Anchor.END** is added, the origin point is at the center of the left end of the taper.      
+
+The code below is to add structures on four different layers with the same square structure in two groups in the figure below.
+
+::
+
+        # TODO magic number 10
+        #VIA1 Layer
+        v1 = fp.el.Rect(width=via_width, height=via_height, layer=vl_layer, origin=(dx + via_width, -10 + via_height / 2 - core_width / 2))
+        elems += v1
+        v2 = fp.el.Rect(width=via_width, height=via_height, layer=vl_layer, origin=(-dx - via_width, -10 + via_height / 2 - core_width / 2))
+        elems += v2
+        #M2 Layer
+        m2 = fp.el.Rect(width=10, height=10, layer=LAYER.M2_DRW, origin=(dx + via_width, -10 + via_height / 2 - core_width / 2))
+        elems += m2
+        m2 = fp.el.Rect(width=10, height=10, layer=LAYER.M2_DRW, origin=(-dx - via_width, -10 + via_height / 2 - core_width / 2))
+        elems += m2
+        #VIA2 Layer
+        v1 = fp.el.Rect(width=via_width, height=via_height, layer=LAYER.VIA2_DRW, origin=(dx + via_width, -10 + via_height / 2 - core_width / 2))
+        elems += v1
+        v2 = fp.el.Rect(width=via_width, height=via_height, layer=LAYER.VIA2_DRW, origin=(-dx - via_width, -10 + via_height / 2 - core_width / 2))
+        elems += v2
+        #MT Layer
+        mt = fp.el.Rect(width=10, height=10, layer=LAYER.MT_DRW, origin=(dx + via_width, -10 + via_height / 2 - core_width / 2))
+        elems += mt
+        mt = fp.el.Rect(width=10, height=10, layer=LAYER.MT_DRW, origin=(-dx - via_width, -10 + via_height / 2 - core_width / 2))
+        elems += mt
+        
+The lower code is responsible for adding the rectangle structure to the **mh_layer**.
+
+::
+
+        h_mh = y0 + dy + core_width / 2 + via_height / 2
+        mh1 = fp.el.Rect(width=w_mh, height=h_mh, layer=mh_layer, origin=(dx + w_mh / 2, -core_width / 2 - 2.5 + h_mh / 2))
+        elems += mh1
+        mh2 = fp.el.Rect(width=w_mh, height=h_mh, layer=mh_layer, origin=(-dx - w_mh / 2, -core_width / 2 - 2.5 + h_mh / 2))
+        elems += mh2
+        
+Adjust the position of the origin point of the structure so that the lower two positions are aligned.
+
+The code below is to get the location of the six points where the ports needs to be placed, and add the ports by **fp.Port** and the pins by **fp.Pin**. In **fp.Pin()**, set the pins to the same shape (square) as **v2**, and set the metal wire type to **TECH.METAL.MT.W10**.
+
+::
+
+
+        top_start_ray, top_end_ray = monitor.curve.end_rays
+        bottom_start_ray, bottom_end_ray = bus.curve.end_rays
+
+        pin1_x, pin1_y = (-dx - via_width, -10 + via_height / 2 - core_width / 2)
+        pin2_x, pin2_y = (dx + via_width, -10 + via_height / 2 - core_width / 2)
+        ports += fp.Port(name=port_names[0], position=top_start_ray.position, orientation=top_start_ray.orientation, waveguide_type=waveguide_type)
+        ports += fp.Port(name=port_names[1], position=bottom_start_ray.position, orientation=bottom_start_ray.orientation, waveguide_type=waveguide_type)
+        ports += fp.Port(name=port_names[2], position=bottom_end_ray.position, orientation=bottom_end_ray.orientation, waveguide_type=waveguide_type)
+        ports += fp.Port(name=port_names[3], position=top_end_ray.position, orientation=top_end_ray.orientation, waveguide_type=waveguide_type)
+        ports += fp.Pin(name=port_names[4], position=(pin1_x, pin1_y), shape=v1.shape, metal_line_type=TECH.METAL.MT.W10)
+        ports += fp.Pin(name=port_names[5], position=(pin2_x, pin2_y), shape=v2.shape, metal_line_type=TECH.METAL.MT.W10)
+        
+        
+The following diagram illustrates the location of each port and its corresponding **port_names**.      
       
       
       
