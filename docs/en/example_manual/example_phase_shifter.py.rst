@@ -202,7 +202,7 @@ The below script is used to create individual base components.
             ports=[],	# No ports in this component
         )
         
-After having a single component, now create a set of array using the following procedure. In the program, the first translated function is to adjust the position of a single component, and then use the new_array function to create an array. 
+After having a single component, now create a set of array using the following procedure. In the script, the first translated function is to adjust the position of a single component, and then use the new_array function to create an array. 
 
 "cols" represents the number of rows; 
 
@@ -219,7 +219,7 @@ Finally, then use the translated function to position the entire array.
    cont_array = (cont.translated(cont_w / 2, cont_h / 2).new_array(cols=1, rows=3, col_width=cont_w, row_height=cont_h).translated(-1 * cont_w / 2, -3 * cont_h / 2))
    
    
-The following is the return part of the function, the original program defines a number of layer structure. However, for the convenience of explanation, here only the first layer acts as an example to explain the use of the function and parameters.
+The following is the return part of the function, the original script defines a number of layer structure. However, for the convenience of explanation, here only the first layer acts as an example to explain the use of the function and parameters.
 
 fp.el.CurvePaint.from_profile(profile, (layer, [A, B])) function is mainly based on the specified  of a graphic profile to generate other graphic layer structures based on such profiles.        
 
@@ -242,13 +242,13 @@ fp.el.CurvePaint.from_profile(profile, (layer, [A, B])) function is mainly based
     
 In the following figure, cladding_width / 2 + y_gap + half_m1_h / 2 is considered as value A and half_m1_h is considered as B. A is the M1_DRW layer width and B is the distance from the center of the layer to the center of the core layer.
 
-The following is a demonstration of the parameters to control the extension of the two ends. In the program for (0, 0), we first adjust the first 0 to 50, become (50, 0) and then run the program. From the figure below, you can see that the value on the left side of the brackets is used to control the extension of the starting end, and the extended section is a straight line not a circular arc.
+The following is a demonstration of the parameters to control the extension of the two ends. In the script for (0, 0), we first adjust the first 0 to 50, become (50, 0) and then run the script. From the figure below, you can see that the value on the left side of the brackets is used to control the extension of the starting end, and the extended section is a straight line not a circular arc.
 
-After changing (50,0) to (0,50) and running the program, you can see from the figure below that the right value controls the end extension, which also extends the line.
+After changing (50,0) to (0,50) and running the script, you can see from the figure below that the right value controls the end extension, which also extends the line.
 
-Now let's change (0,50) to (0, -100) and run the program. As you can see from the graph, the end starts to recede and 100 indicates the length of the receding curve, which in this case is the arc length.
+Now let's change (0,50) to (0, -100) and run the script. As you can see from the graph, the end starts to recede and 100 indicates the length of the receding curve, which in this case is the arc length.
 
-Then, we reset the above parameters and adjust the following part of the program, where the fp.el.CurvePaint.Composite() function is used to generate combined shapes; fp.el.CurvePaint.PeriodicSampling() is used to generate periodic shapes by sampling the shape of the curve for the period, where fp.el.CurvePaint. pattern is the original graph; period is the period of the shape, i.e., the spacing between the center points; reserved_ends=(a, b), a is the distance between the center point of the first array graph and the initial end, b is the distance between the center point of the last array graph and the end; offset is used to move the array graph according to the shape of the waveguide, similar to the increase and decrease of the radius of the circle, and its initial position is the center of the waveguide, negative means increasing the radius, positive means decreasing the radius.
+Then, we reset the above parameters and adjust the following part of the script, where the fp.el.CurvePaint.Composite() function is used to generate combined shapes; fp.el.CurvePaint.PeriodicSampling() is used to generate periodic shapes by sampling the shape of the curve for the period, where fp.el.CurvePaint. pattern is the original graph; period is the period of the shape, i.e., the spacing between the center points; reserved_ends=(a, b), a is the distance between the center point of the first array graph and the initial end, b is the distance between the center point of the last array graph and the end; offset is used to move the array graph according to the shape of the waveguide, similar to the increase and decrease of the radius of the circle, and its initial position is the center of the waveguide, negative means increasing the radius, positive means decreasing the radius.
 
 ::
 
@@ -260,13 +260,13 @@ Then, we reset the above parameters and adjust the following part of the program
             )
             
 
-First we adjust the period parameter, run the original program, and get the following left figure array; then replace the value of 10 to run the program and get the following right figure, you can see that the spacing increased significantly.
+First we adjust the period parameter, run the original script, and get the following left figure array; then replace the value of 10 to run the script and get the following right figure, you can see that the spacing increased significantly.
 
-Then we adjust the reserved_ends parameter value, first after running the original program, we get the left graph below; change reseved_ends to (0, cont_w/2), we get the right graph below. After comparing the graphs, we can conclude that as the value increases, the curve where the center of each graph column is located will shorten by the corresponding value. While the value to the right of the reserved_ends bracket is responsible for controlling the end, the value to the left is responsible for controlling the initial end.
+Then we adjust the reserved_ends parameter value, first after running the original script, we get the left graph below; change reseved_ends to (0, cont_w/2), we get the right graph below. After comparing the graphs, we can conclude that as the value increases, the curve where the center of each graph column is located will shorten by the corresponding value. While the value to the right of the reserved_ends bracket is responsible for controlling the end, the value to the left is responsible for controlling the initial end.
 
-The following is a test of the offset. First, change the value of offset to 0 and run the program to get the left figure below; then reset the value of offset to y_offset and run the program to get the right figure below. From the figure below, we can compare that when the offset value represents the distance between the curve where the array is located and the waveguide curve, if it is positive, it moves to the left, if it is negative, it moves to the right.
+The following is a test of the offset. First, change the value of offset to 0 and run the script to get the left figure below; then reset the value of offset to y_offset and run the script to get the right figure below. From the figure below, we can compare that when the offset value represents the distance between the curve where the array is located and the waveguide curve, if it is positive, it moves to the left, if it is negative, it moves to the right.
 
-The following part of the program explains the code through comments:
+The following part of the script explains the code through comments:
 
 ::
 
