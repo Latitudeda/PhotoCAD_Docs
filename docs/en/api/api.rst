@@ -1,0 +1,12 @@
+Commonly used interfaces
+====================
+
+The three main types of interface functions commonly used by users are as follows:
+
+- Geometry
+- Link
+- Tool
+
+.. toctree::
+
+    api_geometry
