@@ -7,7 +7,7 @@ PhotoCAD产品手册资料
 .. toctree::
     
    Tutorials/Quickstart
-   example_manual/example_list
+   example manual/example list
    PICircuits/PICircuits
    PICircuits/TICircuits
    gpdk/QuickCreatePDK
