@@ -138,6 +138,7 @@ The following figure shows the GDS layout obtained after running the complete ex
 Segment Description
 -------------------------------------
 1. Import function module
+""""""""""""""""""""""""""""""""""""
 
 ::
 
@@ -148,6 +149,7 @@ Segment Description
   from gpdk.technology.interfaces.wg import CoreCladdingWaveguideType
   
 2. Main function
+""""""""""""""""""""""""""""""""""""""""""""
 
 ::
   
