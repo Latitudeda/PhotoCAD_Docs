@@ -1,7 +1,7 @@
 fnpcell API
 ==============
 
-API documentation about fnpcell
+关于fnpcell的API文档
 -------------------------
 
 .. toctree::
@@ -11,4 +11,20 @@ API documentation about fnpcell
     fnpcell_ansi/index
     fnpcell_cell/index
     fnpcell_element/index
+    errors
+    fp
+    fnpcell_gdsii/index
+    fnpcell_geometry/index
+    hash_code
+    interface
+    fnpcell_internal/index
+    fnpcell_mixin/index
+    fnpcell_netlist/index
+    fnpcell_pdk/index
+    polyfill
+    fnpcell_processors/index
+    resource
+    transform
+    unique_meta
+
 

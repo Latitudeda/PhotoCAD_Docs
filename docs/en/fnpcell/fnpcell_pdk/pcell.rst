@@ -1,0 +1,209 @@
+Module fnpcell.pdk.pcell
+=========================
+
+Classes
+----------
+
+PCell
++++++++
+
+::
+    
+    class PCell(name: str = None, bands: Optional[FrozenSet[IBand]] = None, 
+                patches: Tuple[IElement, ...] = (), port_names: Sequence[Union[None, str, Hidden]] = (), 
+                transform: Affine2D = None)
+
+PCell is the base class of any dataclass form pcell.
+
+User-defined dataclass pcell needs to implement the build method which returns a tuple of fp.InstanceSet, 
+fp.ElementSet and fp.PortSet
+
+When define a dataclass pcell, eq parameter of decorator dataclass should 
+be False to fallback to PCell's __hash__ and __eq__.
+
+There is a lifecycle callback method __pcell_post_init__() which is called after all fields be resolved, 
+and can be used to validate fields or do some post processing.
+
+**Important** 
+
+::
+    
+    Never use dataclasses.replace to get an updated pcell, use PCell.updated instead.
+
+Usage::
+    
+    from fnpcell import all as fp
+
+    @dataclass(eq=False)
+    class UserDefinedPCell(fp.PCell):
+        def build(self):
+            insts, elems, ports = super().build()
+            ...
+            return insts, elems, ports
+
+Ancestors
+___________
+
+::
+    
+    fnpcell.pdk._pcell_fields.PCellFields, CellRef, TransformMixin, ICellRef, IUpdatable, 
+    IElement, IRunnable, IAffineTransformable
+
+Static methods
+_______________
+
+::
+    
+    def transform_from_at(at: Union[None, Tuple[float, float], IPositioned, IRay] = None, 
+                        transform: Affine2D = Affine2D.identity()) -> Affine2D
+
+**Inherited from:** CellRef.transform_from_at
+
+Returns an Affine2D that is the result of the matrix product of the given transformation and 
+the translation transformation at the given origin, the …
+
+::
+    
+    def transform_from_origin(origin: Optional[Tuple[float, float]] = None, 
+                                transform: Affine2D = Affine2D.identity()) -> Affine2D
+
+**Inherited from:** CellRef.transform_from_origin
+
+Returns an Affine2D that is the result of the matrix product of the given transformation and 
+the translation transformation at the given origin, It …
+
+Instance variables
+______________________
+
+::
+    
+    var ports
+
+**Inherited from:** CellRef.ports
+
+Return owned ports of the cell reference.
+
+Methods
+_________
+
+::
+
+    def c_mirrored(self: ~_Self, *, center: Tuple[float, float] = (0, 0)) -> ~_Self
+
+**Inherited from:** CellRef.c_mirrored
+
+Center mirrored.
+
+::
+    
+    def content_merged(self, *, affected_layer: Iterable[ILayer])
+
+**Inherited from:** CellRef.content_merged
+
+Return a new cell reference with close elements on same layer merged into polygons. 
+Multiple layers can be provided and elements on each layer will be …
+
+::
+    
+    def flatten(self, depth: int = 1)
+
+**Inherited from:** CellRef.flatten
+
+Return a new cell reference with transformed content and identity transform to itself. 
+Useful to fix the "1nm gap" due to gds spec This method only …
+
+::
+    
+    def h_mirrored(self: ~_Self, *, x: float = 0) -> ~_Self
+
+**Inherited from:** CellRef.h_mirrored
+
+Horizontal mirrored.
+
+::
+    
+    def new_array(self, *, cols: int = 1, col_width: float = 0, rows: int = 1, 
+    row_height: float = 0, transform: Affine2D = Affine2D.identity())
+
+**Inherited from:** CellRef.new_array
+
+Return a new cell reference array.
+
+::
+    
+    def rotated(self: ~_Self, *, degrees: Optional[float] = None, radians: Optional[float] = None, 
+                origin: Optional[Tuple[float, float]] = None, inplace: Optional[bool] = None) -> ~_Self
+
+**Inherited from:** CellRef.rotated
+
+Return a new cell reference rotated, either degrees or radians must be provided. 
+If both provided, radians is used …
+
+::
+    
+    def scaled(self: ~_Self, sx: float, sy: Optional[float] = None, *, 
+                center: Tuple[float, float] = (0, 0)) -> ~_Self
+
+**Inherited from:** CellRef.scaled
+
+scaled at center.
+
+::
+    
+    def transform_combined(self, transform: Affine2D)
+
+**Inherited from:** CellRef.transform_combined
+
+Return a new cell reference with a new transform which is its transform combined with the given transform
+
+::
+    
+    def translated(self: ~_Self, tx: float, ty: float) -> ~_Self
+
+**Inherited from:** CellRef.translated
+
+Translated.
+
+::
+    
+    def v_mirrored(self: ~_Self, *, y: float = 0) -> ~_Self
+
+**Inherited from:** CellRef.v_mirrored
+
+Vertical mirrored.
+
+::
+    
+    def with_bands(self: ~_Self, bands: Optional[Iterable[IBand]]) -> ~_Self
+
+**Inherited from:** CellRef.with_bands
+
+If a class derived from ICellRef does not implement this method, it cannot be instantiated. 
+If a derived class of ICellRef implements this method, …
+
+::
+    
+    def with_name(self: ~_Self, name: str) -> ~_Self
+
+**Inherited from:** CellRef.with_name
+
+If a class derived from ICellRef does not implement this method, it cannot be instantiated. 
+If a derived class of ICellRef implements this method, …
+
+::
+    
+    def with_patches(self: ~_Self, content: Iterable[IElement]) -> ~_Self
+
+**Inherited from:** CellRef.with_patches
+
+If a class derived from ICellRef does not implement this method, it cannot be instantiated. 
+If a derived class of ICellRef implements this method, …
+
+::
+    
+    def with_ports(self: ~_Self, ports: Sequence[Union[None, str, Hidden]]) -> ~_Self
+
+**Inherited from:** CellRef.with_ports
+
+If a class derived from ICellRef does not implement this method, it cannot be instantiated. 
+If a derived class of ICellRef implements this method, …

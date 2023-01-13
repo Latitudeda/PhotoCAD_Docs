@@ -4,6 +4,9 @@ Module fnpcell.element.line
 Functions
 -----------
 
+Line
++++++
+
 ::
     
     def Line(*, length: float, stroke_width: float = 1, final_stroke_width: Optional[float] = None,

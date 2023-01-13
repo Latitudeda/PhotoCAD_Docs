@@ -4,6 +4,9 @@ Module fnpcell.element.polygon
 Functions
 ------------
 
+new_polygon
+++++++++++++++
+
 ::
     
     def new_polygon(raw_shape: Union[IShape, Iterable[Tuple[float, float]]], *,
@@ -15,6 +18,9 @@ Create a polygon.
 Classes
 ---------
 
+Polygon
+++++++++++
+
 ::
     
     class Polygon(*args: Any, **kwargs: Any)
@@ -22,28 +28,28 @@ Classes
 Polygon is a class for defining a polygon.
 
 Ancestors
-+++++++++++
+____________
 
 ::
     
     TransformMixin, IUpdatable, IPolygon, IPrimitive, ILayered, IElement, IRunnable, IAffineTransformable
 
 Subclasses
-+++++++++++
+____________
 
 ::
 
     fnpcell.element.polygon._ImmutablePolygon, Polyline
 
 Class variables
-++++++++++++++++++
+__________________
 
 ::
     
     var raw_shape: IShape
 
 Static methods
-+++++++++++++++
+________________
 
 ::
     
@@ -71,7 +77,7 @@ Returns an Affine2D that is the result of the matrix product of the given transf
 the translation transformation at the given origin, It …
 
 Methods
-+++++++++
+__________
 
 ::
     

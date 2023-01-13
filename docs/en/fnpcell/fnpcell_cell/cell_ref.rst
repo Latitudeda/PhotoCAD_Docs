@@ -4,6 +4,9 @@ Module fnpcell.cell.cell_ref
 Functions
 ------------
 
+create_cell_ref
++++++++++++++++++
+
 ::
 
     def create_cell_ref(*, name: Optional[str] = None,
@@ -34,6 +37,9 @@ Usage::
         # =============================================================
         fp.export_gds(library, file=gds_file)
         # fp.plot(library)
+
+create_curved_cell_ref
++++++++++++++++++++++++
 
 ::
 
@@ -78,6 +84,9 @@ Usage::
         fp.export_gds(library, file=gds_file)
         # fp.plot(library)
 
+new_cell_ref
+++++++++++++++++
+
 ::
 
     def new_cell_ref(cell: ICell, *, transform: Affine2D = Affine2D.identity()) -> ICellRef
@@ -87,6 +96,9 @@ Return a cell's reference.
 Classes
 --------
 
+CellRef
++++++++++
+
 ::
     
     class CellRef
@@ -94,14 +106,14 @@ Classes
 Define Cell Reference.
 
 Ancestors
-++++++++++
+___________
 
 ::
     
     TransformMixin, ICellRef, IUpdatable, IElement, IRunnable, IAffineTransformable
 
 Subclasses
-+++++++++++
+____________
 
 ::
 
@@ -116,7 +128,7 @@ Subclasses
     fnpcell_autolink.link_between.wg.WaveguideBetween.
 
 Class variables
-+++++++++++++++++
+_________________
 
 ::
     
@@ -124,7 +136,7 @@ Class variables
     var transform: Affine2D
 
 Static methods
-+++++++++++++++
+_________________
 
 ::
     
@@ -146,7 +158,7 @@ Instance variables
 Return owned ports of the cell reference.
 
 Methods
-++++++++
+__________
 
 ::
     

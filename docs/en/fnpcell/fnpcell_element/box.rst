@@ -4,6 +4,9 @@ Module fnpcell.element.box
 Functions
 ------------
 
+Box
++++++
+
 ::
     
     def Box(*, width: float, height: float, stroke_width: float = 1,

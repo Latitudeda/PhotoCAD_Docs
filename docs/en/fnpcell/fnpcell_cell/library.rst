@@ -4,6 +4,9 @@ Module fnpcell.cell.library
 Functions
 ----------
 
+new_library
++++++++++++++
+
 ::
 
     def new_library(*cells: Union[None, ICell, ICellRef]) -> Library
@@ -12,6 +15,9 @@ Create a library
 
 Classes
 ---------
+
+Library
++++++++++++
 
 ::
 
@@ -43,14 +49,14 @@ Usage::
         # fp.plot(library)
 
 Ancestors
-++++++++++
+___________
 
 ::
 
     ILibrary, IUpdatable, IRunnableContainer, typing.Generic, IRunnable
 
 Class variables
-++++++++++++++++
+_________________
 
 ::
 

@@ -4,6 +4,9 @@ Module fnpcell.element.polygon_set
 Functions
 ----------
 
+new_polygon_set
+++++++++++++++++
+
 ::
     
     def new_polygon_set(raw_region: Union[IRegion, Iterable[IPolygon]], /, *, layer: ILayer,
@@ -13,6 +16,9 @@ Functions
 Classes
 --------
 
+PolygonSet
++++++++++++++
+
 ::
     
     class PolygonSet(*args: Any, **kwargs: Any)
@@ -20,7 +26,7 @@ Classes
 Interface of element,element is geometry with layer.
 
 Ancestors
-++++++++++
+___________
 
 ::
     
@@ -28,14 +34,14 @@ Ancestors
     ILayered, IElement, IRunnable, IAffineTransformable
 
 Subclasses
-+++++++++++
+_____________
 
 ::
     
     fnpcell.element.polygon_set._ImmutablePolygonSet
 
 Class variables
-+++++++++++++++++
+________________
 
 ::
     
@@ -43,7 +49,7 @@ Class variables
     var region: IRegion
 
 Static methods
-+++++++++++++++
+___________________
 
 ::
     
@@ -83,7 +89,7 @@ Returns an Affine2D that is the result of the matrix product of the given transf
 the translation transformation at the given origin, It …
 
 Methods
-++++++++
+________
 
 ::
     

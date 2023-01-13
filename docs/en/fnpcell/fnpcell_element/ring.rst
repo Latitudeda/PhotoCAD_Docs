@@ -4,6 +4,9 @@ Module fnpcell.element.ring
 Functions
 ------------
 
+Ring
+++++++++
+
 ::
     
     def Ring(*, outer_radius: float, inner_radius: float = 0,

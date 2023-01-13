@@ -4,6 +4,9 @@ Module fnpcell.element.label
 Functions
 -----------
 
+new_label
++++++++++++
+
 ::
     
     def new_label(content: str, *, highlight: bool = False, baseline: Optional[TextBaseline] = None,
@@ -16,6 +19,9 @@ Create a label.
 Classes
 ---------
 
+Label
+++++++++
+
 ::
     
     class Label(text: str, highlight: bool, font_size: float, baseline: TextBaseline,
@@ -24,7 +30,7 @@ Classes
 Label is a dataclass for defining a Label.
 
 Ancestors
-+++++++++++
+_____________
 
 ::
     
@@ -32,7 +38,7 @@ Ancestors
     IPrimitive, ILayered, IElement, IRunnable, IAffineTransformable
 
 Class variables
-+++++++++++++++++
+_________________
 
 ::
     
@@ -46,8 +52,7 @@ Class variables
     var transform: Affine2D
 
 Static methods
-++++++++++++++++
-
+________________
 ::
     
     def transform_from_at(at: Union[None, Tuple[float, float], IPositioned, IRay] = None,
@@ -69,7 +74,7 @@ Returns an Affine2D that is the result of the matrix product of the given transf
 the translation transformation at the given origin, It …
 
 Instance variables
-++++++++++++++++++++
+____________________
 
 ::
     var content: Tuple[IPrimitive, ...]
@@ -83,7 +88,7 @@ Return a tuple of label group.
 Return font size.
 
 Methods
-+++++++++
+__________
 
 ::
     

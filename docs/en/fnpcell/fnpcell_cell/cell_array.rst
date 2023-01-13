@@ -4,6 +4,9 @@ Module fnpcell.cell.cell_array
 Classes
 --------
 
+CellArray
+++++++++++++
+
 ::
 
     class CellArray(cell: ICell, cols: int, col_end: Tuple[float, float], 
@@ -14,14 +17,14 @@ CellArray is for defining a n*m Cell Array.
 Any modification will create new CellArray instead of modify the original CellArray.
 
 Ancestors
-++++++++++
+__________
 
 ::
     
     TransformMixin, IUpdatable, ICellArray, IElement, IRunnable, IAffineTransformable
 
 Class variables
-+++++++++++++++++
+__________________
 
 ::
 
@@ -33,7 +36,7 @@ Class variables
     var transform: Affine2D
 
 Static methods
-++++++++++++++++
+________________
 
 ::
 
@@ -63,7 +66,7 @@ Returns an Affine2D that is the result of the matrix product of the given transf
 and the translation transformation at the given origin, It …
 
 Methods
-++++++++
+________
 
 ::
 

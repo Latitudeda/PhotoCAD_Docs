@@ -4,6 +4,9 @@ Module fnpcell.element.regular_polygon
 Functions
 -------------
 
+RegularPolygon
+++++++++++++++++
+
 ::
     
     def RegularPolygon(*, sides: int, side_length: float, origin: Optional[Tuple[float, float]] = None,

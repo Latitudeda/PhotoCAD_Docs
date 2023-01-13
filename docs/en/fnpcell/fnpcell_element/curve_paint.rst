@@ -4,25 +4,31 @@ Module fnpcell.element.curve_paint
 Classes
 ---------
 
+CompositeCurvePaint
++++++++++++++++++++++
+
 ::
     
     class CompositeCurvePaint(curve_paints: Tuple[ICurvePaint, ...])
 
-    CompositeCurvePaint(args, *kwds)
+CompositeCurvePaint(args, \*kwds)
 
 Ancestors
-+++++++++++
+____________
 
 ::
 
     ICurvePaint, typing.Protocol, typing.Generic
 
 Class variables
-+++++++++++++++++
+__________________
 
 ::
     
     var curve_paints: Tuple[ICurvePaint, ...]
+
+ContinuousLayerCurvePaint
+++++++++++++++++++++++++++++
 
 ::
     
@@ -30,24 +36,24 @@ Class variables
                                      miter_limit: float, final_offset: float, final_width: float,
                                      taper_function: ITaperCallable, end_hints: Tuple[Tuple[float, ...], Tuple[float, ...]])
 
-    ContinuousLayerCurvePaint(args, *kwds)
+ContinuousLayerCurvePaint(args, \*kwds)
 
 Ancestors
-+++++++++++
+____________
 
 ::
     
     ICurvePaint, typing.Protocol, typing.Generic
 
 Subclasses
-++++++++++++
+____________
 
 ::
     
     CrackedLayerCurvePaint, SlottedLayerCurvePaint
 
 Class variables
-++++++++++++++++++
+________________
 
 ::
     
@@ -62,7 +68,7 @@ Class variables
     var width: float
 
 Methods
-+++++++++
+__________
 
 ::
     
@@ -73,6 +79,9 @@ Methods
     def with_slots(self, max_width: float = 35, slot_width: float = 3, slot_length: float = 30,
                      min_slot_length: float = 30, slot_gap: float = 10, stagger_offset: float = 15)
 
+CrackedLayerCurvePaint
++++++++++++++++++++++++++
+
 ::
     
     class CrackedLayerCurvePaint(layer: ILayer, offset: float, width: float, extension: Tuple[float, float],
@@ -80,10 +89,10 @@ Methods
                                  taper_function: ITaperCallable, end_hints: Tuple[Tuple[float, ...], Tuple[float, ...]],
                                  max_width: float = 35, spacing: float = 3)
 
-    CrackedLayerCurvePaint(args, *kwds)
+CrackedLayerCurvePaint(args, \*kwds)
 
 Ancestors
-+++++++++++
+____________
 
 ::
     
@@ -91,7 +100,7 @@ Ancestors
 
 
 Class variables
-++++++++++++++++
+__________________
 
 ::
 
@@ -99,23 +108,28 @@ Class variables
     var spacing: float
 
 Instance variables
-+++++++++++++++++++++
+_____________________
 
 ::
 
     var count_of_lanes
 
 Methods
-++++++++
+________
 
 ::
     
     def offset_widths(self, width: Optional[float] = None, offset: float = 0) -> Sequence[Tuple[float, Sequence[float]]]
 
-    classCurvePaint
+CurvePaint
++++++++++++++
+
+::
+    
+    class CurvePaint
 
 Static methods
-+++++++++++++++
+_________________
 
 ::
     
@@ -147,17 +161,17 @@ Static methods
                                      offset: float, final_offset: float, miter_limit: float,
                                      taper_function: ITaperCallable, rotate: bool = True)
     
-    PeriodicSamplingCurvePaint(args, *kwds)
+PeriodicSamplingCurvePaint(args, \*kwds)
 
 Ancestors
-+++++++++++
+__________
 
 ::
     
     ICurvePaint, typing.Protocol, typing.Generic
 
 Class variables
-++++++++++++++++++
+_________________
 
 ::
     
@@ -170,6 +184,9 @@ Class variables
     var rotate: bool
     var taper_function: ITaperCallable
 
+SlottedLayerCurvePaint
+++++++++++++++++++++++++
+
 ::
     
     class SlottedLayerCurvePaint(layer: ILayer, offset: float, width: float,
@@ -179,17 +196,17 @@ Class variables
                                  max_width: float = 35, slot_width: float = 3, slot_length: float = 30,
                                  min_slot_length: float = 30, slot_gap: float = 10, stagger_offset: float = 15)
 
-    SlottedLayerCurvePaint(args, *kwds)
+SlottedLayerCurvePaint(args, \*kwds)
 
 Ancestors
-++++++++++
+__________
 
 ::
     
     ContinuousLayerCurvePaint, ICurvePaint, typing.Protocol, typing.Generic
 
 Class variables
-+++++++++++++++++
+__________________
 
     var max_width: float
     var min_slot_length: float
