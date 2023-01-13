@@ -210,6 +210,14 @@ With the preceding examples as a basis, we will mainly test some key parameters 
         
 In the above code, w_si_3 is equal to h_si_3, below we change w_si_:
 
+::
+
+        w_si_3 = ring_radius * 2 
+        h_si_3 = w_si_3
+
+Run to obtain the following layout.
+
+**gap** and "gap_monitor" control the gaps labeled in the figure below, respectively, with gap controlling the bottom and gap_monitor controlling the top.
       
       
       
