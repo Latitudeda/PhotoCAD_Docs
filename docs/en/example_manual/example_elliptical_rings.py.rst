@@ -64,7 +64,7 @@ fp.el.EllipticalRing Description
   elems += fp.el.EllipticalRing(outer_radius=(8, 10), inner_radius=(4, 5), initial_degrees=(0, 0), final_degrees=(180, 180), layer=TECH.LAYER.M1_DRW, origin=(0, 0))
   
   
-WE can get an elliptical ring after running the above script. The first parameter of outer_radius and inner_radius represents the semi-short axis of the ellipse, and the second parameter represents the semi-long axis of the ellipse. initial_degrees and final_degrees are used in the same way as in the Ring function, so we will not repeat them here.
+We can get an elliptical ring after running the above script. The first parameter of outer_radius and inner_radius represents the semi-short axis of the ellipse, and the second parameter represents the semi-long axis of the ellipse. initial_degrees and final_degrees are used in the same way as in the Ring function, so we will not repeat them here.
   
       
       
