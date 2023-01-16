@@ -59,6 +59,10 @@ The following first created several waveguide structures, including 1 bending wa
 	sbend = pdk.SBend(distance=100, height=-90, waveguide_type=TECH.WG.FWG.C.WIRE, bend_factory=bend_factory_15_35)
   
 In the pdk.SBend() function, distance represents the horizontal distance between the left end of the sbend and the right end, and height represents the vertical distance between the middle of the right end of the sbend and the middle of the left end.  A positive height value means that the right end is on top and the left end is on the bottom; A negative value means that the right end is on the bottom and the left end is on the top.  
+
+
+.. image:: ../example_image/2.1.png
+
 Then we define the four straight waveguides, length defines the straight waveguide length, waveguide_type defines the type of waveguide.
 
 ::
@@ -127,6 +131,9 @@ Start by setting waypoints to an empty list.
   waypoints=[] 
   
 In the figure below, the connection method between s30 and s40 is not specified, and the software automatically connects them both. All five waveguide positions are unchanged, and later on, we will adjust the waypoints to get a feel for how the connection is controlled by the waypoints.
+
+
+.. image:: ../example_image/2.2.png
 
 This time, only one position correction fp.Offset(-50, 90) is added.  
 
