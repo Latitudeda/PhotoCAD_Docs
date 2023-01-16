@@ -92,15 +92,16 @@ Full script
       
 Parameter description
 ----------------------------------------------------------------
-In the main function, add a DirectionalCouplerBend to the library      
+In the main function, add a ``DirectionalCouplerBend`` to the library      
 
 ::
 
   library += DirectionalCouplerBend(name="s", coupler_spacing=1.7, coupler_length=10, bend_radius=10, straight_after_bend=6, waveguide_type=TECH.WG.SWG.C.WIRE)
 
 
-"name" is the name of the device, here named s, coupler_space, coupler_length, bend_radius and straight_after_bend are marked in the figure below, which is convenient to quickly understand which part of the device is controlled by each parameter.
+``name`` is the name of the device, here named s, ``coupler_space``, ``coupler_length``, ``bend_radius`` and ``straight_after_bend`` are marked in the figure below, which is convenient to quickly understand which part of the device is controlled by each parameter.
 
+.. image:: ../example_image/5.1.png
       
       
       
