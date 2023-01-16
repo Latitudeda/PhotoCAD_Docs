@@ -53,7 +53,13 @@ fp.el.Ring Description
 
 As shown in the figure, initial_degrees is the angle between the starting end and the x-axis, final_degrees is the angle between the ending end and the x-axis, the left parameter in the parentheses is the angle parameter of the external circle, the right is the angle parameter of the internal circle; origin defines the location of the center of the whole ring.
 
+
+.. image:: ../example_image/6.1.png
+
 In the following, we set the initial and end angles to (0, 30) and (150, 120), respectively. The following figure is obtained after running the script.
+
+
+.. image:: ../example_image/6.2.png
 
 
 fp.el.EllipticalRing Description
@@ -65,6 +71,9 @@ fp.el.EllipticalRing Description
   
   
 We can get an elliptical ring after running the above script. The first parameter of outer_radius and inner_radius represents the semi-short axis of the ellipse, and the second parameter represents the semi-long axis of the ellipse. initial_degrees and final_degrees are used in the same way as in the Ring function, so we will not repeat them here.
+
+
+.. image:: ../example_image/6.3.png
   
       
       
