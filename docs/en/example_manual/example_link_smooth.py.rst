@@ -40,20 +40,17 @@ Full script
       fp.plot(library)
       
 
-After running, we get the following figure, from which we can see that the starting port is SWG and the ending port is MWG. "points" contains a total of six points, of which the first and last points are the coordinates of the starting waveguide and the ending waveguide, and the rest of the points are path points.
+After running, we get the following figure, from which we can see that the starting port is ``SWG`` and the ending port is ``MWG``. ``points`` contains a total of six points, of which the first and last points are the coordinates of the starting waveguide and the ending waveguide, and the rest of the points are path points.
 
-In the path connecting the two ends of the waveguide, we use the defined form of bend_factory which waveguide is BendEuler90. This time we will change the first point in "points" to (-50,s), and after running the program it reports an error, because the bend_factory function used is BendEuler90.
 
-At this point, to complete the connection, you need to reselect bend_factory, which we will replace with the following code.
+.. image:: ../example_image/7.1.png
 
-::
+In the path connecting the two ends of the waveguide, we use the defined form of ``bend_factory`` which waveguide is ``BendEuler90``. This time we will change the first point in ``points`` to ``(-50,s)``, and run the script.
 
-  bend_factory_20_50 = EulerBendFactory(radius_min=20, l_max=50, waveguide_type=TECH.WG.FWG.C.WIRE)
-  
+.. image:: ../example_image/7.2.png
 
-Set bend_factory=bend_factory_20_50 in the LinkSmooth function and run the script.
 
-As you can see, the first corner does not meet the 90 degree case replaced with a normal EulerBend, the other several corners are still using the EulerBend90.
+As you can see, the first corner does not meet the 90 degree case replaced with a normal EulerBend, the other several corners are still using the ``EulerBend90``.
       
       
       
