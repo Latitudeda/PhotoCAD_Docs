@@ -113,6 +113,8 @@ View GDS layout file
 -------------------------------------------
 Use Klayout to open the generated original layout.
 
+.. image:: ../example_image/1.1.png
+
 Instantiation of components
 -----------------------------------------
 The GDS layout shows that there are 15 devices in total, but only 5 devices are instantiated in the program, indicating that some of the devices have the same parameters except for different locations, which are obtained by multiple calls.
@@ -157,8 +159,13 @@ Based on the instantiated devices then generate ec_0 and ec_1, which are symmetr
 
   ec_0 = ec.translated(-100, 150)
   ec_1 = ec.translated(-100, -150)
+  
+
+.. image:: ../example_image/1.2.png
 
 We try to change the y of both to -20,20 and see that they are close to each other and closer to the x-axis.
+
+.. image:: ../example_image/1.3.png
 
 We change the rotation angle in tm to 0. We can see that the generated tm is oriented to the right, while the original 180 degrees is oriented to the left.
 
@@ -169,6 +176,7 @@ We change the rotation angle in tm to 0. We can see that the generated tm is ori
     waveguide_type=TECH.WG.MWG.C.WIRE,
     transform=fp.rotate(degrees=0)
 
+.. image:: ../example_image/1.4.png
 
 The following code adjusts the horizontal and vertical coordinates of the generated new DC. The value of the x-direction shift is the value of the x-coordinate of op_3 of dc_2 minus the value of the x-coordinate of op_0 of dc31, .position[0] returns the x-coordinate, and .position[1] returns the corresponding y-coordinate.
 
