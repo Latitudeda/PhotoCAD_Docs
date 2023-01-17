@@ -1,4 +1,4 @@
-Example: Demultiplexer
+Demultiplexer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Full script
