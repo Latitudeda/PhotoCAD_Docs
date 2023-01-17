@@ -11,7 +11,8 @@ PhotoCAD产品手册资料
    gpdk/QuickCreatePDK
    
    
-   :caption: Tutorials:
+   :caption: Tutorials
+   :name: Tutorial
   
    PICircuits/PICircuits
    PICircuits/TICircuits
