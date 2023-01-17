@@ -1,4 +1,4 @@
-Example: Sampler Periodic
+Sampler Periodic
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Full script
