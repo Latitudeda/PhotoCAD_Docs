@@ -17,7 +17,7 @@ PhotoCAD产品手册资料
    :caption: Tutorials
    
    
-   example_manual/routing/routing_list
+   example_manual/routing_list
    example_manual/component_list
 
    
