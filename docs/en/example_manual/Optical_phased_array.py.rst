@@ -1,4 +1,4 @@
-Example: Optical Phased Array
+Optical Phased Array (OPA)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The integrated optical phased array (OPA) enables low-loss beam steering compared to the Bulk optics system and has applications in the following areas:
 
