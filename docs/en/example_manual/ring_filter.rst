@@ -273,7 +273,7 @@ Here we remove the ``anchor`` parameter from ``taper1`` and run the result compa
 The code below is to add structures on four different layers with the same square structure in two groups in the figure below.
 
 
-.. image:: ../example_image/9.8.png
+.. image:: ../example_image/9.9.png
 
 ::
 
