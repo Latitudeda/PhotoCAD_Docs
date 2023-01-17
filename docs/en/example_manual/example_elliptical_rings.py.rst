@@ -1,4 +1,4 @@
-Example: Elliptical Rings
+Elliptical Rings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Full script
