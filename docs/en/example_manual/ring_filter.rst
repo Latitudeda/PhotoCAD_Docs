@@ -1,4 +1,4 @@
-Example: Ring filter
+Ring filter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Full script
