@@ -236,7 +236,10 @@ Full script
         fp.export_pls(library, file=gds_file.with_suffix(".pls"), components=gpdk.components.all)
         fp.plot(library)
         
-Run the full program once to generate the following GDS layout:        
+Run the full program once to generate the following GDS layout:     
+
+
+.. image:: ../example_image/11.1.png
 
 Parameters and testing description
 ---------------------------------------------
@@ -340,6 +343,9 @@ The code below controls the corner of the wiring: if ``None``, the corner is rig
         
 The default right angle is tested first and the following figure is obtained.       
 
+
+.. image:: ../example_image/11.2.png
+
 From the above figure, we can see that the corners are right angles, next comment out the ``None`` code, open the following two lines of code and run.
 
 ::
@@ -347,9 +353,13 @@ From the above figure, we can see that the corners are right angles, next commen
         fitting_function_80 = TECH.FITTING_FUNCTION.Stubbed(stub_width=80, stub_right_angle=False)
         fitting_function_20 = TECH.FITTING_FUNCTION.Stubbed(stub_width=20, stub_right_angle=False)
         
+
+.. image:: ../example_image/11.2.png
+.. image:: ../example_image/11.3.png
         
 After running it, we can see that it is still a right angle and nothing has changed because ``stub_right_angle=False``, we change it to ``True`` and run it once. From the figure below, we can see that the measured length at the center line of the corner are 80 and 20 as set.
 
+.. image:: ../example_image/11.5.png
 
 The code below mainly controls the connection of the four groups of pads at the bottom right of the layout, specifying the direction of the two end lines, the starting distance, the type of metal wire and the fitting function, etc. After running, the layout fragment is intercepted and marked with a description.
 
@@ -380,7 +390,7 @@ The code below mainly controls the connection of the four groups of pads at the 
             fitting_function=fitting_function_20,
         ),
         
-        
+.. image:: ../example_image/11.7.png        
 After the testing of the 45° corner is completed, we next test the rounded corners.        
 
 ::
@@ -393,7 +403,15 @@ Since the radius value is not set properly, the error is reported after running.
 
 We changed ``80`` to ``40`` and ran it again, and took the following part of the corners from the layout, from which we can see that the corners are changed from straight lines to smooth rounded shapes.
 
+.. image:: ../example_image/11.8.png
+.. image:: ../example_image/11.9.png
+
 Finally, as shown in the following image segment, different line types appear in the same linked line. Refer to the relevant instructions in the (:doc:`example_linked_elec.py`) file for details on how to use it.
+
+.. image:: ../example_image/11.10.png
+.. image:: ../example_image/11.11.png
+
+
         
         
         
