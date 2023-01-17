@@ -1,4 +1,4 @@
-Example: LinkSmooth
+LinkSmooth
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Full script
