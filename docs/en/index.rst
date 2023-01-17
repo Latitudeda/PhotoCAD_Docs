@@ -19,6 +19,7 @@ PhotoCAD产品手册资料
    
    
    example_manual/routing/routing_list
+   example_manual/component/component_list
 
    
    
