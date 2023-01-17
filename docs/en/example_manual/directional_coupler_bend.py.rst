@@ -1,4 +1,4 @@
-Example: Directional Coupler Bend
+Directional Coupler Bend
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Full script
