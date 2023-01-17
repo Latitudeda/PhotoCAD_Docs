@@ -1,4 +1,4 @@
-Example: LinkBetween
+LinkBetween
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Import function module
