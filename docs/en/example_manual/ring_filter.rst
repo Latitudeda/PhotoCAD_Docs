@@ -178,6 +178,9 @@ Full script
       
 Run the complete script once, generating the following GDS layout.    
 
+
+.. image:: ../example_image/9.1.png
+
 Parameters and testing descriptions
 ------------------------------------------------------
 With the preceding examples as a basis, we will mainly test some key parameters later.
@@ -208,7 +211,7 @@ With the preceding examples as a basis, we will mainly test some key parameters 
         w_si_3 = w_m1_out + r_m1_out * 2
         h_si_3 = w_si_3
         
-In the above code, w_si_3 is equal to h_si_3, below we change w_si_:
+In the above code, ``w_si_3`` is equal to ``h_si_3``, below we change ``w_si_3`` to :
 
 ::
 
@@ -217,11 +220,20 @@ In the above code, w_si_3 is equal to h_si_3, below we change w_si_:
 
 Run to obtain the following layout.
 
-**gap** and **gap_monitor** control the gaps labeled in the figure below, respectively, with gap controlling the bottom and gap_monitor controlling the top.
 
-The following diagram illustrates the parameters of **r_mh_in**, **w_mh**, **min_mh_degrees**, **dx** and **dy** in the program. It should be noted that the value of **min_mh_degrees** has a positive or negative nature and needs to be taken into account when designing.
+.. image:: ../example_image/9.2.png
 
-The following code sets the origin of the entire device and adds a ring structure with radius **ring_radius** to **insts**, which has no ports structure and is named "ring'.
+``gap`` and ``gap_monitor`` control the gaps labeled in the figure below, respectively, with ``gap`` controlling the bottom and ``gap_monitor`` controlling the top.
+
+
+.. image:: ../example_image/9.3.png
+
+The following diagram illustrates the parameters of ``r_mh_in``, ``w_mh``, ``min_mh_degrees``, ``dx`` and ``dy`` in the program. It should be noted that the value of ``min_mh_degrees`` has a positive or negative nature and needs to be taken into account when designing.
+
+
+.. image:: ../example_image/9.5.png
+
+The following code sets the origin of the entire device and adds a ring structure with radius ``ring_radius`` to ``insts``, which has no ports structure and is named ``ring``.
       
       
 ::
@@ -231,11 +243,14 @@ The following code sets the origin of the entire device and adds a ring structur
         ring = waveguide_type(curve=fp.g.EllipticalArc(radius=ring_radius, origin=(x0, y0))).with_ports((None, None)).with_name("ring")
         insts += ring
         
-**y0** is the radius of the ring + the spacing below + the width of the core, the actual position of the origin of the entire device becomes:      
+``y0`` is the radius of the ring + the spacing below + the width of the core, the actual position of the origin of the entire device becomes:      
+
+
+.. image:: ../example_image/9.6.png
       
       
       
-The following code adds four taper structures to the **si_etch2_layer** layer. **length** is the total length of the taper, **stroke_width** can be interpreted as the width of the left end of the taper, and **final_stroke_width** is the width of the right end.
+The following code adds four taper structures to the ``si_etch2_layer`` layer. ``length`` is the total length of the taper, ``stroke_width`` can be interpreted as the width of the left end of the taper, and ``final_stroke_width`` is the width of the right end.
 
 ::
 
@@ -250,9 +265,15 @@ The following code adds four taper structures to the **si_etch2_layer** layer. *
         ring_mh = fp.el.EllipticalArc(radius=r_mh, stroke_width=w_mh, layer=mh_layer, final_degrees=max_mh_degrees - min_mh_degrees, transform=fp.rotate(degrees=min_mh_degrees).translate(x0, y0))
         elems += ring_mh
         
-Here we remove the **anchor** parameter from **taper1** and run the result compared with the original result, we can see that the taper has moved. Here the user can interpret this as the origin point is at the center of the right end of the taper when **anchor=fp.Anchor.END** is not added, and if **anchor=fp.Anchor.END** is added, the origin point is at the center of the left end of the taper.      
+Here we remove the ``anchor`` parameter from ``taper1`` and run the result compared with the original result, we can see that the taper has moved. Here the user can interpret this as the origin point is at the center of the right end of the taper when ``anchor=fp.Anchor.END`` is not added, and if ``anchor=fp.Anchor.END`` is added, the origin point is at the center of the left end of the taper.     
+
+
+.. image:: ../example_image/9.7.png
 
 The code below is to add structures on four different layers with the same square structure in two groups in the figure below.
+
+
+.. image:: ../example_image/9.8.png
 
 ::
 
@@ -278,7 +299,7 @@ The code below is to add structures on four different layers with the same squar
         mt = fp.el.Rect(width=10, height=10, layer=LAYER.MT_DRW, origin=(-dx - via_width, -10 + via_height / 2 - core_width / 2))
         elems += mt
         
-The lower code is responsible for adding the rectangle structure to the **mh_layer**.
+The lower code is responsible for adding the rectangle structure to the ``mh_layer``.
 
 ::
 
@@ -290,7 +311,10 @@ The lower code is responsible for adding the rectangle structure to the **mh_lay
         
 Adjust the position of the origin point of the structure so that the lower two positions are aligned.
 
-The code below is to get the location of the six points where the ports needs to be placed, and add the ports by **fp.Port** and the pins by **fp.Pin**. In **fp.Pin()**, set the pins to the same shape (square) as **v2**, and set the metal wire type to **TECH.METAL.MT.W10**.
+
+.. image:: ../example_image/9.10.png
+
+The code below is to get the location of the six points where the ports needs to be placed, and add the ports by ``fp.Port`` and the pins by ``fp.Pin``. In ``fp.Pin()``, set the pins to the same shape (square) as ``v2``, and set the metal wire type to ``TECH.METAL.MT.W10``.
 
 ::
 
@@ -308,7 +332,10 @@ The code below is to get the location of the six points where the ports needs to
         ports += fp.Pin(name=port_names[5], position=(pin2_x, pin2_y), shape=v2.shape, metal_line_type=TECH.METAL.MT.W10)
         
         
-The following diagram illustrates the location of each port and its corresponding **port_names**.      
+The following diagram illustrates the location of each port and its corresponding ``port_names``.     
+
+
+.. image:: ../example_image/9.11.png
       
       
       
