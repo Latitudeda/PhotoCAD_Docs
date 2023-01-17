@@ -28,6 +28,7 @@ PhotoCAD产品手册资料
    PICircuits/PICircuits
    PICircuits/TICircuits
    example_manual/example_demultiplexer2.py
+   example_manual/Optical_phased_array.py
    
 
 
