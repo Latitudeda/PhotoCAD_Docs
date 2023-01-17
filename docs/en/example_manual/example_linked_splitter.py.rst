@@ -1,4 +1,4 @@
-Example: LinkedSplitter
+LinkedSplitter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Full script
