@@ -153,7 +153,7 @@ The GDS layout shows that there are 15 devices in total, but only 5 devices are 
 
 Testing and Analysis
 ---------------------------------------
-Based on the instantiated devices then generate ec_0 and ec_1, which are symmetric about the x-axis as their x-position is -100 and their y-position is 150 and -150.
+Based on the instantiated devices then generate ``ec_0`` and ``ec_1``, which are symmetric about the x-axis as their x-position is ``-100`` and their y-position is ``150`` and ``-150``.
 
 ::
 
@@ -163,11 +163,11 @@ Based on the instantiated devices then generate ec_0 and ec_1, which are symmetr
 
 .. image:: ../example_image/1.2.png
 
-We try to change the y of both to -20,20 and see that they are close to each other and closer to the x-axis.
+We try to change the y of both to ``-20,20`` and see that they are close to each other and closer to the x-axis.
 
 .. image:: ../example_image/1.3.png
 
-We change the rotation angle in tm to 0. We can see that the generated tm is oriented to the right, while the original 180 degrees is oriented to the left.
+We change the rotation angle in ``tm`` to ``0``. We can see that the generated ``tm`` is oriented to the right, while the original ``180`` degrees is oriented to the left.
 
 ::
 
@@ -178,14 +178,14 @@ We change the rotation angle in tm to 0. We can see that the generated tm is ori
 
 .. image:: ../example_image/1.4.png
 
-The following code adjusts the horizontal and vertical coordinates of the generated new DC. The value of the x-direction shift is the value of the x-coordinate of op_3 of dc_2 minus the value of the x-coordinate of op_0 of dc31, .position[0] returns the x-coordinate, and .position[1] returns the corresponding y-coordinate.
+The following code adjusts the horizontal and vertical coordinates of the generated new DC. The value of the x-direction shift is the value of the x-coordinate of ``op_3`` of ``dc_2`` minus the value of the x-coordinate of ``op_0`` of ``dc31``, ``.position[0]`` returns the x-coordinate, and ``.position[1]`` returns the corresponding y-coordinate.
 
 ::
 
   dc_3_0 = dc31.translated(dc_2["op_3"].position[0] - dc31["op_0"].position[0], 180)
   dc_3_1 = dc31.translated(dc_2["op_2"].position[0] - dc31["op_1"].position[0], -180)
 
-Since there are more components and more ports are connected accordingly, automatic connection between ports can be achieved by using the Linked function.
+Since there are more components and more ports are connected accordingly, automatic connection between ports can be achieved by using the ``Linked`` function.
 
 ::
 
