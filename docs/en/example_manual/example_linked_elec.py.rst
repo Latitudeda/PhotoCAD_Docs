@@ -1,4 +1,4 @@
-Example: Linked Electrical Pad
+Linked Electrical Pad
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Full script
