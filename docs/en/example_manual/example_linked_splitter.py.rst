@@ -58,10 +58,12 @@ Full script
       # fmt: on
       # =============================================================
       fp.export_gds(library, file=gds_file)
-      fp.plot(library)
+      fp.plot(library).
       
       
-The class function YSplitter() in gpdk is called below to specify the waveguide processing type, taper length and waveguide bend radius.  
+.. image:: ../example_image/8.1.png      
+      
+The class function ``YSplitter()`` in gpdk is called below to specify the waveguide processing type, taper length and waveguide bend radius.  
 
 ::
 
@@ -69,26 +71,35 @@ The class function YSplitter() in gpdk is called below to specify the waveguide 
     Y2 = pdk.YSplitter(waveguide_type=TECH.WG.SWG.C.WIRE, taper_length=40, bend_radius=50, transform=fp.rotate(degrees=180))
       
       
-In the following we test the YSplitter parameters.
+In the following we test the ``YSplitter`` parameters.
 
-First, comment out the Y2 waveguide program and observe only the Y1 waveguide. 
+First, comment out the ``Y2`` waveguide program and observe only the ``Y1`` waveguide. 
+
+.. image:: ../example_image/8.2.png      
 
 As seen in the figure above, the taper length is 40, the radius of the waveguide bend is 50, and its bifurcation point is located at the origin (this parameter can be modified from the corresponding source file in gpdk, if there are no special requirements, it is not recommended to change the source file; if there are special requirements, you can copy the source file and modify its function naming, which is conducive to the management of device generation files).
 
-Second, we change the taper length to 80 and the bend_radius to 20, and run the following script.
+Second, we change the ``taper_length`` to 80 and the ``bend_radius`` to 20, and run the following script.
 
 ::
 
 	Y1 = pdk.YSplitter(waveguide_type=TECH.WG.SWG.C.WIRE, taper_length=80, bend_radius=25)
-  
-As seen in the above figure, the taper length increases significantly and the radius of the waveguide bend decreases significantly.  
+	
+	
+.. image:: ../example_image/8.3.png      
 
-Then the Ysplitter is transformed by 90°.
+As seen in the above figure, the ``taper_length`` increases significantly and the ``bend_radius`` of the waveguide bend decreases significantly.  
+
+Then the ``Ysplitter`` is transformed by 90°.
 
 ::
 
   Y1 = pdk.YSplitter(waveguide_type=TECH.WG.SWG.C.WIRE, taper_length=80, bend_radius=25, transform=fp.rotate(degrees=90))
   
+  
+.. image:: ../example_image/8.4.png      
+
+
 As you can see from the figure above, the device is rotated 90° counterclockwise.      
       
       
