@@ -19,6 +19,7 @@ PhotoCAD产品手册资料
    
    PICircuits/PICircuits
    PICircuits/TICircuits
+   example_manual/example_list/example_demultiplexer2.py
    
    
 .. toctree::   
