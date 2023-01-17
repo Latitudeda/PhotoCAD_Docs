@@ -17,6 +17,8 @@ PhotoCAD产品手册资料
 .. toctree::   
    :caption: Tutorials
    
+   
+   example_manual/routing/routing_list
    PICircuits/PICircuits
    PICircuits/TICircuits
    example_manual/example_demultiplexer2.py
