@@ -376,7 +376,7 @@ Until now, we have finished the optical waveguide routing of the OPA. Next we ha
 .. image:: ../example_image/opa5.png
 
 
-Then the ``BondPad`` are be conected to the pins on the ``heater`` using ``LinkBetween`` function. To avoid short when the crossing of the metal wire appears, ``waypoints`` are being set and depends on the distance between the pins and the ``BondPads``. When those are close to each other, the x-coordinate of the ``waypoint`` will be also close to the pins, meaning that a quick turn will be generate through the connection. The ``waypoints`` are also set to minimize the overlapping between the metal wires and the optical waveguides to avoid heat effect to the material property of the optical wg.
+Then the ``BondPad`` are connected to the pins on the ``heater`` using ``LinkBetween`` function. To avoid short when the crossing of the metal wire appears, ``waypoints`` are being set and depends on the distance between the pins and the ``BondPads``. When those are close to each other, the x-coordinate of the ``waypoint`` will be also close to the pins, meaning that a quick turn will be generate through the connection. The ``waypoints`` are also set to minimize the overlapping between the metal wires and the optical waveguides to avoid heat effect to the material property of the optical wg.
 
 
 
