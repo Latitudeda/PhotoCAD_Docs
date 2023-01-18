@@ -34,6 +34,7 @@ PhotoCAD产品手册资料
 
 
 .. toctree::   
+   :caption: Others
    
    fnpcell/index
    fnpcell/all
