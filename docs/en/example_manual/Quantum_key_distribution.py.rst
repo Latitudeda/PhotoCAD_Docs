@@ -11,9 +11,21 @@ Key Distribution (QKD) aims to transmit this key in a way that it cannot be inte
 
 Quantum keys are typically transmitted via a single photon in an optical fiber, and the key is created by an optical circuit called an emitter that encodes it into a series of pulses. The pulses are then detected by a second optical circuit called a receiver, which reads the key from the sequence of pulses.
 
-The use of integrated photons in the QKD allows for greater miniaturization and lower manufacturing costs than traditional Bulk Optical Systems (BOS). and lower manufacturing costs. It is believed that this will lead to a wide range of applications for QKD systems, and as a result, researchers have developed a number of ways to implement emitters and receivers in integrated photonic circuits. As a result, researchers have developed a number of systems that implement transmitters and receivers in integrated photonic circuits.
+The use of integrated photons in the QKD allows for greater miniaturization and lower manufacturing costs than traditional Bulk Optical Systems. It is believed that this will lead to a wide range of applications for QKD systems, and as a result, researchers have developed a number of ways to implement emitters and receivers in integrated photonic circuits. As a result, researchers have developed a number of systems that implement transmitters and receivers in integrated photonic circuits.
 
-Part II. Full script
+Part II. QKD receiver
+---------------------------------------------------------------------
+The use of a tunable delay (T-DEL) receiver with 4 MZIs and TOPS is an innovative approach to ensure the security and accuracy of QKD transmissions. By configuring the time delay with an integer range of 1 to 7, and utilizing the TOPS, the transmission can be secured by ensuring that the signals are sent and received at the same time. This prevents any interference from outside sources, such as hackers, from being able to access the communication. Below figure show a T-DEL schematic layout.
+
+
+.. image:: ../example_image/qkd_TDEL.png
+
+This project implements a quantum key distribution receiver with Loss-Balancing (L-BAL) to prevent any interference from external sources. The receiver is 
+composed of multiple components, including a spiral waveguide (WG) to cause optical loss, two arms to avoid any amplitude differences, and a combining Mach-Zehnder interferometer (MZI) to ensure that the power measured is the same as shown in below figure.
+
+.. image:: ../example_image/qkd_LBAL.png
+
+Part III. Full script
 ------------------------------------------------------------------
 ::
 
@@ -200,15 +212,15 @@ Part II. Full script
             
             
             
-Part III. Generation of MZI components
+Part IV. Generation of MZI components
 ---------------------------------------------------------------------------
-In QKD, the MZI component is composed of two ``DirectionalCouplerSBend``s on both sides, and the middle part consists of ``tin_heater`` and ``straight`` waveguide, as shown in the following figure.           
+In QKD, the MZI component is composed of two ``DirectionalCouplerSBend`` on both sides, and the middle part consists of ``tin_heater`` and ``straight`` waveguide, as shown in the following figure.           
 
 
 
 .. image:: ../example_image/qkd1.png
 
-The following code is the design of the ``MZI`` component, first instantiate two ``DC``s, each placed at a certain distance from each other on the same horizontal line. Then use ``Linked()`` function to connect ``dc_left``, ``dc_right``, ``heater`` and ``straight`` as MZI components for later call.
+The following code is the design of the ``MZI`` component, first instantiate two ``DC``, each placed at a certain distance from each other on the same horizontal line. Then use ``Linked()`` function to connect ``dc_left``, ``dc_right``, ``heater`` and ``straight`` as MZI components for later call.
 
 ::
 
@@ -238,7 +250,7 @@ The following code is the design of the ``MZI`` component, first instantiate two
           )
             
             
-Part IV. Generation and Arrangement of Spiral
+Part V. Generation and Arrangement of Spiral
 -------------------------------------------------------------------------
 There are a total of 7 spirals in the QKD layout, which are divided into three groups in total, the first group is one, the second group is 2 in series and the third is 4 in series. In the following script, first load each group of spiral with three lists, and then connect each group of spiral to form a separate
 component for later use in the whole connection.      
@@ -282,9 +294,9 @@ component for later use in the whole connection.
                    ],
         )
         
-Part V. Arrangement of MZI & heater
+Part VI. Arrangement of MZI & heater
 ---------------------------------------------------------------------------
-After generating the ``MZI`` components in the previous section, they are placed to the appropriate positions by directly calling and using ``translated``function to change their positions. After the 6 ``MZI`` componets are placed in the right position, ``DC`` and TOPS (``tin_heater``) are generated and arranged reasonably, and finally 4 ``straight`` waveguides are arranged on both edges of the whole layout. In the placement of components in the whole layout, ``.position`` is often used to obtain the port positions of some devices to achieve horizontal alignment of the ports of two devices.
+After generating the ``MZI`` components in the previous section, they are placed to the appropriate positions by directly calling and using ``translated`` function to change their positions. After the 6 ``MZI`` componets are placed in the right position, ``DC`` and TOPS (``tin_heater``) are generated and arranged reasonably, and finally 4 ``straight`` waveguides are arranged on both edges of the whole layout. In the placement of components in the whole layout, ``.position`` is often used to obtain the port positions of some devices to achieve horizontal alignment of the ports of two devices.
 
 .. image:: ../example_image/qkd3.png
 
@@ -332,7 +344,7 @@ Use the ``link_edge`` list to define the ``straight`` waveguide connection metho
         ]
         
 
-Part VI. Arrangement of BondPad and connection of all components
+Part VII. Arrangement of BondPad and connection of all components
 ------------------------------------------------------------------------------
 Use an empty list ``BP[]`` to load all BondPads for easy call later when connection; use ``link_op`` to load ``MZI``, ``spiral``, ``DC``,
 ``heater`` and other devices with the optical port link method loaded up.
@@ -403,3 +415,7 @@ ports.
                 edge_right[3]["op_1"].with_name("op_7"),
             ],
         )
+
+Part VIII. Conclusion
+-----------------------------------------------------------
+In conclusion, we have successfully implemented a QKD receiver using silicon photonics and Python script-driven layout tools. Our design features scalable PCells and an auto-route function, making it easy for users to complete their designs. This is a significant advancement in the field of quantum communication as it allows for the design and implementation of complex QKD systems with ease. Overall, our work demonstrates the potential for using silicon photonics and Python script-driven layout tools in the design of QKD systems and other complex photonic devices.
