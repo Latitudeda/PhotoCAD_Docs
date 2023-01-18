@@ -378,6 +378,7 @@ Finally the gds file is generated in the main function.
         fp.export_gds(library, file=gds_file)
 
 The automatically generated layout is as follows:
+
 .. image:: ../example_image/tri.6.png 
 
 Triangle MZI array (MZI_triangle_array)
@@ -426,6 +427,7 @@ The first 5 for loops are to generate and position all component, including ``MZ
         mzi = cast(Mapping[str, fp.ICellRef], insts)
 
 Here we set ``row=3``, ``col=4`` and the components are being positioned:
+
 .. image:: ../example_image/tri.7.png 
 
 Next, the ``LinkBetween`` function is used to connect the optical ports, ``TECH.WG.FWG.C.WIRE`` and ``TECH.WG.FWG.C.WIRE.BEND_EULER`` are set to be default type of the waveguide and bend, respectively. Due to the complexity of the connection through each port, several for loops are used in the script to achieve auto-routing no matter the size of the circuit.
