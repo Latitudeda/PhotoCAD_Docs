@@ -1,19 +1,19 @@
-Reconfigurable multi-level cross-circuit
+Reconfigurable Multi-Level Cross-Circuit
 ====================
 
 Reconfigurable multi-level cross circuits are a necessary part of designing complex circuits. This section implements the design of reconfigurable multi-level cross circuits using the AMF PDK, which allows users to implement complex designs by simply modifying the script.
 
 The base modules include:
 
-- MMI1×2
-- Cross
+1. ``MMI1×2``
+2. ``Cross``
 
 Part I. Parameter Description
 ---------------------------
 
-- spacing = 200 : Component spacing setting
-- row_number = 8 : Number of units
-- basic_comp_y = RingModulator(transform=fp.rotate(degrees=90)) : Basic Component
+1. ``spacing = 200`` : Component spacing setting
+2. ``row_number = 8`` : Number of units
+3. ``basic_comp_y`` = RingModulator(transform=fp.rotate(degrees=90)) : Basic Component
 
 Part II. Principle Description
 ---------------------------
