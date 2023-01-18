@@ -5,9 +5,9 @@ Programmable photonic circuits are an important discipline in the development of
 
 This section aims to build reconfigurable rectangular optical networks using rectangular networks as an example. The reconfigurable parameters include:
 
-- Basic Module
-- Network Size
-- Design Parameters
+1. Basic Module
+2. Network Size
+3. Design Parameters
 
 Part I. Building a Rectangular Network
 ---------------------------
@@ -208,7 +208,7 @@ Define class PICircuit::
             # fmt: on
             return insts, elems, ports
 
-Call the main function and use the 'Hfanout' function to implement the grating coupler design::
+Call the main function and use the ``Hfanout`` function to implement the grating coupler design::
 
     if __name__ == "__main__":
         from pathlib import Path
@@ -245,10 +245,10 @@ Call the main function and use the 'Hfanout' function to implement the grating c
 Part II. Parameter Description
 ---------------------------
 
-- row_number : Number of horizontal grids of optical network
-- column_number : Number of vertical grids of optical network
-- basic_comp : The base module device, chosen here is the microring modulator
-- spacing : Component spacing setting
+1. ``row_number`` : Number of horizontal grids of optical network
+2. ``column_number`` : Number of vertical grids of optical network
+3. ``basic_comp`` : The base module device, chosen here is the microring modulator
+4. ``spacing`` : Component spacing setting
 
 Part III. Test Description
 ---------------------------
