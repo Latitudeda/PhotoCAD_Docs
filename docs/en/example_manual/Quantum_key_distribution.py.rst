@@ -1,5 +1,6 @@
 Quantum Key Distribution (QKD)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. image:: ../example_image/qkd_re.png
 
 **Quantum Key Distribution Receiver** cite: Sibson, P. et. al., “Chip-based quantum key distribution”, Nature
 Communications, Vol. 8, https://www.nature.com/articles/ncomms13984.pdf (2017)
