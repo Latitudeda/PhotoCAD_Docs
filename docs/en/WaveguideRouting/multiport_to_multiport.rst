@@ -6,7 +6,7 @@ Multi-port to Multi-port
 There are two types of connections from multi-port to multi-port.
 
 1. ``fp.Linked``
-2. ``fp.creatE_links``
+2. ``fp.create_links``
 
 Here's a comparison of the two options
 
