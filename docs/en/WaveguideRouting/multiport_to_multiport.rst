@@ -5,8 +5,8 @@ Multi-port to Multi-port
 
 There are two types of connections from multi-port to multi-port.
 
-- fp.Linked
-- fp.creat_links
+1. fp.Linked
+2. fp.creat_links
 
 Here's a comparison of the two options
 
