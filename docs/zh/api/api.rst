@@ -10,3 +10,5 @@
 .. toctree::
 
     api_geometry
+    api_link
+    api_tool
