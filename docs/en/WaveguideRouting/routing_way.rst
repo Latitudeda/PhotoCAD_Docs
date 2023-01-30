@@ -29,7 +29,7 @@ Here's a comparison of the two options
         waylines=[fp.until_x(-50), fp.until_y(50), fp.until_x(50)]
     )
 
-.. image:: ../images/routing_way_line1.png
+.. image:: ../images/routingpath.1.png
 
 By setting ``Waylines`` so that the wave guide first passes through the line ``x=-50`` and then through the lines ``y=50``, ``x=50``.
 
@@ -49,7 +49,7 @@ By setting ``Waylines`` so that the wave guide first passes through the line ``x
                   ]
     )
 
-.. image:: ../images/routing_way_line2.png
+.. image:: ../images/routingpath.2.png
 
 Here ``fp.END`` is used to get the position of the end port, and similarly ``fp.START`` can be used to get the position of the start port. Also ``fp.PREV`` to get the position of the last turning point in real time, which allows the user to design based on the last turning point.
 
@@ -69,7 +69,7 @@ Here ``fp.END`` is used to get the position of the end port, and similarly ``fp.
 
     insts += device
 
-.. image:: ../images/routing_way_point.png
+.. image:: ../images/routingpath.3.png
 
 Set ``Waypoints`` to guide the waveguide through the ``Waypoints``, the three values in the ``fp.Waypoint`` brackets represent ``x``,``y``,``angle`` respectively.
 
