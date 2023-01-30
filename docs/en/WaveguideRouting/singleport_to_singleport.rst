@@ -4,9 +4,9 @@ Single-port to Single-port
 
 There are a total of three types of connections from single port to single port:
 
-- fp.LinkBetween
-- TECH.LINKER
-- >>
+1. fp.LinkBetween
+2. TECH.LINKER
+3. >>
 
 Here's a comparison of the three options
 
