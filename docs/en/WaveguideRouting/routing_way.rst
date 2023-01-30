@@ -88,4 +88,6 @@ For the case where the two ports are connected in U-shape, the length can be def
 
     insts += device
 
-.. image:: ../images/routing_way_targetlength.png
+.. image:: ../images/routingpath.4.png
+
+.. image:: ../images/routingpath.5.png
