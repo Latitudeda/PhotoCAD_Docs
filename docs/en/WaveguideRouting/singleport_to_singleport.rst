@@ -4,15 +4,15 @@ Single-port to Single-port
 
 There are a total of three types of connections from single port to single port:
 
-- fp.LinkBetween
-- TECH.LINKER
-- >>
+1. ``fp.LinkBetween``
+2. ``TECH.LINKER``
+3. ``>>``
 
 Here's a comparison of the three options
 
 .. image:: ../images/one_port_to_one_port_en.png
 
-Among them, LinkBetween is relatively flexible and LINKER is relatively short and neat.
+Among them, ``LinkBetween`` is relatively flexible and ``LINKER`` is relatively short and neat.
 
 Examples
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -50,9 +50,9 @@ Examples
 
 The differences between the two methods are:
 
-1. LinkBetween requires setting the waveguide type and bendfactory to define the waveguide and bend in the routing.
+1. ``LinkBetween`` requires setting the ``waveguide_type`` and ``bendfactory`` to define the waveguide and bend in the routing.
 
-2. LINKER is already configured in the technology file, no need to define waveguide type and bendfactory again.
+2. ``LINKER`` is already configured in the ``technology`` file, no need to define ``waveguide_type`` and ``bendfactory`` again.
 
 Code details::
 

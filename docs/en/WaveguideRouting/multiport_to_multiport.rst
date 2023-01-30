@@ -5,14 +5,14 @@ Multi-port to Multi-port
 
 There are two types of connections from multi-port to multi-port.
 
-- fp.Linked
-- fp.creat_links
+1. ``fp.Linked``
+2. ``fp.create_links``
 
 Here's a comparison of the two options
 
 .. image:: ../images/multiport_to_multiport_en.png
 
-fp.Linked example (Recommendation★★★)::
+``fp.Linked`` example ( Recommendation★★★ )::
 
     # Interconnecting device ports by calling the Linked method
     device = fp.Linked(
@@ -44,7 +44,7 @@ fp.Linked example (Recommendation★★★)::
 
 .. image:: ../images/multi2multi.1.png
 
-fp.create_links example (Recommendation★★★★★)::
+``fp.create_links`` example ( Recommendation★★★★★ )::
 
     # Interconnecting device ports by calling the create_links method
     device = fp.create_links(

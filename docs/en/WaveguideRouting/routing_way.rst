@@ -3,14 +3,12 @@ Routing Path Selection
 
 There are two ways to choose a path.
 
-- waypoints
-- waylines
+1. ``waypoints``
+2. ``waylines``
 
-Waypoints and waylines are used as parameters in the routing method to aid in waveguide alignment and avoidance.；
+``Waypoints`` and ``Waylines`` are used as parameters in the routing method to aid in waveguide alignment and avoidance, however, they cannot be used at the same time；
 
-Waypoints and waylines cannot be used at the same time；
-
-Waylpoints can set the turning angle, waylines can be more concise to do 90 degrees of turning.
+``Waypoints`` can set the turning angle, ``Waylines`` can be more concise to do 90 degrees of turning.
 
 Here's a comparison of the two options
 
@@ -18,7 +16,7 @@ Here's a comparison of the two options
 
 
 
-waylines example1
+``Waylines`` example1
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 ::
 
@@ -31,11 +29,11 @@ waylines example1
         waylines=[fp.until_x(-50), fp.until_y(50), fp.until_x(50)]
     )
 
-.. image:: ../images/routing_way_line1.png
+.. image:: ../images/routingpath.1.png
 
-By setting waylines so that the wave guide first passes through the line x=-50 and then through the lines y=50, x=50.
+By setting ``Waylines`` so that the wave guide first passes through the line ``x=-50`` and then through the lines ``y=50``, ``x=50``.
 
-waylines example2::
+``Waylines`` example2::
 
     device = fp.LinkBetween(
         start=gc1["op_0"],
@@ -51,11 +49,11 @@ waylines example2::
                   ]
     )
 
-.. image:: ../images/routing_way_line2.png
+.. image:: ../images/routingpath.2.png
 
-Here fp.END is used to get the position of the end port, and similarly fp.START can be used to get the position of the start port. Also fp.PREV to get the position of the last turning point in real time, which allows the user to design based on the last turning point.
+Here ``fp.END`` is used to get the position of the end port, and similarly ``fp.START`` can be used to get the position of the start port. Also ``fp.PREV`` to get the position of the last turning point in real time, which allows the user to design based on the last turning point.
 
-waypoints example::
+``Waypoints`` example::
 
     device = fp.LinkBetween(
         start=gc1["op_0"],
@@ -71,23 +69,25 @@ waypoints example::
 
     insts += device
 
-.. image:: ../images/routing_way_point.png
+.. image:: ../images/routingpath.3.png
 
-Set waypoints to guide the waveguide through the path points, the three values in the fp.Waypoints brackets represent x,y,angle respectively.
+Set ``Waypoints`` to guide the waveguide through the ``Waypoints``, the three values in the ``fp.Waypoint`` brackets represent ``x``,``y``,``angle`` respectively.
 
-For the case where the two ports are connected in U-shape, the target length can be defined by setting the target_length parameter in linkbetween and LINKER, and the waveguide will automatically extend the straight waveguide to the corresponding length, where target_length is the total length of the entire wiring waveguide.
+For the case where the two ports are connected in U-shape, the length can be defined by setting the ``target_length`` parameter in ``LinkBetween`` and ``LINKER``, and the waveguide will automatically extend the straight waveguide to the corresponding length, where ``target_length`` is the total length of the entire wiring waveguide.
 
-Target_length example::
+``Target_length`` example::
 
     device = fp.LinkBetween(
         start=gc1["op_0"],
         end=gc2["op_0"],
         link_type=TECH.WG.SWG.C.EXPANDED,
         bend_factory=TECH.WG.SWG.C.WIRE.BEND_CIRCULAR,
-        # 设置target_length
+        # set target_length
         target_length=500
     )
 
     insts += device
 
-.. image:: ../images/routing_way_targetlength.png
+.. image:: ../images/routingpath.4.png
+
+.. image:: ../images/routingpath.5.png
