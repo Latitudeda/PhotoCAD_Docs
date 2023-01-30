@@ -42,7 +42,7 @@ fp.Linked example (Recommendation★★★)::
     # Add the device returned by Linked to insts
     insts += device
 
-.. image:: ../images/multiport_to_multiport_example_1.png
+.. image:: ../images/multi2multi.1.png
 
 fp.create_links example (Recommendation★★★★★)::
 
@@ -76,9 +76,9 @@ fp.create_links example (Recommendation★★★★★)::
     # Add the device returned by create_links to insts
     insts += device
 
-.. image:: ../images/multiport_to_multiport_example_2.png
+.. image:: ../images/multi2multi.1.png
 
-.. image:: ../images/multiport_to_multiport_example_messagebox.png
+.. image:: ../images/multi2multi.3.png
 
 The message box shows that the lengths of each of the three connected links are printed.
 
