@@ -45,7 +45,7 @@ Examples
     # Add the devices returned by Linked to insts
     insts += device
 
-.. image:: ../images/one_port_to_one_port_examples.png
+.. image:: ../images/single2single.png
 
 
 The differences between the two methods are:
