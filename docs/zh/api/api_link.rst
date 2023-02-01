@@ -8,4 +8,4 @@
     fp.creat_links
     fp.Connect
 
-具体用法参照（:doc:`WaveguideRouting/Summary`）
+具体用法参照（:doc:`../WaveguideRouting/Summary`）

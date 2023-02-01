@@ -21,4 +21,4 @@
     bool = rect - circ
     bool = rect ^ circ
 
-具体用法参照（:doc:`Step1`）
+具体用法参照（:doc:`../Tutorials/Step1`）
