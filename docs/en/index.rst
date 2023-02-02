@@ -44,6 +44,7 @@ Contents
    
 .. toctree::
    :caption: Support and Changelog
+   
    Release notes/Release notes PhotoCAD V1.5.0
    AboutUS
 
