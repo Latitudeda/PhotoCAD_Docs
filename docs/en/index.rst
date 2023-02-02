@@ -45,6 +45,6 @@ Contents
 .. toctree::
    :caption: Support and Changelog
    
-   Release notes/index
+   Release_notes/index
    AboutUS
 
