@@ -1,7 +1,7 @@
 Quick Start
 ==================================
 
-This section is a quick guide to creating circuits and is designed for users to quickly learn the design of a circuit from the basic components to the complete circuit.
+This section is a guide to create circuits and is designed for users to learn the design of a circuit from the basic components to the complete circuit.
 
 .. image:: ../images/Quick_guide_intro.png
 
