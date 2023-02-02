@@ -8,7 +8,7 @@ Contents
    
    Introduction/index
    Installation/index
-   
+   QuickStart/quickstart
    gpdk/QuickCreatePDK
    
    
