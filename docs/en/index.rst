@@ -8,7 +8,7 @@ Contents
    
    Introduction/index
    Installation/index
-   Tutorials/Quickstart
+   
    gpdk/QuickCreatePDK
    
    
@@ -16,6 +16,7 @@ Contents
 .. toctree::   
    :caption: Tutorials
    
+   Tutorials/Quickstart
    WaveguideRouting/Summary
    example_manual/routing_list
    example_manual/component_list
