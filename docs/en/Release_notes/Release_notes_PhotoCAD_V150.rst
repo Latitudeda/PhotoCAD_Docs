@@ -1,4 +1,4 @@
-PhotoCAD V1.5.0 Update Content
+PhotoCAD V1.5.0 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The long-awaited version update is here, and the software will support more concise design syntax and more efficient design methods, while normalizing some ambiguous content.
 
