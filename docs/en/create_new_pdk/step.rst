@@ -6,4 +6,9 @@ Steps
 3. Adjust ``technology/wg`` 
 4. Adjust ``technology/ _init_.py``
 5. Adjust ``technology/tech``
-6. Adjust ``component/transition`` them ``technology/auto_transition``
+6. Adjust ``component/transition`` then ``technology/auto_transition``
+7. Adjust ``component/via/via&vias`` then ``technology/auto_vias``
+
+8. Import foundry gds file, then create json file (name=foundry gds file name) & .py file (name= fixed+foundry gds file name).
+
+9. component/Straight, taper, bend, splitter, sbend, dc, ringresonator, ring filter, mzi, mmi, metal_taper, tinheater, gc, bondpad 
