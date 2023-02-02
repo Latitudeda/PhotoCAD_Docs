@@ -1,4 +1,4 @@
-Create a Circuit
+Quick Start: Create a Circuit
 ==================================
 
 This section is a guide to create circuits and is designed for users to learn the design of a circuit from the basic components to the complete circuit.
