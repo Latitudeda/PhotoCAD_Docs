@@ -1,7 +1,7 @@
-PhotoCAD产品手册资料
+PhotoCAD User Manual
 ====================================
 
-目录
+Contents
 --------
 
 .. toctree::
@@ -41,5 +41,9 @@ PhotoCAD产品手册资料
    
    fnpcell/index
    fnpcell/all
+   
+.. toctree::
+   :caption: Support and Changelog
+   Release notes
    AboutUS
 
