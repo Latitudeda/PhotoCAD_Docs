@@ -7,7 +7,7 @@ Contents
 .. toctree::
    
  
-    
+   Installation/installation 
    Tutorials/Quickstart
    gpdk/QuickCreatePDK
    
