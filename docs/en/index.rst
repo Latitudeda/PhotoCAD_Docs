@@ -41,6 +41,7 @@ Contents
    
    fnpcell/index
    fnpcell/all
+   Release_notes/index
    
 .. toctree::
    :caption: Support and Changelog
