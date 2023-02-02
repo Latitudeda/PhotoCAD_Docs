@@ -21,5 +21,29 @@ This section is for users who have installed PyCharm (Python 3.8) and are famili
    After running ``bend_bezier.py``, a local folder will be generated under ``gpdk`` > ``components`` > ``bend``, and the ``bend_bezier.gds`` file will be generated in the local folder (currently there is already a local folder under the bend folder, no new local folder will be created after running the script, and the generated file will replace the file of the same name in the local folder by default). Note that there are two common ways to run this script file.
   
    4.1. Click the right button in the code editing area, and then click ``Run bend_bezier`` as indicated by the red arrow in the figure.
+   
+   .. image:: ../images/quickstart2.png
+   
+   4.2 Make sure that the first red arrow shows ``Current File`` or ``bend_bezier`` before clicking the button pointed to by the second arrow.
+   
+   .. image:: ../images/quickstart3.png
+   
+   4.3 After running and succeeding, you can see the message shown below.
+   
+   .. image:: ../images/quickstart4.png
+   
+   4.4 Use a layout tool such as KLayout to open the GDS file to view the device. In the Cell list, you can see two layout cells: ``BendBezier`` and ``BendBezier_q``. The current display is ``BendBezier_q``.
+   
+   .. image:: ../images/quickstart5.png
+
+5. Use ``class`` to create the corresponding device (instance).
+
+   Viewing the ``bend_bezier.py`` source code in PyCharm, the source code creates two instances of ``class BendBezier()`` by ``library +=``::
+   
+      library += BendBezier()
+      library += BendBezier(name="q", start=(0, 0), controls=[(30, 30)], end=(60, 0), waveguide_type=TECH.WG.FWG.C.WIRE)
+
+   
+
 
 
