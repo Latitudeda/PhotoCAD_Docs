@@ -7,7 +7,7 @@ Contents
 .. toctree::
    
  
-   Installation/installation 
+   Installation/index
    Tutorials/Quickstart
    gpdk/QuickCreatePDK
    
@@ -41,7 +41,7 @@ Contents
    
    fnpcell/index
    fnpcell/all
-   Release_notes/Release_notes_PhotoCAD_V1.5.0
+   
    
 .. toctree::
    :caption: Support and Changelog
