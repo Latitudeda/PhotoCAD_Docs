@@ -1,4 +1,4 @@
-Installing PhotoCAD
+Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 System Requirement
