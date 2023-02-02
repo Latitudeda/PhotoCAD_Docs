@@ -33,15 +33,7 @@ Contents
    example_manual/Optical_phased_array.py
    example_manual/Quantum_key_distribution.py
    
-   
-
-
-
-.. toctree::   
-   :caption: Others
-   
-   fnpcell/index
-   fnpcell/all
+  
    
    
 .. toctree::
