@@ -9,6 +9,7 @@ Contents
    Introduction/index
    Installation/index
    QuickStart/quickstart
+   gpdk_manual/index
    gpdk/QuickCreatePDK
    
    
