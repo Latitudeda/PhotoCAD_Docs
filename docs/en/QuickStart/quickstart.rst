@@ -41,9 +41,22 @@ This section is for users who have installed PyCharm (Python 3.8) and are famili
    Viewing the ``bend_bezier.py`` source code in PyCharm, the source code creates two instances of ``class BendBezier()`` by ``library +=``::
    
       library += BendBezier()
-      library += BendBezier(name="q", start=(0, 0), controls=[(30, 30)], end=(60, 0), waveguide_type=TECH.WG.FWG.C.WIRE)
-
+      library += BendBezier(name="q", start=(0, 0), controls=[(30, 30)], end=(60, 0), waveguide_type=TECH.WG.FWG.C.WIRE), transform=fp.translate(0,40))
+      
+   Where the first device is generated using the default parameters; the second device is generated using the following parameters::
    
+      name="q"                       Define the device specific name q;
+      start=(0, 0)                   Define the starting point of the Bezier curve as (0,0);
+      controls=[(30, 30)]            Define the Bezier curve passing through a control point (30,30);
+      end=(60, 0)                    Define the end point of the Bezier curve as (60,0);
+      waveguide_type=WG.FWG.C.WIRE   Defines the type of waveguide used for the curve;
+      transform=fp.translate(0, 40)) Defines the position of the layout cell with respect to the origin;
+      
+   For a detailed description of the parameters of this device, please refer to the description in the python script shown in the figure:
+   
+   .. image:: ../images/quickstart6.png
+   
+6. Try to modify the number of instances and parameters generated in the bend_bezier.py source code, and observe the changes in the shape of its layout.
 
 
 
