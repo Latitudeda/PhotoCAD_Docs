@@ -1,4 +1,4 @@
-Exporting Netlist in PhotoCAD
+Export Netlist
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **PhotoCAD** can export the SPICE format netlist while completing the layout design by scripting. 
