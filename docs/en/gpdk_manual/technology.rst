@@ -6,21 +6,21 @@ Default process
 
 The technology in gpdk holds a number of common configuration files dealing with process and layout display, such as:
    
-- Process layers definitions: ``layers.py``
+* Process layers definitions: ``layers.py``
    
-- Layers display settings: ``display.py``
+* Layers display settings: ``display.py``
    
-- Layout pattern accuracy setting: ``metrics.py``
+* Layout pattern accuracy setting: ``metrics.py``
    
-- Waveguide type definitions: ``wg.py``
+* Waveguide type definitions: ``wg.py``
    
-- Routing-related settings definition: ``auto_link.py``
+* Routing-related settings definition: ``auto_link.py``
    
-- Automatic waveguide type transition: ``auto_transition.py``
+* Automatic waveguide type transition: ``auto_transition.py``
    
-- Waveguide corner customization: ``auto_bend.py``
+* Waveguide corner customization: ``auto_bend.py``
    
-- Metal wiring related settings: ``auto_via.py``, ``fitting_function.py``
+* Metal wiring related settings: ``auto_via.py``, ``fitting_function.py``
    
 Note: The drc subfolder of technology contains the design rule check template based on the current process generated layout, the Calibre\ :sup:`TM` DRC rule deck template script.
    
@@ -37,21 +37,21 @@ First double-click on the file to open the table as shown below:
    
 .. image:: ../images/technology3.png
    
-- ``LAYER`` and ``DATATYPE`` together determine the number of the layer.
+* ``LAYER`` and ``DATATYPE`` together determine the number of the layer.
    
-- ``NAME`` is used to define the name of the layer.
+* ``NAME`` is used to define the name of the layer.
    
-- ``DESCRIPTION`` is the description of the layer.
+* ``DESCRIPTION`` is the description of the layer.
    
-- ``PROCESS`` and ``PROCESS_DESCRIPTION`` are used to define and describe the etching process, respectively.
+* ``PROCESS`` and ``PROCESS_DESCRIPTION`` are used to define and describe the etching process, respectively.
    
-- ``PURPOSE`` and ``PURPOSE_DESCRIPTION`` are used to define and describe the processing process respectively.
+* ``PURPOSE`` and ``PURPOSE_DESCRIPTION`` are used to define and describe the processing process respectively.
    
-- ``FILL_COLOR`` is used to define the color of the filled layer.
+* ``FILL_COLOR`` is used to define the color of the filled layer.
    
-- ``FILL_PATTERN`` is used to define the graphics of the filled layer, mainly ``diagonal`` and ``back-diagonal``.
+* ``FILL_PATTERN`` is used to define the graphics of the filled layer, mainly ``diagonal`` and ``back-diagonal``.
    
-- ``STROKE_COLOR`` is used to define the color of the border of the layer. 
+* ``STROKE_COLOR`` is used to define the color of the border of the layer. 
    
 All these information are user-defined.
    
