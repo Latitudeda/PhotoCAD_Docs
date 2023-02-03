@@ -1,10 +1,10 @@
-Components provided by **gpdk**
+Components: Provided by **gpdk**
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The components folder in gpdk holds all Python scripts for parametric component layout units, where each type of parametric component unit is stored in a subfolder named after the component unit, such as ``bend``, ``bondpad``, ``combiner``, and other component subfolders.
+The **components** folder in gpdk holds all Python scripts for parametric component layout units, where each type of parametric component unit is stored in a subfolder named after the component unit, such as ``bend``, ``bondpad``, ``combiner``, and other component subfolders.
 
 .. image:: ../images/component1.png
 
-Each single component subfolder within the components folder contains the Python script source code for that class of component.
+Each single component subfolder within the **components** folder contains the Python script source code for that class of component.
 
 Take the ``bend`` folder as an example: 
 
