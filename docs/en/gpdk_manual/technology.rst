@@ -1,7 +1,7 @@
 **Technology**: Process related settings in gpdk
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Default process:
+Default process
 ------------------------------------------
 
 The technology in gpdk holds a number of common configuration files dealing with process and layout display, such as:
@@ -26,7 +26,7 @@ Note: The drc subfolder of technology contains the design rule check template ba
    
 .. image:: ../images/technology1.png
     
-Customized process:
+Customized process
 ---------------------------------------------------
 
 In order to be more convenient for users to use and customize the process information, mainly for ``layers.py`` and  ``display.py``, **technology** provides a convenient user-defined file ``layers.csv`` file, users can open ``gpdk`` > ``technology`` > ``layers.csv`` file to customize their relevant processes.
@@ -91,7 +91,7 @@ to::
     
 Save it again and then you can use the custom process information.
 
-Waveguide information:
+Waveguide information
 -----------------------------------------------------
 
 In order to be more convenient for users to view the information of the waveguide process in use, **technology** provides a convenient method to reverse the python source file to generate a csv netlist file, users can open ``gpdk`` > ``technology`` > ``wg.py`` and run it, then the ``wg.csv`` file will be generated in the generate folder, you can open the file to quickly view various information related to waveguide.
