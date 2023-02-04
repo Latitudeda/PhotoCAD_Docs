@@ -121,6 +121,7 @@ Create extended ports and export layout
 Here we implement the device port extension by using the ``Extended`` class, where ``device`` receives the devices that need to be extended, ``waveguide_type`` receives the type of the extended waveguide, and ``lengths`` receives the length of each port that needs to be extended. The following figure shows the result of extending the port along.      
 
 GDS Layout
+-----------------
 
 .. image:: ../images/extend1.png
         
