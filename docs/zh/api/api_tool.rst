@@ -5,8 +5,8 @@
 
     translated
     rotated
-    h_mirror
-    v_mirror
+    h_mirrored
+    v_mirrored
     repositioned
     position
     get_bounding_box
@@ -299,7 +299,7 @@ rotated
 
 .. image:: ../images/api_tool_rotated.png
 
-h_mirror
+h_mirrored
 ---------------------------
 
 案例代码::
