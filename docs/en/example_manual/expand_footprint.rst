@@ -6,4 +6,4 @@ In photonic circuit layout design, there are often scenarios where space needs t
 **PhotoCAD** includes tools to expand the layout space for downstream devices, enabling the design of optical signals to be assigned to downstream device layouts via ``DirectionalCoupler``.
 
 .. toctree::
- hfanout.py
+ h_fanout.py
