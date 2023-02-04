@@ -134,7 +134,7 @@ translated
 
 将组件向Y轴正向15个基本单位
 
-案例展示::
+案例展示:
 
 .. image:: ../images/api_tool_translated.png
 
@@ -295,7 +295,7 @@ rotated
 
 组件逆时针依次旋转10度，并放置到相应位置。从左至右，从下至上。
 
-案例展示::
+案例展示:
 
 .. image:: ../images/api_tool_rotated.png
 
@@ -593,18 +593,89 @@ v_mirrored
 repositioned
 ---------------------------
 
-Positioned at new point,Owner will translated.
+案例代码::
 
-Attributes
-target
-any drawable instance, such as IPolygon, ICell, ICellRef, ILibrary …
-Returns
-(x_min,y_min,x_max,y_max) Usage:
+    from dataclasses import dataclass
+    from fnpcell import all as fp
+    from gpdk import all as pdk
+    from gpdk.technology import get_technology
 
-(x_min, y_min), (x_max, y_max) = fp.get_bounding_box(cell)
+
+    @dataclass(eq=False)
+    class PortTransform(fp.PCell):
+        def build(self):
+            insts, elems, ports = super().build()
+            # fmt: off
+            TECH = get_technology()
+
+            bend_bezier0 = pdk.BendBezier(start=(0, 0), controls=[(30, 30)], end=(60, 0), waveguide_type=TECH.WG.FWG.C.WIRE)
+            insts += bend_bezier0
+
+            bend_repositioned = bend_bezier0['op_1'].repositioned(at=bend_bezier0["op_0"]).owner
+            insts += bend_repositioned
+
+            # bend_bezier = bend_bezier0.translated(0, 100)
+            # insts += bend_bezier
+            # bend_rotated = bend_bezier['op_1'].rotated(degrees=60).owner
+            # insts += bend_rotated
+            #
+            # bend_bezier = bend_bezier0.translated(100, 0)
+            # insts += bend_bezier
+            # bend_h = bend_bezier['op_1'].h_mirrored().owner
+            # insts += bend_h
+            #
+            # bend_bezier = bend_bezier0.translated(100, 100)
+            # insts += bend_bezier
+            # bend_v = bend_bezier['op_1'].v_mirrored().owner
+            # insts += bend_v
+            #
+            # bend_bezier = bend_bezier0.translated(0, 200)
+            # insts += bend_bezier
+            # bend_c = bend_bezier['op_1'].c_mirrored().owner
+            # insts += bend_c
+
+            # fmt: on
+            return insts, elems, ports
+
+
+    if __name__ == "__main__":
+        from gpdk.util.path import local_output_file
+
+        gds_file = local_output_file(__file__).with_suffix(".gds")
+        library = fp.Library()
+
+        TECH = get_technology()
+        # =============================================================
+        # fmt: off
+
+        library += PortTransform()
+
+        # fmt: on
+        # =============================================================
+        # fp.export_gds(library, file=gds_file)
+        fp.plot(library)
+
+功能说明::
+
+    bend_repositioned = bend_bezier0['op_1'].repositioned(at=bend_bezier0["op_0"]).owner
+    insts += bend_repositioned
+
+将新建器件端口'op_1'放置到原有器件"op_0"端口处
+
+案例展示:
+
+.. image:: ../images/api_tool_repo.png
 
 position
 ---------------------------
 
+案例代码::
+
+功能说明::
+
 get_bounding_box
 ---------------------------
+
+案例代码::
+
+功能说明::
