@@ -540,7 +540,7 @@ Full script
 Section Description
 -----------------------------------------------------------
 
-1. Importing python libraries and functional modules of PhotoCAD::
+#. Importing python libraries and functional modules of PhotoCAD::
 
       import math
       from dataclasses import dataclass
@@ -555,8 +555,7 @@ Section Description
       from gpdk.technology import get_technology
       from gpdk.util import all as util
     
-
-2. Define device adaptation, fiber coupling, constant fiber coupler and several other classes::
+#. Define device adaptation, fiber coupling, constant fiber coupler and several other classes::
 
       class DeviceAdapter(Protocol):
           def __call__(self, device: fp.IDevice) -> fp.IDevice:
@@ -579,7 +578,7 @@ Section Description
               return (coupler, port)
               
               
-3. Define the batch class Block::
+#. Define the batch class Block::
 
       class Block:
           def __init__(
@@ -597,7 +596,7 @@ Section Description
               self.bend_factory = bend_factory
               self.bend_factories = bend_factories
 
-4. Define modular class Alignment::
+#. Define modular class Alignment::
 
     class Alignment(Block):
         def __init__(
@@ -618,7 +617,7 @@ Section Description
                 ),
                 offset=offset,
 
-5. Define modular class Title::
+#. Define modular class Title::
 
     class Title(Block):
         def __init__(
@@ -644,7 +643,7 @@ Section Description
             )
             self.gap = gap
 
-6. Define modular class Blank::
+#. Define modular class Blank::
 
     class Blank(Block):
         def __init__(
@@ -659,13 +658,13 @@ Section Description
             self.left = left
             self.right = right
 
-7. Define method to get the port center::
+#. Define method to get the port center::
 
     def _get_ports_center_y(ports: Iterable[fp.IPort]):
         ys = tuple(p.position[1] for p in ports)
         return (min(ys) + max(ys)) / 2
 
-8. Define methods for obtaining module content::
+#. Define methods for obtaining module content::
 
     def _get_block_content(block: Block, left_y: float, right_y: float, spacing: float, device_adapter: DeviceAdapter):
         SHORT_STRAIGHT = 1
@@ -705,7 +704,7 @@ Section Description
 
         return device_adapter(device=block_content).translated(tx, ty)
 
-9. Define CompScan class::
+#. Define CompScan class::
 
     @dataclass(eq=False)
     class CompScan(fp.PCell):
@@ -898,7 +897,7 @@ Section Description
             insts += content
             return insts, elems, ports
 
-10. Define CompScanBuilder class::
+#. Define CompScanBuilder class::
 
       class CompScanBuilder:
           blocks: List[Block]
@@ -982,7 +981,7 @@ Section Description
           def add_blank(self, left: int = 1, right: int = 1):
               self.blocks.append(Blank(left=left, right=right))
 
-11. Create the component and export the layout::
+#. Create the component and export the layout::
 
       if __name__ == "__main__":
           from pathlib import Path
