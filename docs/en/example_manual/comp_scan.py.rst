@@ -537,7 +537,7 @@ Full script
         # fp.plot(library)
         
         
-Section Description
+Section Script Definition
 -----------------------------------------------------------
 
 Importing python libraries and functional modules of PhotoCAD
@@ -557,7 +557,9 @@ Importing python libraries and functional modules of PhotoCAD
       from gpdk.technology import get_technology
       from gpdk.util import all as util
     
-#. Define device adaptation, fiber coupling, constant fiber coupler and several other classes::
+Define device adaptation, fiber coupling, constant fiber coupler and several other classes
+=================================================================================================
+::
 
       class DeviceAdapter(Protocol):
           def __call__(self, device: fp.IDevice) -> fp.IDevice:
@@ -580,7 +582,10 @@ Importing python libraries and functional modules of PhotoCAD
               return (coupler, port)
               
               
-#. Define the batch class Block::
+Define the batch class ``Block``
+===========================================================================
+::
+
 
       class Block:
           def __init__(
@@ -598,7 +603,10 @@ Importing python libraries and functional modules of PhotoCAD
               self.bend_factory = bend_factory
               self.bend_factories = bend_factories
 
-#. Define modular class Alignment::
+Define ``Alignment``
+===========================================================================
+::
+
 
     class Alignment(Block):
         def __init__(
@@ -619,7 +627,10 @@ Importing python libraries and functional modules of PhotoCAD
                 ),
                 offset=offset,
 
-#. Define modular class Title::
+Define ``Title``
+===========================================================================
+::
+
 
     class Title(Block):
         def __init__(
@@ -645,7 +656,10 @@ Importing python libraries and functional modules of PhotoCAD
             )
             self.gap = gap
 
-#. Define modular class Blank::
+Define ``Blank``
+===========================================================================
+::
+
 
     class Blank(Block):
         def __init__(
@@ -660,13 +674,18 @@ Importing python libraries and functional modules of PhotoCAD
             self.left = left
             self.right = right
 
-#. Define method to get the port center::
+Define method to get the port center
+===========================================================================
+::
 
     def _get_ports_center_y(ports: Iterable[fp.IPort]):
         ys = tuple(p.position[1] for p in ports)
         return (min(ys) + max(ys)) / 2
 
-#. Define methods for obtaining module content::
+Define methods for obtaining module content
+===========================================================================
+::
+
 
     def _get_block_content(block: Block, left_y: float, right_y: float, spacing: float, device_adapter: DeviceAdapter):
         SHORT_STRAIGHT = 1
@@ -706,7 +725,9 @@ Importing python libraries and functional modules of PhotoCAD
 
         return device_adapter(device=block_content).translated(tx, ty)
 
-#. Define CompScan class::
+Define ``CompScan``
+===========================================================================
+::
 
     @dataclass(eq=False)
     class CompScan(fp.PCell):
@@ -899,7 +920,10 @@ Importing python libraries and functional modules of PhotoCAD
             insts += content
             return insts, elems, ports
 
-#. Define CompScanBuilder class::
+Define ``CompScanBuilder``
+===========================================================================
+::
+
 
       class CompScanBuilder:
           blocks: List[Block]
@@ -983,7 +1007,10 @@ Importing python libraries and functional modules of PhotoCAD
           def add_blank(self, left: int = 1, right: int = 1):
               self.blocks.append(Blank(left=left, right=right))
 
-#. Create the component and export the layout::
+Create the component and export the layout
+===========================================================================
+::
+
 
       if __name__ == "__main__":
           from pathlib import Path
@@ -1080,6 +1107,42 @@ Importing python libraries and functional modules of PhotoCAD
           fp.export_gds(library, file=gds_file)
           # fp.plot(library)
 
+Script Description
+-----------------------------
+
+The first function ``get_ring_resonator_with_terminator`` defines the ring resonator cavity to be placed in the middle.
+
+Then 10 modules are called through ``blocks``, in the order of script definition:
+
+#. waveguide connection
+#. text label
+#. 1 ring resonator cavity (radius 25)
+#. right GC (blank in the right)
+#. 3 ring resonator cavity (radius 50)
+#. 3 ring resonator cavity (radius 75)
+#. 1 ring resonator cavity (radius 90)
+#. right GC (blank in the right)
+#. 1 ring filter (radius 25)
+#. 3 ring resonator cavity (radius 90)
+
+The 10 modules will be placed in the layout from the bottom up.
+
+Browse the script will find that in addition to the ``CompScan`` class also defines the ``CompScanBuilder`` class. 
+
+``CompScan`` defines the steps and parameters of graphics generation in detail , the code is intuitive and readable; ``CompScanBuilder`` defines the part of the graphics generation can be summarized and extracted, thus the code is more concise.
+
+GDS Layout
+------------------------------------------
+
+.. image:: ../images/comp_scan1.png
+
+Open the generated ``comp_scan.gds file`` to see that there are several lines of ``GratingCoupler`` placed in the layout with equal spacing from bottom to top.
+
+Line 2, ``Title``, is a text label and there is no port for connection, so there is no GratingCoupler and waveguide for connection on the left and right sides. 
+
+Lines 4, 8, 13 and 14 are defined according to the script, and there is no GratingCoupler and waveguide on the right side. 
+
+The middle part has the called modules from bottom to top, and is connected to the left and right ``GratingCoupler`` by straight waveguides and bend.
 
         
         
