@@ -540,7 +540,9 @@ Full script
 Section Description
 -----------------------------------------------------------
 
-#. Importing python libraries and functional modules of PhotoCAD::
+Importing python libraries and functional modules of PhotoCAD
+===========================================================================
+::
 
       import math
       from dataclasses import dataclass
