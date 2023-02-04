@@ -10,6 +10,7 @@ Contents
    Installation/index
    QuickStart/quickstart
    gpdk_manual/index
+   fnpcell_manual/index
    gpdk/QuickCreatePDK
    
    
