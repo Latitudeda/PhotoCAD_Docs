@@ -242,7 +242,7 @@ Section Script Description
               ports += bend_top["op_1"].with_name(port_names[2])
 
 
-      * Return the instances, elements, and ports in the component unit.
+      * Return the instances, elements, and ports in the component cell.
 
       ::
 
