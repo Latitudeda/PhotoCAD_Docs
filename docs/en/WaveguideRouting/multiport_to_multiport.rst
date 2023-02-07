@@ -12,7 +12,10 @@ Here's a comparison of the two options
 
 .. image:: ../images/multiport_to_multiport_en.png
 
-``fp.Linked`` example ( Recommendation★★★ )::
+``fp.Linked`` example ( Recommendation★★★ )
+-----------------------------------------------
+
+::
 
     # Interconnecting device ports by calling the Linked method
     device = fp.Linked(
@@ -44,7 +47,10 @@ Here's a comparison of the two options
 
 .. image:: ../images/multi2multi.1.png
 
-``fp.create_links`` example ( Recommendation★★★★★ )::
+``fp.create_links`` example ( Recommendation★★★★★ )
+----------------------------------------------------------------
+
+::
 
     # Interconnecting device ports by calling the create_links method
     device = fp.create_links(
