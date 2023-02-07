@@ -289,21 +289,24 @@ Once we have built the class ``BendEuler``, it is convenient to generate more ch
 
         degrees: float = fp.DegreeParam(default=90, min=90, max=90, locked=True, doc="Bend angle in degrees")
 
-   *  A slab square surrounding the bend waveguide is built in class ``EulerBend90``, users can set ``slab_square=True`` to decide if needed.
-
-     ::
-
-         slab_square: bool = fp.BooleanParam(required=False, default=False, doc="whether draw a square clad")
-
-     ::
+   *  A slab square surrounding the bend waveguide is built in class ``EulerBend90``, users can set ``slab_square=True`` to decide if needed::
 
 
-         if self.slab_square:
-             r = self.raw_curve.radius_eff
-             w = r + waveguide_type.cladding_width / 2
-             x = w / 2
-             y = (r - waveguide_type.cladding_width / 2) / 2
-             elems += fp.el.Rect(width=w, height=w, center=(x, y), layer=waveguide_type.cladding_layer)
+
+        slab_square: bool = fp.BooleanParam(required=False, default=False, doc="whether draw a square clad")
+
+        def build(self) -> Tuple[fp.InstanceSet, fp.ElementSet, fp.PortSet]:
+            insts, elems, ports = super().build()
+            waveguide_type = self.waveguide_type
+
+            if self.slab_square:
+                r = self.raw_curve.radius_eff
+                w = r + waveguide_type.cladding_width / 2
+                x = w / 2
+                y = (r - waveguide_type.cladding_width / 2) / 2
+                elems += fp.el.Rect(width=w, height=w, center=(x, y), layer=waveguide_type.cladding_layer)
+
+            return insts, elems, ports
 
 #. BendEuler90_FWG_C_WIRE::
 
