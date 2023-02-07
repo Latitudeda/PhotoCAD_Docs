@@ -9,3 +9,4 @@ Routing automation between components ports
 
  example_linked.py
  example_linked_elec.py
+ auto_transitioned.py
