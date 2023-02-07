@@ -32,3 +32,13 @@ Install PhotoCAD
 -------------------------------
 Once Python and Pycharm are installed, you can follow the steps in the Quick Start to install and license **fnpcell**. After installation, we will find the completed **fnpcell** and **gpdk** packages in ``Lib>site-packages``. **fnpcell** is the main package of **PhotoCAD**, which is used for parametric layout component scripts and layout routing scripts. **gpdk** is a collection of all parametric layout design scripts in **PhotoCAD**. It contains both component cell layout scripts and other design templates based on parametric component cells.
 
+PhotoCAD file structure
+-----------------------------------
+The **PhotoCAD** platform installation package has the following contents:
+ .. image:: ../images/install1.png
+
+* layout01: This folder is used to save project development files.
+* fnpcell-x.x.x-cp38-cp38-win_amd64.whl: Function module installation package in **PhotoCAD**.
+* gpdk-x.x.x-py3-none-any.whl: PCell package in **PhotoCAD**.
+* requirements.txt: Dependency package script for unified installation of **PhotoCAD** dependency packages.
+
