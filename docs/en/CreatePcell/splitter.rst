@@ -1,7 +1,7 @@
 Splitter
 ^^^^^^^^^^^^
 
-This section will introduce customizing the devices in ``gpdk`` from the beginning, using ``Splitter`` as an example. The full script can be found in ``gpdk`` > ``components`` > ``splitter`` > ``y_splitter.py``.
+This section will introduce customizing the components in ``gpdk`` from the beginning, using ``Splitter`` as an example. The full script can be found in ``gpdk`` > ``components`` > ``splitter`` > ``y_splitter.py``.
 
 Full Script
 ================
