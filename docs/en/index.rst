@@ -18,10 +18,11 @@ Contents
 .. toctree::   
    :caption: Tutorials
    
-   Tutorials/Quickstart
+   CreatePcell/index
    WaveguideRouting/Summary
    example_manual/routing_list
    example_manual/component_list
+   Tutorials/Quickstart
    export_netlist_manual/index
 
    
