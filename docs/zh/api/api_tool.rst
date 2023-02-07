@@ -885,9 +885,9 @@ position
 
 功能说明::
 
-    fwg_ring_filter["op_0"].position
+    (x, y) = fwg_ring_filter["op_0"].position
 
-获取组件端口"op_0"的位置
+获取组件端口"op_0"的坐标信息。
 
 get_bounding_box
 ---------------------------
@@ -976,5 +976,6 @@ get_bounding_box
 功能说明::
 
 >>>(x_min, y_min), (x_max, y_max) = fp.get_bounding_box(bond_pad)
+>>>(x_min, y_min), (x_max, y_max) = fp.get_bounding_box(device, exclude_layers=[TECH.LAYER.PINREC_NOTE, TECH.LAYER.PINREC_TEXT])
 
-获取组件的边界
+获取组件的边界,参数“exclude_layers”是一个列表可以将不需要获取边界信息的层放进去，这样就可以获得理想层中结构的边界信息。
