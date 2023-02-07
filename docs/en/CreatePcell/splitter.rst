@@ -141,7 +141,7 @@ Section Script Description
         waveguide_type: CoreCladdingWaveguideType = fp.WaveguideTypeParam(type=CoreCladdingWaveguideType)
         port_names: fp.IPortOptions = fp.PortOptionsParam(count=3, default=("op_0", "op_1", "op_2"))
 
-      In ``Splitter``, two mirrored bends  are used, where the radius of the bend, the angle of the output waveguide, the waveguide type, and the device port are all key variables.
+      * In ``Splitter``, two mirrored bends  are used, where the radius of the bend, the angle of the output waveguide, the waveguide type, and the device port are all key variables.
 
       ``bend_radius： float =fp.PositiveFloatParam()`` defines the radius of bend in ``Splitter``, the data type is positive floating point, set the default value to 15, ``doc=""`` is used to mark the comment description text.
 
@@ -151,7 +151,7 @@ Section Script Description
 
       ``waveguide_type: CoreCladdingWaveguideType = fp.WaveguideTypeParam()`` is used to define the type of the waveguide.
 
-      ``port_names: fp.IPortOptions = fp.PortOptionsParam()``is used to define the number of ports of the component, since it is a Y-shaped branch, so there will be one port on the left and two ports on the right, the total number is ``count=3``. Secondly, the ports are named, and the default is ``default=("op_0", "op_1", "op_2")``, the user can set it by himself.
+      ``port_names: fp.IPortOptions = fp.PortOptionsParam()`` is used to define the number of ports of the component, since it is a Y-shaped branch, so there will be one port on the left and two ports on the right, the total number is ``count=3``. Secondly, the ports are named, and the default is ``default=("op_0", "op_1", "op_2")``, the user can set it by himself.
 
    #. Define a self method to get the default waveguide type::
 
