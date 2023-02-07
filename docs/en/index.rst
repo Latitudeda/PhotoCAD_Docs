@@ -44,5 +44,6 @@ Contents
    :caption: Support and Changelog
    
    Release_notes/index
+   Frequent_question/index
    AboutUS
 
