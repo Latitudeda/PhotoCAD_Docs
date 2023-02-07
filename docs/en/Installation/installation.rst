@@ -35,6 +35,7 @@ Once Python and Pycharm are installed, you can follow the steps in the Quick Sta
 PhotoCAD file structure
 -----------------------------------
 The **PhotoCAD** platform installation package has the following contents:
+
  .. image:: ../images/install1.png
 
 * layout01: This folder is used to save project development files.
