@@ -105,7 +105,7 @@ Section Script Description
         from gpdk.components.taper.taper_linear import TaperLinear
         from gpdk.technology import get_technology
 
-#. Define a new pcell, and a custom Splitter class:
+#. Define a new PCell, and a custom Splitter class:
 
    Define the new parameterized cell via ``fp.PCell`` in fnpcell, which is a new component in gpdk. Then, the new ``Splitter`` class needs to be decorated by ``@dataclass(eq=False)``::
 
