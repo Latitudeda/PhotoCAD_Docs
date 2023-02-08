@@ -1,6 +1,9 @@
 
 Types of simulation model commonly used in **PhotoCAD**
 ----------------------------------------------------------------
+
+**Important note: To run the below simulation models in PhotoCAD, upgrades to fnpcell-1.5.1 and sflow-0.8.36 are required**
+
 Below table lists four commonly used simulation model. To simulate the circuit, users have to define ``sim_model`` function to set the link simulation model for a component, either based on an S-parameter file(e.g. MMI1x2) or based on the behavior described by some formula(e.g. Straight waveguide, Taper).
 
 ``SMatrixWavelengthModel()`` and ``ExternalFileModel()`` can cover full-components models. ``StraightWaveguideModel()`` and ``TaperLinearModel()`` serve a single device as exceptions.
@@ -151,6 +154,12 @@ Specific component simulation model
             return fp.sim.TaperLinearModel([left_model, right_model], length=self.length)
 
 
+Summary
+-----------------------------------
+
+The above four types of device models will be converted into the S-parameter matrix of the corresponding component, and the S-parameter matrix of multiple components will be cascaded to obtain simulation results when running simulation.
+
+It should be noted that when the model sampling point of the device is different from the sampling point set during the link simulation, the engine will perform linear interpolation based on the model of the device to ensure that the model sampling point of each device is consistent with the sampling point set during the link simulation.
 
 
 
