@@ -168,7 +168,7 @@ Below scripts are described step-by-step to show how to run a S-matrix simulatio
         components = gpdk.components.all
 
 
-#. Define the environment of simulation. Note that in ``fp.sim.Env``, ``wl_start``, ``wl_end``, and ``points_num`` are necessary. Users are allowed to define some custom parameters, such as "T" or others::
+#. Define the environment of simulation. Note that in ``fp.sim.Env``, ``wl_start``, ``wl_end``, and ``points_num`` are necessary. Users are allowed to define some custom parameters, such as ``T`` or others::
 
         env = dict(wl_start=1.53, wl_end=1.565, points_num=351, T=300)
 
