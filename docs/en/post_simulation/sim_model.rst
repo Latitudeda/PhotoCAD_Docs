@@ -1,6 +1,6 @@
 
 Types of simulation model commonly used in **PhotoCAD**
-----------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Important note: To run the below simulation models in PhotoCAD, upgrades to fnpcell-1.5.1 and sflow-0.8.36 are required**
 
