@@ -1,4 +1,4 @@
-Example of post-simulation
+MZI simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Full script
