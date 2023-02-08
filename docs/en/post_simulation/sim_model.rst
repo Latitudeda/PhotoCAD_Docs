@@ -8,7 +8,7 @@ Below table lists four commonly used simulation model. To simulate the circuit, 
 
 +---------------------------------+-------------------------------------------------------------------+------------------------------------------------+
 |                                 | The parameters that need to be entered                            | Remark                                         |
-+---------------------------------+-------------------------------------------------------------------+------------------------------------------------+
++=================================+===================================================================+================================================+
 | fp.sim.SMatrixWavelengthModel() | 1. S-matrix;                                                      | Metadata for the ports of symbol in schematic. |
 |                                 | 2. The wavelength range corresponding to the S-matrix;            |                                                |
 |                                 | 3. Metadata(optional)                                             |                                                |
@@ -130,8 +130,28 @@ Below table lists four commonly used simulation model. To simulate the circuit, 
                 return fp.sim.ExternalFileModel(file_path)
 
 
-``StraightWaveguideModel``
+Specific component simulation model
 -----------------------------------
+#. ``StraightWaveguideModel``: In this function, it will automatically calculate the phase and amplitude changes according to the theoretical parameters and the current waveguide length then build the simulation model which is only suitable for ``Straight``. The theoretical parameters are defined in ``wg.py`` in advance.
+
+   Example(check out the full code: ``gpdk`` > ``components`` > ``straight`` > ``straight.py``) ::
+
+        @fp.cache()
+        def sim_model(self, env: fp.ISimEnv):
+            return fp.sim.StraightWaveguideModel(self.waveguide_type.theoretical_parameters, length=self.length)
+
+#. ``TaperLinearModel``: In this function, two theoretical parameters( ``left_type`` and ``right_type`` ) will first been averaged. Then it will automatically calculate the phase and amplitude changes according to the averaged theoretical parameters and the current Taper length then build the simulation model which is only suitable for ``Taper``.
+
+   Example(check out the full code: ``gpdk`` > ``components`` > ``taper`` > ``taper_linear.py``) ::
+
+        @fp.cache()
+        def sim_model(self, env: fp.ISimEnv):
+            left_model = self.left_type.theoretical_parameters
+            right_model = self.right_type.theoretical_parameters
+            return fp.sim.TaperLinearModel([left_model, right_model], length=self.length)
+
+
+
 
 
 
