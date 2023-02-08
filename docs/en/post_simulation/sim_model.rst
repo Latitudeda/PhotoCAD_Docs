@@ -27,7 +27,7 @@ Below table lists four commonly used simulation model. To simulate the circuit, 
 
 ``SMatrixWavelengthModel``
 --------------------------------------------
-``SMatrixWavelengthModel`` creates a user-defined S-matrix and send the S-parameter to the simulation model, simulation parameters such as wavelength, effective index, propagation loss, temperature can be added in the model. ``gpdk`` > ``components`` > ``straight`` > ``straight.py`` shows an example of defining ````SMatrixWavelengthModel`` in a straight waveguide.
+``SMatrixWavelengthModel`` creates a user-defined S-matrix and send the S-parameter to the simulation model, simulation parameters such as wavelength, effective index, propagation loss, temperature can be added in the model. ``gpdk`` > ``components`` > ``straight`` > ``straight.py`` shows an example of defining ``SMatrixWavelengthModel`` in a straight waveguide.
 
 
 #. Define the simulation model in ``Straight`` and import necessary module::
