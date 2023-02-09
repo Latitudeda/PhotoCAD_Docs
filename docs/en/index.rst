@@ -35,7 +35,6 @@ Contents
    PICircuits/TICircuits
    example_manual/example_demultiplexer2.py
    example_manual/Optical_phased_array.py
-   example_manual/Quantum_key_distribution.py
    post_simulation/index
    
   
