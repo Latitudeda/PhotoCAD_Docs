@@ -1,14 +1,10 @@
 Optical Phased Array (OPA)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The integrated optical phased array (OPA) enables low-loss beam steering compared to the Bulk optics system and has applications in the following areas:
+In this work, we present the implementation of an optical phase array layout using **PhotoCAD** layout tool. The field of silicon photonics has seen significant growth in recent years, with the integration of optical components and systems onto silicon chips becoming increasingly important for various applications, including high-speed data communication [1]_ , optical sensing [2]_, and LiDAR [3]_ .
 
-* Sensing
-* Imaging
-* Light Detection and Ranging (LiDAR)
-* Displays
-* Telecommunications
+An optical phase array is a crucial component in many of these applications, allowing for the control and manipulation of the phase of light in optical systems. To achieve this, we utilized **PhotoCAD**, a leading layout tool for photonic devices, to design and implement our optical phase array.The layout of the optical phase array was optimized to meet the specific requirements of our application, taking into consideration parameters such as waveguide dimensions and grating period. The resulting layout was then transferred to a silicon wafer for fabrication, following standard silicon photonics fabrication processes.
 
-**PhotoCAD** design automation platform is well suited for OPA design because it is developed and used in Python 3.X with a powerful ecosystem and third-party toolkit support, and can call on a variety of simulation software under Python 3.X to **update structural parameters and simulate in real time**. By learning how to create OPAs in code below, designers can extend simple design concepts to large designs that are easy to simulate.
+The implementation of an optical phase array using **PhotoCAD** represents a significant step forward in the development of silicon photonic devices, providing a low-cost and efficient means to control the phase of light in optical systems. This work highlights the importance of accurate and efficient photonic layout tools in the development of cutting-edge silicon photonic technologies.
 
 
 Introduction
@@ -53,15 +49,12 @@ Full script
             for i in range(order):
                 for j in range(num_per_col[i]):
                     x = i * x_spacing
-                    y = (-(num_per_col[i] - 1) * v_spacing[i]/2) + j * v_spacing[i] # bottom mmi y = 0
+                    y = (-(num_per_col[i] - 1) * v_spacing[i]/2) + j * v_spacing[i]
                     mmi = mmi["op_0"].repositioned(at=(x,y)).owner
                     insts += mmi, f"{i},{j}"
 
-
-
             mmi_tree = cast(Mapping[str, fp.ICellRef], insts)
 
-            # link every mmi together to become MMI tree
             for i in range(order):
                 for j in range(num_per_col[i]):
                     if i < order-1:
@@ -75,7 +68,6 @@ Full script
                         insts += link2
 
             ports += mmi_tree["0,0"]["op_0"].with_name("op_0")
-            # put ports on the last column of the tree
             for i in range(num_per_col[-1]):
                 ports += mmi_tree[f"{order - 1},{i}"]["op_1"].with_name(f"op_{2*i+1}")
                 ports += mmi_tree[f"{order - 1},{i}"]["op_2"].with_name(f"op_{2*i+2}")
@@ -84,7 +76,6 @@ Full script
             heater_tl = 400
             heater = pdk.TiNHeaterwithep(waveguide_length=heater_wl, tin_length=heater_tl, tin_box_size=20, contact_box_size=20)
 
-            # define heater positions
             for i in range (num_per_col[-1]):
                 for j in range(2):
                     ht_x = mmi_tree[f"{order - 1},{i}"][f"op_{j+1}"].position[0]
@@ -97,7 +88,6 @@ Full script
             mmi_tree = cast(Mapping[str, fp.ICellRef], insts)
 
 
-            # link heater left port and mmi right ports
             for i in range(num_per_col[-1]):
                 for j in range(2):
                     link3 = fp.LinkBetween(
@@ -107,17 +97,13 @@ Full script
                     )
                     insts += link3
 
-
-
-
             GC = pdk.GratingCoupler()
             GC_0 = GC.translated(150, 0).h_mirrored()
             insts += GC_0
-            # link the left GC with the first MMI
+
             link4 = fp.LinkBetween(start=GC_0["op_0"], end=mmi_tree["0,0"]["op_0"], bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR)
             insts += link4
 
-            # positioning every GC on the right of the circuit
             for i in range (num_per_col[-1]):
                 for j in range(2):
                     gc_x = mmi_tree[f"ht_{2*i+j},0"]["op_1"].position[0]
@@ -125,7 +111,7 @@ Full script
                     GC = GC["op_0"].repositioned(at=(gc_x+15*(2**order), gc_y)).owner
                     insts += GC, f"gc_{i},{j+1}"
             mmi_tree = cast(Mapping[str, fp.ICellRef], insts)
-            # link heaters and gcs together
+
             for i in range(num_per_col[-1]):
                 for j in range(2):
                     link5 = fp.LinkBetween(
@@ -140,7 +126,7 @@ Full script
             pads_x = numpy.linspace(100*(2 **(order)), 50, 2 **(order))
             pads_left_x = numpy.linspace(90*(2 **(order)), 50,  2 **(order))
             pads_right_x = numpy.linspace(50, 90*(2 **(order)), 2 **(order))
-            # define all pads position (seperate left pad and right pads
+
             for i in range (2**(order)):
                 bp_x = pads_left_x[i]
                 bp_y = end_y_spacing * (2** (order-1)) / 2
@@ -155,7 +141,6 @@ Full script
                 insts += BP_right, f"BP_{i},1"
             mmi_tree = cast(Mapping[str, fp.ICellRef], insts)
 
-            # link left pads with heater left port
             for i in range(2**(order)):
                     link6 = fp.LinkBetween(
                             start=mmi_tree[f"BP_{i},0"]["ep_0"].with_orientation(degrees=-90),
@@ -170,7 +155,7 @@ Full script
 
                         )
                     insts += link6
-            # link right pads with heater right port
+
             for i in range(2**(order)):
                      link7 = fp.LinkBetween(
                          start=mmi_tree[f"BP_{i},1"]["ep_0"].with_orientation(degrees=-90),
@@ -192,7 +177,6 @@ Full script
                      insts += link7
             fmt: on
             return insts, elems, ports
-    #
 
     if __name__ == "__main__":
         from pathlib import Path
@@ -348,7 +332,7 @@ by for loop. The x and y coordinates of the placement of the ``GC`` and ``heater
         
 BondPad arrangement and metal wire routing
 ----------------------------------------------------------
-Until now, we have finished the optical waveguide routing of the OPA. Next we have to generate the ``BondPad`` on top of the layout to connect the heater pins with the outside world. The horizontal coordinates of the ``BondPad`` are generated by linspace to get equally spaced horizontal coordinates. The left part and the right part of the pads will be discussed seperately.  Then use the for loop to generate the number of BondPads related to the level of the MMI tree.
+Until now, we have finished the optical waveguide routing of the OPA. Next we have to generate the ``BondPad`` on top of the layout to connect the heater pins with the outside world. The horizontal coordinates of the ``BondPad`` are generated by ``linspace`` to get equally spaced horizontal coordinates. The left part and the right part of the pads will be discussed seperately.  Then use the for loop to generate the number of BondPads related to the level of the MMI tree.
 
 
 
@@ -421,10 +405,18 @@ Then the ``BondPad`` are connected to the pins on the ``heater`` using ``LinkBet
                  
 
 .. image:: ../example_image/opa6.png        
+
+
+Summary
+------------------
+By using **PhotoCAD** layout tool, the implementation process of an optical phased array can be made more efficient and accurate. The software allows designers to adjust the parameters and optimize the performance by simple adjusting the script. Additionally, the tool can be used to generate layouts and schematics, streamlining the design process.
+
+In conclusion, using **PhotoCAD** layout tool to implement an optical phased array can improve the efficiency and accuracy of the design process. It can also facilitate the optimization of the performance, making the implementation of this technology more straightforward.
+
         
-        
-        
-        
+.. [1] POULTON, Christopher Vincent, et al. Long-range LiDAR and free-space data communication with high-performance optical phased arrays. IEEE Journal of Selected Topics in Quantum Electronics, 2019, 25.5: 1-8.
+.. [2] ROBERTS, Lyle E., et al. High power compatible internally sensed optical phased array. Optics express, 2016, 24.12: 13467-13479.
+.. [3] HSU, Ching-Pai, et al. A review and perspective on optical phased array for automotive LiDAR. IEEE Journal of Selected Topics in Quantum Electronics, 2020, 27.1: 1-16.
         
         
         
