@@ -9,9 +9,9 @@ Part I. Introduction
 ------------------------------------
 Quantum key distribution (QKD) is a secure communication method that uses the principles of quantum mechanics to transmit a cryptographic key between two parties. The key is used to encrypt and decrypt messages, ensuring that they cannot be intercepted and read by third parties. QKD is important because it allows for secure communication in the face of increasingly powerful computing technology, which can potentially break traditional cryptographic methods. Because it is based on the laws of quantum mechanics, QKD is resistant to attacks that rely on computational power. As a result, QKD has the potential to provide a secure communication method for a wide range of applications, including military, financial, and governmental communications.
 
-Silicon photonics process technology is suitable for quantum key distribution (QKD) receivers [2]. The chip can be fabricated in a standard Si photonic foundry process [3], which provides excellent optical phase stability for manipulating quantum states [4]. Besides, the chip has a compact design and is suitable for mass production [5], making it an ideal detector technology for QKD due to its high efficiency [6].
+Silicon photonics process technology is suitable for quantum key distribution (QKD) receivers [1]_. The chip can be fabricated in a standard Si photonic foundry process [2]_, which provides excellent optical phase stability for manipulating quantum states [3]_. Besides, the chip has a compact design and is suitable for mass production [4]_, making it an ideal detector technology for QKD due to its high efficiency [5]_.
 
-We present a quantum key distribution receiver implemented with an Electronic Photonic Design Automation (EPDA) platform [1], developed using silicon photonics technology. Our EPDA platform provides an automatic layout tool, including PCell and auto-route for waveguides and metal lines, driven by Python3. This tool allows for efficient design of complex photonic circuits, reducing the time and cost of manual layout. Furthermore, the tool is scalable and can be used for a variety of photonic design applications. We demonstrate the efficacy of this platform by presenting an example of a quantum key distribution receiver.
+We present a quantum key distribution receiver implemented with an Electronic Photonic Design Automation (EPDA) platform [6]_, developed using silicon photonics technology. Our EPDA platform provides an automatic layout tool, including PCell and auto-route for waveguides and metal lines, driven by Python3. This tool allows for efficient design of complex photonic circuits, reducing the time and cost of manual layout. Furthermore, the tool is scalable and can be used for a variety of photonic design applications. We demonstrate the efficacy of this platform by presenting an example of a quantum key distribution receiver.
 
 
 Part II. QKD receiver
@@ -421,10 +421,11 @@ Part VIII. Conclusion
 -----------------------------------------------------------
 In conclusion, we have successfully implemented a QKD receiver using silicon photonics and Python script-driven layout tools. Our design features scalable PCells and an auto-route function, making it easy for users to complete their designs. This is a significant advancement in the field of quantum communication as it allows for the design and implementation of complex QKD systems with ease. Overall, our work demonstrates the potential for using silicon photonics and Python script-driven layout tools in the design of QKD systems and other complex photonic devices.
 
-.. [1]  Yuyang Wang, “Modeling, Simulation, and Optimization of Variation-Aware Runtime-Reconfigurable Optical Interconnects”, Ph.D. Thesis, University of California, Santa Barbara, September 2021
-.. [2]  SAX, Rebecka, et al. High-speed integrated QKD system. arXiv preprint arXiv:2211.11560, 2022.
-.. [3]  MA, Chaoxuan, et al. Silicon photonic transmitter for polarization-encoded quantum key distribution. Optica, 2016, 3.11: 1274-1278.
-.. [4]  DING, Yunhong, et al. High-dimensional quantum key distribution based on multicore fiber using silicon photonic integrated circuits. npj Quantum Information, 2017, 3.1: 25.
-.. [5]  DU, Yongqiang, et al. Silicon-based decoder for polarization-encoding quantum key distribution. arXiv preprint arXiv:2212.04019, 2022.
-.. [6]  BEUTEL, Fabian, et al. Detector-integrated on-chip QKD receiver for GHz clock rates. npj Quantum Information, 2021, 7.1: 40.
+
+.. [1]  SAX, Rebecka, et al. High-speed integrated QKD system. arXiv preprint arXiv:2211.11560, 2022.
+.. [2]  MA, Chaoxuan, et al. Silicon photonic transmitter for polarization-encoded quantum key distribution. Optica, 2016, 3.11: 1274-1278.
+.. [3]  DING, Yunhong, et al. High-dimensional quantum key distribution based on multicore fiber using silicon photonic integrated circuits. npj Quantum Information, 2017, 3.1: 25.
+.. [4]  DU, Yongqiang, et al. Silicon-based decoder for polarization-encoding quantum key distribution. arXiv preprint arXiv:2212.04019, 2022.
+.. [5]  BEUTEL, Fabian, et al. Detector-integrated on-chip QKD receiver for GHz clock rates. npj Quantum Information, 2021, 7.1: 40.
+.. [6]  Yuyang Wang, “Modeling, Simulation, and Optimization of Variation-Aware Runtime-Reconfigurable Optical Interconnects”, Ph.D. Thesis, University of California, Santa Barbara, September 2021
 
