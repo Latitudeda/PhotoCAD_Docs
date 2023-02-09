@@ -33,9 +33,7 @@ Contents
    PICircuits/PICircuits
    example_manual/triangle_mzi.py
    PICircuits/TICircuits
-   example_manual/example_demultiplexer2.py
-   example_manual/Optical_phased_array.py
-   example_manual/Quantum_key_distribution.py
+   example_manual/example_demultiplexer2.p
    post_simulation/index
    
   
