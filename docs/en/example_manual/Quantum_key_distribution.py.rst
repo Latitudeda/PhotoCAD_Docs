@@ -427,5 +427,5 @@ In conclusion, we have successfully implemented a QKD receiver using silicon pho
 .. [3]  DING, Yunhong, et al. High-dimensional quantum key distribution based on multicore fiber using silicon photonic integrated circuits. npj Quantum Information, 2017, 3.1: 25.
 .. [4]  DU, Yongqiang, et al. Silicon-based decoder for polarization-encoding quantum key distribution. arXiv preprint arXiv:2212.04019, 2022.
 .. [5]  BEUTEL, Fabian, et al. Detector-integrated on-chip QKD receiver for GHz clock rates. npj Quantum Information, 2021, 7.1: 40.
-.. [6]  Yuyang Wang, “Modeling, Simulation, and Optimization of Variation-Aware Runtime-Reconfigurable Optical Interconnects”, Ph.D. Thesis, University of California, Santa Barbara, September 2021
+.. [6]  WANG, Yuyang. Modeling, Simulation, and Optimization of Variation-Aware Runtime-Reconfigurable Optical Interconnects. University of California, Santa Barbara, 2021.
 
