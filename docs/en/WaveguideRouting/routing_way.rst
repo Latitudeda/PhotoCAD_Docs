@@ -1,5 +1,5 @@
 Routing Path Selection
-====================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are two ways to choose a path.
 
@@ -16,8 +16,11 @@ Here's a comparison of the two options
 
 
 
-``waylines`` example1
------------------------------
+``waylines`` 
+====================
+
+example 1
+---------------------
 ::
 
     device = fp.LinkBetween(
@@ -33,8 +36,10 @@ Here's a comparison of the two options
 
 By setting ``Waylines`` so that the wave guide first passes through the line ``x=-50`` and then through the lines ``y=50``, ``x=50``.
 
-``waylines`` example2
-------------------------------
+
+
+example 2
+-----------
 ::
 
     device = fp.LinkBetween(
