@@ -8,7 +8,7 @@ There are two ways to choose a path.
 
 ``waypoints`` and ``waylines`` are used as parameters in the routing method to aid in waveguide alignment and avoidance, however, they cannot be used at the same time；
 
-``waypoints`` can set the turning angle, ``waylines`` can be more concise to do 90 degrees of turning.
+``waypoints`` can set the turning angle. If you have determined that the waveguide needs to pass through some points, you can use ``waypoints``, ``waylines`` can be more concise to do 90 degrees of turning.
 
 Here's a comparison of the two options
 
