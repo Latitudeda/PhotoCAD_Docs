@@ -60,8 +60,8 @@ example 2
 
 Here ``fp.END`` is used to get the position of the end port, and similarly ``fp.START`` can be used to get the position of the start port. Also ``fp.PREV`` to get the position of the last turning point in real time, which allows the user to design based on the last turning point.
 
-``waypoints`` example
-----------------------------
+``waypoints`` 
+=====================================
 ::
 
     device = fp.LinkBetween(
@@ -84,8 +84,8 @@ Set ``Waypoints`` to guide the waveguide through the ``Waypoints``, the three va
 
 For the case where the two ports are connected in U-shape, the length can be defined by setting the ``target_length`` parameter in ``LinkBetween`` and ``LINKER``, and the waveguide will automatically extend the straight waveguide to the corresponding length, where ``target_length`` is the total length of the entire wiring waveguide.
 
-``Target_length`` example
-------------------------------------
+``Target_length`` 
+===========================
 ::
 
     device = fp.LinkBetween(
