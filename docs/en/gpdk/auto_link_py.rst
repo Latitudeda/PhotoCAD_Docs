@@ -6,7 +6,14 @@ This function mainly defines the type of transition waveguide when connecting be
     from >> to,  default link_type, default bend_factory
     port 1 >> port 2, default waveguide link type, default bend waveguide type
 
-There are two default methods, and users can also define their own::
+There are two default methods, and users can also define their own.
+
+ ``LESS_TRANS``
+-------------------
+
+
+
+::
 
     class LINKING_POLICY:
         @fpt.classconst
@@ -47,6 +54,12 @@ There are two default methods, and users can also define their own::
                     #
                 ]
             )
+
+
+``MAX_SWG``
+-----------------
+
+::
 
         @fpt.classconst
         @classmethod

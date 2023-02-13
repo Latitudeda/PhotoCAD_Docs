@@ -1,8 +1,8 @@
 waveguide_factory_py
 ============================================================
 
-This script mainly provides a more intelligent solution for implementing port acquisition and bend routing in automatic waveguide routing. The main components are.
-
+This script mainly provides a more intelligent solution for implementing port acquisition and bend routing in automatic waveguide routing. The main components are
+:
 - Straight_
 - CircularBend_
 - EulerBend_
@@ -59,14 +59,16 @@ Define class CircularBendFactory::
 The parameters that can be set optionally are
 
 - radius_eff 
-- waveguide_type 
+- waveguide_type
+
+``BendCircular90_FWG_C_WIRE`` or  ``BendCircular90_FWG_C_EXPANDED`` will be automatically used when the bend angle is 90 degree and the waveguide type of two connected ports are also ``FWG.C.WIRE`` or ``FWG.C.EXPANDED``, respectively.
 
 Returns the bend waveguide and the radius and port information.
 
 EulerBend
 ---------------------------
 
-Define class EulerBendFactory::::
+Define class EulerBendFactory::
 
     @dataclass(frozen=True)
     class EulerBendFactory(fpt.IBendWaveguideFactory):
@@ -103,6 +105,8 @@ The parameters that can be set optionally are
 - radius_min : Minimum radius in the Euler bend
 - l_max : Maximum length of Euler spiral in half bend
 - waveguide_type : Type of the Euler bend waveguide
+
+``BendEuler90`` , ``BendEuler90_FWG_C_WIRE`` and ``BendEuler90_FWG_C_EXPANDED``  are also created in the components to automatically generated 90 degree bend when the bend angle of the two waveguide ports are 90 degree.
 
 Returns the Euler bend, along with the equivalent radius of the Euler bend and the corresponding port information.
 

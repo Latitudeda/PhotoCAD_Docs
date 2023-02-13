@@ -1,7 +1,7 @@
-generate_layers_and_display_from_csv_py.rst
+generate layers and display from csv file
 ============================================================
 
-This function enables to convert the layers.csv file (:doc:`layers_csv`) into the script files layers.py and display.py that GPDK needs to use.
+This function enables to convert the ``layers.csv`` file (:doc:`layers_csv`) into the script files ``layers.py`` and ``display.py`` that gpdk needs to use.
 
 ::
 
@@ -13,8 +13,6 @@ This function enables to convert the layers.csv file (:doc:`layers_csv`) into th
     #   PROCESS_DESCRIPTION, PURPOSE_DESCRIPTION are optional
     #   FILL_COLOR,FILL_PATTERN,STROKE_COLOR must appear together or not
     #
-    # LAYER,XTYPE,NAME,DESCRIPTION,PROCESS,PROCESS_DESCRIPTION, PURPOSE,PURPOSE_DESCRIPTION,FILL_COLOR,FILL_PATTERN,STROKE_COLOR
-    # 1,1,FWG_COR,"Full Etch waveguide core","FWG", "Full etch","COR","Waveguide core",BLUE,DIAGONAL,BLUE
     #
     if __name__ == "__main__":
         folder = Path(__file__).parent
@@ -28,4 +26,4 @@ This function enables to convert the layers.csv file (:doc:`layers_csv`) into th
         fp.util.generate_display_from_csv(csv_file=csv_file, display_file=display_file, overwrite=True)
         fp.util.generate_lyp_from_csv(csv_file=csv_file, lyp_file=lyp_file, overwrite=True)
 
-Users only need to understand the purpose。
+The generated ``layers.py`` and ``display.py`` will be stored under the folder ``generated``, users have to copy and paste it under ``gpdk`` > ``technology`` for further use. ``layers.lyp`` file allows layout tools e.g. Klayout to recognize the layer information when displaying gds file to the layout tool.
