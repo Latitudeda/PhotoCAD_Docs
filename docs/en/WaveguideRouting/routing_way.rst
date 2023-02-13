@@ -1,5 +1,5 @@
 Routing Path Selection
-====================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are two ways to choose a path.
 
@@ -8,7 +8,7 @@ There are two ways to choose a path.
 
 ``waypoints`` and ``waylines`` are used as parameters in the routing method to aid in waveguide alignment and avoidance, however, they cannot be used at the same time；
 
-``waypoints`` can set the turning angle, ``waylines`` can be more concise to do 90 degrees of turning.
+``waypoints`` can set the turning angle. If you have determined that the waveguide needs to pass through some points, you can use ``waypoints``, ``waylines`` can be more concise to do 90 degrees of turning.
 
 Here's a comparison of the two options
 
@@ -16,8 +16,11 @@ Here's a comparison of the two options
 
 
 
-``waylines`` example1
------------------------------
+``waylines`` 
+====================
+
+example 1
+---------------------
 ::
 
     device = fp.LinkBetween(
@@ -33,8 +36,10 @@ Here's a comparison of the two options
 
 By setting ``Waylines`` so that the wave guide first passes through the line ``x=-50`` and then through the lines ``y=50``, ``x=50``.
 
-``waylines`` example2
-------------------------------
+
+
+example 2
+-----------
 ::
 
     device = fp.LinkBetween(
@@ -55,8 +60,8 @@ By setting ``Waylines`` so that the wave guide first passes through the line ``x
 
 Here ``fp.END`` is used to get the position of the end port, and similarly ``fp.START`` can be used to get the position of the start port. Also ``fp.PREV`` to get the position of the last turning point in real time, which allows the user to design based on the last turning point.
 
-``waypoints`` example
-----------------------------
+``waypoints`` 
+=====================================
 ::
 
     device = fp.LinkBetween(
@@ -79,8 +84,8 @@ Set ``Waypoints`` to guide the waveguide through the ``Waypoints``, the three va
 
 For the case where the two ports are connected in U-shape, the length can be defined by setting the ``target_length`` parameter in ``LinkBetween`` and ``LINKER``, and the waveguide will automatically extend the straight waveguide to the corresponding length, where ``target_length`` is the total length of the entire wiring waveguide.
 
-``Target_length`` example
-------------------------------------
+``Target_length`` 
+===========================
 ::
 
     device = fp.LinkBetween(
