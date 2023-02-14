@@ -55,92 +55,92 @@ Generate waveguide class I
 The information of each waveguide type are then defined in class, such as critical dimension bias, layer type, and the import the simulation parameters created above to the simulation model.
 ::
 
-@fpt.hash_code
-@dataclass(frozen=True)
-class FWG_C(CoreCladdingWaveguideType):
-    @fpt.const_property
-    def core_bias(self):
-        return fpt.CDBiasLinear(0.1)
+        @fpt.hash_code
+        @dataclass(frozen=True)
+        class FWG_C(CoreCladdingWaveguideType):
+            @fpt.const_property
+            def core_bias(self):
+                return fpt.CDBiasLinear(0.1)
 
-    @fpt.const_property
-    def cladding_bias(self):
-        return fpt.CDBiasLinear(0)
+            @fpt.const_property
+            def cladding_bias(self):
+                return fpt.CDBiasLinear(0)
 
-    @fpt.const_property
-    def band(self):
-        from gpdk.technology import get_technology
+            @fpt.const_property
+            def band(self):
+                from gpdk.technology import get_technology
 
-        return get_technology().BAND.C
+                return get_technology().BAND.C
 
-    @fpt.const_property
-    def core_layer(self):
-        from gpdk.technology import get_technology
+            @fpt.const_property
+            def core_layer(self):
+                from gpdk.technology import get_technology
 
-        return get_technology().LAYER.FWG_COR
+                return get_technology().LAYER.FWG_COR
 
-    @fpt.const_property
-    def cladding_layer(self):
-        from gpdk.technology import get_technology
+            @fpt.const_property
+            def cladding_layer(self):
+                from gpdk.technology import get_technology
 
-        return get_technology().LAYER.FWG_CLD
+                return get_technology().LAYER.FWG_CLD
 
-    @fpt.const_property
-    def straight_factory(self):
-        return StraightFactory()
+            @fpt.const_property
+            def straight_factory(self):
+                return StraightFactory()
 
-    @fpt.const_property
-    def theoretical_parameters(self):
-        return fpt.sim.TheoreticalParameters(wl=FWG_C_WIRE_SIM_WL, n_eff=FWG_C_WIRE_SIM_NEFF, loss=FWG_C_WIRE_SIM_LOSS)
-
-
-@fpt.hash_code
-@dataclass(frozen=True)
-class FWG_O(CoreCladdingWaveguideType):
+            @fpt.const_property
+            def theoretical_parameters(self):
+                return fpt.sim.TheoreticalParameters(wl=FWG_C_WIRE_SIM_WL, n_eff=FWG_C_WIRE_SIM_NEFF, loss=FWG_C_WIRE_SIM_LOSS)
 
 
-
-@fpt.hash_code
-@dataclass(frozen=True)
-class MWG_C(CoreCladdingWaveguideType):
+        @fpt.hash_code
+        @dataclass(frozen=True)
+        class FWG_O(CoreCladdingWaveguideType):
 
 
 
-@fpt.hash_code
-@dataclass(frozen=True)
-class MWG_O(CoreCladdingWaveguideType):
+        @fpt.hash_code
+        @dataclass(frozen=True)
+        class MWG_C(CoreCladdingWaveguideType):
 
 
 
-@fpt.hash_code
-@dataclass(frozen=True)
-class SWG_C(CoreCladdingWaveguideType):
-
-
-@fpt.hash_code
-@dataclass(frozen=True)
-class SWG_O(CoreCladdingWaveguideType):
-
-
-#
-@fpt.hash_code
-@dataclass(frozen=True)
-class SLOT_C(SlotWaveguideType):
-
-
-@fpt.hash_code
-@dataclass(frozen=True)
-class SLOT_O(SlotWaveguideType):
-
-
-@fpt.hash_code
-@dataclass(frozen=True)
-class SWGR_C(SwgWaveguideType):
+        @fpt.hash_code
+        @dataclass(frozen=True)
+        class MWG_O(CoreCladdingWaveguideType):
 
 
 
-@fpt.hash_code
-@dataclass(frozen=True)
-class SWGR_O(SwgWaveguideType):
+        @fpt.hash_code
+        @dataclass(frozen=True)
+        class SWG_C(CoreCladdingWaveguideType):
+
+
+        @fpt.hash_code
+        @dataclass(frozen=True)
+        class SWG_O(CoreCladdingWaveguideType):
+
+
+        #
+        @fpt.hash_code
+        @dataclass(frozen=True)
+        class SLOT_C(SlotWaveguideType):
+
+
+        @fpt.hash_code
+        @dataclass(frozen=True)
+        class SLOT_O(SlotWaveguideType):
+
+
+        @fpt.hash_code
+        @dataclass(frozen=True)
+        class SWGR_C(SwgWaveguideType):
+
+
+
+        @fpt.hash_code
+        @dataclass(frozen=True)
+        class SWGR_O(SwgWaveguideType):
 
 
 Generate waveguide class II
@@ -148,68 +148,68 @@ Generate waveguide class II
 In this section, we used the class generated above as a parent class to create every waveguide class which parameters are defined in section 1. Bend type parameters of the connected waveguide is also defined in this section.
 ::
 
-class WG:
-    class FWG:
-        class C(FWG_C):
-            @fpt.staticconst
-            def WIRE():
-                @dataclass(frozen=True)
-                class WIRE(__class__):
-                    core_design_width: float = FWG_C_WIRE_WIDTH
-                    cladding_design_width: float = FWG_C_WIRE_WIDTH + FWG_C_TRENCH_WIDTH * 2
+        class WG:
+            class FWG:
+                class C(FWG_C):
+                    @fpt.staticconst
+                    def WIRE():
+                        @dataclass(frozen=True)
+                        class WIRE(__class__):
+                            core_design_width: float = FWG_C_WIRE_WIDTH
+                            cladding_design_width: float = FWG_C_WIRE_WIDTH + FWG_C_TRENCH_WIDTH * 2
 
-                    @fpt.const_property
-                    def bend_factory(self):
-                        return self.BEND_EULER
-
-
-                    @fpt.const_property
-                    def BEND_CIRCULAR(self):
-                        return CircularBendFactory(radius_eff=self.cladding_width / 2 + 1, waveguide_type=self)
-
-                    @fpt.const_property
-                    def BEND_EULER(self):
-                        return EulerBendFactory(radius_min=self.cladding_width / 2 + 1, l_max=5, waveguide_type=self)
-
-                return WIRE()
-
-            @fpt.staticconst
-            def WIRE_TETM():
-
-                return WIRE_TETM()
-
-            @fpt.staticconst
-            def EXPANDED():
-
-                return EXPANDED()
-
-            @fpt.staticconst
-            def EXPANDED_TETM():
-
-                return EXPANDED_TETM()
-
-        class O(FWG_O):
-
-    class MWG:
-        class C(MWG_C):
-
-        class O(MWG_O):
+                            @fpt.const_property
+                            def bend_factory(self):
+                                return self.BEND_EULER
 
 
-    class SWG:
-        class C(SWG_C):
+                            @fpt.const_property
+                            def BEND_CIRCULAR(self):
+                                return CircularBendFactory(radius_eff=self.cladding_width / 2 + 1, waveguide_type=self)
 
-        class O(SWG_O):
+                            @fpt.const_property
+                            def BEND_EULER(self):
+                                return EulerBendFactory(radius_min=self.cladding_width / 2 + 1, l_max=5, waveguide_type=self)
 
-    class SLOT:
-        class C(SLOT_C):
+                        return WIRE()
 
-        class O(SLOT_O):
+                    @fpt.staticconst
+                    def WIRE_TETM():
 
-    class SWGR:
-        class C(SWGR_C):
+                        return WIRE_TETM()
 
-        class O(SWGR_O):
+                    @fpt.staticconst
+                    def EXPANDED():
+
+                        return EXPANDED()
+
+                    @fpt.staticconst
+                    def EXPANDED_TETM():
+
+                        return EXPANDED_TETM()
+
+                class O(FWG_O):
+
+            class MWG:
+                class C(MWG_C):
+
+                class O(MWG_O):
+
+
+            class SWG:
+                class C(SWG_C):
+
+                class O(SWG_O):
+
+            class SLOT:
+                class C(SLOT_C):
+
+                class O(SLOT_O):
+
+            class SWGR:
+                class C(SWGR_C):
+
+                class O(SWGR_O):
 
 Generate wg information to csv file
 ---------------------------------------------
