@@ -1,10 +1,12 @@
 PhotoCAD User Manual
 ====================================
+**PhotoCAD** is a Python-based computer-aided design platform for photonics chip layout design. **fnpcell** and **link** are the two main tools of **PhotoCAD**, which correspond to the parametric cell layout and circuit-level layout in photonics chip layout design.
 
-Contents
---------
+**PhotoCAD** is written in Python, a language widely used in the photonics industry, and the algorithms used to generate the layout are carefully optimized and researched by the developers, giving it a unique advantage over similar tools at home and abroad, such as no distortion or tearing of the layout at any angle.
+
 
 .. toctree::
+   :hidden:
    
    Introduction/index
    Installation/index
@@ -17,7 +19,8 @@ Contents
    
 .. toctree::   
    :caption: Tutorials
-   
+   :hidden:
+
    CreatePcell/index
    WaveguideRouting/Summary
    example_manual/routing_list
@@ -29,6 +32,7 @@ Contents
    
 .. toctree::
    :caption: Examples
+   :hidden:
 
    PICircuits/PICircuits
    example_manual/triangle_mzi.py
@@ -43,7 +47,8 @@ Contents
    
 .. toctree::
    :caption: Support and Changelog
-   
+   :hidden:
+
    Release_notes/index
    changelog/index
    Frequent_question/index

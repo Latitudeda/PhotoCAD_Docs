@@ -1,7 +1,7 @@
 QuickStart to PhotoCAD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Important note: The script layout of the user manual cannot be identical to the format of the Python script, the code paragraphs in the manual are for illustrative purposes only. Please refer to the Python source code in the package for the actual code format.**
+.. note::
+   **Important note: The script layout of the user manual cannot be identical to the format of the Python script, the code paragraphs in the manual are for illustrative purposes only. Please refer to the Python source code in the package for the actual code format.**
 
 This section is for users who have installed PyCharm (Python 3.8) and are familiar with how to use PyCharm. For detailed documentation on **PhotoCAD**, please start from the Tutorial section.
 
