@@ -1,4 +1,4 @@
-auto_link_py
+auto_link.py
 ============================================================
 
 This function mainly defines the type of transition waveguide when connecting between multiple waveguide types::

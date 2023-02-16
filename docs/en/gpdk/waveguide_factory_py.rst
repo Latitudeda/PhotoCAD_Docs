@@ -1,12 +1,12 @@
-waveguide_factory_py
+waveguide_factory.py
 ============================================================
 
 This script mainly provides a more intelligent solution for implementing port acquisition and bend routing in automatic waveguide routing. The main components are
 :
-- Straight_
-- CircularBend_
-- EulerBend_
-- Examples_
+#. Straight_
+#. CircularBend_
+#. EulerBend_
+#. Examples_
 
 Straight
 ---------------------------

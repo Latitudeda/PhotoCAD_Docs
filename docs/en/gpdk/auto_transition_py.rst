@@ -1,4 +1,4 @@
-auto_transition_py
+auto_transition.py
 ============================================================
 
 This function mainly defines the waveguide type and the default bend waveguide when the port is connected. Before this, users have to first create components such as ``FWG2MWGTransition`` to allow auto transition to work, and specified parameters such as transition length, shape will also be defined in the component.
