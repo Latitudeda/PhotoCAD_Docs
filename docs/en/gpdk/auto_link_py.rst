@@ -8,9 +8,10 @@ This function mainly defines the type of transition waveguide when connecting be
 
 There are two default methods, and users can also define their own.
 
- ``LESS_TRANS``
 
+``LESS_TRANS``
 ------------------------
+
 In the first linking method, the default waveguide link type goes with the end type of the waveguide we want to link together, and the bend used here is set to be an Euler bend to minimize waveguide loss according from the experiment.
 
 
