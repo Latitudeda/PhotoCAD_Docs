@@ -5,7 +5,7 @@ Steps
 2. run ``technology/gererate_layers_and_displays_from_csv.py``, then a new file will be generated under ``technology`` file. Copy ``layers.py`` & ``display.py`` in ``generated`` file and paste it in ``technology``.
 3. Adjust ``technology/wg`` 
 4. Adjust ``technology/ _init_.py``
-5. Adjust ``technology/tech``
+5. Adjust ``technology/tech``, ``technology/terminal``
 6. Adjust ``component/transition`` then ``technology/auto_transition``
 7. Adjust ``component/via/via&vias`` then ``technology/auto_vias``
 
