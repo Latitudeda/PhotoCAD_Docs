@@ -1,4 +1,4 @@
-wg_py
+wg.py
 ============================================================
 
 The file mainly defines various waveguide types and their corresponding configurations such as width, simulation parameters.
