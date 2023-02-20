@@ -11,3 +11,11 @@ sphinx:
 python:
   install:
     - requirements: requirements.txt
+    
+    
+sphinx:
+  fail_on_warning: true
+
+formats:
+  - pdf
+  
