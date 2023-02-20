@@ -9,6 +9,9 @@ author = 'latitudeda.com'
 release = '1.5'
 version = '1.5.0'
 
+formats:
+  - epub
+  
 # -- General configuration
 
 extensions = [
