@@ -9,7 +9,7 @@ author = 'latitudeda.com'
 release = '1.5'
 version = '1.5.0'
 
-  
+
 # -- General configuration
 
 extensions = [
@@ -38,7 +38,7 @@ intersphinx_disabled_domains = ['std']
 
 templates_path = ['_templates']
 html_js_files = [
-    'https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.2.min.js',
+    # 'https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.2.min.js',
 ]
 
 # -- Options for HTML output
@@ -52,3 +52,10 @@ html_theme_options = {
     'navigation_depth': 5,
     'collapse_navigation': False,
 }
+
+# current_project = get_project(multiproject_projects)
+
+# if current_project == "en":
+#     language = "en"
+# elif current_project == "dev":
+#     language = "es"
