@@ -52,6 +52,6 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
    :hidden:
 
    Release_notes/index
-   changelog/index
+
    Frequent_question/index
    AboutUS
