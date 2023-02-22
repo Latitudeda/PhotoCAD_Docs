@@ -584,6 +584,7 @@ v_mirrored
         # =============================================================
         # fp.export_gds(library, file=gds_file)
         fp.plot(library)
+
 功能说明::
 
 >>>top_half = bottom_half.v_mirrored()
