@@ -2,7 +2,6 @@ fnpcell API
 ==============
 
 
--------------------------
 
 .. toctree::
     :maxdepth: 5
@@ -26,5 +25,3 @@ fnpcell API
     resource
     transform
     unique_meta
-
-

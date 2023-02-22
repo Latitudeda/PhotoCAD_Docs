@@ -106,7 +106,7 @@ Below table lists four commonly used simulation model. To simulate the circuit, 
 
         ("op_0","mode 1",1,"op_0",1,"transmission")
 
-   * Frequency, |S|, arg(S)::
+   * Frequency, \|S\|, arg(S)::
 
         1.9156067603833869e+14 2.7442972188120671e-02 -6.4430396820656299e-01
         1.9156506253180034e+14 2.7351617044051896e-02 -6.3548125587455162e-01
@@ -160,16 +160,3 @@ Summary
 The above four types of device models will be converted into the S-parameter matrix of the corresponding component, and the S-parameter matrix of multiple components will be cascaded to obtain simulation results when running simulation.
 
 It should be noted that when the model sampling point of the device is different from the sampling point set during the link simulation, the engine will perform linear interpolation based on the model of the device to ensure that the model sampling point of each device is consistent with the sampling point set during the link simulation.
-
-
-
-
-
-
-
-
-
-
-
-
-
