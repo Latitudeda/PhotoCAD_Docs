@@ -37,6 +37,7 @@ Section Script Description
     library += BendBezier()
     library += BendBezier(name="q", start=(0, 0), controls=[(30, 30)], end=(60, 0), waveguide_type=TECH.WG.FWG.C.WIRE)
     library += BendBezier(name="c", start=(0, 0), controls=[(0, 30), (60, 30)], end=(60, 0), waveguide_type=TECH.WG.FWG.C.WIRE, transform=fp.translate(0, 40))
+
 In this section the user can set the parameters in the ``BendBezier`` class. The parameters contain not only the parameters of the device itself for layout generation but also the relative position parameters for setting the position of the layout cell relative to the origin when called hierarchically.
 
 The above code creates three devices using the ``BendBezier()`` class with three lines of library statements, using the default name ``BendBezier`` and two user-defined names ``q`` and ``c``, respectively, which are prefixed with ``BendBezier_`` by default when generating the layout, as follows ``BendBezier_q``, ``BendBezier_c``.

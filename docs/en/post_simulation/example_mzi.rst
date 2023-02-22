@@ -88,7 +88,7 @@ Full script
         plt.show()
 
 
- Build Class ``CircuitMzi``
+Build Class ``CircuitMzi``
 ------------------------------------
 
 The below scripts shows how to build a MZI circuit by 2 ``Mmi`` already existing in ``gpdk``.
@@ -199,14 +199,3 @@ Below scripts are described step-by-step to show how to run a S-matrix simulatio
             plt.show()
 
 .. image:: ../images/mzisimulation2.png
-
-
-
-
-
-
-
-
-
-
-

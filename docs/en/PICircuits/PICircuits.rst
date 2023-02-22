@@ -1,5 +1,5 @@
 Programmable Photonic Integrated Circuit
-====================
+==========================================
 
 Programmable photonic circuits are an important discipline in the development of photonics, and this section focuses on how to build reconfigurable programmable photonic circuits in detail.
 
@@ -10,7 +10,7 @@ This section aims to build reconfigurable rectangular optical networks using rec
 3. Design Parameters
 
 Part I. Building a Rectangular Network
----------------------------
+----------------------------------------
 
 Importing library files::
 
@@ -243,7 +243,7 @@ Call the main function and use the ``Hfanout`` function to implement the grating
         fp.plot(library)
 
 Part II. Parameter Description
----------------------------
+-------------------------------
 
 1. ``row_number`` : Number of horizontal grids of optical network
 2. ``column_number`` : Number of vertical grids of optical network
@@ -251,7 +251,7 @@ Part II. Parameter Description
 4. ``spacing`` : Component spacing setting
 
 Part III. Test Description
----------------------------
+-----------------------------
 
 First, a 2*2 square network:
 

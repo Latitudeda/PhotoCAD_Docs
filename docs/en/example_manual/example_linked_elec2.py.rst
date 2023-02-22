@@ -235,8 +235,8 @@ Full script
         fp.export_gds(library, file=gds_file)
         fp.export_pls(library, file=gds_file.with_suffix(".pls"), components=gpdk.components.all)
         fp.plot(library)
-        
-Run the full program once to generate the following GDS layout:     
+
+Run the full program once to generate the following GDS layout:
 
 
 .. image:: ../example_image/11.1.png
@@ -252,8 +252,8 @@ There are a large number of BondPads in the entire layout, but they all consist 
 
     	pad_w = pdk.BondPad(pad_width=120, pad_height=60)
     	pad = pdk.BondPad(pad_width=60, pad_height=60)
-      
-The following calls to ``pad_w`` and ``pad`` are made multiple times to generate the BondPad group, and the following comments within the code explain what each part does.      
+
+The following calls to ``pad_w`` and ``pad`` are made multiple times to generate the BondPad group, and the following comments within the code explain what each part does.
 
 ::
 
@@ -326,8 +326,8 @@ The following calls to ``pad_w`` and ``pad`` are made multiple times to generate
     MT_40 = TECH.METAL.MT.W40
     M2_80 = TECH.METAL.M2.W80
     MT_80 = TECH.METAL.MT.W80
-    
-The code below controls the corner of the wiring: if ``None``, the corner is right angle by default. If ``TECH.FITTING_FUNCTION.Stubbed``, the corner is a ``45°`` angle of the specified length. If set the code to ``TECH.FITTING_FUNCTION.SmoothCircular``, the corner becomes a rounded corner with the specified radius.         
+
+The code below controls the corner of the wiring: if ``None``, the corner is right angle by default. If ``TECH.FITTING_FUNCTION.Stubbed``, the corner is a ``45°`` angle of the specified length. If set the code to ``TECH.FITTING_FUNCTION.SmoothCircular``, the corner becomes a rounded corner with the specified radius.
 
 ::
 
@@ -339,9 +339,9 @@ The code below controls the corner of the wiring: if ``None``, the corner is rig
         # fitting_function_20 = TECH.FITTING_FUNCTION.Stubbed(stub_width=20, stub_right_angle=True)
         # fitting_function_80 = TECH.FITTING_FUNCTION.SmoothCircular(radius=40)
         # fitting_function_20 = TECH.FITTING_FUNCTION.SmoothCircular(radius=20)
-        
-        
-The default right angle is tested first and the following figure is obtained.       
+
+
+The default right angle is tested first and the following figure is obtained.
 
 
 .. image:: ../example_image/11.2.png
@@ -352,11 +352,11 @@ From the above figure, we can see that the corners are right angles, next commen
 
         fitting_function_80 = TECH.FITTING_FUNCTION.Stubbed(stub_width=80, stub_right_angle=False)
         fitting_function_20 = TECH.FITTING_FUNCTION.Stubbed(stub_width=20, stub_right_angle=False)
-        
+
 
 .. image:: ../example_image/11.2.png
 .. image:: ../example_image/11.3.png
-        
+
 After running it, we can see that it is still a right angle and nothing has changed because ``stub_right_angle=False``, we change it to ``True`` and run it once. From the figure below, we can see that the measured length at the center line of the corner are 80 and 20 as set.
 
 .. image:: ../example_image/11.5.png
@@ -389,17 +389,18 @@ The code below mainly controls the connection of the four groups of pads at the 
             metal_line_type=[(0, M2_20)],
             fitting_function=fitting_function_20,
         ),
-        
-.. image:: ../example_image/11.7.png        
-After the testing of the 45° corner is completed, we next test the rounded corners.        
+
+.. image:: ../example_image/11.7.png
+
+After the testing of the 45° corner is completed, we next test the rounded corners.
 
 ::
 
       fitting_function_80 = TECH.FITTING_FUNCTION.SmoothCircular(radius=80)
       fitting_function_20 = TECH.FITTING_FUNCTION.SmoothCircular(radius=20)
-      
-      
-Since the radius value is not set properly, the error is reported after running.        
+
+
+Since the radius value is not set properly, the error is reported after running.
 
 We changed ``80`` to ``40`` and ran it again, and took the following part of the corners from the layout, from which we can see that the corners are changed from straight lines to smooth rounded shapes.
 
@@ -410,67 +411,3 @@ Finally, as shown in the following image segment, different line types appear in
 
 .. image:: ../example_image/11.10.png
 .. image:: ../example_image/11.11.png
-
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        

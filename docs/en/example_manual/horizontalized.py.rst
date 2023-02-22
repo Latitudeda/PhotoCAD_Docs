@@ -93,13 +93,13 @@ Full script
         # =============================================================
         fp.export_gds(library, file=gds_file)
         # fp.plot(library)
-        
-        
+
+
 Section Script Definition
 -------------------------------------
 
 Create horizontalized components ports and export layouts
-==========================================
+============================================================
 ::
 
     if __name__ == "__main__":
@@ -131,17 +131,3 @@ GDS Layout
 ------------------------
 
 .. image:: ../images/horizontalized1.png
-
-
-
-
-
-
-
-
-
-
-
-
-
-

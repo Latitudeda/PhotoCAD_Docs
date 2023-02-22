@@ -1,5 +1,5 @@
 Single-port to Single-port
-====================
+=============================
 
 
 There are a total of three types of connections from single port to single port:
@@ -18,7 +18,7 @@ Examples
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ::
 
-    # Interconnecting device ports by calling fp.create_links 
+    # Interconnecting device ports by calling fp.create_links
     device = fp.create_links(
         link_type=TECH.WG.FWG.C.EXPANDED, # Define the type of straight waveguide in automatic routing
         bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR, # Define the type of bend during automatic routing
