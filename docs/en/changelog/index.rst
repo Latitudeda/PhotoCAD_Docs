@@ -3,4 +3,4 @@ Changelog
 
 .. toctree::
 
- #opa_qkd_tutorial
+    opa_qkd_tutorial

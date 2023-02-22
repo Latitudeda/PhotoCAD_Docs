@@ -126,6 +126,8 @@ Full script
         # =============================================================
         fp.export_gds(library, file=gds_file)
         # fp.plot(library)
+
+
 Section Script Description
 =============================
 
@@ -208,6 +210,7 @@ Section Script Description
       * Instances, elements and ports are usually used in device cells, i.e. calls to other cell instances, graphics in this cell and device ports.
 
         The three elements in the device are implemented in the PCell definition by calling the build function module in the parent class PCell
+
       ::
 
             def build(self) -> Tuple[fp.InstanceSet, fp.ElementSet, fp.PortSet]:
@@ -215,12 +218,14 @@ Section Script Description
 
 
       * Define the type of waveguide used in the bend, as well as the curve and add the ports generated from the above script
+
       ::
 
                    wg = self.waveguide_type(curve=self.raw_curve).with_ports(self.port_names)
 
 
       * Initiate wg and ports and return the instances, elements, and ports in the component cell.
+
       ::
 
             insts += wg
@@ -231,12 +236,14 @@ Section Script Description
    #. Use the ``EulerBend`` class to create component cells and output the layout
 
       * Import the package to generate output layout file under the same file of the ``EulerBend``
+
       ::
 
                 from gpdk.util.path import local_output_file
 
 
       * Refer to the path where the top generated gds file is saved. Then obtain all device process information.
+
       ::
 
                gds_file = local_output_file(__file__).with_suffix(".gds")
@@ -244,11 +251,13 @@ Section Script Description
                TECH = get_technology()
 
       * Create a ``EulerBend`` component defined with default parameters
+
       ::
 
                library += BendEuler()
 
       * Export GDS files
+
       ::
 
                    fp.export_gds(library, file=gds_file)
@@ -353,6 +362,3 @@ In the table you can see the three generated instances, ``BendEuler``, ``BendEul
 
 
 .. image:: ../images/eulerbend3.png
-
-
-

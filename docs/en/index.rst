@@ -9,17 +9,17 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
 
 .. toctree::
    :hidden:
-   
+
    Introduction/index
    Installation/index
    QuickStart/quickstart
    gpdk_manual/index
    fnpcell_manual/index
    gpdk/QuickCreatePDK
-   
-   
-   
-.. toctree::   
+
+
+
+.. toctree::
    :caption: Tutorials
    :hidden:
 
@@ -30,8 +30,8 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
    Tutorials/Quickstart
    export_netlist_manual/index
 
-   
-   
+
+
 .. toctree::
    :caption: Examples
    :hidden:
@@ -41,12 +41,12 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
    PICircuits/TICircuits
    example_manual/example_demultiplexer2.py
    example_manual/Optical_phased_array.py
-   #example_manual/Quantum_key_distribution.py
+   example_manual/Quantum_key_distribution.py
    post_simulation/index
-   
-  
-   
-   
+
+
+
+
 .. toctree::
    :caption: Support and Changelog
    :hidden:
@@ -55,4 +55,3 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
    changelog/index
    Frequent_question/index
    AboutUS
-
