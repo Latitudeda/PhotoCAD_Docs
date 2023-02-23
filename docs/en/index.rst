@@ -29,6 +29,7 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
    example_manual/component_list
    Tutorials/Quickstart
    export_netlist_manual/index
+   jupyter_notebook/index
 
 
 
