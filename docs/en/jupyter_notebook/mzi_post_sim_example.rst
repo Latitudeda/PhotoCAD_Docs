@@ -72,7 +72,7 @@ MZI Post-layout simulation
         .. image:: ../images/notebook12.png
 
 
-See :download:`ipynb <jupyter_notebook/mzi_post_simulation.ipynb>`.
+See :download:`ipynb </_jupyter_notebook/mzi_post_simulation.ipynb>`.
 
 
 
