@@ -32,6 +32,7 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
 
 
 
+
 .. toctree::
    :caption: Examples
    :hidden:
