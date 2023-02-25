@@ -40,7 +40,7 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
 
    PICircuits/PICircuits
    example_manual/triangle_mzi.py
-   PICircuits/TICircuits
+   
    example_manual/example_demultiplexer2.py
    
 
