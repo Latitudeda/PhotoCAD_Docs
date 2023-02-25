@@ -42,7 +42,7 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
    example_manual/triangle_mzi.py
    PICircuits/TICircuits
    example_manual/example_demultiplexer2.py
-   example_manual/Optical_phased_array.py
+   
 
    post_simulation/index
 
