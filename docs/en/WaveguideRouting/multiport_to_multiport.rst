@@ -17,6 +17,17 @@ Here's a comparison of the two options
 
 ::
 
+    # Call the device
+    GC = pdk.GratingCoupler(waveguide_type=TECH.WG.FWG.C.WIRE,teeth=25)
+
+    # Place the device in different locations
+    gc1 = GC.h_mirrored().translated(-100, -100)
+    gc2 = GC.h_mirrored().translated(-100, 0)
+    gc3 = GC.h_mirrored().translated(-100, 100)
+    gc4 = GC.translated(100, -50)
+    gc5 = GC.translated(100, 50)
+    gc6 = GC.translated(100, 150)
+
     # Interconnecting device ports by calling the Linked method
     device = fp.Linked(
         # Define the type of straight waveguide in automatic routing
@@ -51,6 +62,23 @@ Here's a comparison of the two options
 ----------------------------------------------------------------
 
 ::
+
+    # Call the device
+    GC = pdk.GratingCoupler(waveguide_type=TECH.WG.FWG.C.WIRE)
+
+    # Place the device in different locations and add them to insts
+    gc1 = GC.h_mirrored().translated(-100, -100)
+    insts += gc1
+    gc2 = GC.h_mirrored().translated(-100, 0)
+    insts += gc2
+    gc3 = GC.h_mirrored().translated(-100, 100)
+    insts += gc3
+    gc4 = GC.translated(100, -50)
+    insts += gc4
+    gc5 = GC.translated(100, 50)
+    insts += gc5
+    gc6 = GC.translated(100, 150)
+    insts += gc6
 
     # Interconnecting device ports by calling the create_links method
     device = fp.create_links(
