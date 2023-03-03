@@ -53,6 +53,6 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
    :caption: Support and Changelog
    :hidden:
 
-   Support_and_changelog/Release_notes/index
-   Support_and_changelog/Frequent_question/index
-   Support_and_changelog/AboutUS
+   Support_Release_notes/index
+   Support_Frequent_question/index
+   Support_AboutUS
