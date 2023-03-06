@@ -92,21 +92,18 @@ Section Script Description
 
       * Instances, elements and ports are usually used in device cells, i.e. calls to other cell instances, graphics in this cell and device ports.
 
-        The three elements in the device are implemented in the PCell definition by calling the build function module in the parent class PCell
-      ::
+        The three elements in the device are implemented in the PCell definition by calling the build function module in the parent class PCell::
 
             def build(self):
             insts, elems, ports = super().build()
 
-      * Generate the rectangular geometry as a element by ``fp.el.Rect`` and initiate to the ElementSet(elems).
-      ::
+      * Generate the rectangular geometry as a element by ``fp.el.Rect`` and initiate to the ElementSet(elems).::
 
             rec = fp.el.Rect(height=self.height, width=self.width, center=(0, 0), layer=TECH.LAYER.FWG_COR)
             elems += rec
 
 
-      * Generate the ports/pins by ``fp.Port/Pin``. Note here the name of the ports/pins can be named by the users (type should be ``str``).
-      ::
+      * Generate the ports/pins by ``fp.Port/Pin``. Note here the name of the ports/pins can be named by the users (type should be ``str``).::
 
             ports += fp.Port(name=self.port_names[0], position=(-self.width/2, 0),
                              waveguide_type=TECH.WG.FWG.C.WIRE.updated(core_layout_width=self.height), orientation=-math.pi)

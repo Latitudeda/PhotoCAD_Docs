@@ -210,8 +210,7 @@ Section Script Description
 
       * Instances, elements and ports are usually used in device cells, i.e. calls to other cell instances, graphics in this cell and device ports.
 
-        The three elements in the device are implemented in the PCell definition by calling the build function module in the parent class PCell
-      ::
+        The three elements in the device are implemented in the PCell definition by calling the build function module in the parent class PCell.::
 
             def build(self):
             insts, elems, ports = super().build()
