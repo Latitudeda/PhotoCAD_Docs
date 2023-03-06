@@ -10,6 +10,7 @@ The second section ``Splitter`` is created by the Pcells generated in the first 
 Finally, the third section ``Mzm`` is created by calling the Pcells either in section I or II and then defining parameterizable parameters, rearranging and connecting them to generate the PCell with the highest level.
 
 .. toctree::
+
  bendeuler
  splitter
  mzm
