@@ -10,12 +10,12 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
 .. toctree::
    :hidden:
 
-   Top_Introduction/index
-   Top_Installation/index
-   Top_QuickStart/quickstart
-   Top_gpdk_manual/index
-   Top_fnpcell_manual/index
-   Top_gpdk/QuickCreatePDK
+   Introduction/index
+   Installation/index
+   QuickStart/quickstart
+   gpdk_manual/index
+   fnpcell_manual/index
+   gpdk/QuickCreatePDK
 
 
 
@@ -23,13 +23,13 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
    :caption: Guides
    :hidden:
 
-   Guides_CreatePcell/index
-   Guides_WaveguideRouting/Summary
-   Examples_example_manual/routing_list
-   Examples_example_manual/component_list
-   Guides_Tutorials/Quickstart
-   Guides_export_netlist_manual/index
-   Guides_jupyter_notebook/index
+   CreatePcell/index
+   WaveguideRouting/Summary
+   example_manual/routing_list
+   example_manual/component_list
+   Tutorials/Quickstart
+   export_netlist_manual/index
+   jupyter_notebook/index
 
 
 
@@ -38,10 +38,10 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
    :caption: Examples
    :hidden:
 
-   Examples_PICircuits/PICircuits
-   Examples_example_manual/triangle_mzi.py
-   Examples_example_manual/example_demultiplexer2.py
-   Examples_post_simulation/index
+   PICircuits/PICircuits
+   example_manual/triangle_mzi.py
+   example_manual/example_demultiplexer2.py
+   post_simulation/index
 
 
 
@@ -50,6 +50,6 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
    :caption: Support and Changelog
    :hidden:
 
-   Support_Release_notes/index
-   Support_Frequent_question/index
-   Support_AboutUS
+   Release_notes/index
+   Frequent_question/index
+   AboutUS
