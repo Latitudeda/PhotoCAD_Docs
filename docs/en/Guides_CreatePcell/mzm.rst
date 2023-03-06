@@ -1,7 +1,7 @@
 Mach-Zehnder modulator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section will introduce customizing the components in ``gpdk`` from the beginning, using ``Mzm`` as an example. The full script can be found in ``gpdk`` > ``components`` > ``mzm`` > ``mzm.py``.
+This section will introduce customizing the components in ``gpdk`` from the beginning, using Mach-Zehnder modulator as an example. The full script can be found in ``gpdk`` > ``components`` > ``mzm`` > ``mzm.py``.
 
 Full Script
 ================
