@@ -7,7 +7,7 @@ This function mainly defines the waveguide type and the default bend waveguide w
 
 Set up transition settings
 ---------------------------------------
-
+We define several transition types which combines every possibilities between our waveguide types. The rules are set in ``class AUTO_TRANSITION``, which we have to import it in ``gpdk/technology/tech.py`` after we defined it.
 
 ::
 
@@ -78,3 +78,18 @@ Set up transition settings
                     (WG.MWG.C >> WG.MWG.C, _Taper(0.2)),
                 ]
             )
+
+Example
+---------------------
+We use waveguide routing method ``create_links`` to demonstrate the auto transition function. You can see from the below figure, the link type of these waveguide ports is ``FWG.C.WIRE`` and the circular bend type is ``SWG.C.WIRE``. Thus, ``_c_fwg2swg`` occurs in the transition between straight waveguide and circular bend::
+
+        link = fp.create_links(
+            link_type=TECH.WG.FWG.C.WIRE,
+            bend_factory=TECH.WG.SWG.C.WIRE.BEND_CIRCULAR,
+            specs=[
+                wg1["op_0"] >> wg2["op_1"],
+                wg1["op_1"] >> wg3["op_1"],
+            ],
+        )
+
+.. image:: ../images/autotransition1.png
