@@ -168,7 +168,6 @@ There are two ways to implement ``waveguide_factory`` for further use, one is to
 
   Then users can decide to use the defined ``user_defined_bendfactory`` in the link function or they can simply enter ``TECH.WG.FWG.C.WIRE.BEND_CIRCULAR`` if they define ``BEND_CIRCULAR`` and BEND_EULER under ``TECH.WG.FWG.C.WIRE``. The choose of use depends entirely on the user's consideration of the performance of the device::
 
-
         link1 = fp.create_links(
             link_type=TECH.WG.FWG.C.EXPANDED,
             # bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR,
