@@ -30,18 +30,14 @@ Here's a comparison of the two options
 
     # Interconnecting device ports by calling the Linked method
     device = fp.Linked(
-        # Define the type of straight waveguide in automatic routing
-        link_type=TECH.WG.FWG.C.EXPANDED,
-        # Define the type of bend in automatic routing
-        bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR,
-
+        link_type=TECH.WG.FWG.C.EXPANDED,  # Define the type of straight waveguide in automatic routing
+        bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR,  # Define the type of bend in automatic routing
         # Define the connection between device ports in links
         links=[
-            # Use >> to define connections between two ports
-            gc1["op_0"] >> fp.Waypoint(-50, -50, 0) >> gc4["op_0"],
-            # Use fp.Waypoint(x,y) to define the path point
-            gc2["op_0"] >> fp.Waypoint(0, 50, 0) >> gc5["op_0"],
-            # Use LinkBetween to define a separate segment of the connection, and you can modify the type of the straight waveguide and bend with parameters
+            gc1["op_0"] >> fp.Waypoint(-50, -50, 0) >> gc4["op_0"],  # Use >> to define connections between two ports
+            gc2["op_0"] >> fp.Waypoint(0, 50, 0) >> gc5["op_0"],  # Use fp.Waypoint(x,y) to define the path point
+            # Use LinkBetween to define a separate segment of the connection,
+            # and you can modify the type of the straight waveguide and bend with parameters
             fp.LinkBetween(
                 start=gc3["op_0"],
                 end=gc6["op_0"],
@@ -53,8 +49,7 @@ Here's a comparison of the two options
         ports=[],
     )
 
-    # Add the device returned by Linked to insts
-    insts += device
+    insts += device  # Add the device returned by Linked to insts
 
 .. image:: ../images/multi2multi.1.png
 
@@ -82,17 +77,14 @@ Here's a comparison of the two options
 
     # Interconnecting device ports by calling the create_links method
     device = fp.create_links(
-        # Define the type of straight waveguide in automatic routing
-        link_type=TECH.WG.FWG.C.EXPANDED,
-        # Define the type of bend in automatic routing
-        bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR,
+        link_type=TECH.WG.FWG.C.EXPANDED,  # Define the type of straight waveguide in automatic routing
+        bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR,  # Define the type of bend in automatic routing
         # Define the connection between device ports in specs
         specs=[
-            # Use >> to define connections between two ports
-            gc1["op_0"] >> fp.Waypoint(-50, -50, 0) >> gc4["op_0"],
-            # Use fp.Waypoint(x,y) to define the path point
-            gc2["op_0"] >> fp.Waypoint(0, 50, 0) >> gc5["op_0"],
-            # Use LinkBetween to define a separate segment of the connection, and you can modify the type of the straight waveguide and bend with parameters
+            gc1["op_0"] >> fp.Waypoint(-50, -50, 0) >> gc4["op_0"],  # Use >> to define connections between two ports
+            gc2["op_0"] >> fp.Waypoint(0, 50, 0) >> gc5["op_0"],  # Use fp.Waypoint(x,y) to define the path point
+            # Use LinkBetween to define a separate segment of the connection,
+            # and you can modify the type of the straight waveguide and bend with parameters
             fp.LinkBetween(
                 start=gc3["op_0"],
                 end=gc6["op_0"],
@@ -107,8 +99,8 @@ Here's a comparison of the two options
     length_2 = device[1].curve_length
     length_3 = device[2].curve_length
     print(f"{length_1} \n {length_2} \n {length_3}")
-    # Add the device returned by create_links to insts
-    insts += device
+
+    insts += device  # Add the device returned by create_links to insts
 
 .. image:: ../images/multi2multi.1.png
 
