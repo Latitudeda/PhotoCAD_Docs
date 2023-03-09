@@ -81,6 +81,7 @@ We define several transition types which combines every possibilities between ou
 
 Example
 ---------------------
+
 We use waveguide routing method ``create_links`` to demonstrate the auto transition function. You can see from the below figure, the link type of these waveguide ports is ``FWG.C.WIRE`` and the circular bend type is ``SWG.C.WIRE``. Thus, ``_c_fwg2swg`` occurs in the transition between straight waveguide and circular bend::
 
         link = fp.create_links(
