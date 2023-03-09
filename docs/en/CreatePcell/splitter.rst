@@ -123,7 +123,7 @@ Section Script Description
         waveguide_type: CoreCladdingWaveguideType = fp.WaveguideTypeParam(type=CoreCladdingWaveguideType)
         port_names: fp.IPortOptions = fp.PortOptionsParam(count=3, default=("op_0", "op_1", "op_2"))
 
-      * In ``Splitter``, two mirrored bends  are used, where the radius of the bend, the angle of the output waveguide, the waveguide type, and the device port are all key variables.
+      * In ``Splitter``, two mirrored bends are used, where the radius of the bend, the angle of the output waveguide, the waveguide type, and the device port are all key variables.
 
       * ``bend_radius： float =fp.PositiveFloatParam()`` defines the radius of bend in ``Splitter``, the data type is positive floating point, set the default value to 15, ``doc=""`` is used to mark the comment description text.
 
@@ -268,18 +268,19 @@ Section Script Description
 
              fp.export_gds(library, file=gds_file)
 
-   #. Run the script and view the layout
+Run the script and view the layout
+=========================================
 
-      Run ``splitter.py`` and use layout tool e.g. KLayout to view the generated GDS file, which should be saved under ``gpdk`` > ``components`` > ``splitter`` > ``local``.
+Run ``splitter.py`` and use layout tool e.g. KLayout to view the generated GDS file, which should be saved under ``gpdk`` > ``components`` > ``splitter`` > ``local``.
 
-      .. image:: ../images/splitter2.png
+.. image:: ../images/splitter2.png
 
-      In the table you can see the two generated instances, ``Splitter`` and ``Splitter_S``, where ``Splitter`` is set as a prefix the definition of the splitter class name. ``S`` is the instance name defined at the time of instantiation, when specified by default plus the former ``Splitter_``.
+In the table you can see the two generated instances, ``Splitter`` and ``Splitter_S``, where ``Splitter`` is set as a prefix the definition of the splitter class name. ``S`` is the instance name defined at the time of instantiation, when specified by default plus the former ``Splitter_``.
 
-      View the two layout cells separately.
+View the two layout cells separately.
 
-      * Splitter: bend radius default= ``15``, output angle default= ``90`` , central waveguide length default= ``2`` , taper length default= ``0.1`` , waveguide type default= ``FWG.C.WIRE`` , default port name ``op_1`` , ``op_2``, ``op_3``.
+* Splitter: bend radius default= ``15``, output angle default= ``90`` , central waveguide length default= ``2`` , taper length default= ``0.1`` , waveguide type default= ``FWG.C.WIRE`` , default port name ``op_1`` , ``op_2``, ``op_3``.
 
-      * Splitter_S: bend radius default= ``20``, output angle default= ``60`` , central waveguide length default= ``4`` , taper length default= ``0.5`` , waveguide type default= ``MWG.C.WIRE`` , default port name ``op_a`` , ``op_b``, ``op_c``.
+* Splitter_S: bend radius default= ``20``, output angle default= ``60`` , central waveguide length default= ``4`` , taper length default= ``0.5`` , waveguide type default= ``MWG.C.WIRE`` , default port name ``op_a`` , ``op_b``, ``op_c``.
 
-      .. image:: ../images/splitter3.png
+.. image:: ../images/splitter3.png
