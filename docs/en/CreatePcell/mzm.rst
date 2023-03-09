@@ -165,7 +165,7 @@ Section Script Description
     * ``pn_phase_shifter_0``. ``pn_phase_shifter_1``, ``y_splitter``, and ``y_combiner`` are used to build up the mzm component.
 
     .. note::
-       To set the type of the existing devices or Pcells in the parameter, users are able to use either ``fp.IDevice`` or ``fp.Pcell`` . However, we recommend to use ``fp.IDevice`` rather then ``fp.Pcell`` since ``Pcell``(child class) is inherited from ``IDevice``(parent class), and there would be some situation the device we are calling is not a ``PCell``.
+       To set the type of the existing devices or Pcells in the parameter of a component, users are able to use either ``fp.IDevice`` or ``fp.Pcell`` . However, we recommend to use ``fp.IDevice`` rather then ``fp.Pcell`` since ``Pcell``(child class) is inherited from ``IDevice``(parent class), and there would be some situation the device we are calling is not a ``PCell``.
 
     * ``port_names`` is used to define the number of ports of the component. Secondly, the ports are named, and the default is ``default=("op_0", "op_1")``, the user can set it by himself.
 
