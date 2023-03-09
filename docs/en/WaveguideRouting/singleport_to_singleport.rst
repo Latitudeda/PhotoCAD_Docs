@@ -24,8 +24,7 @@ Examples
         bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR, # Define the type of bend during automatic routing
         # Define the connection relationship between device ports in specs
         specs=[
-            # Use >> to define connection relationships
-            gc1["op_0"] >> fp.Waypoint(-50, -50, 0) >> gc4["op_0"],
+            gc1["op_0"] >> fp.Waypoint(-50, -50, 0) >> gc4["op_0"],  # Use >> to define connection relationships
             # Use LINKER to define the interconnection of the specified device port
             TECH.LINKER.SWG_WIRE_FWG_EULER(
                 start=gc2["op_0"],
@@ -42,8 +41,8 @@ Examples
             ),
         ],
     )
-    # Add the devices returned by Linked to insts
-    insts += device
+
+    insts += device  # Add the devices returned by Linked to insts
 
 .. image:: ../images/single2single.png
 
@@ -106,8 +105,8 @@ Code details::
                     ),
                 ],
             )
-            # Add the devices returned by Linked to insts
-            insts += device
+
+            insts += device  # Add the devices returned by Linked to insts
 
             # fmt: on
             return insts, elems, ports
