@@ -219,6 +219,10 @@ Section Script Description
 
       * Define the type of waveguide used in the bend, as well as the curve and add the ports generated from the above script.
 
+        .. note::
+             The cell we created here using ``waveguide_type(curve=raw_curve)`` is not applicable for cell ``BendEuler`` to run post-simulation process due to the nonexistance of the simulation model. Users can call the components which the simulation model is already defined, e.g. ``Straight()`` and initiate to the cell if they need to run post-simulation.
+
+
       ::
 
             wg = self.waveguide_type(curve=self.raw_curve).with_ports(self.port_names)
