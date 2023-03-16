@@ -217,7 +217,9 @@ Section Script Description
                 insts, elems, ports = super().build()
 
 
-      * Define the type of waveguide used in the bend, as well as the curve and add the ports generated from the above script::
+      * Define the type of waveguide used in the bend, as well as the curve and add the ports generated from the above script.
+
+      ::
 
             wg = self.waveguide_type(curve=self.raw_curve).with_ports(self.port_names)
 
@@ -225,6 +227,7 @@ Section Script Description
 
 
       * Initiate wg and ports and return the instances, elements, and ports in the component cell.
+
 
       ::
 
