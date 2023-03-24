@@ -179,7 +179,8 @@ Section Script Description
                     )
 
            The layout of the ``device`` is shown in the below figure.
-           .. image:: ../images/mzm3.png
+
+            .. image:: ../images/mzm3.png
 
 
 
