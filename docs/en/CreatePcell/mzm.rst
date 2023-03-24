@@ -166,9 +166,20 @@ Section Script Description
 
       .. note::
            To set the type of the existing cells or Pcells in the parameter of a component, users are able to use either ``fp.IDevice`` or ``fp.Pcell`` . However, we recommend to use ``fp.IDevice`` instead of  ``fp.Pcell`` since ``Pcell`` (child class) is inherited from ``IDevice`` (parent class), and there would be some situation that the cell we are calling is not a ``PCell``.
-            For example, a cell created by ``fp.Device`` is not a ``Pcell``.
-            ``device = fp.Device(name='test', contents=[], ports=[],)`` will return a cell with the components in the contenets and also provide the port information of the cell.
 
+           For example, a cell created by ``fp.Device`` is not a ``Pcell``.
+           ``device = fp.Device(name='test', contents=[], ports=[],)`` will return a ``device`` cell with the components in the contents and also provide the port information of the cell.::
+
+                straight = Straight(length=10, waveguide_type=get_technology().WG.FWG.C.WIRE).translated(tx=-10, ty=-5)
+                bend = SBendCircular()
+
+                device = fp.Device(
+                    content=[straight,bend],
+                    ports=[straight["op_0"].with_name("op_0"), bend["op_1"]],
+                    )
+
+           The layout of the ``device`` is shown in the below figure.
+           .. image:: ../images/mzm3.png
 
 
 
