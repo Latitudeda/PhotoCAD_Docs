@@ -75,7 +75,7 @@ Post-layout simulation
 ====================================
 Below scripts are described step-by-step to show how to run a S-matrix simulation on ``MMi11x2`` and plot the simulated spectrum.
 
-#. Import ``sflow`` and necessary package, define the simulation environment, and define and export the netlist file.::
+#. Import ``sflow`` and necessary package, define the simulation environment, and define and export the netlist file::
 
            import sflow as sf
             import matplotlib.pyplot as plt
@@ -118,7 +118,7 @@ Below scripts are described step-by-step to show how to run a S-matrix simulatio
 
      Since we already pre-defined the simulation model inside the base component (``StraightWaveguideModel`` for ``Straight``, ``TaperLinearModel`` for ``TaperLinear``), once we run the post-simulation, ``sflow`` will use the model defined in every base component for simulation.
 
-#. Run the simulation ``sflow``.::
+#. Run the simulation ``sflow``::
 
         sim_result = sf.run_sim(
                         input_ports=["op_0"],  # Define the port which optical signal input
@@ -128,7 +128,7 @@ Below scripts are described step-by-step to show how to run a S-matrix simulatio
                         # print_netlist=True  # Defines whether to print a simplified netlist information
                     )
 
-#. Get the data of each ports and plot the figure.::
+#. Get the data of each ports and plot the figure::
 
 
             return_loss = sim_result["op_0"]
