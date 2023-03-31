@@ -1,7 +1,7 @@
 ``wg.py`` configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Configure arrays of theoretical parameters corresponding to different waveguide types in ``wg.py``, with ``wl`` , ``neff`` , ``loss`` , and define ``theoretical_parameters`` function to associate arrays with waveguide types. Note that, this will make it possible to call the theoretical parameters of the current waveguide type when modeling a component, if you already have some way to obtain the theoretical parameters(External file, Self-built S-matrix) then you do not need to do these configurations.
+To configure arrays of theoretical parameters for different waveguide types in ``wg.py``, define variables for wavelength (``wl``), effective refractive index (``neff``), and loss (``loss``) for each waveguide type, and create a function called ``theoretical_parameters`` to associate these variables with their respective waveguide types. This will allow for the easy retrieval of theoretical parameters for the current waveguide type during component modeling. Note that if you already have a way to obtain the theoretical parameters (e.g. from an external file or self-built S-matrix), you do not need to perform these configurations.
 
 #. Step1:
 

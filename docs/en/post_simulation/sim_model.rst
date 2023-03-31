@@ -1,5 +1,5 @@
 
-Types of simulation model commonly used in **PhotoCAD**
+Types of simulation model
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Important note: To run the below simulation models in PhotoCAD, upgrades to fnpcell-1.5.1 and sflow-0.8.36 are required**
@@ -16,18 +16,18 @@ Below table lists four commonly used simulation model. To simulate the circuit, 
 |                                 | 2. The wavelength range corresponding to the S-matrix;            |                                                |
 |                                 | 3. Metadata(optional)                                             |                                                |
 +---------------------------------+-------------------------------------------------------------------+------------------------------------------------+
-| fp.sim.ExternalFileModel()      | -parameter file path                                              | Only support file with suffix “dat” right now. |
+| fp.sim.ExternalFileModel()      | S-parameter file path                                             | Only support file with suffix “dat” right now. |
 +---------------------------------+-------------------------------------------------------------------+------------------------------------------------+
-| fp.sim.StraightWaveguideModel() | 1. Length of waveguide;                                           | Only for straight waveguide                    |
+| fp.sim.StraightWaveguideModel() | 1. Length of waveguide                                            | Only for straight waveguide                    |
 |                                 | 2. The theoretical parameters corresponding to the waveguide type |                                                |
 +---------------------------------+-------------------------------------------------------------------+------------------------------------------------+
-| fp.sim.TaperLinearModel()       | 1. Length of taper;                                               | Only for linear taper                          |
+| fp.sim.TaperLinearModel()       | 1. Length of taper                                                | Only for linear taper                          |
 |                                 | 2. The theoretical parameters corresponding to the two port types |                                                |
 +---------------------------------+-------------------------------------------------------------------+------------------------------------------------+
 
 ``SMatrixWavelengthModel``
 --------------------------------------------
-``SMatrixWavelengthModel`` creates a user-defined S-matrix and send the S-parameter to the simulation model, simulation parameters such as wavelength, effective index, propagation loss, temperature can be added in the model. ``gpdk`` > ``components`` > ``straight`` > ``straight.py`` shows an example of defining ``SMatrixWavelengthModel`` in a straight waveguide.
+``SMatrixWavelengthModel`` creates a user-defined S-matrix and send the S-parameter to the simulation model. Simulation parameters such as wavelength, effective index, propagation loss, temperature can be added in the model. ``gpdk`` > ``components`` > ``straight`` > ``straight.py`` shows an example of defining ``SMatrixWavelengthModel`` in a straight waveguide.
 
 
 #. Define the simulation model in ``Straight`` and import necessary module::
@@ -48,7 +48,7 @@ Below table lists four commonly used simulation model. To simulate the circuit, 
             n_eff = np.asanyarray(params.n_eff)
             loss = np.asanyarray(params.loss) * 1e2  # loss in dB/cm => dB/m
 
-    Users are also allowed to build theoretical parameters by your custom functions::
+Users are also allowed to build theoretical parameters by your custom functions::
 
         n_eff = func_a(wl, waveguide_type, T)
         loss = func_b(wl, waveguide_type, T)
@@ -102,11 +102,11 @@ Below table lists four commonly used simulation model. To simulate the circuit, 
         ["op_1","RIGHT"]
         ["op_2","RIGHT"]
 
-   * ``output port``, mode label, ``output mode``, ``input port``, ``input mode``, type::
+   * output port | mode label | output mode | input port | input mode | type::
 
         ("op_0","mode 1",1,"op_0",1,"transmission")
 
-   * Frequency, \|S\|, arg(S)::
+   * Frequency | |S| | arg(S)::
 
         1.9156067603833869e+14 2.7442972188120671e-02 -6.4430396820656299e-01
         1.9156506253180034e+14 2.7351617044051896e-02 -6.3548125587455162e-01
@@ -135,7 +135,7 @@ Below table lists four commonly used simulation model. To simulate the circuit, 
 
 Specific component simulation model
 -----------------------------------
-#. ``StraightWaveguideModel``: In this function, it will automatically calculate the phase and amplitude changes according to the theoretical parameters and the current waveguide length then build the simulation model which is only suitable for ``Straight``. The theoretical parameters are defined in ``wg.py`` in advance.
+#. ``StraightWaveguideModel``: In this model, it will automatically calculate the phase and amplitude changes according to the theoretical parameters and the current waveguide length then build the simulation model which is only suitable for ``Straight``. The theoretical parameters are defined in ``wg.py`` in advance.
 
    Example(check out the full code: ``gpdk`` > ``components`` > ``straight`` > ``straight.py``) ::
 
@@ -143,7 +143,7 @@ Specific component simulation model
         def sim_model(self, env: fp.ISimEnv):
             return fp.sim.StraightWaveguideModel(self.waveguide_type.theoretical_parameters, length=self.length)
 
-#. ``TaperLinearModel``: In this function, two theoretical parameters( ``left_type`` and ``right_type`` ) will first been averaged. Then it will automatically calculate the phase and amplitude changes according to the averaged theoretical parameters and the current Taper length then build the simulation model which is only suitable for ``Taper``.
+#. ``TaperLinearModel``: In this model, two theoretical parameters( ``left_type`` and ``right_type`` ) will first been averaged. Then it will automatically calculate the phase and amplitude changes according to the averaged theoretical parameters and the current Taper length then build the simulation model which is only suitable for ``Taper``.
 
    Example(check out the full code: ``gpdk`` > ``components`` > ``taper`` > ``taper_linear.py``) ::
 
@@ -157,6 +157,6 @@ Specific component simulation model
 Summary
 -----------------------------------
 
-The above four types of device models will be converted into the S-parameter matrix of the corresponding component, and the S-parameter matrix of multiple components will be cascaded to obtain simulation results when running simulation.
+The four device models mentioned above will be converted into their corresponding S-parameter matrices, and these matrices will be cascaded for simulating multiple components.
 
-It should be noted that when the model sampling point of the device is different from the sampling point set during the link simulation, the engine will perform linear interpolation based on the model of the device to ensure that the model sampling point of each device is consistent with the sampling point set during the link simulation.
+It is important to note that if the model sampling point of a device differs from the sampling point set during the link simulation, the engine will use linear interpolation to ensure consistency between the model sampling point of each device and the sampling point set during the link simulation.
