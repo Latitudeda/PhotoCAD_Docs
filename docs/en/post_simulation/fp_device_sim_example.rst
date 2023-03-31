@@ -53,7 +53,7 @@ Full script
 
 
 Add ``MMI`` to ``fp.Library`` and export GDS file
-====================================
+=======================================================
 The below scripts shows how to add a cell created by ``fp.Device``  to ``fp.Library`` and export the layout.
 
 #. Import ``fnpcell`` and the components created in ``gpdk`` to be called::
