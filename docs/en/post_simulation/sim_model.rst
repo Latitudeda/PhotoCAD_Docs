@@ -106,7 +106,7 @@ Users are also allowed to build theoretical parameters by your custom functions:
 
         ("op_0","mode 1",1,"op_0",1,"transmission")
 
-   * Frequency | |S| | arg(S)::
+   * Frequency | |S\| | arg(S)::
 
         1.9156067603833869e+14 2.7442972188120671e-02 -6.4430396820656299e-01
         1.9156506253180034e+14 2.7351617044051896e-02 -6.3548125587455162e-01
