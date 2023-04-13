@@ -70,8 +70,10 @@ The information api mainly contains::
      # return port's orientation (radian)
     get_left_ports:
      # return all left-sided ports in the PCell
-    get_right_ports
+    get_right_ports:
      # return all right-sided ports in the PCell
-    get_bounding_box
+    get_bounding_box(target, exclude_layers):
      # return the bounding box's coordinate of the PCell
+     # target: any drawable instance, such as IPolygon, ICell, ICellRef, ILibrary
+     # exclude_layers: layers you don't want the function to be included.
 
