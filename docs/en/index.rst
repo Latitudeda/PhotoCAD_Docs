@@ -50,6 +50,7 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
    :caption: Support and Changelog
    :hidden:
 
+   fnpcell/index
    Release_notes/index
    Frequent_question/index
    AboutUS

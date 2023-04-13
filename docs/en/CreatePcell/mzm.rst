@@ -237,7 +237,7 @@ Section Script Description
             def build(self):
             insts, elems, ports = super().build()
 
-      * Define the variable parameters and components we set::
+      * Define the variable parameters and components we set.::
 
             waveguide_type = self.waveguide_type
             pn_phase_shifter_0 = self.pn_phase_shifter_0
@@ -246,9 +246,8 @@ Section Script Description
             ycombiner = self.y_combiner
             port_names = self.port_names
 
-      * Add ports for the mzm from ``ysplitter`` and ``ycombiner``
+      * Add ports for the mzm from ``ysplitter`` and ``ycombiner``.::
 
-      ::
 
             phase_shifter_top = pn_phase_shifter_0
             phase_shifter_bottom = pn_phase_shifter_1
@@ -257,9 +256,8 @@ Section Script Description
             ycombiner = ycombiner
             ports += ycombiner["op_2"].with_name(port_names[1])
 
-      * Link all components with defined waveguide type and initiate the linked route
+      * Link all components with defined waveguide type and initiate the linked route.::
 
-      ::
 
             insts += fp.Linked(
                 link_type=waveguide_type,
@@ -280,15 +278,15 @@ Section Script Description
 
    #. Use the ``Mzm`` class to create component cells and output the layout.
 
-      * Import the package to generate output layout file under the same file of the ``mzm``
+      * Import the package to generate output layout file under the same file of the ``mzm``.::
 
-      ::
+
 
                 from gpdk.util.path import local_output_file
 
-      * Refer to the path where the top generated gds file is saved. Then obtain all device process information.
+      * Refer to the path where the top generated gds file is saved. Then obtain all device process information.::
 
-      ::
+
 
                gds_file = local_output_file(__file__).with_suffix(".gds")
                library = fp.Library()
