@@ -65,13 +65,13 @@ Information
 The information api mainly contains::
 
     position:
-     return port's position (x, y)
+     # return port's position (x, y)
     orientation:
-     return port's orientation (radian)
+     # return port's orientation (radian)
     get_left_ports:
-     return all left-sided ports in the PCell
+     # return all left-sided ports in the PCell
     get_right_ports
-     return all right-sided ports in the PCell
+     # return all right-sided ports in the PCell
     get_bounding_box
-     return the bounding box's coordinate of the PCell
+     # return the bounding box's coordinate of the PCell
 
