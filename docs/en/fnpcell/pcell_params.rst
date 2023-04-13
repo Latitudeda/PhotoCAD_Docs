@@ -1,4 +1,4 @@
-Module fnpcell.pdk.pcell_params
+PCell Parameters
 =================================
 
 Classes
@@ -6,6 +6,8 @@ Classes
 
 AnchorParam
 ++++++++++++++
+
+Parameter for Anchor, see :ref:`IParam` for details.
 
 ::
     
@@ -15,9 +17,8 @@ AnchorParam
                         preprocessor: Optional[Callable[[Any], Any]] = None, 
                         frozen: bool = False, doc: Optional[str] = None)
 
-Parameter for Anchor.
 
-See IParam for details.
+
 
 Ancestors
 ___________
@@ -206,6 +207,8 @@ ___________
 ::
     
     def validate(self, runtime: Any, name: str, value: Optional[Any], context: Optional[Any]) -> Any
+
+.. _IParam :
 
 IParam
 +++++++++
