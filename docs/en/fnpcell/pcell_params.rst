@@ -4,6 +4,8 @@ PCell Parameters
 Classes
 ---------
 
+.. _AnchorParam :
+
 AnchorParam
 ++++++++++++++
 
@@ -20,12 +22,9 @@ Parameter for Anchor, see :ref:`IParam` for details.
 
 
 
-Ancestors
-___________
+Ancestors : :ref:`Param`, :ref:`IParam`
+___________________________________________
 
-::
-    
-    Param, IParam
 
 Class variables
 __________________
@@ -42,6 +41,8 @@ Usage::
     from fnpcell import all as fp 
     Straight(name="", anchor=fp.Anchor.CENTER, …)
 
+.. _BooleanParam :
+
 BooleanParam
 +++++++++++++
 
@@ -57,12 +58,8 @@ Parameter for boolean.
 
 See IParam for details.
 
-Ancestors
-___________
-
-::
-    
-    Param, IParam
+Ancestors : :ref:`Param`, :ref:`IParam`
+___________________________________________
 
 Class variables
 __________________
@@ -78,6 +75,8 @@ bool(x) -> bool
 Returns True when the argument x is true, False otherwise. The builtins True and 
 False are the only two instances of the class bool. The class bool is a subclass 
 of the class int, and cannot be subclassed.
+
+.. _DegreeParam :
 
 DegreeParam
 +++++++++++++
@@ -97,12 +96,8 @@ Parameter for Angle in Degrees.
 
 See IParam for details.
 
-Ancestors
-___________
-
-::
-    
-    FloatParam, Param, IParam
+Ancestors : :ref:`FloatParam`, :ref:`Param`, :ref:`IParam`
+___________________________________________
 
 Class variables
 __________________
@@ -113,6 +108,8 @@ __________________
     var invalid: Optional[Container[float]]
     var max: Optional[float]
     var min: Optional[float]
+
+.. _DeviceParam :
 
 DeviceParam
 +++++++++++++
@@ -157,6 +154,8 @@ ___________
 ::
     
     def validate(self, runtime: Any, name: str, value: Optional[Any], context: Optional[Any]) -> Any
+
+.. _FloatParam :
 
 FloatParam
 +++++++++++++
@@ -302,6 +301,8 @@ __________
     def validate(self, runtime: Any, name: str, value: Optional[Any], 
                     context: Optional[Any]) -> Any
 
+.. _IntParam:
+
 IntParam                   
 ++++++++++
 
@@ -349,6 +350,8 @@ __________
 def validate(self, runtime: Any, name: str, value: Optional[Any], 
                 context: Optional[Any]) -> Any
 
+.. _LayerParam:
+
 LayerParam
 ++++++++++++
 
@@ -380,6 +383,8 @@ __________________
     var type: Union[type, Tuple[Union[type, Tuple[type, ...]], ...], None]
 
 Interface of Layer.
+
+.. _ListParam:
 
 ListParam
 ++++++++++++
@@ -427,6 +432,8 @@ __________
     def validate(self, runtime: Any, name: str, value: Optional[Any], 
                     context: Optional[Any]) -> Any
 
+.. _MappingParam:
+
 MappingParam
 ++++++++++++++
 
@@ -472,6 +479,8 @@ __________
     
     def validate(self, runtime: Any, name: str, value: Optional[Any], context: Optional[Any]) -> Any
 
+.. _MetalLineTypeParam:
+
 MetalLineTypeParam
 ++++++++++++++++++++
 
@@ -509,6 +518,8 @@ __________
 ::
     
     def validate(self, runtime: Any, name: str, value: Optional[Any], context: Optional[Any]) -> Any
+
+.. _NameListParam:
 
 NameListParam
 +++++++++++++++
@@ -557,6 +568,8 @@ __________
     def validate(self, runtime: Any, name: str, value: Optional[Any], 
                     context: Optional[Any]) -> Any
 
+.. _NameParam:
+
 NameParam
 +++++++++++
 
@@ -604,6 +617,8 @@ __________
     
     def validate(self, runtime: Any, name: str, value: Optional[Any], context: Optional[Any]) -> Any
 
+.. _NonNegFloatParam:
+
 NonNegFloatParam
 ++++++++++++++++++
 
@@ -638,6 +653,9 @@ __________________
     var max: Optional[float]
     var min: float
 
+.. _NonNegIntParam:
+
+
 NonNegIntParam
 +++++++++++++++++
 
@@ -670,6 +688,8 @@ _________________
     var invalid: Optional[Container[int]]
     var max: Optional[int]
     var min: int
+
+.. _Param :
 
 Param
 +++++++++
@@ -717,6 +737,8 @@ _________________
     var required: bool
     var type: Union[type, Tuple[Union[type, Tuple[type, ...]], ...], None]
 
+.. _PointsParam:
+
 PointsParam
 +++++++++++++
 
@@ -758,6 +780,8 @@ __________
 ::
     
     def validate(self, runtime: Any, name: str, value: Optional[Any], context: Optional[Any]) -> Any
+
+.. _PointsParam:
 
 PortOptionsParam
 +++++++++++++++++
@@ -803,6 +827,8 @@ __________
     def validate(self, runtime: Any, name: str, value: Optional[Any], 
                     context: Optional[Any]) -> Any
 
+.. _PositionParam:
+
 PositionParam
 +++++++++++++++
 
@@ -840,6 +866,9 @@ __________
     
     def validate(self, runtime: Any, name: str, value: Optional[Any], context: Optional[Any]) -> Any
 
+
+.. _PositiveFloatParam:
+
 PositiveFloatParam
 ++++++++++++++++++++
 
@@ -874,6 +903,8 @@ __________________
     var max: Optional[float]
     var min: Optional[float]
 
+.. _PositiveIntParam:
+
 PositiveIntParam
 ++++++++++++++++++
 
@@ -906,6 +937,8 @@ __________________
     var invalid: Optional[Container[int]]
     var max: Optional[int]
     var min: Optional[int]
+
+.. _SetParam:
 
 SetParam
 ++++++++++
@@ -950,6 +983,8 @@ __________
 ::
     
     def validate(self, runtime: Any, name: str, value: Optional[Any], context: Optional[Any]) -> Any
+
+.. _TextParam:
 
 TextParam
 ++++++++++
@@ -1002,6 +1037,8 @@ __________
     
     def validate(self, runtime: Any, name: str, value: Optional[Any], 
                     context: Optional[Any]) -> Any
+
+.. _TransformParam:
 
 TransformParam
 ++++++++++++++++
@@ -1056,6 +1093,8 @@ __________
     
     def resolve(self, runtime: Any, name: str, value: Optional[Any], 
                 context: Optional[Any]) -> Any
+
+.. _WaveguideTypeParam:
 
 WaveguideTypeParam
 +++++++++++++++++++
