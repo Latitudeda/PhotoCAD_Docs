@@ -46,6 +46,8 @@ Usage::
 BooleanParam
 +++++++++++++
 
+Parameter for boolean, see :ref:`IParam` for details.
+
 ::
     
     class BooleanParam(type: Union[type, Tuple[Union[type, Tuple[type, ...]], ...], None] = builtins.bool, 
@@ -53,10 +55,6 @@ BooleanParam
                         default_factory: Union[str, Callable[[], Any]] = '_default_{name}', 
                         preprocessor: Optional[Callable[[Any], Any]] = None, f
                         rozen: bool = False, doc: Optional[str] = None)
-
-Parameter for boolean.
-
-See IParam for details.
 
 Ancestors : :ref:`Param`, :ref:`IParam`
 ___________________________________________
@@ -81,6 +79,8 @@ of the class int, and cannot be subclassed.
 DegreeParam
 +++++++++++++
 
+Parameter for Angle in Degrees, see :ref:`IParam` for details.
+
 ::
     
     class DegreeParam(type: Union[type, Tuple[Union[type, Tuple[type, ...]], ...], None] = (<class 'float'>, <class 'int'>), 
@@ -92,12 +92,9 @@ DegreeParam
                         invalid: Optional[Container[float]] = None, 
                         precision: Optional[float] = None)
 
-Parameter for Angle in Degrees.
-
-See IParam for details.
 
 Ancestors : :ref:`FloatParam`, :ref:`Param`, :ref:`IParam`
-___________________________________________
+_______________________________________________________________
 
 Class variables
 __________________
@@ -114,6 +111,8 @@ __________________
 DeviceParam
 +++++++++++++
 
+Parameter for Device, see :ref:`IParam` for details.
+
 ::
     
     class DeviceParam(type: Union[type, Tuple[Union[type, Tuple[type, ...]], ...], None] = fnpcell.interfaces.ICellRef, 
@@ -124,11 +123,8 @@ DeviceParam
                         factory: Optional[Callable[..., ICellRef]] = None, 
                         port_count: Optional[int] = None, pin_count: Optional[int] = None)
 
-Parameter for Device.
 
-See IParam for details.
-
-Ancestors
+Ancestors : :ref:`Param`, :ref:`IParam`
 ___________
 
 ::
@@ -781,7 +777,7 @@ __________
     
     def validate(self, runtime: Any, name: str, value: Optional[Any], context: Optional[Any]) -> Any
 
-.. _PointsParam:
+.. _PortOptionsParam:
 
 PortOptionsParam
 +++++++++++++++++
