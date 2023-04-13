@@ -22,21 +22,21 @@ Parameter for Anchor, see :ref:`IParam` for details.
 
 
 
-Ancestors : :ref:`Param`, :ref:`IParam`
-___________________________________________
+ Ancestors : :ref:`Param`, :ref:`IParam`
+ ___________________________________________
 
 
-Class variables
-__________________
+ Class variables
+ __________________
 
-::
+ ::
     
     var default: Optional[Anchor]
     var type: Union[type, Tuple[Union[type, Tuple[type, ...]], ...], None]
 
-Assign where the (0, 0) is.
+ Assign where the (0, 0) is.
 
-Usage::
+ Usage::
     
     from fnpcell import all as fp 
     Straight(name="", anchor=fp.Anchor.CENTER, …)
