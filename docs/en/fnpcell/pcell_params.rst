@@ -2,7 +2,7 @@ PCell Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Classes
----------
+==============
 
 .. _AnchorParam :
 
@@ -44,7 +44,7 @@ Usage::
 .. _BooleanParam :
 
 BooleanParam
-+++++++++++++
+==================
 
 Parameter for boolean, see :ref:`IParam` for details.
 
@@ -77,7 +77,7 @@ of the class int, and cannot be subclassed.
 .. _DegreeParam :
 
 DegreeParam
-+++++++++++++
+================
 
 Parameter for Angle in Degrees, see :ref:`IParam` for details.
 
@@ -109,7 +109,7 @@ __________________
 .. _DeviceParam :
 
 DeviceParam
-+++++++++++++
+=================
 
 Parameter for Device, see :ref:`IParam` for details.
 
@@ -150,7 +150,9 @@ ___________
 .. _FloatParam :
 
 FloatParam
-+++++++++++++
+=================
+
+Parameter for Float, see :ref:`IParam` for details.
 
 ::
     
@@ -162,23 +164,14 @@ FloatParam
                         max: Optional[float] = None, invalid: Optional[Container[float]] = None, 
                         precision: Optional[float] = None)
 
-Parameter for Float.
 
-See IParam for details.
+Ancestors : :ref:`Param`, :ref:`IParam`
+_____________________________________________
 
-Ancestors
-___________
 
-::
-    
-    Param, IParam
+Subclasses : :ref:`DegreeParam`, :ref:`IntParam`, :ref:`NonNegFloatParam`, :ref:`PositiveFloatParam`
+____________________________________________________________________________________________________________________
 
-Subclasses
-___________
-
-::
-    
-    DegreeParam, IntParam, NonNegFloatParam, PositiveFloatParam
 
 Class variables
 __________________
@@ -202,7 +195,7 @@ ___________
 .. _IParam :
 
 IParam
-+++++++++
+================
 
 ::
     
@@ -255,12 +248,10 @@ doc::
     
     Optional, user provided short document text.
 
-Subclasses
-____________
+Subclasses : :ref:`Param`, ``fnpcell.pdk.pcell_params._NonNegMixin``, ``fnpcell.pdk.pcell_params._PositiveMixin``
+_________________________________________________________________________________________________________________________
 
-::
-    
-    Param, fnpcell.pdk.pcell_params._NonNegMixin, fnpcell.pdk.pcell_params._PositiveMixin
+
 
 Class variables
 __________________
@@ -296,7 +287,9 @@ __________
 .. _IntParam:
 
 IntParam                   
-++++++++++
+================
+
+Parameter for Integer, see :ref:`IParam` for details.
 
 ::
     
@@ -308,23 +301,14 @@ IntParam
                     max: Optional[int] = None, invalid: Optional[Container[int]] = None, 
                     precision: Optional[float] = None)
 
-Parameter for Integer.
+Ancestors : :ref:`Param`, :ref:`IParam`, :ref:`FloatParam`
+_______________________________________________________________
 
-See IParam for details.
 
-Ancestors
-__________
 
-::
-    
-    FloatParam, Param, IParam
+Subclasses : :ref:`NonNegIntParam`, :ref:`PositiveIntParam`
+_____________________________________________________________
 
-Subclasses
-____________
-
-::
-    
-    NonNegIntParam, PositiveIntParam
 
 Class variables
 __________________
@@ -345,7 +329,9 @@ def validate(self, runtime: Any, name: str, value: Optional[Any],
 .. _LayerParam:
 
 LayerParam
-++++++++++++
+=================
+
+Parameter for Layer, see :ref:`IParam` for details.
 
 ::
     
@@ -355,16 +341,9 @@ LayerParam
                         preprocessor: Optional[Callable[[Any], Any]] = None, 
                         frozen: bool = False, doc: Optional[str] = None)
 
-Parameter for Layer.
 
-See IParam for details.
-
-Ancestors
-___________
-
-::
-    
-    Param, IParam
+Ancestors : :ref:`Param`, :ref:`IParam`
+_____________________________________________
 
 Class variables
 __________________
@@ -379,7 +358,9 @@ Interface of Layer.
 .. _ListParam:
 
 ListParam
-++++++++++++
+==================
+
+Parameter for List, see :ref:`IParam` for details.
 
 ::
     
@@ -390,16 +371,9 @@ ListParam
                     frozen: bool = False, doc: Optional[str] = None, 
                     element_type: Optional[Type[Any]] = None, immutable: bool = False)
 
-Parameter for List.
 
-See IParam for details.
-
-Ancestors
-__________
-
-::
-    
-    Param, IParam
+Ancestors : :ref:`Param`, :ref:`IParam`
+_____________________________________________
 
 Class variables
 __________________
@@ -427,7 +401,9 @@ __________
 .. _MappingParam:
 
 MappingParam
-++++++++++++++
+=================
+
+Parameter for Mapping, see :ref:`IParam` for details.
 
 ::
     
@@ -438,16 +414,9 @@ MappingParam
                         doc: Optional[str] = None, K: Optional[Type[Any]] = None, 
                         V: Optional[Type[Any]] = None, immutable: bool = False)
 
-Parameter for Mapping.
 
-See IParam for details.
-
-Ancestors
-___________
-
-::
-    
-    Param, IParam
+Ancestors : :ref:`Param`, :ref:`IParam`
+_____________________________________________
 
 Class variables
 __________________
@@ -474,7 +443,9 @@ __________
 .. _MetalLineTypeParam:
 
 MetalLineTypeParam
-++++++++++++++++++++
+=========================
+
+Parameter for MetalLineType, see :ref:`IParam` for details.
 
 ::
     
@@ -485,16 +456,9 @@ MetalLineTypeParam
                                 frozen: bool = False, doc: Optional[str] = None, 
                                 band: Union[IBand, Container[IBand], None] = None)
 
-Parameter for MetalLineType.
 
-See IParam for details.
-
-Ancestors
-___________
-
-::
-    
-    Param, IParam
+Ancestors : :ref:`Param`, :ref:`IParam`
+_____________________________________________
 
 Class variables
 __________________
@@ -514,7 +478,9 @@ __________
 .. _NameListParam:
 
 NameListParam
-+++++++++++++++
+====================
+
+Parameter for Name List, eg. ["op_0", "op_1", "op_2", "op_3"], see :ref:`IParam` for details.
 
 ::
     
@@ -525,16 +491,9 @@ NameListParam
                         frozen: bool = False, doc: Optional[str] = None, min_count: int = 0, 
                         max_count: int = 9223372036854775807, count: Optional[int] = None)
 
-Parameter for Name List, eg. ["op_0", "op_1", "op_2", "op_3"].
 
-See IParam for details.
-
-Ancestors
-___________
-
-::
-    
-    Param, IParam
+Ancestors : :ref:`Param`, :ref:`IParam`
+_____________________________________________
 
 Class variables
 __________________
@@ -563,7 +522,10 @@ __________
 .. _NameParam:
 
 NameParam
-+++++++++++
+===============
+
+Parameter for PCell Name, see :ref:`IParam` for details.
+
 
 ::
     
@@ -573,16 +535,10 @@ NameParam
                     preprocessor: Optional[Callable[[Any], Any]] = None, 
                     frozen: bool = False, doc: Optional[str] = None, prefix: Optional[str] = None)
 
-Parameter for PCell Name.
 
-See IParam for details.
+Ancestors : :ref:`Param`, :ref:`IParam`, :ref:`TextParam`
+____________________________________________________________
 
-Ancestors
-___________
-
-::
-    
-    TextParam, Param, IParam
 
 Class variables
 __________________
@@ -612,7 +568,10 @@ __________
 .. _NonNegFloatParam:
 
 NonNegFloatParam
-++++++++++++++++++
+========================
+
+Parameter for non negative Float, see :ref:`IParam` for details.
+
 
 ::
     
@@ -624,16 +583,12 @@ NonNegFloatParam
                             max: Optional[float] = None, invalid: Optional[Container[float]] = None, 
                             precision: Optional[float] = None)
 
-Parameter for non negative Float.
 
-See IParam for details.
 
-Ancestors
-___________
-
-::
+Ancestors : :ref:`Param`, :ref:`FloatParam`, :ref:`IParam`, ``fnpcell.pdk.pcell_params._NonNegMixin``
+______________________________________________________________________________________________________
     
-    FloatParam, Param, fnpcell.pdk.pcell_params._NonNegMixin IParam
+
 
 Class variables
 __________________
@@ -649,7 +604,9 @@ __________________
 
 
 NonNegIntParam
-+++++++++++++++++
+===================
+
+Parameter for non negative integral, see :ref:`IParam` for details.
 
 ::
     
@@ -660,16 +617,9 @@ NonNegIntParam
                             doc: Optional[str] = None, min: int = 0, max: Optional[int] = None, 
                             invalid: Optional[Container[int]] = None, precision: Optional[float] = None)
 
-Parameter for non negative Float.
+Ancestors : :ref:`Param`, :ref:`FloatParam`, :ref:`IParam`, :ref:`IntParam`, ``fnpcell.pdk.pcell_params._NonNegMixin``
+_________________________________________________________________________________________________________________________
 
-See IParam for details.
-
-Ancestors
-___________
-
-::
-    
-    IntParam, FloatParam, Param, fnpcell.pdk.pcell_params._NonNegMixin, IParam
 
 Class variables
 _________________
@@ -684,7 +634,9 @@ _________________
 .. _Param :
 
 Param
-+++++++++
+==========
+
+General parameter definition, and if there's no proper XXXParam, then use :ref:`Param`, see :ref:`IParam` for details.
 
 ::
     
@@ -694,18 +646,10 @@ Param
                 preprocessor: Optional[Callable[[Any], Any]] = None, 
                 frozen: bool = False, doc: Optional[str] = None)
 
-General parameter definition.
 
-If there's no proper XXXParam, then use Param.
 
-See IParam for details.
-
-Ancestors
-___________
-
-::
-    
-    IParam
+Ancestors : :ref:`IParam`
+___________________________
 
 Subclasses
 ____________
@@ -732,7 +676,9 @@ _________________
 .. _PointsParam:
 
 PointsParam
-+++++++++++++
+==================
+
+Parameter for Point, see :ref:`IParam` for details.
 
 ::
     
@@ -742,16 +688,11 @@ PointsParam
                         preprocessor: Optional[Callable[[Any], Any]] = None, frozen: bool = False, 
                         doc: Optional[str] = None, min_count: int = 0)
 
-Parameter for Point.
 
-See IParam for details.
 
-Ancestors
-___________
+Ancestors : :ref:`Param`, :ref:`IParam`
+__________________________________________________
 
-::
-    
-    Param. IParam
 
 Class variables
 _________________
@@ -776,7 +717,9 @@ __________
 .. _PortOptionsParam:
 
 PortOptionsParam
-+++++++++++++++++
+======================
+
+Parameter for PortOptions, eg: ports=(None, "op_1"), and None will disable port in the position, see :ref:`IParam` for details.
 
 ::
     
@@ -786,16 +729,9 @@ PortOptionsParam
                             preprocessor: Optional[Callable[[Any], Any]] = None, frozen: bool = False, 
                             doc: Optional[str] = None, count: Optional[int] = None)
 
-Parameter for PortOptions, eg: ports=(None, "op_1") None will disable port in the position.
 
-See IParam for details.
-
-Ancestors
-__________
-
-::
-    
-    Param, IParam
+Ancestors : :ref:`Param`, :ref:`IParam`
+__________________________________________________
 
 Class variables
 __________________
@@ -822,7 +758,10 @@ __________
 .. _PositionParam:
 
 PositionParam
-+++++++++++++++
+====================
+
+Parameter for Position, see :ref:`IParam` for details.
+
 
 ::
     
@@ -832,16 +771,9 @@ PositionParam
                         preprocessor: Optional[Callable[[Any], Any]] = None, 
                         frozen: bool = False, doc: Optional[str] = None)
 
-Parameter for Position.
 
-See IParam for details.
-
-Ancestors
-___________
-
-::
-    
-    Param, IParam
+Ancestors : :ref:`Param`, :ref:`IParam`
+__________________________________________________
 
 Class variables
 _________________
@@ -862,7 +794,10 @@ __________
 .. _PositiveFloatParam:
 
 PositiveFloatParam
-++++++++++++++++++++
+====================
+
+Parameter for Positive Float, see :ref:`IParam` for details.
+
 
 ::
     
@@ -874,16 +809,10 @@ PositiveFloatParam
                                 max: Optional[float] = None, invalid: Optional[Container[float]] = None, 
                                 precision: Optional[float] = None)
 
-Parameter for Positive Float.
-
-See IParam for details.
-
-Ancestors
-___________
-
-::
+Ancestors : :ref:`Param`, :ref:`FloatParam`, :ref:`IParam`, ``fnpcell.pdk.pcell_params._PositiveMixin``
+_________________________________________________________________________________________________________________________
     
-    FloatParam, Param, fnpcell.pdk.pcell_params._PositiveMixin, IParam
+
 
 Class variables
 __________________
@@ -898,7 +827,9 @@ __________________
 .. _PositiveIntParam:
 
 PositiveIntParam
-++++++++++++++++++
+====================
+
+Parameter for Positive Integral, see :ref:`IParam` for details.
 
 ::
     
@@ -909,16 +840,12 @@ PositiveIntParam
                             doc: Optional[str] = None, min: Optional[int] = None, max: Optional[int] = None, 
                             invalid: Optional[Container[int]] = None, precision: Optional[float] = None)
 
-Parameter for Positive Float.
 
-See IParam for details.
+Ancestors : :ref:`Param`, :ref:`FloatParam`, :ref:`IParam`, :ref:`IntParam`, ``fnpcell.pdk.pcell_params._PositiveMixin``
+_________________________________________________________________________________________________________________________
 
-Ancestors
-__________
 
-::
-    
-    IntParam, FloatParam, Param, fnpcell.pdk.pcell_params._PositiveMixin, IParam
+
 
 Class variables
 __________________
@@ -933,7 +860,10 @@ __________________
 .. _SetParam:
 
 SetParam
-++++++++++
+====================
+
+Parameter for Set, see :ref:`IParam` for details.
+
 
 ::
     
@@ -944,16 +874,10 @@ SetParam
                     doc: Optional[str] = None, element_type: Optional[Type[Any]] = None, 
                     immutable: bool = False)
 
-Parameter for Set.
+Ancestors : :ref:`Param`, :ref:`IParam`
+__________________________________________
 
-See IParam for details.
 
-Ancestors
-__________
-
-::
-    
-    Param, IParam
 
 Class variables
 _________________
@@ -979,7 +903,9 @@ __________
 .. _TextParam:
 
 TextParam
-++++++++++
+===================
+
+Parameter for Text, see :ref:`IParam` for details.
 
 ::
     
@@ -989,23 +915,13 @@ TextParam
                     preprocessor: Optional[Callable[[Any], Any]] = None, frozen: bool = False, 
                     doc: Optional[str] = None)
 
-Parameter for Text.
+Ancestors : :ref:`Param`, :ref:`IParam`
+__________________________________________
 
-See IParam for details.
+Subclasses : :ref:`NameParam`
+_________________________________
 
-Ancestors
-___________
 
-::
-    
-    Param, IParam
-
-Subclasses
-____________
-
-::
-    
-    NameParam
 
 Class variables
 __________________
@@ -1033,7 +949,10 @@ __________
 .. _TransformParam:
 
 TransformParam
-++++++++++++++++
+=========================
+
+Parameter for Transformations, see :ref:`IParam` for details.
+
 
 ::
     
@@ -1043,16 +962,9 @@ TransformParam
                             preprocessor: Optional[Callable[[Any], Any]] = None, 
                             frozen: bool = False, doc: Optional[str] = None)
 
-Parameter for Transformations.
 
-See IParam for details.
-
-Ancestors
-___________
-
-::
-    
-    Param, IParam
+Ancestors : :ref:`Param`, :ref:`IParam`
+__________________________________________
 
 Class variables
 _________________
@@ -1089,7 +1001,10 @@ __________
 .. _WaveguideTypeParam:
 
 WaveguideTypeParam
-+++++++++++++++++++
+===========================
+
+Parameter for WaveguideType, see :ref:`IParam` for details.
+
 
 ::
     
@@ -1100,16 +1015,10 @@ WaveguideTypeParam
                                 frozen: bool = False, doc: Optional[str] = None, 
                                 band: Union[IBand, Container[IBand], None] = None)
 
-Parameter for WaveguideType.
 
-See IParam for details.
 
-Ancestors
-___________
-
-::
-    
-    Param, IParam
+Ancestors : :ref:`Param`, :ref:`IParam`
+__________________________________________
 
 Class variables
 __________________
