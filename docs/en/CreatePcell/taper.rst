@@ -198,7 +198,7 @@ Section Script Description
 
    #. Use the ``TaperLinear`` class to create component cells and output the layout
 
-      * Import the package to generate output layout file under the same file of the ``EulerBend``
+      * Import the package to generate output layout file under the same file of the ``TaperLinear``
 
       ::
 
@@ -224,6 +224,38 @@ Section Script Description
       ::
 
                    fp.export_gds(library, file=gds_file)
+
+
+Extension of the taper ports
+============================================
+
+In some cases the ports would have to be extended for several nanometers, here we provide an option for the users to extend their ports without many changes of the script.
+
+#. Extended function.
+
+   Users can find the definition of ``Extended`` function in ``gpdk >> routing >> extended.py``. Simply to say, it allow designers automatically add extension (rectangles) next to the ports of the PCell(device).
+
+   The below scripts shows if user need extra 500 nm extension to each ports in this ``TaperLinear`` case.::
+
+        wgt = self.left_type.tapered(taper_function=fp.TaperFunction.LINEAR, final_type=self.right_type)
+        wg = wgt(curve=self.raw_curve).with_ports(self.port_names)
+        wg_extended = Extended(device=wg,lengths={"*":0.5})
+        insts += wg_extended
+        ports += wg_extended.ports
+
+   Length of each extended ports can be defined themselves e.g. ``lengths={"op_0":1, "op_1":2, "*":0.5}``. ``"*"`` means all of the undefined ports.
+
+    .. image:: ../images/taper2.png
+
+    .. note::
+        For auto-routing applications e.g. ``straight``, ``bend``, ``taper``, ``transition``, they must define a ``raw_curve`` in advance to allow PhotoCAD calculate the length of the PCell and use it into auto-route function. In this case, designers has to first define a ``raw_curve`` to generate the waveguide, then overlay the ``raw_curve`` to the extended taper.::
+
+                @property
+                def raw_curve(self):
+                    IN, OUT = self.cell.ports
+                return fp.g.LineBetween(IN.position, OUT.position)
+
+
 
 
 
