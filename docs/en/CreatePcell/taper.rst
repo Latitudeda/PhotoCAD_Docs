@@ -174,6 +174,7 @@ Section Script Description
                 assert self.left_type.is_isomorphic_to(self.right_type), "left_type must be isomorphic to right_type"
 
       * Create the taper geometry by ``tapered``. ``waveguide_type.tapered`` is a function to generate taper of the waveguide type.
+
       ::
 
                 wgt = self.left_type.tapered(taper_function=fp.TaperFunction.LINEAR, final_type=self.right_type)
