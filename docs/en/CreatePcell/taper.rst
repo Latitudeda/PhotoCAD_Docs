@@ -236,7 +236,8 @@ In some cases the ports would have to be extended for several nanometers, here w
    Users can find the definition of ``Extended`` function in ``gpdk >> routing >> extended.py``. Simply to say, it allow designers automatically add extension (rectangles) next to the ports of the PCell(device).
 
    The below scripts shows if user need extra 500 nm extension to each ports in this ``TaperLinear`` case.
-    ::
+
+   ::
 
         wgt = self.left_type.tapered(taper_function=fp.TaperFunction.LINEAR, final_type=self.right_type)
         wg = wgt(curve=self.raw_curve).with_ports(self.port_names)
