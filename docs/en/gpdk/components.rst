@@ -11,6 +11,7 @@ The following component examples are mainly created to help users understand the
 - MMI
 
 .. toctree::
+   :hidden:
 
     straight
     bend_euler

@@ -13,6 +13,7 @@ Contents：
 .. image:: ../images/GPDK.png
 
 .. toctree::
+   :hidden:
 
     components
     routing

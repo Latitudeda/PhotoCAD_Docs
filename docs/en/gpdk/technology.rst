@@ -16,6 +16,7 @@ The following is an introduction through the parts that will be used frequently.
 The file ``layers.csv`` is a user configuration file, and the user-configured csv file can be automatically converted into ``layers.py`` and ``display.py`` files by the file ``generate_layers_and_display_from_csv.py``.
 
 .. toctree::
+   :hidden:
 
     layers_csv
     generate_layers_and_display_from_csv_py

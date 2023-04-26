@@ -1,7 +1,13 @@
 layers.csv
 ====================
 
-The layers.csv file is a file where users can edit and modify layer information.
+The ``layers.csv`` file is a file where users can edit and modify layer information.
+
+.. note::
+     Rules when filling the table:
+     1. The ``NAME`` of the layers has to be all capitals.
+     2. The number of ``LAYER`` has to be consistent with the description of ``PROCESS``.
+     3. The number of ``DATATYPE`` has to be consistent with the description of ``PURPOSE``.
 
 The file content format is as follows:
 
