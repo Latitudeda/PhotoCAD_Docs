@@ -3,10 +3,11 @@
 auto_link.py
 ============================================================
 
-This function mainly defines the type of transition waveguide when connecting between multiple waveguide types::
+This function mainly defines the type of transition waveguide and bends when connecting between multiple waveguide types::
 
     from >> to,  default link_type, default bend_factory
     port 1 >> port 2, default waveguide link type, default bend waveguide type
+
 
 There are two default methods, and users can also define their own.
 
@@ -84,3 +85,16 @@ The second link method designated ``SWG`` as the default waveguide link type no 
 Default rule set ::
 
     DEFAULT = LESS_TRANS
+
+
+Usage
+---------
+
+When setting ``linking_policy = TECH.LINKING_POLICY``, ``link_type`` and ``bend_factory`` will not be needed to define. However, when ``linking_policy``, ``link_type`` and ``bend_factory`` are all set in the same time, ``link_type`` and ``bend_factory`` has the higher priority.
+
+#. Linked(linking_policy = TECH.LINKING_POLICY.DEFAULT)
+
+#. LinkBetween(linking_policy = TECH.LINKING_POLICY.DEFAULT)
+
+#. create_links(linking_policy = TECH.LINKING_POLICY.DEFAULT)
+

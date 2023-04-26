@@ -52,8 +52,9 @@ In **gpdk**, three types of waveguides are defined, which are ``FWG``, ``MWG``, 
 
     O_BAND_RATIO = 0.8
 
-Generate waveguide class I
+Define parameters in each waveguides
 --------------------------------------
+
 The information of each waveguide type are then defined in class, such as critical dimension bias, layer type, and the import the simulation parameters created above to the simulation model.
 ::
 
@@ -145,9 +146,9 @@ The information of each waveguide type are then defined in class, such as critic
         class SWGR_O(SwgWaveguideType):
 
 
-Generate waveguide class II
+Generate waveguide class
 -------------------------------------
-In this section, we used the class generated above as a parent class to create every waveguide class which parameters are defined in section 1. Bend type parameters of the connected waveguide is also defined in this section.
+In this section, we used the class generated above as a parent class to create every waveguide class which parameters are defined in the above section. The bend factory of each specific waveguide is also defined here.
 ::
 
         class WG:

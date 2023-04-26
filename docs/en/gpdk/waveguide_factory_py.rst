@@ -5,6 +5,7 @@ waveguide factory.py
 ============================================================
 
 This script mainly provides a more intelligent solution for implementing port acquisition and bend routing in automatic waveguide routing. The main components are
+
  * Straight_
  * CircularBend_
  * EulerBend_
@@ -42,7 +43,6 @@ Define class CircularBendFactory::
             TECH = get_technology()
 
             radius_eff = self.radius_eff
-
             bend = None
             if fp.is_close(abs(central_angle), math.pi / 2):
                 if self.waveguide_type == TECH.WG.FWG.C.WIRE:

@@ -7,7 +7,6 @@ The following is an introduction through the parts that will be used frequently.
 - :ref:`layers.csv`
 - :ref:`generate layers and display from csv file.py`
 - :ref:`layers.py`
-- display.py
 - :ref:`waveguide factory.py`
 - :ref:`wg.py`
 - :ref:`auto_link.py`
