@@ -1,7 +1,7 @@
-.. _waveguide_factory.py :
+.. _waveguide factory.py :
 
 
-waveguide_factory.py
+waveguide factory.py
 
 
 ============================================================
