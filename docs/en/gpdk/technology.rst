@@ -18,9 +18,9 @@ The file ``layers.csv`` is a user configuration file, and the user-configured cs
 .. toctree::
    :hidden:
 
-    layers_csv
-    generate_layers_and_display_from_csv_py
-    waveguide_factory_py
-    wg_py
-    auto_link_py
-    auto_transition_py
+   layers_csv
+   generate_layers_and_display_from_csv_py
+   waveguide_factory_py
+   wg_py
+   auto_link_py
+   auto_transition_py

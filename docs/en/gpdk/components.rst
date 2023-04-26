@@ -13,10 +13,10 @@ The following component examples are mainly created to help users understand the
 .. toctree::
    :hidden:
 
-    straight
-    bend_euler
-    grating_coupler
-    mmi
+   straight
+   bend_euler
+   grating_coupler
+   mmi
 
 
 
