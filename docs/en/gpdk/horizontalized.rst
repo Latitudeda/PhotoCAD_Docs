@@ -1,3 +1,5 @@
+.. _horizontalized :
+
 horizontalized
 ====================
 

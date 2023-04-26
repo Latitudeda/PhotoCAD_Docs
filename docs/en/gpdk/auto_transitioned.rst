@@ -1,3 +1,5 @@
+.. _auto_transitioned :
+
 auto_transitioned
 ====================
 

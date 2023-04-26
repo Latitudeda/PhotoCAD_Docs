@@ -1,3 +1,5 @@
+.. _grating_coupler :
+
 grating_coupler
 ====================
 

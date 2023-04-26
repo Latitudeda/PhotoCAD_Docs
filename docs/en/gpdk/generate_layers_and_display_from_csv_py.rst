@@ -1,4 +1,7 @@
-generate layers and display from csv file
+.. _generate layers and display from csv file.py :
+
+
+generate layers and display from csv file.py
 ============================================================
 
 This function enables to convert the ``layers.csv`` file (:doc:`layers_csv`) into the script files ``layers.py`` and ``display.py`` that gpdk needs to use.
@@ -27,3 +30,5 @@ This function enables to convert the ``layers.csv`` file (:doc:`layers_csv`) int
         fp.util.generate_lyp_from_csv(csv_file=csv_file, lyp_file=lyp_file, overwrite=True)
 
 The generated ``layers.py`` and ``display.py`` will be stored under the folder ``generated``, users have to copy and paste it under ``gpdk`` > ``technology`` for further use. ``layers.lyp`` file allows layout tools e.g. Klayout to recognize the layer information when displaying gds file to the layout tool.
+
+
