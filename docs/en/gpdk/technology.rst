@@ -4,7 +4,7 @@ technology
 File ``technology`` mainly stores some scripts related to the underlying layer.
 The following is an introduction through the parts that will be used frequently.
 
-- layers.csv
+- :ref:`layers.csv`
 - generate_layers_and_display_from_csv.py
 - layers.py
 - display.py
