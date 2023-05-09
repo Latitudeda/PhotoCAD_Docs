@@ -90,7 +90,7 @@ Users are also allowed to build theoretical parameters by your custom functions:
 ``ExternalFileModel``
 --------------------------------------------
 
-``ExternalFileModel`` allows users to generate simulation model based on their S-parameter data. Users define the path of the S-parameter file and pass the path to ``fp.sim.ExternalFileModel()``, then **PhotoCAS** will find the file and parse it when running the simulation. Note that, file format has to be ``.dat`` to be recognized by **PhotoCAD**.
+``ExternalFileModel`` allows users to generate simulation model based on their S-parameter data. Users define the path of the S-parameter file and pass the path to ``fp.sim.ExternalFileModel()``, then **PhotoCAD** will find the file and parse it when running the simulation. Note that, file format has to be ``.dat`` to be recognized by **PhotoCAD**.
 
 #. S-parameter file format
 

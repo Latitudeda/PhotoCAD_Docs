@@ -92,9 +92,9 @@ Usage
 
 When setting ``linking_policy = TECH.LINKING_POLICY``, ``link_type`` and ``bend_factory`` will not be needed to define. However, when ``linking_policy``, ``link_type`` and ``bend_factory`` are all set in the same time, ``link_type`` and ``bend_factory`` has the higher priority.
 
-#. Linked(linking_policy = TECH.LINKING_POLICY.DEFAULT)
+#. ``Linked(linking_policy = TECH.LINKING_POLICY.DEFAULT)``
 
-#. LinkBetween(linking_policy = TECH.LINKING_POLICY.DEFAULT)
+#. ``LinkBetween(linking_policy = TECH.LINKING_POLICY.DEFAULT)``
 
-#. create_links(linking_policy = TECH.LINKING_POLICY.DEFAULT)
+#. ``create_links(linking_policy = TECH.LINKING_POLICY.DEFAULT)``
 
