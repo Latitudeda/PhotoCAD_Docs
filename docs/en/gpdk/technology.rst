@@ -24,4 +24,4 @@ The file ``layers.csv`` is a user configuration file, and the user-configured cs
    wg_py
    auto_link_py
    auto_transition_py
-   pcell.py
+
