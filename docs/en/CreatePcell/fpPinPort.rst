@@ -103,7 +103,10 @@ Section Script Description
             elems += rec
 
 
-      * Generate the ports/pins by ``fp.Port/Pin``. Note here the name of the ports/pins can be named by the users (type should be ``str``).::
+      * Generate the ports/pins by ``fp.Port/Pin``. Note here the name of the ports/pins can be named by the users (type should be ``str``).
+        ``position`` can also be adjust by ``at``, e.g. ``at=component["op_0]``,  to assign a new port to the existing port
+            ::
+
 
             ports += fp.Port(name=self.port_names[0], position=(-self.width/2, 0),
                              waveguide_type=TECH.WG.FWG.C.WIRE.updated(core_layout_width=self.height), orientation=-math.pi)
