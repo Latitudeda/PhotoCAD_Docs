@@ -188,7 +188,7 @@ Below scripts are described step-by-step to show how to run a S-matrix simulatio
                 print_netlist=True
             )
 
-#. Get the data of each ports and plot the figure::
+#. Get the data of each ports and plot the figure 11::
 
             return_loss = sim_result["mzi_port1"]
             trans_gain = sim_result["mzi_port2"]
