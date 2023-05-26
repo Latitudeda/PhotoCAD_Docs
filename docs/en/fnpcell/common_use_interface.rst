@@ -24,6 +24,19 @@ The api for common graphics mainly contains::
     fp.el.EllipticalArc
     fp.el.EllipticalRing
 
+
+* ``fp.el.Rect``
+    test1
+* ``fp.el.Circle``
+    test2
+* ``fp.el.Polygon``
+* ``fp.el.Rect``
+* ``fp.el.Rect``
+* ``fp.el.Rect``
+* ``fp.el.Rect``
+
+
+
 To change the layer of an element from one component to another, users are allow to use ``fp.el.PolygonSet.with_layer()``  to easily adjust the layer of the element  from one to another::
 
     fp.el.PolygonSet.with_layer(self="polygon you wish to tranform", layer="the layer you wish the transformed polygon to be")
