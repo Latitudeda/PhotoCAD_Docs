@@ -26,7 +26,16 @@ The api for common graphics mainly contains::
 
 
 * ``fp.el.Rect``
-    test1
+    * parameters: width/height/center/origin/bottom_left/transform/corner_radius/layer
+    * examples:
+
+        ::
+            ``rect = fp.el.Rect(width=10, height=10, center=(0, 0), layer=TECH.LAYER.FWG_COR)``
+            ``fp.el.Rect(width=8, height=8, center=(10, 0), layer=TECH.LAYER.M1_DRW, corner_radius=2)``
+
+        .. image:: ../images/rect.png
+
+
 * ``fp.el.Circle``
     test2
 * ``fp.el.Polygon``
