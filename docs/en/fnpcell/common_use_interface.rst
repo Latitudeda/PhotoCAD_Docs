@@ -77,6 +77,7 @@ The api for common graphics mainly contains::
 
             ``fp.el.Line(length=10, stroke_width=5, final_stroke_width=8, layer=TECH.LAYER.NP_DRW)``
             ``fp.el.Line(length=10, stroke_width=3, final_stroke_width=5, stroke_offset=2, final_stroke_offset=5, anchor=fp.Anchor.CENTER, origin=(0, 5), layer=TECH.LAYER.PP_DRW)``
+
         .. image:: ../images/line.png
 
 * ``fp.el.Label``
@@ -86,6 +87,7 @@ The api for common graphics mainly contains::
             ``from gpdk.technology.font.font_std_vented import FONT as font``
             ``label = fp.el.Label(content="LDA", highlight=True, at=(0, 0), font=font, font_size=10, layer=TECH.LAYER.LABEL_DRW)``
             ``fp.el.Label(content="PHOTOCAD", highlight=False, at=(0, 12), font=font, font_size=15, layer=TECH.LAYER.TEXT_NOTE)``
+
         .. image:: ../images/label.png
 
 
