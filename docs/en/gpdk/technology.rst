@@ -8,7 +8,7 @@ The following is an introduction through the parts that will be used frequently.
 2. :ref:`wg.py`
 3. :ref:`waveguide factory.py`
 4. :ref:`auto_transition.py`
-5. :ref:`auto_transition.py` or ``linker.py
+5. :ref:`auto_transition.py` or ``linker.py``
 
 
 The file ``layers.csv`` is a user configuration file, and the user-configured csv file can be automatically converted into ``layers.py`` and ``display.py`` files by the file ``generate_layers_and_display_from_csv.py``.
@@ -17,11 +17,8 @@ The file ``layers.csv`` is a user configuration file, and the user-configured cs
    :hidden:
 
    layers_csv
-   generate_layers_and_display_from_csv_py
    waveguide_factory_py
-   layers.py
    wg_py
    auto_link_py
    auto_transition_py
-   linker.py
 

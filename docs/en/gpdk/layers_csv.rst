@@ -101,8 +101,7 @@ The file content format is as follows:
 +-------+----------+--------------+--------------------------------------------+---------+--------------------------------+---------+------------------------+
 
 
-* From **PhotoCAD**
-( These layers are for testing, LVS, DRC and error mark when generating layout, we suggest users not to modify the information od these layers. However, if these layers' ``LAYER`` and ``DATATYPE`` conflicts with the above layers, users are mandatory to modify them to another number.)
+* From **PhotoCAD** ( These layers are for testing, LVS, DRC and error mark when generating layout, we suggest users not to modify the information od these layers. However, if these layers' ``LAYER`` and ``DATATYPE`` conflicts with the above layers, users are mandatory to modify them to another number.)
 
 +-------+----------+--------------+--------------------------------------------+---------+--------------------------------+---------+------------------------+
 | LAYER | DATATYPE | NAME         | DESCRIPTION                                | PROCESS | PROCESS_DESCRIPTION            | PURPOSE | PURPOSE_DESCRIPTION    |
