@@ -14,7 +14,7 @@ This script mainly provides a more intelligent solution for implementing port ac
 Straight
 ---------------------------
 
-Define class StraightFactory ::
+Define class ``StraightFactory`` ::
 
     @dataclass(frozen=True)
     class StraightFactory(fpt.IStraightWaveguideFactory):
@@ -24,12 +24,12 @@ Define class StraightFactory ::
             straight = Straight(length=length, waveguide_type=type)
             return straight, ("op_0", "op_1")
 
-Returns straight waveguide and port information to provide support for port connections during automatic routing.
+Returns straight waveguide in ``gpdk > components > straight > Straight`` and port information to provide support for port connections during automatic routing.
 
 CircularBend
 ---------------------------
 
-Define class CircularBendFactory::
+Define class ``CircularBendFactory``::
 
     @dataclass(frozen=True)
     class CircularBendFactory(fpt.IBendWaveguideFactory):
@@ -58,59 +58,18 @@ Define class CircularBendFactory::
 
             return bend, radius_eff, ("op_0", "op_1")
 
-The parameters that can be set optionally are
+The parameters of the ``CircularBendFactory`` that can be set optionally are
 
 - radius_eff 
 - waveguide_type
 
-``BendCircular90_FWG_C_WIRE`` or  ``BendCircular90_FWG_C_EXPANDED`` will be automatically use when the bend angle is 90 degree and the waveguide type of two connected ports are also ``FWG.C.WIRE`` or ``FWG.C.EXPANDED``, respectively.
+There are two options to apply this bend factory to waveguide routing.
+- Assign ``CircularBendFactory(waveguide_type=waveguide_type, radius_eff=radius_eff)`` to the parameter ``bend_factory`` in the routing function e.g., ``Linked``, ``create_links`` and ``LinkBetween``.
+- Implement ``CircularBendFactory`` to each waveguide class (please see :ref:`wg.py`) and set ``TECH.WG.FWG.C.WIRE.BEND_CIRCULAR`` once you've return ``CircularBendFactory`` to ``BEND_CIRCULAR`` under the class ``WG.FWG.C.WIRE``.
 
-Returns the bend waveguide and the radius and port information.
+By giving a certain condition (certain waveguide type and certain bending angle, TECH.WG.FWG.C.WIRE and 90 degree bend for example), users are allowed to assign a fixed bend (either a GDS import cell or fixed cell) to this waveguide type.
+This means that when the bend angle is 90 degree and the waveguide type of two connected ports are also ``FWG.C.WIRE``, ``BendCircular90_FWG_C_WIRE`` will be automatically use.
 
-EulerBend
----------------------------
-
-Define class EulerBendFactory::
-
-    @dataclass(frozen=True)
-    class EulerBendFactory(fpt.IBendWaveguideFactory):
-        radius_min: float
-        l_max: float
-        waveguide_type: fpt.IWaveguideType = field(repr=False, compare=False)
-
-        def __call__(self, central_angle: float):
-            from gpdk.components.bend.bend_euler import BendEuler, BendEuler90, BendEuler90_FWG_C_WIRE, BendEuler90_FWG_C_EXPANDED
-            from gpdk.technology.interfaces import CoreCladdingWaveguideType
-            from gpdk.technology import get_technology
-
-            TECH = get_technology()
-
-            bend = None
-            if fp.is_close(abs(central_angle), math.pi / 2):
-                if self.waveguide_type == TECH.WG.FWG.C.WIRE:
-                    bend = BendEuler90_FWG_C_WIRE()
-                elif self.waveguide_type == TECH.WG.FWG.C.EXPANDED:
-                    bend = BendEuler90_FWG_C_EXPANDED()
-                elif isinstance(self.waveguide_type, CoreCladdingWaveguideType):
-                    bend = BendEuler90(slab_square=True, radius_min=self.radius_min, l_max=self.l_max, waveguide_type=self.waveguide_type)
-
-                if bend and central_angle < 0:
-                    bend = bend.v_mirrored()
-
-            if bend is None:
-                bend = BendEuler(degrees=math.degrees(central_angle), radius_min=self.radius_min, l_max=self.l_max, waveguide_type=self.waveguide_type)
-
-            return bend, bend.raw_curve.radius_eff, ("op_0", "op_1")
-
-The parameters that can be set optionally are
-
-- radius_min : Minimum radius in the Euler bend
-- l_max : Maximum length of Euler spiral in half bend
-- waveguide_type : Type of the Euler bend waveguide
-
-``BendEuler90`` , ``BendEuler90_FWG_C_WIRE`` and ``BendEuler90_FWG_C_EXPANDED``  are also created in the components to automatically generated 90 degree bend when the bend angle of the two waveguide ports are 90 degree.
-
-Returns the Euler bend, along with the equivalent radius of the Euler bend and the corresponding port information.
 
 Implementation
 ---------------------------
