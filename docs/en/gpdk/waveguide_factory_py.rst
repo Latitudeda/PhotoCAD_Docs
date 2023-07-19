@@ -63,10 +63,12 @@ The parameters of the ``CircularBendFactory`` that can be set optionally are
 - waveguide_type
 
 There are two options to apply this bend factory to waveguide routing.
+
 - Assign ``CircularBendFactory(waveguide_type=waveguide_type, radius_eff=radius_eff)`` to the parameter ``bend_factory`` in the routing function e.g., ``Linked``, ``create_links`` and ``LinkBetween``.
 - Implement ``CircularBendFactory`` to each waveguide class (please see :ref:`wg.py`) and set ``TECH.WG.FWG.C.WIRE.BEND_CIRCULAR`` once you've return ``CircularBendFactory`` to ``BEND_CIRCULAR`` under the class ``WG.FWG.C.WIRE``.
 
 By giving a certain condition (certain waveguide type and certain bending angle, TECH.WG.FWG.C.WIRE and 90 degree bend for example), users are allowed to assign a fixed bend (either a GDS import cell or fixed cell) to this waveguide type.
+
 This means that when the bend angle is 90 degree and the waveguide type of two connected ports are also ``FWG.C.WIRE``, ``BendCircular90_FWG_C_WIRE`` will be automatically use.
 
 
