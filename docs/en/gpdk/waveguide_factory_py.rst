@@ -8,7 +8,6 @@ This script mainly provides a more intelligent solution for implementing port ac
 
  * Straight_
  * CircularBend_
- * EulerBend_
  * Implementation_
 
 Straight
