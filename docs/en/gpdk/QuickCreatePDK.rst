@@ -12,6 +12,12 @@ Contents：
 
 .. image:: ../images/custiomizePDK.png
 
+.. toctree::
+   :hidden:
+
+   technology
+   components
+
 Standard Procedure
 ---------------------------
 
