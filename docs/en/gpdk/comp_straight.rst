@@ -28,8 +28,12 @@ Define class Straight::
         anchor: fp.Anchor = fp.AnchorParam(default=fp.Anchor.START)
         port_names: fp.IPortOptions = fp.PortOptionsParam(count=2, default=("op_0", "op_1"))
 
+ - First, users has to list all parameters they want for this PCell to be adjustable.::
+
         def _default_waveguide_type(self):
             return get_technology().WG.FWG.C.WIRE
+
+ - Second, a default parameter will be assigned to some parameters listed above. In this example, the default waveguide type of this straight component will be ``FWG.C.WIRE``. However, users can adjust different waveguide types when using ``Straight`` and are not limited to ``CoreCladdingWaveguideType`` waveguides because we are setting ``waveguide_type: fp.IWaveguideType``.::
 
         @cached_property
         def raw_curve(self):
@@ -38,6 +42,8 @@ Define class Straight::
                 anchor=self.anchor,
             )
 
+ - Then, a ``raw_curve`` function is defined to send the length of the ``Straight`` component to the designated waveguide type. It is important to define ``raw_curve`` in every basic cells which will be used in routing functions such as straight waveguides, bends, tapers, transitions. When using ``Linked``, ``LinkBetween`` or any other routing function,  **PhotoCAD** will calculate the length between two ports and assign proper components for routing.::
+
         def build(self) -> Tuple[fp.InstanceSet, fp.ElementSet, fp.PortSet]:
             insts, elems, ports = super().build()
             wg = self.waveguide_type(curve=self.raw_curve).with_ports(self.port_names)
@@ -45,39 +51,8 @@ Define class Straight::
             ports += wg.ports
             return insts, elems, ports
 
-        @fp.cache()
-        def sim_model(self, env: fp.ISimEnv):
-            # We can use simple straight waveguide model or calculate s-matrix ourselves
-            # return fp.sim.StraightWaveguideModel(self.waveguide_type.theoretical_parameters, length=self.length)
-            import numpy as np
+- Finally, we build up the ``Straight`` component by adding instances, elements, and ports information to this class.
 
-            TECH = get_technology()
-            op_0, op_1 = self["op_0"], self["op_1"]  # TODO should use [self[name] for name in self.port_names], consider Hidden / None
-            params = fp.sim.TheoreticalParameters(self.waveguide_type.theoretical_parameters)
-
-            # we can get wavelength from env
-            # wavelength = env.wavelength * TECH.METRICS.UNIT  # wavelength in um => m
-            wl = np.asanyarray(params.wl) * TECH.METRICS.UNIT  # wavelength in um => m
-            n_eff = np.asanyarray(params.n_eff)
-            loss = np.asanyarray(params.loss) * 1e2  # loss in dB/cm => dB/m
-            length = self.length * TECH.METRICS.UNIT  # length in um => m
-
-            mag = 10 ** (-loss * length / 20)
-            ang = 2 * np.pi * n_eff * length / wl
-
-            S = fp.sim.SMatrix()
-            # These two lines below are equal
-            # S[op_1 <= op_0] = S[op_0["TE"] <= op_1["TE"]] = mag, ang
-            S[op_1, op_0] = S[op_0["TE"], op_1["TE"]] = mag, ang
-
-            # metadata is optional
-            metadata = {
-                "ports": {
-                    op_0.name: "LEFT",
-                    op_1.name: "RIGHT",
-                }
-            }
-            return fp.sim.SMatrixWavelengthModel(wl, S, metadata=metadata)
             
 This class definition implements the layout design through the following calls::
 
@@ -85,7 +60,6 @@ This class definition implements the layout design through the following calls::
         straight = Straight(name="s", length=10, waveguide_type=TECH.WG.FWG.C.WIRE)
     fp.plot(straight)
 
-The simulation defined inside this class can be used for the simulation of the overall circuit.
 
 In addition, it is necessary to define the function of the straight waveguide connection between the ports::
 

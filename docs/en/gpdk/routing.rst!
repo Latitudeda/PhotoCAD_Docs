@@ -12,8 +12,8 @@ This chapter mainly defines five layout routing methods. They are as follows.
 .. toctree::
    :hidden:
 
-   auto_transitioned
-   comp_scan
-   extended
-   fanout
-   horizontalized
+   routing_auto_transitioned
+   routing_comp_scan
+   routing_extended
+   routing_fanout
+   routing_horizontalized

@@ -7,7 +7,9 @@ The following component examples are mainly created to help users understand the
 
 
 - :ref:`Straight`
-- :ref:`bend_euler`
+- :ref:`bend_circular`
+- :ref:`taper`
+- :ref:`transition`
 - :ref:`grating_coupler`
 - :ref:`MMI`
 
@@ -15,10 +17,12 @@ The following component examples are mainly created to help users understand the
 .. toctree::
    :hidden:
 
-   straight
-   bend_euler
-   grating_coupler
-   mmi
+   comp_straight
+   comp_bend_circular
+   comp_taper
+   comp_transition
+   comp_grating_coupler
+   comp_mmi
 
 
 

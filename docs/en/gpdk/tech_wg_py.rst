@@ -7,7 +7,13 @@ The file mainly defines various waveguide types and their corresponding configur
 
 waveguide configuration
 --------------------------------
-In **gpdk**, three types of waveguides are defined, which are ``FWG``, ``MWG``, and ``SWG``. Each waveguide type will then create different band type based on the chosen band ( ``C-band``, ``O-band`` ), and beyond each band type, 4 other types depends on the waveguide linewidth are generated ( ``WIRE``, ``WIRE_TETM``, ``EXPANDED``, ``EXPANDED_TETM`` ). O-band can be adjusted by ``O_BAND_RATIO = 0.8``, ``TETM`` and ``EXPANDED`` can also be adjusted by ``WIRE_TETM_RATIO`` and ``EXPANDED_TETM_RATIO``, so that the users don't need to define every function.
+In **gpdk**, three types of waveguides are defined, which are ``FWG``, ``MWG``, and ``SWG``.
+
+Each waveguide type will then create different band type based on the chosen band ( ``C-band``, ``O-band`` ), and beyond each band type, 4 other types depends on the waveguide linewidth are generated ( ``WIRE``, ``WIRE_TETM``, ``EXPANDED``, ``EXPANDED_TETM`` ).
+
+O-band can be adjusted by ``O_BAND_RATIO = 0.8``, ``TETM`` and ``EXPANDED`` can also be adjusted by ``WIRE_TETM_RATIO`` and ``EXPANDED_TETM_RATIO``, so that the users don't need to define every function.
+
+First, we define the width of every waveguides that will be consider as a parameter and be send to each waveguide class.
 
 ::
 
@@ -15,47 +21,28 @@ In **gpdk**, three types of waveguides are defined, which are ``FWG``, ``MWG``, 
     FWG_C_EXPANDED_WIDTH = 0.8
     FWG_C_TRENCH_WIDTH = 2.0
 
-    FWG_C_WIRE_SIM_WL = [1.4, 1.5, 1.6]
-    FWG_C_WIRE_SIM_NEFF = [2.5066666, 2.4, 2.2933333]
-    FWG_C_WIRE_SIM_LOSS = [1, 1, 1]
-
-    FWG_C_EXPANDED_SIM_WL = [1.4, 1.5, 1.6]
-    FWG_C_EXPANDED_SIM_NEFF = [2.5066666, 2.4, 2.2933333]
-    FWG_C_EXPANDED_SIM_LOSS = [2, 2, 2]
-
     MWG_C_WIRE_WIDTH = 1
     MWG_C_EXPANDED_WIDTH = 1.5
     MWG_C_TRENCH_WIDTH = 5.0
 
-    MWG_C_WIRE_SIM_WL = [1.4, 1.5, 1.6]
-    MWG_C_WIRE_SIM_NEFF = [2.5066666, 2.4, 2.2933333]
-    MWG_C_WIRE_SIM_LOSS = [1, 1, 1]
-
-    MWG_C_EXPANDED_SIM_WL = [1.4, 1.5, 1.6]
-    MWG_C_EXPANDED_SIM_NEFF = [2.5066666, 2.4, 2.2933333]
-    MWG_C_EXPANDED_SIM_LOSS = [1, 1, 1]
-
     SWG_C_WIRE_WIDTH = 1.0
     SWG_C_EXPANDED_WIDTH = 1.5
     SWG_C_TRENCH_WIDTH = 5.0
-
-    SWG_C_WIRE_SIM_WL = [1.4, 1.5, 1.6]
-    SWG_C_WIRE_SIM_NEFF = [2.5066666, 2.4, 2.2933333]
-    SWG_C_WIRE_SIM_LOSS = [1, 1, 1]
-
-    SWG_C_EXPANDED_SIM_WL = [1.4, 1.5, 1.6]
-    SWG_C_EXPANDED_SIM_NEFF = [2.5066666, 2.4, 2.2933333]
-    SWG_C_EXPANDED_SIM_LOSS = [1, 1, 1]
 
     WIRE_TETM_RATIO = 1.2
     EXPANDED_TETM_RATIO = 2.0
 
     O_BAND_RATIO = 0.8
 
-Define parameters in each waveguides
---------------------------------------
+Define parameters in each waveguide types
+-------------------------------------------
 
-The information of each waveguide type are then defined in class, such as critical dimension bias, layer type, and the import the simulation parameters created above to the simulation model.
+The information of each waveguide type are then defined in each waveguide class, such as critical dimension bias, layer information.
+
+The structure of each waveguide is build in ``technology > interfaces > wg.py``, we can create a waveguide class (FWG_C) that inherits from the waveguide interface ``CoreCladdingWaveguideType`` which defines the structure of the waveguide type with one core layer and one cladding layer, including the profile, waveguide width, etc.
+
+Since there could be many waveguide types (``FWG_C``, ``FWG_O``, ``MWG_C``, etc.) using the same waveguide interface (``CoreCladdingWaveguideType``), we then assign different parameters(CD bias, band, core/cladding layer) to those waveguide types in each class.
+
 ::
 
         @fpt.hash_code
@@ -91,10 +78,6 @@ The information of each waveguide type are then defined in class, such as critic
             def straight_factory(self):
                 return StraightFactory()
 
-            @fpt.const_property
-            def theoretical_parameters(self):
-                return fpt.sim.TheoreticalParameters(wl=FWG_C_WIRE_SIM_WL, n_eff=FWG_C_WIRE_SIM_NEFF, loss=FWG_C_WIRE_SIM_LOSS)
-
 
         @fpt.hash_code
         @dataclass(frozen=True)
@@ -108,47 +91,9 @@ The information of each waveguide type are then defined in class, such as critic
 
 
 
-        @fpt.hash_code
-        @dataclass(frozen=True)
-        class MWG_O(CoreCladdingWaveguideType):
-
-
-
-        @fpt.hash_code
-        @dataclass(frozen=True)
-        class SWG_C(CoreCladdingWaveguideType):
-
-
-        @fpt.hash_code
-        @dataclass(frozen=True)
-        class SWG_O(CoreCladdingWaveguideType):
-
-
-        #
-        @fpt.hash_code
-        @dataclass(frozen=True)
-        class SLOT_C(SlotWaveguideType):
-
-
-        @fpt.hash_code
-        @dataclass(frozen=True)
-        class SLOT_O(SlotWaveguideType):
-
-
-        @fpt.hash_code
-        @dataclass(frozen=True)
-        class SWGR_C(SwgWaveguideType):
-
-
-
-        @fpt.hash_code
-        @dataclass(frozen=True)
-        class SWGR_O(SwgWaveguideType):
-
-
 Generate waveguide class
 -------------------------------------
-In this section, we used the class generated above as a parent class to create every waveguide class which parameters are defined in the above section. The bend factory of each specific waveguide is also defined here.
+In this section, we used the class generated above as a parent class to create every waveguide class which parameters are defined in the above section. The bend factories of each specific waveguide are also defined in this section.
 ::
 
         class WG:
@@ -197,22 +142,6 @@ In this section, we used the class generated above as a parent class to create e
                 class C(MWG_C):
 
                 class O(MWG_O):
-
-
-            class SWG:
-                class C(SWG_C):
-
-                class O(SWG_O):
-
-            class SLOT:
-                class C(SLOT_C):
-
-                class O(SLOT_O):
-
-            class SWGR:
-                class C(SWGR_C):
-
-                class O(SWGR_O):
 
 Generate wg information to csv file
 ---------------------------------------------
