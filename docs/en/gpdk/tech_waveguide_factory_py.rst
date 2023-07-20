@@ -1,4 +1,4 @@
-.. _waveguide factory.py :
+.. _waveguide_factory.py :
 
 
 waveguide factory.py
