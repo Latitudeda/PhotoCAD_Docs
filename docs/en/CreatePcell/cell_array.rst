@@ -147,6 +147,7 @@ Section Script Description
             The origin of the array creating by this ``.new_array`` function will be at the bottom-left cell of this array and depending on the definition when you build this cell (either setting ``center=() or bottom_left=()``
 
             Here we translate the whole array after generating the array to the bottom left of the larger rectangle.
+
       ::
 
             cell_array = cell.new_array(cols=cols, rows=rows, col_width=self.pitch, row_height=self.pitch).translated(-self.length / 2 + self.pitch / 2, -self.height / 2 + self.pitch / 2)
