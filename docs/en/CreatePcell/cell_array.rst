@@ -91,7 +91,7 @@ Section Script Description
 
 #. Define a new PCell, and a custom class (here will be ``CellinRect``):
 
-   Inherit the new PCell via ``fp.PCell`` in fnpcell, which is a new basic component in gpdk. Then the new ``BendEuler`` class needs to be decorated by ``@dataclass(eq=False)``::
+   Inherit the new PCell via ``fp.PCell`` in fnpcell, which is a new basic component in gpdk. Then the new ``CellinRect`` class needs to be decorated by ``@dataclass(eq=False)``::
 
         @dataclass(eq=False)
         class CellinRect(fp.PCell):
