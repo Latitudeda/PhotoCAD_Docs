@@ -47,8 +47,10 @@ Full script
             )
             rows = int(self.height / self.pitch)
             cols = int(self.length / self.pitch)
-            print(rows,cols)
-            cell_array = cell.new_array(cols=cols, rows=rows, col_width=self.pitch, row_height=self.pitch).translated(-self.length / 2 + self.pitch / 2, -self.height / 2 + self.pitch / 2)
+            distance_y = (self.height - rows * self.pitch + (self.pitch - self.cell_width)) / 2
+            distance_x = (self.length - cols * self.pitch + (self.pitch - self.cell_width)) / 2
+            cell_array = cell.new_array(cols=cols, rows=rows, col_width=self.pitch, row_height=self.pitch).translated(-self.length / 2 + distance_x, -self.height / 2 + distance_y)
+
 
 
             elems += rect
@@ -133,12 +135,14 @@ Section Script Description
                     )
 
 
-      * Calculate the columns and rows of the array that will be filled in the larger rectangle.
+      * Calculate the columns and rows of the array that will be filled in the larger rectangle and the distance of the array between the boundary of the larger rectangle.
 
       ::
 
             rows = int(self.height / self.pitch)
             cols = int(self.length / self.pitch)
+            distance_y = (self.height - rows * self.pitch + (self.pitch - self.cell_width)) / 2
+            distance_x = (self.length - cols * self.pitch + (self.pitch - self.cell_width)) / 2
 
       * Create the cell array by ``new_array`` method.
 
@@ -150,7 +154,8 @@ Section Script Description
 
       ::
 
-            cell_array = cell.new_array(cols=cols, rows=rows, col_width=self.pitch, row_height=self.pitch).translated(-self.length / 2 + self.pitch / 2, -self.height / 2 + self.pitch / 2)
+            cell_array = cell.new_array(cols=cols, rows=rows, col_width=self.pitch, row_height=self.pitch).translated(-self.length / 2 + distance_x, -self.height / 2 + distance_y)
+
 
 
 
