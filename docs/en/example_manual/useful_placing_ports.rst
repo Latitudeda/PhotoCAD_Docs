@@ -1,4 +1,4 @@
-Placing ``device_A("port_A)`` to ``device_B("port_B)`` or specific position ``(x, y)``
+Placing PCell ports
 ==============================================================================================
 
 * Method 1 (Recommend)

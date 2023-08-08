@@ -1,2 +1,2 @@
-Get PCell information's (PCell = device)
+Get PCell information
 =============================================

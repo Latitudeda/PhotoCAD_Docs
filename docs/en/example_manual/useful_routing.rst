@@ -1,4 +1,4 @@
-Useful function when scripting layout
+Useful function when scripting PhotoCAD
 ==========================================
 
 .. toctree::
