@@ -11,5 +11,5 @@ Boolean operations between different layers
 
   * c = ``device.polygon_set(layer=TECH.LAYER.C)``
 
-  * a = ``fp.el.PolygonSet((a.region - b.region) | c.region, layer = TECH.LAYER.D)``
+  * d = ``fp.el.PolygonSet((a.region - b.region) | c.region, layer = TECH.LAYER.D)``
 
