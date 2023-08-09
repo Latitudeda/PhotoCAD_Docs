@@ -1,4 +1,4 @@
-Open sketch view to simplify layout when implementing port connection
+Simplify layout by ``use_sketch_view``
 ==============================================================================
 
 * Useful when generating large area of layout but only want to focus on the connections between ports rather than the cell itself.
