@@ -9,10 +9,7 @@ Get PCell information
 
   * region = ``fp.get_bounding_box(device)``
 
-    * x_min = ``region[0][0]``
-    * x_max = ``region[0][1]``
-    * y_min = ``region[1][0]``
-    * y_max = ``region[1][1]``
+    * (min_x, min_y), (max_x, max_y) = fp.get_bounding_box(device)
 
 
 * Get ports information:
@@ -21,15 +18,15 @@ Get PCell information
 
     * Get total number of ports: ``len(device.ports)``
 
-    * Get left ports: ``port_util.get_left_ports(device)``
+    * Get left ports: ``gpdk.port_util.get_left_ports(device)``
 
-    * Get right ports: ``port_util.get_right_ports(device)``
+    * Get right ports: ``gpdk.port_util.get_right_ports(device)``
 
   * orientation: ``device[”op_0”].orientation``
 
   * waveguide_type: ``device[”op_0”].waveguide_type``
 
-  * waveguide width: ``device[”op_0”].waveguide_type.cor_width``
+  * waveguide width: ``device[”op_0”].waveguide_type.core_width``
 
   * position (x, y): ``device[”op_0”].position[0]``, ``device[”op_0”].position[1]``
 
