@@ -7,9 +7,9 @@ The function ``fp.use_sketch_view`` captures the geometry of every layer of the 
 
 Here is an example of using ``fp.use_sketch_view`` in a MZM circuit, containing three MZIs with pn phase shifter on the top arm. The three MZIs are totally different and are all GDS imported cell.
 
-* mzm_l_200_pn_25 (length difference between two arms: 200 um, pn junction of the phae shifter: 25um)
+* mzm_l_200_pn_25 (length difference between two arms: 200 um, pn junction of the phase shifter: 25um)
 
-  * y_splitter_taper_1 (splitter with
+  * y_splitter_taper_1
 
   * y_combiner_taper_1
 
@@ -17,7 +17,7 @@ Here is an example of using ``fp.use_sketch_view`` in a MZM circuit, containing 
 
   .. image:: ../images/mzm_l_200_pn_25.png
 
-* mzm_l_300_pn_50 (length difference between two arms: 300 um, pn junction of the phae shifter: 50um)
+* mzm_l_300_pn_50 (length difference between two arms: 300 um, pn junction of the phase shifter: 50um)
 
   * y_splitter_taper_5
 
@@ -28,7 +28,7 @@ Here is an example of using ``fp.use_sketch_view`` in a MZM circuit, containing 
   .. image:: ../images/mzm_l_300_pn_50.png
 
 
-* mzm_l_400_pn_75 (length difference between two arms: 400 um, pn junction of the phae shifter: 75um)
+* mzm_l_400_pn_75 (length difference between two arms: 400 um, pn junction of the phase shifter: 75um)
 
   * y_splitter_taper_10
 
@@ -38,16 +38,98 @@ Here is an example of using ``fp.use_sketch_view`` in a MZM circuit, containing 
 
   .. image:: ../images/mzm_l_400_pn_75.png
 
+* Connect three MZIs
+
+  .. image:: ../images/topcircuit.png
+
+Implement ``fp.use_sketch_view``
+--------------------------------------------
+
+* ``conf = fp.SketchConf(sketch_layer=TECH.LAYER.TEXT_NOTE, marker_layer=TECH.LAYER.FLYLINE_MARK)``
+
+  The configuration parameter sets the sketched cell to the designated layer. The example code above will assign the sketched cell to ``TEXT_NOTE`` layer, and by the ``marker_layer`` will show the direction of the ports with an arrow.
+
+  * ``sketch_layer``
+
+    .. image:: ../images/topcircuit1.png
+
+  * ``marker_layer``
+
+    .. image:: ../images/topcircuit2.png
+
+* ``fp.use_sketch_view(mzm_l_200_pn_25, conf=conf)``
+
+  The first parameter of ``fp.use_sketch_view`` reads the cell which will be sketched. It could be any level of the circuit.
+
+Different usage of ``fp.use_sketch_view``
+-------------------------------------------
+
+* Sketch all MZMs
+
+  ::
+
+        fp.use_sketch_view(mzm_l_200_pn_25, conf=conf)
+        fp.use_sketch_view(mzm_l_300_pn_50, conf=conf)
+        fp.use_sketch_view(mzm_l_400_pn_75, conf=conf)
+
+    .. image:: ../images/topcircuit_mzm.png
 
 
+* Sketch all Phase Shifters
+
+  ::
+
+        fp.use_sketch_view(phaseshifter_pn25, conf=conf)
+        fp.use_sketch_view(phaseshifter_pn50, conf=conf)
+        fp.use_sketch_view(phaseshifter_pn75, conf=conf)
+
+    .. image:: ../images/topcircuit_ps.png
 
 
+* Sketch all Combiners
 
-* Useful when generating large area of layout but only want to focus on the connections between ports rather than the cell itself.
+  ::
 
-* Write ``fp.use_sketch_view(device, sketch_layer, conf)`` before exporting GDS file.
+        fp.use_sketch_view(y_combiner_taper1, conf=conf)
+        fp.use_sketch_view(y_combiner_taper5, conf=conf)
+        fp.use_sketch_view(y_combiner_taper10, conf=conf)
 
-* For more information please see section Sketch view of PCells.
+    .. image:: ../images/topcircuit_combiner.png
+
+
+* Sketch only the first MZM
+
+  ::
+
+        fp.use_sketch_view(mzm_l_200_pn_25, conf=conf)
+
+    .. image:: ../images/topcircuit_mzmonly1.png
+
+
+GDS file build-time results
+-------------------------------------
+
+We track the build-up time of the GDS file when implementing different scenarios.
+
+* Circuit without any sketch view: 0.1482s
+
+* 1st time open all MZMs sketch view: 0.1423s
+
+* 2nd time open all MZMs sketch view: 0.0654s
+
+* Close all sketch view: 0.1529s
+
+* 3rd time open all MZMs sketch view: 0.0659s
+
+* 1st time open child cell (all phase shifters) sketch view: 0.1594s
+
+* 2nd time open child cell (all phase shifters) sketch view: 0.1385s
+
+* Close all child cell sketch view: 0.1483s
+
+From the above results we can see that ``fp.use_sketch_view`` increases two to three times the speed of generating the GDS file. First time opening the sketch view needs some time to generate the GDS and Json files of the sketched cell, but after that the build-up time can be efficiently saved.
+
+
 
 
 
