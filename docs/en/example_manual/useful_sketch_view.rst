@@ -72,7 +72,7 @@ Different usage of ``fp.use_sketch_view``
         fp.use_sketch_view(mzm_l_300_pn_50, conf=conf)
         fp.use_sketch_view(mzm_l_400_pn_75, conf=conf)
 
-    .. image:: ../images/topcircuit_mzm.png
+  .. image:: ../images/topcircuit_mzm.png
 
 
 * Sketch all Phase Shifters
@@ -83,7 +83,7 @@ Different usage of ``fp.use_sketch_view``
         fp.use_sketch_view(phaseshifter_pn50, conf=conf)
         fp.use_sketch_view(phaseshifter_pn75, conf=conf)
 
-    .. image:: ../images/topcircuit_ps.png
+  .. image:: ../images/topcircuit_ps.png
 
 
 * Sketch all Combiners
@@ -94,7 +94,7 @@ Different usage of ``fp.use_sketch_view``
         fp.use_sketch_view(y_combiner_taper5, conf=conf)
         fp.use_sketch_view(y_combiner_taper10, conf=conf)
 
-    .. image:: ../images/topcircuit_combiner.png
+  .. image:: ../images/topcircuit_combiner.png
 
 
 * Sketch only the first MZM
@@ -103,7 +103,7 @@ Different usage of ``fp.use_sketch_view``
 
         fp.use_sketch_view(mzm_l_200_pn_25, conf=conf)
 
-    .. image:: ../images/topcircuit_mzmonly1.png
+  .. image:: ../images/topcircuit_mzmonly1.png
 
 
 GDS file build-time results
