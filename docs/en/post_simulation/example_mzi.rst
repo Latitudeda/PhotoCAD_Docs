@@ -228,7 +228,7 @@ The below scripts shows how to build a simulation model which will be then imple
 
 #. Directional Coupler simulation model:
 
- ::
+   ::
 
         class DCModel(fp.sim.SimModel):
             op_0: fp.IOwnedPort
@@ -255,39 +255,39 @@ The below scripts shows how to build a simulation model which will be then imple
 
 #. Waveguide simulation model:
 
- ::
+   ::
 
-    class WGModel(fp.sim.SimModel):
-        op_0: fp.IOwnedPort
-        op_1: fp.IOwnedPort
-        wl0: float = 1.55
-        neff: float = 2.34
-        ng: float = 3.4
-        loss: float = 0.0
+        class WGModel(fp.sim.SimModel):
+            op_0: fp.IOwnedPort
+            op_1: fp.IOwnedPort
+            wl0: float = 1.55
+            neff: float = 2.34
+            ng: float = 3.4
+            loss: float = 0.0
 
-        def simulate_scatter(self, wavelengths: Sequence[float]) -> IScatterMatrix:
-            wl = np.array(wavelengths)
-            wl0 = np.array(self.wl0)
-            neff = np.array(self.neff)
-            ng = np.array(self.ng)
-            loss = np.array(self.loss)
-            length = fp.distance_between(self.op_0.position, self.op_1.position)
+            def simulate_scatter(self, wavelengths: Sequence[float]) -> IScatterMatrix:
+                wl = np.array(wavelengths)
+                wl0 = np.array(self.wl0)
+                neff = np.array(self.neff)
+                ng = np.array(self.ng)
+                loss = np.array(self.loss)
+                length = fp.distance_between(self.op_0.position, self.op_1.position)
 
-            dwl = wl - self.wl0
-            dneff_dwl = (ng - neff) / wl0
-            neff = neff - dwl * dneff_dwl
+                dwl = wl - self.wl0
+                dneff_dwl = (ng - neff) / wl0
+                neff = neff - dwl * dneff_dwl
 
-            mag = 10 ** (-loss * length / 20)
-            arg = 2 * np.pi * neff * length / wl
+                mag = 10 ** (-loss * length / 20)
+                arg = 2 * np.pi * neff * length / wl
 
-            op_0 = self.op_0
-            op_1 = self.op_1
+                op_0 = self.op_0
+                op_1 = self.op_1
 
-            S = fp.sim.SMatrix()
+                S = fp.sim.SMatrix()
 
-            S[op_1, op_0] = S[op_0, op_1] = mag, arg
+                S[op_1, op_0] = S[op_0, op_1] = mag, arg
 
-            return S
+                return S
 
 Implement simulation models to components
 -----------------------------------------------
@@ -333,87 +333,101 @@ Take waveguide as an example, the port names which we defined in the build metho
 Build MZI circuit and define poet-simulation functions
 ---------------------------------------------------------
 
-#. Build function to build MZI circuit. Note that those ports which are not connected to other ports should be added to ``ports+=``, otherwise there will be error when generating netlist.::
+#. Build function to build MZI circuit. Note that those ports which are not connected to other ports should be added to ``ports+=``, otherwise there will be error when generating netlist.
 
-    class Mzi(fp.PCell):
-        def build(self):
-            insts, elems, ports = super().build()
+    ::
 
-            dc = DC()
-            top_arm = Straight()
-            insts += top_arm, "top_arm"
+        class Mzi(fp.PCell):
+            def build(self):
+                insts, elems, ports = super().build()
 
-            left_dc = fp.place(dc, "op_3", at=top_arm["op_0"])
-            insts += left_dc, "left_dc"
+                dc = DC()
+                top_arm = Straight()
+                insts += top_arm, "top_arm"
 
-            right_dc = fp.place(dc, "op_0", at=top_arm["op_1"])
-            insts += right_dc, "right_dc"
+                left_dc = fp.place(dc, "op_3", at=top_arm["op_0"])
+                insts += left_dc, "left_dc"
 
-            ports += left_dc["op_0"]
-            ports += left_dc["op_1"]
-            ports += right_dc["op_2"]
-            ports += right_dc["op_3"]
+                right_dc = fp.place(dc, "op_0", at=top_arm["op_1"])
+                insts += right_dc, "right_dc"
 
-            return insts, elems, ports
+                ports += left_dc["op_0"]
+                ports += left_dc["op_1"]
+                ports += right_dc["op_2"]
+                ports += right_dc["op_3"]
 
-#. Generate netlist for pre-simulation. Ports connections without physically connected should be added here. For example, ``op_2`` of ``left_dc`` and ``op_1`` of ``right_dc`` is not linked to each other in the build method yet. However, we can virtually connect them together in the ``simpre_netlist`` method to run the post-simulation::
+                return insts, elems, ports
 
-    def simpre_netlist(self):
-        optical_netlist, electrical_netlist = self.interconnect()
+#. Generate netlist for pre-simulation. Ports connections without physically connected should be added here. For example, ``op_2`` of ``left_dc`` and ``op_1`` of ``right_dc`` is not linked to each other in the build method yet. However, we can virtually connect them together in the ``simpre_netlist`` method to run the post-simulation.
 
-        left_dc = self.get("left_dc", DC)
-        right_dc = self.get("right_dc", DC)
+    ::
 
-        optical_netlist += left_dc[fp.IOwnedPort, "op_2"] >> right_dc[fp.IOwnedPort, "op_1"]
+        def simpre_netlist(self):
+            optical_netlist, electrical_netlist = self.interconnect()
 
-        return optical_netlist, electrical_netlist
+            left_dc = self.get("left_dc", DC)
+            right_dc = self.get("right_dc", DC)
+
+            optical_netlist += left_dc[fp.IOwnedPort, "op_2"] >> right_dc[fp.IOwnedPort, "op_1"]
+
+            return optical_netlist, electrical_netlist
 
 
-#. Define simulation model for the MZI circuit. In this example, we are only setting the simulation parameters of ``left_dc`` and ``right_dc`` to be controllable. Thus, in this case, the other components in this circuit will remain to the simulation model we implemented in the cell class::
+#. Define simulation model for the MZI circuit. In this example, we are only setting the simulation parameters of ``left_dc`` and ``right_dc`` to be controllable. Thus, in this case, the other components in this circuit will remain to the simulation model we implemented in the cell class.
 
-    def sim_model(self, left_coupling: float = 0.5, right_coupling: float = 0.5):
-        left_dc = self.get("left_dc", DC)
-        right_dc = self.get("right_dc", DC)
-        models = {
-            left_dc: left_dc.sim_model(coupling=left_coupling),
-            right_dc: right_dc.sim_model(coupling=right_coupling),
-        }
-        return fp.sim.CircuitModel(self, self.simpre_netlist(), models)
+    ::
+
+        def sim_model(self, left_coupling: float = 0.5, right_coupling: float = 0.5):
+            left_dc = self.get("left_dc", DC)
+            right_dc = self.get("right_dc", DC)
+            models = {
+                left_dc: left_dc.sim_model(coupling=left_coupling),
+                right_dc: right_dc.sim_model(coupling=right_coupling),
+            }
+            return fp.sim.CircuitModel(self, self.simpre_netlist(), models)
 
 
 Generate GDS file and run post-simulation
 -----------------------------------------------------
 
-#. Generate GDS file.::
+#. Generate GDS file.
 
-    if __name__ == "__main__":
-        from gpdk.util.path import local_output_file
+    ::
 
-        gds_file = local_output_file(__file__).with_suffix(".gds")
-        library = fp.Library()
-        # ===========================
+        if __name__ == "__main__":
+            from gpdk.util.path import local_output_file
 
-        # layout
-        mzi= Mzi()
+            gds_file = local_output_file(__file__).with_suffix(".gds")
+            library = fp.Library()
+            # ===========================
 
-        library += mzi
-        fp.export_gds(library, file=gds_file)
-        fp.plot(library)
+            # layout
+            mzi= Mzi()
+
+            library += mzi
+            fp.export_gds(library, file=gds_file)
+            fp.plot(library)
 
 .. image:: ../images/postsim_mzi_gds.png
 
 #. Run post-simulation of the circuit.
 
-   #. Set circuit simulation model. Here the parameters ``left_coupling`` and ``right_coupling`` will assign to the coupling parameters of the DC simulation model.::
+   #. Set circuit simulation model. Here the parameters ``left_coupling`` and ``right_coupling`` will assign to the coupling parameters of the DC simulation model.
+
+    ::
 
         model = mzi_array.sim_model(left_coupling=0.3, right_coupling=0.8)
 
-   #. Calculate circuit S-Matrix.::
+   #. Calculate circuit S-Matrix.
+
+    ::
 
         wl = np.linspace(1.53, 1.57, 1000)  # type: ignore
         smatrix = model.simulate_scatter(wl)  # type: ignore
 
-   #. Plot the simulation results. We first convert magnitude and argument to a complex data.::
+   #. Plot the simulation results. We first convert magnitude and argument to a complex data.
+
+    ::
 
         def p2r(value: Tuple[Any, Any]):
             mag = value[0]

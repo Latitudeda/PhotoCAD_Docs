@@ -161,9 +161,3 @@ Other simulation models
 
         return S
 
-Summary
------------------------------------
-
-The simulation model mentioned above will be converted into their corresponding S-parameter matrices, and these matrices will be cascaded for simulating multiple components.
-
-It is important to note that if the model sampling point of a device differs from the sampling point set during the link simulation, the engine will use linear interpolation to ensure consistency between the model sampling point of each device and the sampling point set during the link simulation.
