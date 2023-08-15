@@ -11,4 +11,3 @@ Post Layout Simulation
 
  sim_model
  example_mzi
- fp_device_sim_example
