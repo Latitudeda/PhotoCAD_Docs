@@ -1,8 +1,6 @@
 Exporting GDS/Json file
 ==========================
 
-* Default setting of ``auto_flatten`` is True
-
 #. Export GDS file:
 
    ::
