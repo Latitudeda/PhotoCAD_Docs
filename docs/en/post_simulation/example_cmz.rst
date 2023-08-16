@@ -3,6 +3,35 @@ Cascaded Mach-Zehnder (CMZ) wavelength filter
 
 This example is to demonstrate how ``PhotoCAD`` post-simulation can be used in a CMZ wavelength filter [1]_ and help users to validate their concepts from a simple simulation implementation.
 
+
+Implement simulation models for auto-link
+---------------------------------------------
+
+To use auto-link functions such as ``fp.Linked``, ``fp.LinkBetween``, ``fp.create_links``, we have to implement simulation models in some essential components.
+
+For example, in the CMZ filter circuit, we will use the below scripts and both ``fp.create_links`` and ``fp.LinkBetween`` to connect DCs and wavelength splitters.
+
+ ::
+
+    device = fp.create_links(
+                        link_type=TECH.WG.FWG.C.WIRE,
+                        bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR,
+                        specs=[
+                            fp.LinkBetween(
+                                DC1["op_2"],
+                                DC2["op_1"],
+                                target_length=base_length,
+                            ),
+                            fp.LinkBetween(DC1["op_3"], DC2["op_0"], target_length=base_length + delta_L),
+                        ],
+                    )
+
+As a result, since component ``Straight`` will be used to generate ``TECH.WG.FWG.C.WIRE``, we should add simulation model ``WGModel`` to ``Straight``.
+
+For ``TECH.WG.FWG.C.WIRE.BEND_CIRCULAR``, we are using ``CircularBendFactory`` to return a circular bend, so it is also neccesary to add ``BendModel`` in every circular bend cells that are assigned in ``CircularBendFactory``.
+
+Noted that in some cases, transitions simulation models will also have to be implemented in transition cells.
+
 Wavelength Splitters
 --------------------------
 
@@ -245,12 +274,105 @@ To demultiplex 8 wavelength channel, 3-level of wavelength splitters will be nee
 .. image:: ../images/3st_gds.png
 .. image:: ../images/3st_sim.png
 
-CMZ wavelength filter
+CMZ wavelength demultiplexer
 ------------------------------
 
+By combining the above three wavelength splitter unit, we are able to build an 8-channel wavelength demultiplexer.
 
 
+ ::
 
+    class CMZ(fp.PCell):
+        def build(self):
+            insts, elems, ports = super().build()
+            TECH = get_technology()
+
+            demux_3st = DEMUX_3().translated(0, 0)
+            insts += demux_3st, "D3"
+
+            demux_2stA = DEMUX_2(L_FSR_coeff=2, L_shift_coeff=0)
+            demux_2stA = demux_2stA["op_1"].repositioned(at=(demux_3st["op_3"].position[0], 100)).owner
+            demux_2stB = DEMUX_2(L_FSR_coeff=2, L_shift_coeff=0.75).translated(200, -150)
+            demux_2stB = demux_2stB["op_1"].repositioned(at=(demux_3st["op_3"].position[0], -100)).owner
+            insts += demux_2stA, "D2A"
+            insts += demux_2stB, "D2B"
+
+            demux_1stA = DEMUX_1(L_FSR_coeff=4, L_shift_coeff=0)
+            demux_1stA = demux_1stA["op_1"].repositioned(at=(demux_2stA["op_3"].position[0], 180)).owner
+            demux_1stB = DEMUX_1(L_FSR_coeff=4, L_shift_coeff=0.25)
+            demux_1stB = demux_1stB["op_1"].repositioned(at=(demux_2stA["op_3"].position[0], 60)).owner
+            demux_1stC = DEMUX_1(L_FSR_coeff=4, L_shift_coeff=0.125)
+            demux_1stC = demux_1stC["op_1"].repositioned(at=(demux_2stA["op_3"].position[0], -60)).owner
+            demux_1stD = DEMUX_1(L_FSR_coeff=4, L_shift_coeff=0.375)
+            demux_1stD = demux_1stD["op_1"].repositioned(at=(demux_2stA["op_3"].position[0], -180)).owner
+            insts += demux_1stA, "D1A"
+            insts += demux_1stB, "D1B"
+            insts += demux_1stC, "D1C"
+            insts += demux_1stD, "D1D"
+
+            device = fp.create_links(
+                link_type=TECH.WG.FWG.C.WIRE,
+                bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR,
+                specs=[
+                    fp.LinkBetween(start=demux_3st["op_4"], end=demux_2stA["op_2"]),
+                    fp.LinkBetween(start=demux_3st["op_3"], end=demux_2stB["op_1"]),
+                    fp.LinkBetween(start=demux_2stA["op_4"], end=demux_1stA["op_2"]),
+                    fp.LinkBetween(start=demux_2stA["op_3"], end=demux_1stB["op_1"]),
+                    fp.LinkBetween(start=demux_2stB["op_4"], end=demux_1stC["op_2"]),
+                    fp.LinkBetween(start=demux_2stB["op_3"], end=demux_1stD["op_1"]),
+                ],
+            )
+            insts += device
+
+            ports += demux_3st["op_2"].with_name("In")
+            ports += demux_1stA["op_4"].with_name("Out_lambda1")
+            ports += demux_1stA["op_3"].with_name("Out_lambda2")
+            ports += demux_1stB["op_4"].with_name("Out_lambda3")
+            ports += demux_1stB["op_3"].with_name("Out_lambda4")
+            ports += demux_1stC["op_4"].with_name("Out_lambda5")
+            ports += demux_1stC["op_3"].with_name("Out_lambda6")
+            ports += demux_1stD["op_4"].with_name("Out_lambda7")
+            ports += demux_1stD["op_3"].with_name("Out_lambda8")
+
+            return insts, elems, ports
+
+        def simpre_netlist(self):
+            optical_netlist, electrical_netlist = self.interconnect()
+
+            D3 = self.get("D3", DEMUX_3)
+            D2A = self.get("D2A", DEMUX_2)
+            D2B = self.get("D2B", DEMUX_2)
+            D1A = self.get("D1A", DEMUX_1)
+            D1B = self.get("D1B", DEMUX_1)
+            D1C = self.get("D1C", DEMUX_1)
+            D1D = self.get("D1D", DEMUX_1)
+
+
+            return optical_netlist, electrical_netlist
+
+        def sim_model(self):
+
+            D3 = self.get("D3", DEMUX_3)
+            D2A = self.get("D2A", DEMUX_2)
+            D2B = self.get("D2B", DEMUX_2)
+            D1A = self.get("D1A", DEMUX_1)
+            D1B = self.get("D1B", DEMUX_1)
+            D1C = self.get("D1C", DEMUX_1)
+            D1D = self.get("D1D", DEMUX_1)
+            models = {
+                D3: D3.sim_model(left_coupling=0.5, mid_coupling=0.20, mid2_coupling=0.20, right_coupling=0.04),
+                D2A: D2A.sim_model(left_coupling=0.5, mid_coupling=0.29, right_coupling=0.08),
+                D2B: D2B.sim_model(left_coupling=0.5, mid_coupling=0.29, right_coupling=0.08),
+                D1A: D1A.sim_model(left_coupling=0.5, right_coupling=0.5),
+                D1B: D1B.sim_model(left_coupling=0.5, right_coupling=0.5),
+                D1C: D1C.sim_model(left_coupling=0.5, right_coupling=0.5),
+                D1D: D1D.sim_model(left_coupling=0.5, right_coupling=0.5),
+            }
+            return fp.sim.CircuitModel(self, self.simpre_netlist(), models)
+
+
+.. image:: ../images/4st_gds.png
+.. image:: ../images/4st_sim.png
 
 
 
