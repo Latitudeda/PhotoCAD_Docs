@@ -62,7 +62,7 @@ Note that the correct delay line :math:`\Delta L` indicate in each splitter can 
 
 #. 1st level: Below figure [1] show the schematic structure of the 1st level. It contains two 50/50 DCs connected to each other and the length difference :math:`\Delta L` is calculated by the table mentioned above.
 
-.. image:: ../images/1st_scheme.png
+   .. image:: ../images/1st_scheme.png
 
    ::
 
@@ -134,7 +134,7 @@ Note that the correct delay line :math:`\Delta L` indicate in each splitter can 
 
 #. 2nd level: Below figure [1] show the schematic structure of the 2nd level. It contains a 50/50 DC, a 71/29 DC, and a 92/8 DC connected to each other and the length difference :math:`\Delta L` is calculated by the table mentioned above.
 
-.. image:: ../images/2st_scheme.png
+   .. image:: ../images/2st_scheme.png
 
    ::
 
@@ -215,7 +215,7 @@ Note that the correct delay line :math:`\Delta L` indicate in each splitter can 
 
 #. 3rd level: Below figure [1] show the schematic structure of the 3rd level. It contains a 50/50 DC, a 80/20 DC, and a 96/4 DC connected to each other and the length difference :math:`\Delta L` is calculated by the table mentioned above.
 
-.. image:: ../images/3st_scheme.png
+   .. image:: ../images/3st_scheme.png
 
    ::
 
