@@ -368,19 +368,6 @@ By combining the above three wavelength splitter unit, we are able to build an 8
 
             return insts, elems, ports
 
-        def simpre_netlist(self):
-            optical_netlist, electrical_netlist = self.interconnect()
-
-            D3 = self.get("D3", DEMUX_3)
-            D2A = self.get("D2A", DEMUX_2)
-            D2B = self.get("D2B", DEMUX_2)
-            D1A = self.get("D1A", DEMUX_1)
-            D1B = self.get("D1B", DEMUX_1)
-            D1C = self.get("D1C", DEMUX_1)
-            D1D = self.get("D1D", DEMUX_1)
-
-
-            return optical_netlist, electrical_netlist
 
         def sim_model(self):
 
@@ -400,7 +387,7 @@ By combining the above three wavelength splitter unit, we are able to build an 8
                 D1C: D1C.sim_model(left_coupling=0.5, right_coupling=0.5),
                 D1D: D1D.sim_model(left_coupling=0.5, right_coupling=0.5),
             }
-            return fp.sim.CircuitModel(self, self.simpre_netlist(), models)
+            return fp.sim.CircuitModel(self, self.netlist(), models)
 
 
 .. image:: ../images/4st_gds.png
