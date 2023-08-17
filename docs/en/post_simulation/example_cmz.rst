@@ -56,12 +56,12 @@ To demultiplex 8 wavelength channel, 3-level of wavelength splitters will be nee
    |1st D     |:math:`\Delta L_{base}`/4  | 0.375 :math:`\Delta L_{FS}`|
    +----------+---------------------------+----------------------------+
 
-.. table:: Parameters for the calculation of the delay line lengths of the wavelength splitters in a CMZ wavelength filter.[1]
+.. table:: Parameters for the calculation of the delay line lengths of the wavelength splitters in a CMZ wavelength filter. [1]
 
 Note that the correct delay line :math:`\Delta L` indicate in each splitter can be obtained from :math:`\Delta L_{FSR}` + :math:`\Delta L_{shift}`.
 
 
-#. 1st level: Below figure [1] show the schematic structure of the 1st level. It contains two 50/50 DCs connected to each other and the length difference :math:`\Delta L` is calculated by the table mentioned above.
+#. 1st level: Below figure [1]_ show the schematic structure of the 1st level. It contains two 50/50 DCs connected to each other and the length difference :math:`\Delta L` is calculated by the table mentioned above.
 
    .. image:: ../images/1st_scheme.png
 
@@ -133,7 +133,7 @@ Note that the correct delay line :math:`\Delta L` indicate in each splitter can 
 .. image:: ../images/1st_gds.png
 .. image:: ../images/1st_sim.png
 
-#. 2nd level: Below figure [1] show the schematic structure of the 2nd level. It contains a 50/50 DC, a 71/29 DC, and a 92/8 DC connected to each other and the length difference :math:`\Delta L` is calculated by the table mentioned above.
+#. 2nd level: Below figure [1]_ show the schematic structure of the 2nd level. It contains a 50/50 DC, a 71/29 DC, and a 92/8 DC connected to each other and the length difference :math:`\Delta L` is calculated by the table mentioned above.
 
    .. image:: ../images/2st_scheme.png
 
@@ -214,7 +214,7 @@ Note that the correct delay line :math:`\Delta L` indicate in each splitter can 
 .. image:: ../images/2st_gds.png
 .. image:: ../images/2st_sim.png
 
-#. 3rd level: Below figure [1] show the schematic structure of the 3rd level. It contains a 50/50 DC, a 80/20 DC, and a 96/4 DC connected to each other and the length difference :math:`\Delta L` is calculated by the table mentioned above.
+#. 3rd level: Below figure [1]_ show the schematic structure of the 3rd level. It contains a 50/50 DC, a 80/20 DC, and a 96/4 DC connected to each other and the length difference :math:`\Delta L` is calculated by the table mentioned above.
 
    .. image:: ../images/3st_scheme.png
 
@@ -403,10 +403,6 @@ By combining the above three wavelength splitter unit, we are able to build an 8
 
 .. image:: ../images/4st_gds.png
 .. image:: ../images/4st_sim.png
-
-
-
-
 
 
 
