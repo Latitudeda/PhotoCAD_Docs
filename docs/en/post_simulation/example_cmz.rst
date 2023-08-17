@@ -37,19 +37,32 @@ Wavelength Splitters
 
 To demultiplex 8 wavelength channel, 3-level of wavelength splitters will be needed to implement in the CMZ circuit. Splitters are build up from several directional couplers (DCs) and connected together with different length. Below table shows the relations between each level (1st, 2nd, 3rd) wavelength splitters and the length which linked the DCs.
 
-.. table:: Parameters for the calculation of the delay line lengths of the wavelength splitters in a CMZ wavelength filter.[1]_
+.. table:: Parameters for the calculation of the delay line lengths of the wavelength splitters in a CMZ wavelength filter.[1]
 
-   +----------+------------------------+---------------+
-   |Splitter  | :math:`\Delta L_FSR`   | delta_L_shift |
-   +==========+========================+===============+
-   |3st       |delta_L_base/2          | 0.75          |
-   +----------+------------------------+---------------+
+   +----------+---------------------------+----------------------------+
+   |Splitter  | :math:`\Delta L_{FSR}`    | :math:`\Delta L_{shift}`   |
+   +==========+===========================+============================+
+   |3st       |:math:`\Delta L_{base}`    | 0                          |
+   +----------+---------------------------+----------------------------+
+   |2st A     |:math:`\Delta L_{base}`/2  | 0                          |
+   +----------+---------------------------+----------------------------+
+   |2st B     |:math:`\Delta L_{base}`/2  | 0.75 :math:`\Delta L_{FS}` |
+   +----------+---------------------------+----------------------------+
+   |1st A     |:math:`\Delta L_{base}`/4  | 0                          |
+   +----------+---------------------------+----------------------------+
+   |1st B     |:math:`\Delta L_{base}`/4  | 0.25 :math:`\Delta L_{FS}` |
+   +----------+---------------------------+----------------------------+
+   |1st C     |:math:`\Delta L_{base}`/4  | 0.125 :math:`\Delta L_{FS}`|
+   +----------+---------------------------+----------------------------+
+   |1st D     |:math:`\Delta L_{base}`/4  | 0.375 :math:`\Delta L_{FS}`|
+   +----------+---------------------------+----------------------------+
+
+Note that the correct delay line :math:`\Delta L` indicate in each splitter can be obtained from :math:`\Delta L_{FSR}` + :math:`\Delta L_{shift}`.
 
 
+#. 1st level: Below figure [1] show the schematic structure of the 1st level. It contains two 50/50 DCs connected to each other and the length difference :math:`\Delta L` is calculated by the table mentioned above.
 
-
-
-#. 1st level: Below figure show the schematic structure of the 1st level. It contains two 50/50 DCs connected to each other and the length difference :math:`\Delta` L is calculated by the base length difference and the delay line length difference.
+.. image:: ../images/1st_scheme.png
 
    ::
 
@@ -119,7 +132,9 @@ To demultiplex 8 wavelength channel, 3-level of wavelength splitters will be nee
 .. image:: ../images/1st_gds.png
 .. image:: ../images/1st_sim.png
 
-#. 2nd level: 50/50 DC, 71/29 DC, 92/8 DC.
+#. 2nd level: Below figure [1] show the schematic structure of the 2nd level. It contains a 50/50 DC, a 71/29 DC, and a 92/8 DC connected to each other and the length difference :math:`\Delta L` is calculated by the table mentioned above.
+
+.. image:: ../images/2st_scheme.png
 
    ::
 
@@ -198,7 +213,9 @@ To demultiplex 8 wavelength channel, 3-level of wavelength splitters will be nee
 .. image:: ../images/2st_gds.png
 .. image:: ../images/2st_sim.png
 
-#. 3rd level: 50/50 DC, 71/29 DC, 92/8 DC.
+#. 3rd level: Below figure [1] show the schematic structure of the 3rd level. It contains a 50/50 DC, a 80/20 DC, and a 96/4 DC connected to each other and the length difference :math:`\Delta L` is calculated by the table mentioned above.
+
+.. image:: ../images/3st_scheme.png
 
    ::
 
