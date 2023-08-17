@@ -37,7 +37,6 @@ Wavelength Splitters
 
 To demultiplex 8 wavelength channel, 3-level of wavelength splitters will be needed to implement in the CMZ circuit. Splitters are build up from several directional couplers (DCs) and connected together with different length. Below table shows the relations between each level (1st, 2nd, 3rd) wavelength splitters and the length which linked the DCs.
 
-.. table:: Parameters for the calculation of the delay line lengths of the wavelength splitters in a CMZ wavelength filter.[1]
 
    +----------+---------------------------+----------------------------+
    |Splitter  | :math:`\Delta L_{FSR}`    | :math:`\Delta L_{shift}`   |
@@ -56,6 +55,8 @@ To demultiplex 8 wavelength channel, 3-level of wavelength splitters will be nee
    +----------+---------------------------+----------------------------+
    |1st D     |:math:`\Delta L_{base}`/4  | 0.375 :math:`\Delta L_{FS}`|
    +----------+---------------------------+----------------------------+
+
+.. table:: Parameters for the calculation of the delay line lengths of the wavelength splitters in a CMZ wavelength filter.[1]
 
 Note that the correct delay line :math:`\Delta L` indicate in each splitter can be obtained from :math:`\Delta L_{FSR}` + :math:`\Delta L_{shift}`.
 
