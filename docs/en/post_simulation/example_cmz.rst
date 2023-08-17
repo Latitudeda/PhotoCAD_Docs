@@ -28,16 +28,18 @@ For example, in the CMZ filter circuit, we will use the below scripts and both `
 
 As a result, since component ``Straight`` will be used to generate ``TECH.WG.FWG.C.WIRE``, we should add simulation model ``WGModel`` to ``Straight``.
 
-For ``TECH.WG.FWG.C.WIRE.BEND_CIRCULAR``, we are using ``CircularBendFactory`` to return a circular bend, so it is also neccesary to add ``BendModel`` in every circular bend cells that are assigned in ``CircularBendFactory``.
+For ``TECH.WG.FWG.C.WIRE.BEND_CIRCULAR``, we are using ``CircularBendFactory`` to return a circular bend, so it is also necessary to add ``BendModel`` in every circular bend cells that are assigned in ``CircularBendFactory``.
 
 Noted that in some cases, transitions simulation models will also have to be implemented in transition cells.
 
 Wavelength Splitters
 --------------------------
 
-To demultiplex 8 wavelength channel, 3-level of wavelength splitters will be needed to implement in the CMZ circuit.
+To demultiplex 8 wavelength channel, 3-level of wavelength splitters will be needed to implement in the CMZ circuit. Splitters are build up from several directional couplers (DCs) and connected together with different length. Below table shows the relations between each level ( 1st, 2nd, 3rd) wavelength splitters and the length which linked the DCs.
 
-#. 1st level: two 50/50 DC.
+
+
+#. 1st level: Below figure show the schematic structure of the 1st level. It contains two 50/50 DCs connected to each other and the length difference :math:`\Delta` L is calculated by the base length difference and the delay line length difference.
 
    ::
 
