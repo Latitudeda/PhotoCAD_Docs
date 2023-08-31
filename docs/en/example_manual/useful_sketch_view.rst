@@ -147,6 +147,109 @@ We track the build-up time of the GDS file when implementing different scenarios
 From the above results we can see that ``fp.use_sketch_view`` increases two to three times the speed of generating the GDS file. First time opening the sketch view needs some time to generate the GDS and Json files of the sketched cell, but after that the build-up time can be efficiently saved.
 
 
+Example Scripts
+----------------------
+
+Here we only show the script of the top circuit of the above example.
+
+ ::
+
+    class Topcircuit(fp.PCell, locked=True):
+        def build(self) -> Tuple[fp.InstanceSet, fp.ElementSet, fp.PortSet]:
+            insts, elems, ports = super().build()
+            TECH = get_technology()
+
+            mzm1 = mzm_l_200_pn_25() # Call and place the three child mzms
+            mzm2 = mzm_l_300_pn_50().translated(200, 200)
+            mzm3 = mzm_l_400_pn_75().translated(500, 0)
+
+            link = fp.create_links( # Link the three child mzms
+                link_type=TECH.WG.FWG.C.WIRE,
+                bend_factory=TECH.WG.FWG.C.WIRE.BEND_CIRCULAR,
+                specs=[
+                    fp.LinkBetween(
+                        end=mzm2["op_0"],
+                        start=mzm1["op_1"]
+                    ),
+                    fp.LinkBetween(
+                        start=mzm2["op_1"],
+                        end=mzm3["op_0"]
+                    ),
+
+                ]
+            )
+
+            insts += mzm1
+            insts += mzm2
+            insts += mzm3
+            insts += link
+
+            return insts, elems, ports
+
+
+    if __name__ == "__main__":
+        import sys
+        from time import perf_counter
+        from gpdk_kaiwen.util.path import local_output_file
+
+        gds_file = local_output_file(__file__).with_suffix(".gds")
+        library = fp.Library()
+
+        TECH = get_technology()
+        conf = fp.SketchConf(sketch_layer=TECH.LAYER.TEXT_NOTE, marker_layer=TECH.LAYER.FLYLINE_MARK)
+
+        def test_build(tag: str): # Create a build test function to count the time to build up GDS file in different situations.
+            start_time = perf_counter()
+            library = fp.Library()
+            library += topcircuit()
+            fp.export_gds(library, file=gds_file.with_suffix(f".{tag}.gds"))
+            print(f"{tag} view elapsed time: {perf_counter()-start_time:.4f}\n")
+
+        tag = sys.argv[1] if len(sys.argv) == 2 else "test"
+        if tag.startswith("original"):
+            test_build(tag)
+        elif tag.startswith("mzm"):
+            fp.use_sketch_view(mzm_l_200_pn_25, conf=conf) # Assign fp.use_sketch_view function before test_build function
+            fp.use_sketch_view(mzm_l_300_pn_50, conf=conf)
+            fp.use_sketch_view(mzm_l_400_pn_75, conf=conf)
+            test_build(tag)
+        elif tag.startswith("ps"):
+            fp.use_sketch_view(phaseshifter_pn25, conf=conf) # Assign fp.use_sketch_view function before test_build function
+            fp.use_sketch_view(phaseshifter_pn50, conf=conf)
+            fp.use_sketch_view(phaseshifter_pn75, conf=conf)
+            test_build(tag)
+        elif tag.startswith("combiner"):
+            fp.use_sketch_view(y_combiner_taper1, conf=conf) # Assign fp.use_sketch_view function before test_build function
+            fp.use_sketch_view(y_combiner_taper5, conf=conf)
+            fp.use_sketch_view(y_combiner_taper10, conf=conf)
+            test_build(tag)
+        elif tag.startswith("test"):
+
+
+            import os
+            import subprocess
+
+            # Test 1 : close sketch view
+            subprocess.run([sys.executable, sys.argv[0], "original1"], env=os.environ)
+            # Test 2 : open sketch view 1
+            subprocess.run([sys.executable, sys.argv[0], "mzml"], env=os.environ)
+            # Test 3 : open sketch view 2
+            subprocess.run([sys.executable, sys.argv[0], "mzm2"], env=os.environ)
+            # Test 4 : close sketch view
+            subprocess.run([sys .executable, sys.argv[0],"original2"], env=os.environ )
+            # Test 5 : open sketch view 3
+            subprocess.run([sys.executable, sys.argv[0],"mzm3"], env=os.environ)
+            # Test 6 : open child cell sketch 1 view
+            subprocess.run([sys.executable, sys.argv[0], "ps1"], env=os.environ)
+            # Test 7 : open child cell sketch 2 view:
+            subprocess.run([sys.executable, sys.argv[0], "ps2"], env=os.environ)
+            # Test 8 : close child cell sketch view
+            subprocess.run([sys.executable, sys.argv[0], "original3"], env=os.environ)
+            # Test 9 : open sketch view phase shifter 3
+            subprocess.run([sys.executable, sys.argv[0],"ps3"], env=os.environ)
+            # Test 9 : open sketch view combiner
+            subprocess.run([sys.executable, sys.argv[0],"combiner"], env=os.environ)
+
 
 
 
