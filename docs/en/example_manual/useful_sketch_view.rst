@@ -63,20 +63,20 @@ Implement ``fp.use_sketch_view``
 
 .. note::
 
-The ``fp.use_sketch_view`` function has to be assign before adding circuit to ``library``, e.g. ``library += Circuit()``. Otherwise the setting will not change when exporting GDS file ``fp.export_gds``.
+    The ``fp.use_sketch_view`` function has to be assign before adding circuit to ``library``, e.g. ``library += Circuit()``. Otherwise the setting will not change when exporting GDS file ``fp.export_gds``.
 
- ::
+     ::
 
-    gds_file = local_output_file(__file__).with_suffix(".gds") # assign the directory for exporting GDS file
-    library = fp.Library() # generate library for adding PCells, circuits
+        gds_file = local_output_file(__file__).with_suffix(".gds") # assign the directory for exporting GDS file
+        library = fp.Library() # generate library for adding PCells, circuits
 
-    TECH = get_technology() # call PDK technology setting
-    conf = fp.SketchConf(sketch_layer=TECH.LAYER.TEXT_NOTE, marker_layer=TECH.LAYER.FLYLINE_MARK) # Set sketch view layers
-    fp.use_sketch_view(PnPhaseShifter, conf=conf) # Load sketch view function
+        TECH = get_technology() # call PDK technology setting
+        conf = fp.SketchConf(sketch_layer=TECH.LAYER.TEXT_NOTE, marker_layer=TECH.LAYER.FLYLINE_MARK) # Set sketch view layers
+        fp.use_sketch_view(PnPhaseShifter, conf=conf) # Load sketch view function
 
-    library += mzm_l_400_pn_75() # Add PCells or circuits to library
+        library += mzm_l_400_pn_75() # Add PCells or circuits to library
 
-    fp.export_gds(library, file=gds_file) # Export contents in library to GDS file
+        fp.export_gds(library, file=gds_file) # Export contents in library to GDS file
 
 Different usage of ``fp.use_sketch_view``
 -------------------------------------------

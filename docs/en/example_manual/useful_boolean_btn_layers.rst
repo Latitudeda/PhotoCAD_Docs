@@ -1,4 +1,4 @@
-Boolean operations between different layers
+Boolean operations between geometry and layers
 ===================================================
 
 * Get the layers of the PCell: ``device.polygon_set(layer=TECH.LAYER.XXX)``
