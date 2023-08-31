@@ -1,3 +1,5 @@
+.. _Boolean :
+
 Step 4: Drawing of common shapes and layout design by Boolean operations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
