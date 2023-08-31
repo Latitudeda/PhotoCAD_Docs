@@ -201,7 +201,7 @@ Here we only show the script of the top circuit of the above example.
         def test_build(tag: str): # Create a build test function to count the time to build up GDS file in different situations.
             start_time = perf_counter()
             library = fp.Library()
-            library += topcircuit()
+            library += Topcircuit()
             fp.export_gds(library, file=gds_file.with_suffix(f".{tag}.gds"))
             print(f"{tag} view elapsed time: {perf_counter()-start_time:.4f}\n")
 
