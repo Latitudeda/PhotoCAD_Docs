@@ -115,6 +115,16 @@ Importing/Exporting GDS/Json file
 
    * Exported GDS file location.
 
+    ::
+
+       fp.export_gds(
+            content, # cell library and cell reference can be used as a content.
+            file, # gds file path, both absolute and relative paths are applicable.
+            layer_mapper, # users are allowed to hide some layers when exporting GDS file.
+            auto_flatten=True, # default setting of auro_flatten is True.
+            )
+
+
      Here we provide two ways to export the GDS file to the designated location.
 
      #. ``local`` folder:
@@ -134,14 +144,6 @@ Importing/Exporting GDS/Json file
             fp.export_gds(library, file=gds_file)
 
 
-    ::
-
-       fp.export_gds(
-            content, # cell library and cell reference can be used as a content.
-            file, # gds file path, both absolute and relative paths are applicable.
-            layer_mapper, # users are allowed to hide some layers when exporting GDS file.
-            auto_flatten=True, # default setting of auro_flatten is True.
-            )
 
 
     *

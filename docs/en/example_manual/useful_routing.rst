@@ -10,3 +10,4 @@ Useful function when scripting PhotoCAD
   useful_sketch_view
   useful_add_pinport
   useful_get_coordinate
+  useful_naming_policy

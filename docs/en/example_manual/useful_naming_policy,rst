@@ -1,0 +1,45 @@
+GDS cell naming rule
+=============================
+
+When exporting GDS file, the name of the cell will be set default by the ``class`` name of the cell. For instance, in the ``Straight`` component, we define ``class Straight`` and by ``library += Straight()`` and ``fp.export_gds(library)`` method we can get a GDS file with a ``Straight`` cell.
+
+  ::
+
+     class Straight(fp.IWaveguideLike, fp.PCell):
+     ...
+
+     if __name__ == "__main__":
+        from gpdk.util.path import local_output_file
+
+        gds_file = local_output_file(__file__).with_suffix(".gds")
+        library = fp.Library()
+
+        TECH = get_technology()
+
+        library += Straight()
+        fp.export_gds(library, file=gds_file)
+
+
+.. image:: ../images/naming_policy1.png
+
+
+To change the name of the cell, the simplest way is to add ``.with_name("{your_name")`` after adding ``class`` to ``fp.Library``.
+
+  ::
+
+     class Straight(fp.IWaveguideLike, fp.PCell):
+     ...
+
+     if __name__ == "__main__":
+        from gpdk.util.path import local_output_file
+
+        gds_file = local_output_file(__file__).with_suffix(".gds")
+        library = fp.Library()
+
+        TECH = get_technology()
+
+        library += Straight().with_name("test_name")
+        fp.export_gds(library, file=gds_file)
+
+.. image:: ../images/naming_policy2.png
+
