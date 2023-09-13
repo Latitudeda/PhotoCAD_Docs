@@ -9,3 +9,4 @@ Useful function when scripting PhotoCAD
   useful_export_gds
   useful_sketch_view
   useful_add_pinport
+  useful_get_coordinate

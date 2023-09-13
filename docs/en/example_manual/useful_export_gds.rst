@@ -112,7 +112,29 @@ Importing/Exporting GDS/Json file
 
 #. Export GDS file:
 
-   ::
+
+   * Exported GDS file location.
+
+     Here we provide two ways to export the GDS file to the designated location.
+
+     #. ``local`` folder:
+
+        ``gds_file = local_output_file(__file__).with_suffix(".gds")``
+
+        In this method, the exported GDS will be stored in a new ``local`` folder which is created at the folder where you run the ``.py`` file. The name of the GDS file will be the name of the ``.py`` file, users can change by replacing ``__file__`` to another name e.g., ``gds_file = local_output_file("test").with_suffix(".gds")``
+
+     #. Self-defined folder:
+
+        Users can also define the folder where they wish the exported GDS file be stored.
+
+        ::
+
+            gds_file = C://user//username//test.gds
+
+            fp.export_gds(library, file=gds_file)
+
+
+    ::
 
        fp.export_gds(
             content, # cell library and cell reference can be used as a content.
@@ -120,6 +142,10 @@ Importing/Exporting GDS/Json file
             layer_mapper, # users are allowed to hide some layers when exporting GDS file.
             auto_flatten=True, # default setting of auro_flatten is True.
             )
+
+
+    *
+
 
 #. Export Json file from existing cell:
 
