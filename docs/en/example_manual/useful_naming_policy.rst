@@ -50,7 +50,7 @@ Cell naming rules
 Besides changing the cell name from ``.with_name("{your_name")`` function, here we provide some advanced methods to implement the cell name as one of the parameters in the PCell.
 
 
-# Cell name with default name prefix
+#. Cell name with default name prefix
 
   The first method doesn't add any ``name`` parameter to the PCell, however, ``fp.PCell`` has already a built-in parameter ``name`` so it can also be used since the PCell ``WithDefaultNamePrefix`` is inherited from ``fp.PCell``.
 
@@ -93,9 +93,9 @@ Besides changing the cell name from ``.with_name("{your_name")`` function, here 
     library += WithDefaultNamePrefix(size=30).with_name("N1")
 
 
-# Cell name with blank name prefix
+#. Cell name with blank name prefix
 
-  The second method is define a name parameter ``fp.NameParam`` and set the prefix to a blank name. This allow users to export the cell name without the ``class`` name prefix when using ``name`` parameter of the PCell (It overrides the ``name`` parameter in ``fp.PCell``).
+  The second method is defining a name parameter ``fp.NameParam`` and setting the prefix to a blank name. This allow users to export the cell name without the ``class`` name prefix when using ``name`` parameter of the PCell (It overrides the ``name`` parameter in ``fp.PCell``).
 
   * ``library += WithBlankNamePrefix(size=40)``: The cell name will use the class name as prefix.
 
@@ -136,9 +136,9 @@ Besides changing the cell name from ``.with_name("{your_name")`` function, here 
 
 
 
-# Cell name with custom name prefix
+#. Cell name with custom name prefix
 
-  The third method is define a name parameter ``fp.NameParam`` and set the prefix to a custom name ``custom``. This allow users to export the cell name without the ``class`` name prefix when using ``name`` parameter of the PCell (It overrides the ``name`` parameter in ``fp.PCell``) and set the default cell name as they wish.
+  The third method is defining a name parameter ``fp.NameParam`` and setting the prefix to a custom name ``custom``. This allow users to export the cell name without the ``class`` name prefix when using ``name`` parameter of the PCell (It overrides the ``name`` parameter in ``fp.PCell``) and set the default cell name as they wish.
 
   * ``library += WithCustomNamePrefix(size=70)``: The cell name will be the name set in the ``name`` parameter.
 

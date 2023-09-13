@@ -112,9 +112,6 @@ Importing/Exporting GDS/Json file
 
 #. Export GDS file:
 
-
-   * Exported GDS file location.
-
     ::
 
        fp.export_gds(
@@ -123,6 +120,11 @@ Importing/Exporting GDS/Json file
             layer_mapper, # users are allowed to hide some layers when exporting GDS file.
             auto_flatten=True, # default setting of auro_flatten is True.
             )
+
+
+   * Exported GDS file location.
+
+
 
 
      Here we provide two ways to export the GDS file to the designated location.
@@ -146,7 +148,7 @@ Importing/Exporting GDS/Json file
 
 
 
-    *
+
 
 
 #. Export Json file from existing cell:
