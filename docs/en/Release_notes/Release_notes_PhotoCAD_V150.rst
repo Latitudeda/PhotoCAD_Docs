@@ -15,5 +15,4 @@ The long-awaited version update is here, and the software will support more conc
 11.	``import_from_json`` supports layer mapped to ``(layer, xtype)`` instead of layer name(eg. ``TECH.LAYER.FWG_CORE``).
 12.	Enhanced the functionality of minor SDL. 
 
-Dear users, you can now contact support@latitudea.com to get the PhotoCAD V1.5.0 software to experience the above update.
 
