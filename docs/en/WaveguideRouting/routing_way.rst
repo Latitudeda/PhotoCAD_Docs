@@ -56,7 +56,8 @@ example 2
                   ]
     )
 
-.. image:: ../images/routingpath.2.png
+.. image:: ../images/wayline_new.png
+
 
 Here ``fp.END`` is used to get the position of the end port, and similarly ``fp.START`` can be used to get the position of the start port. Also ``fp.PREV`` to get the position of the last turning point in real time, which allows the user to design based on the last turning point.
 
@@ -78,7 +79,7 @@ Here ``fp.END`` is used to get the position of the end port, and similarly ``fp.
 
     insts += device
 
-.. image:: ../images/wayline_new.png
+.. image:: ../images/routingpath.3.png
 
 Set ``Waypoints`` to guide the waveguide through the ``Waypoints``, the three values in the ``fp.Waypoint`` brackets represent ``x``,``y``,``angle`` respectively.
 
