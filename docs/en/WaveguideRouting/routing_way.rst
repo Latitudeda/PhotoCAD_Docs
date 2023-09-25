@@ -78,7 +78,7 @@ Here ``fp.END`` is used to get the position of the end port, and similarly ``fp.
 
     insts += device
 
-.. image:: ../images/routingpath.3.png
+.. image:: ../images/wayline_new.png
 
 Set ``Waypoints`` to guide the waveguide through the ``Waypoints``, the three values in the ``fp.Waypoint`` brackets represent ``x``,``y``,``angle`` respectively.
 
