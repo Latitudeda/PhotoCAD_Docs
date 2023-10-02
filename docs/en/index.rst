@@ -25,11 +25,12 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
 
    CreatePcell/index
    gpdk/QuickCreatePDK
+   Circuit_design/index
    example_manual/routing_list
    example_manual/useful_routing
    example_manual/component_list
    Tutorials/Quickstart
-   Circuit_design/index
+
 
 
 
