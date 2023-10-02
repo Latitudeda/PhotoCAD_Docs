@@ -15,7 +15,7 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
    QuickStart/quickstart
    gpdk_manual/index
    fnpcell_manual/index
-   gpdk/QuickCreatePDK
+
 
 
 
@@ -24,11 +24,13 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
    :hidden:
 
    CreatePcell/index
+   gpdk/QuickCreatePDK
    WaveguideRouting/Summary
    example_manual/routing_list
    example_manual/useful_routing
    example_manual/component_list
    Tutorials/Quickstart
+   Circuit_design/index
 
 
 

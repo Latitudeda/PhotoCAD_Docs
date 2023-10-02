@@ -1,4 +1,4 @@
-Create a customized PDK
+Create a CUSTOM PDK
 =========================
 
 This chapter is designed to help users quickly create PDKs that use their own process flows to automate layout routing.
