@@ -68,8 +68,7 @@ Here's a comparison of the two options
 .. image:: ../images/multiport_to_multiport_en.png
 
 ``fp.Linked`` example ( Recommendation★★★ )
------------------------------------------------
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ::
 
     # Call the device
@@ -109,7 +108,7 @@ Here's a comparison of the two options
 .. image:: ../images/multi2multi.1.png
 
 ``fp.create_links`` example ( Recommendation★★★★★ )
-----------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
