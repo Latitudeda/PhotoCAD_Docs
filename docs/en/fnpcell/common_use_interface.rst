@@ -120,7 +120,7 @@ The routing api mainly contains::
     fp.create_links
     fp.Connect
 
-For specific usage, please refer to :doc:`../WaveguideRouting/Summary`.
+For specific usage, please refer to :doc:`../Circuit_design/waveguide_routing`.
 
 Transform
 ^^^^^^^^^^^^^^
