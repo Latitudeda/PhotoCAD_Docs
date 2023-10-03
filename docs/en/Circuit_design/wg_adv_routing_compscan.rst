@@ -6,12 +6,12 @@ Routing in batch form
 In a test chip, the devices or modules to be verified usually have similar connection relationships, and the devices or modules are placed in a certain pattern to better match the probes for testing.
 
 Components Scan
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
 This example implements a script to simultaneously call different devices in each line to be placed between the same input and output ports. The script can unify the planning of port-to-component connections and simultaneously implement the layout design for equally spaced component placement and waveguide connections.
 
 Full script
--------------------------------------------------------------
+^^^^^^^^^^^^^^^
 
 ::
 
@@ -545,10 +545,11 @@ Full script
 
 
 Section Script Definition
------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Importing python libraries and functional modules of PhotoCAD
-===========================================================================
+-----------------------------------------------------------------
+
 ::
 
       import math
@@ -565,7 +566,7 @@ Importing python libraries and functional modules of PhotoCAD
       from gpdk.util import all as util
 
 Define device adaptation, fiber coupling, constant fiber coupler and several other classes
-=================================================================================================
+-------------------------------------------------------------------------------------------------
 ::
 
       class DeviceAdapter(Protocol):
@@ -590,7 +591,7 @@ Define device adaptation, fiber coupling, constant fiber coupler and several oth
 
 
 Define the batch class ``Block``
-===========================================================================
+-------------------------------------------------------------------------------------------------
 ::
 
 
@@ -611,7 +612,7 @@ Define the batch class ``Block``
               self.bend_factories = bend_factories
 
 Define ``Alignment``
-===========================================================================
+-------------------------------------------------------------------------------------------------
 ::
 
 
@@ -635,7 +636,7 @@ Define ``Alignment``
                 offset=offset,
 
 Define ``Title``
-===========================================================================
+-------------------------------------------------------------------------------------------------
 ::
 
 
@@ -664,7 +665,7 @@ Define ``Title``
             self.gap = gap
 
 Define ``Blank``
-===========================================================================
+-------------------------------------------------------------------------------------------------
 ::
 
 
@@ -682,7 +683,7 @@ Define ``Blank``
             self.right = right
 
 Define method to get the port center
-===========================================================================
+-------------------------------------------------------------------------------------------------
 ::
 
     def _get_ports_center_y(ports: Iterable[fp.IPort]):
@@ -690,7 +691,7 @@ Define method to get the port center
         return (min(ys) + max(ys)) / 2
 
 Define methods for obtaining module content
-===========================================================================
+-------------------------------------------------------------------------------------------------
 ::
 
 
@@ -733,7 +734,7 @@ Define methods for obtaining module content
         return device_adapter(device=block_content).translated(tx, ty)
 
 Define ``CompScan``
-===========================================================================
+-------------------------------------------------------------------------------------------------
 ::
 
 
@@ -928,7 +929,7 @@ Define ``CompScan``
             return insts, elems, ports
 
 Define ``CompScanBuilder``
-===========================================================================
+-------------------------------------------------------------------------------------------------
 ::
 
 
@@ -1015,7 +1016,7 @@ Define ``CompScanBuilder``
               self.blocks.append(Blank(left=left, right=right))
 
 Create the component and export the layout
-===========================================================================
+-------------------------------------------------------------------------------------------------
 ::
 
 
@@ -1115,7 +1116,7 @@ Create the component and export the layout
           # fp.plot(library)
 
 Script Description
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The first function ``get_ring_resonator_with_terminator`` defines the ring resonator cavity to be placed in the middle.
 
@@ -1139,7 +1140,7 @@ Browse the script will find that in addition to the ``CompScan`` class also defi
 ``CompScan`` defines the steps and parameters of graphics generation in detail , the code is intuitive and readable; ``CompScanBuilder`` defines the part of the graphics generation can be summarized and extracted, thus the code is more concise.
 
 GDS Layout
-------------------------------------------
+^^^^^^^^^^^^^^
 
 .. image:: ../images/comp_scan1.png
 
