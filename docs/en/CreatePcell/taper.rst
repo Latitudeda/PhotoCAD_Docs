@@ -16,7 +16,6 @@ Full script
         from gpdk.routing.extended.extended import Extended
 
 
-        @dataclass(eq=False)
         class TaperLinear(fp.IWaveguideLike, fp.PCell):
             """
             Attributes:
@@ -118,9 +117,8 @@ Section Script Description
 
 #. Define a new PCell, and a custom class (here will be ``TaperLinear``):
 
-   Inherit the new PCell via ``fp.PCell`` & ``fp.IWaveguideLike`` in fnpcell, which is a new basic component in gpdk. ``fp.IWaveguideLike`` is the parent class of all basic components in ``fnpcell``, and it includes the base setting of the components. Then the new ``TaperLinear`` class needs to be decorated by ``@dataclass(eq=False)``::
+   Inherit the new PCell via ``fp.PCell`` & ``fp.IWaveguideLike`` in fnpcell, which is a new basic component in gpdk. ``fp.IWaveguideLike`` is the parent class of all basic components in ``fnpcell``, and it includes the base setting of the components. ::
 
-        @dataclass(eq=False)
         class TaperLinear(fp.IWaveguideLike, fp.PCell):
 
 #. Define the properties and methods in the ``TaperLinear`` class

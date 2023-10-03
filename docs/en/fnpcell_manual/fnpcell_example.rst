@@ -112,7 +112,6 @@ Full script
         from gpdk.technology import get_technology
 
 
-        @dataclass(eq=False)
         class BendCircular(fp.IWaveguideLike, fp.PCell):
             """
             Attributes:

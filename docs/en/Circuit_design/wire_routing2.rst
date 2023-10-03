@@ -1,4 +1,4 @@
-Linked Electrical wire
+Link Electrical pad with turning angle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Full script
 ------------------------------------------------------
@@ -18,7 +18,7 @@ Full script
             return bend, self.radius
 
     @fp.pcell_class()
-    @dataclass(eq=False)
+
     class LinkedElec2(fp.PCell):
         # fmt: off
 

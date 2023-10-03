@@ -14,7 +14,7 @@ Full script
     from gpdk.technology.interfaces import CoreCladdingWaveguideType
 
     @fp.pcell_class()
-    @dataclass(eq=False)
+
     class RingFilter(fp.PCell):
         """
         Attributes:

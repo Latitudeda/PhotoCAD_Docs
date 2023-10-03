@@ -1,7 +1,14 @@
+Routing in batch form
+===============================================
+
+**PhotoCAD** has a built-in layout and routing tool in batch form that can be used for modular layout design with similar components, and is often used to quickly generate components or modules in a test chip in batch. 
+
+In a test chip, the devices or modules to be verified usually have similar connection relationships, and the devices or modules are placed in a certain pattern to better match the probes for testing.
+
 Components Scan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This example implements a script to modularly call different devices in each line to be placed between the same input and output ports. The script can unify the planning of port-to-component connections and modularly implement the layout design for equally spaced component placement and waveguide connections.
+This example implements a script to simultaneously call different devices in each line to be placed between the same input and output ports. The script can unify the planning of port-to-component connections and simultaneously implement the layout design for equally spaced component placement and waveguide connections.
 
 Full script
 -------------------------------------------------------------
@@ -164,7 +171,7 @@ Full script
         return device_adapter(device=block_content).translated(tx, ty)
 
 
-    @dataclass(eq=False)
+
     class CompScan(fp.PCell):
         """
         Attributes:
@@ -535,8 +542,8 @@ Full script
         # =============================================================
         fp.export_gds(library, file=gds_file)
         # fp.plot(library)
-        
-        
+
+
 Section Script Definition
 -----------------------------------------------------------
 
@@ -556,7 +563,7 @@ Importing python libraries and functional modules of PhotoCAD
       from gpdk.routing.extended.extended import Extended
       from gpdk.technology import get_technology
       from gpdk.util import all as util
-    
+
 Define device adaptation, fiber coupling, constant fiber coupler and several other classes
 =================================================================================================
 ::
@@ -580,8 +587,8 @@ Define device adaptation, fiber coupling, constant fiber coupler and several oth
               coupler = self.coupler
               port = self.port or "op_0"
               return (coupler, port)
-              
-              
+
+
 Define the batch class ``Block``
 ===========================================================================
 ::
@@ -729,7 +736,7 @@ Define ``CompScan``
 ===========================================================================
 ::
 
-    @dataclass(eq=False)
+
     class CompScan(fp.PCell):
         """
         Attributes:
@@ -757,18 +764,18 @@ Define ``CompScan``
         fiber_coupler_factory: FiberCouplerFactory = fp.Param().as_field()
         fiber_coupler_adapter: Optional[fp.IDevice] = fp.DeviceParam(required=False)
         fiber_coupler_adapter_port: Optional[str] = fp.TextParam(required=False)
-        fiber_coupler_v_mirrored: Sequence[bool] = fp.Param(default=(False, False)) 
-        max_lines: Optional[int] = fp.PositiveIntParam(required=False) 
-        blocks: Sequence[Block] = fp.ListParam(element_type=Block, immutable=True) 
-        width: float = fp.PositiveFloatParam(default=2000) 
-        spacing: float = fp.PositiveFloatParam(default=127) 
-        bend_degrees: float = fp.DegreeParam(default=45) 
-        bend_factory: Optional[fp.IBendWaveguideFactory] = fp.Param(required=False) 
-        bend_factories: Optional[Callable[[fp.IWaveguideType], fp.IBendWaveguideFactory]] = fp.Param(required=False) 
-        waveguide_type: Optional[fp.IWaveguideType] = fp.WaveguideTypeParam(required=False) 
-        connection_type: Optional[fp.IWaveguideType] = fp.WaveguideTypeParam(required=False) 
-        device_connection_length: float = fp.PositiveFloatParam(default=20) 
-        min_io_connection_length: float = fp.PositiveFloatParam(default=20) 
+        fiber_coupler_v_mirrored: Sequence[bool] = fp.Param(default=(False, False))
+        max_lines: Optional[int] = fp.PositiveIntParam(required=False)
+        blocks: Sequence[Block] = fp.ListParam(element_type=Block, immutable=True)
+        width: float = fp.PositiveFloatParam(default=2000)
+        spacing: float = fp.PositiveFloatParam(default=127)
+        bend_degrees: float = fp.DegreeParam(default=45)
+        bend_factory: Optional[fp.IBendWaveguideFactory] = fp.Param(required=False)
+        bend_factories: Optional[Callable[[fp.IWaveguideType], fp.IBendWaveguideFactory]] = fp.Param(required=False)
+        waveguide_type: Optional[fp.IWaveguideType] = fp.WaveguideTypeParam(required=False)
+        connection_type: Optional[fp.IWaveguideType] = fp.WaveguideTypeParam(required=False)
+        device_connection_length: float = fp.PositiveFloatParam(default=20)
+        min_io_connection_length: float = fp.PositiveFloatParam(default=20)
 
         def _default_fiber_coupler_factory(self):
             if self.fiber_coupler_adapter is not None:
@@ -1127,7 +1134,7 @@ Then 10 modules are called through ``blocks``, in the order of script definition
 
 The 10 modules will be placed in the layout from the bottom up.
 
-Browse the script will find that in addition to the ``CompScan`` class also defines the ``CompScanBuilder`` class. 
+Browse the script will find that in addition to the ``CompScan`` class also defines the ``CompScanBuilder`` class.
 
 ``CompScan`` defines the steps and parameters of graphics generation in detail , the code is intuitive and readable; ``CompScanBuilder`` defines the part of the graphics generation can be summarized and extracted, thus the code is more concise.
 
@@ -1138,32 +1145,10 @@ GDS Layout
 
 Open the generated ``comp_scan.gds file`` to see that there are several lines of ``GratingCoupler`` placed in the layout with equal spacing from bottom to top.
 
-Line 2, ``Title``, is a text label and there is no port for connection, so there is no GratingCoupler and waveguide for connection on the left and right sides. 
+Line 2, ``Title``, is a text label and there is no port for connection, so there is no GratingCoupler and waveguide for connection on the left and right sides.
 
-Lines 4, 8, 13 and 14 are defined according to the script, and there is no GratingCoupler and waveguide on the right side. 
+Lines 4, 8, 13 and 14 are defined according to the script, and there is no GratingCoupler and waveguide on the right side.
 
 The middle part has the called modules from bottom to top, and is connected to the left and right ``GratingCoupler`` by straight waveguides and bend.
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+

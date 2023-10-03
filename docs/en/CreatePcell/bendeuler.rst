@@ -17,7 +17,7 @@ Full script
     from gpdk.technology.interfaces import CoreCladdingWaveguideType
 
 
-    @dataclass(eq=False)
+
     class BendEuler(fp.IWaveguideLike, fp.PCell):
 
 
@@ -57,7 +57,7 @@ Full script
             return insts, elems, ports
 
 
-    @dataclass(eq=False)
+
     class BendEuler90(BendEuler):
 
         degrees: float = fp.DegreeParam(default=90, min=90, max=90, locked=True, doc="Bend angle in degrees")
@@ -78,7 +78,7 @@ Full script
             return insts, elems, ports
 
 
-    @dataclass(eq=False)
+
     class BendEuler90_FWG_C_WIRE(BendEuler90, locked=True):
         l_max: Optional[float] = fp.PositiveFloatParam(default=5, doc="Bend Lmax")
         radius_min: float = fp.PositiveFloatParam(default=3.225, doc="Bend radius_min")
@@ -93,7 +93,7 @@ Full script
             return fp.sim.ExternalFileModel(Path("BendCircular90_radius=10").with_suffix(".dat"))
 
 
-    @dataclass(eq=False)
+
     class BendEuler90_FWG_C_EXPANDED(BendEuler90, locked=True):
         l_max: Optional[float] = fp.PositiveFloatParam(default=10, doc="Bend Lmax")
         radius_min: float = fp.PositiveFloatParam(default=3.4, doc="Bend radius_min")
@@ -146,9 +146,9 @@ Section Script Description
 
 #. Define a new PCell, and a custom class (here will be ``BendEuler``):
 
-   Inherit the new PCell via ``fp.PCell`` & ``fp.IWaveguideLike`` in fnpcell, which is a new basic component in gpdk. ``fp.IWaveguideLike`` is the parent class of all basic components in ``fnpcell``, and it includes the base setting of the components. Then the new ``BendEuler`` class needs to be decorated by ``@dataclass(eq=False)``::
+   Inherit the new PCell via ``fp.PCell`` & ``fp.IWaveguideLike`` in fnpcell, which is a new basic component in gpdk. ``fp.IWaveguideLike`` is the parent class of all basic components in ``fnpcell``, and it includes the base setting of the components. ::
 
-        @dataclass(eq=False)
+
         class BendEuler(fp.IWaveguideLike, fp.PCell):
 
 #. Define the properties and methods in the ``BendEuler`` class
@@ -278,7 +278,7 @@ Once we have built the class ``BendEuler``, it is convenient to generate more ch
 #. BendEuler90::
 
 
-            @dataclass(eq=False)
+
             class BendEuler90(BendEuler):
 
                 degrees: float = fp.DegreeParam(default=90, min=90, max=90, locked=True, doc="Bend angle in degrees")
@@ -326,7 +326,7 @@ Once we have built the class ``BendEuler``, it is convenient to generate more ch
 
 #. BendEuler90_FWG_C_WIRE::
 
-        @dataclass(eq=False)
+
         class BendEuler90_FWG_C_WIRE(BendEuler90, locked=True):
             l_max: Optional[float] = fp.PositiveFloatParam(default=5, doc="Bend Lmax")
             radius_min: float = fp.PositiveFloatParam(default=3.225, doc="Bend radius_min")

@@ -19,7 +19,6 @@ Import library::
 
 Define class MMI::
 
-    @dataclass(eq=False)
     class Mmi(PCell):
         """
         Attributes:
@@ -93,7 +92,6 @@ Define class MMI::
 
 Define a MMI 1x2 class::
 
-    @dataclass(eq=False)
     class Mmi1x2(Mmi, locked=True):
         n_inputs: int = fp.PositiveIntParam(default=1)
         n_outputs: int = fp.PositiveIntParam(default=2)

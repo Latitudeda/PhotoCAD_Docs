@@ -46,7 +46,6 @@ Since there could be many waveguide types (``FWG_C``, ``FWG_O``, ``MWG_C``, etc.
 ::
 
         @fpt.hash_code
-        @dataclass(frozen=True)
         class FWG_C(CoreCladdingWaveguideType):
             @fpt.const_property
             def core_bias(self):
@@ -80,13 +79,11 @@ Since there could be many waveguide types (``FWG_C``, ``FWG_O``, ``MWG_C``, etc.
 
 
         @fpt.hash_code
-        @dataclass(frozen=True)
         class FWG_O(CoreCladdingWaveguideType):
 
 
 
         @fpt.hash_code
-        @dataclass(frozen=True)
         class MWG_C(CoreCladdingWaveguideType):
 
 
@@ -101,7 +98,6 @@ In this section, we used the class generated above as a parent class to create e
                 class C(FWG_C):
                     @fpt.staticconst
                     def WIRE():
-                        @dataclass(frozen=True)
                         class WIRE(__class__):
                             core_design_width: float = FWG_C_WIRE_WIDTH
                             cladding_design_width: float = FWG_C_WIRE_WIDTH + FWG_C_TRENCH_WIDTH * 2

@@ -112,7 +112,6 @@ Full script::
     from gpdk.technology import get_technology
 
 
-    @dataclass(eq=False)
     class Boolean(fp.IWaveguideLike, fp.PCell):
         def build(self) -> Tuple[fp.InstanceSet, fp.ElementSet, fp.PortSet]:
             insts, elems, ports = super().build()

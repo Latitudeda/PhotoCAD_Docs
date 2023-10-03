@@ -27,7 +27,7 @@ Part II. Full script
     from gpdk.components.step.step2.mmi1x2 import MMI1x2
 
 
-    @dataclass(eq=False)
+
     class MMITree(fp.PCell):
         x_spacing: float = fp.PositiveFloatParam(default=50)
         end_y_spacing: float = fp.PositiveFloatParam(default=100)

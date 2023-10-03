@@ -7,7 +7,6 @@ Port extension
 
 class Extended is defined as follows::
 
-    @dataclass(eq=False)
     class Extended(PCell):
         """
         Attributes:

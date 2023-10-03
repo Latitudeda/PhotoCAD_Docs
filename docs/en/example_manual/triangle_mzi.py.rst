@@ -24,7 +24,7 @@ Define the MZI class of the base single component of the mesh.
 
 ::
 
-    @dataclass(eq=False)
+
     class MZI(fp.PCell, band="C"):
         p_width: float = fp.PositiveFloatParam(default=1)
         n_width: float = fp.PositiveFloatParam(default=1)
@@ -155,7 +155,7 @@ Subsequently, the ``MZI_triangle_mesh`` class is constructed.
 
 ::
 
-    @dataclass(eq=False)
+
     class MZI_triangle_mesh(fp.PCell, band="C"):
         """
         Attributes:
@@ -262,7 +262,7 @@ Subsequently, the MZI_triangle_mesh_with_GC class is constructed:
 ::
 
 
-    @dataclass(eq=False)
+
     class MZI_triangle_mesh_with_GC(fp.PCell, band="C"):
         """
         Attributes:

@@ -20,7 +20,6 @@ Import library::
 
 Define class Straight::
 
-    @dataclass(eq=False)
     class Straight(fp.IWaveguideLike, PCell):
 
         length: float = fp.FloatParam(default=10, min=0)

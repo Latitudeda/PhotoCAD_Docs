@@ -15,7 +15,7 @@ Full script
   from gpdk.technology.interfaces import CoreCladdingWaveguideType
 
   @fp.pcell_class()
-  @dataclass(eq=False)
+
   class DirectionalCouplerBend(fp.PCell):
       coupler_spacing: float = fp.PositiveFloatParam(default=0.7, doc="Spacing between the two waveguide centre lines.").as_field()
       coupler_length: float = fp.PositiveFloatParam(default=6, doc="Length of the directional coupler").as_field()

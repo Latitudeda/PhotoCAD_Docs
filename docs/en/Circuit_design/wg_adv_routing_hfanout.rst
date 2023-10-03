@@ -1,7 +1,14 @@
-Hfanout
+Expand the footprint for downstream devices
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In photonic circuit layout design, there are often scenarios where space needs to be expanded for downstream device placement and connection. For example, ``DirectionalCoupler`` is often used for optical signal distribution, where the optical signal is passed through the waveguide to the downstream devices.
+
+**PhotoCAD** includes tools to expand the layout space for downstream devices, enabling the design of optical signals to be assigned to downstream device layouts via ``DirectionalCoupler``.
+
+HFanout
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In this example, we write the ``HFanout`` function to expand the downstream layout space horizontally. 
+In this example, we write the ``HFanout`` function to expand the downstream layout space horizontally.
 
 When using the HFanout function, we can customize the length and spacing of the ``Directionalcoupler(DC)``, the spacing from the expansion port to the ``DC``, the distance between the expansion ports, and the waveguide connection transition at the end of the expansion port according to the defined type.
 
@@ -19,7 +26,7 @@ Full script
     from gpdk.util import all as util
 
 
-    @dataclass(eq=False)
+
     class HFanout(fp.PCell):
         """
         Attributes:
@@ -431,8 +438,8 @@ Full script
         # =============================================================
         fp.export_gds(library, file=gds_file)
         # fp.plot(library)
-        
-        
+
+
 Section Script Definition
 -----------------------------------------------
 
@@ -448,13 +455,13 @@ Importing libraries and modules
     from gpdk.components.straight.straight import Straight
     from gpdk.technology import get_technology
     from gpdk.util import all as util
-    
-    
+
+
 Define ``HFanout``
 ========================
 ::
 
-    @dataclass(eq=False)
+
     class HFanout(fp.PCell):
         """
         Attributes:
@@ -492,17 +499,17 @@ Define ``HFanout``
         device: fp.IDevice = fp.DeviceParam()
         left_spacing: float = fp.PositiveFloatParam()
         right_spacing: float = fp.PositiveFloatParam()
-        bend_degrees: float = fp.DegreeParam(default=30, min=0, max=90, invalid=[0]) 
-        bend_factories: Optional[Callable[[fp.IWaveguideType], fp.IBendWaveguideFactory]] = fp.Param(required=False) 
+        bend_degrees: float = fp.DegreeParam(default=30, min=0, max=90, invalid=[0])
+        bend_factories: Optional[Callable[[fp.IWaveguideType], fp.IBendWaveguideFactory]] = fp.Param(required=False)
         device_left_ports: Sequence[str] = fp.NameListParam(required=False, doc="device left ports from top to bottom")
         device_right_ports: Sequence[str] = fp.NameListParam(required=False, doc="device right ports from bottom to top")
-        left_distance: Optional[float] = fp.FloatParam(required=False, min=0) 
-        right_distance: Optional[float] = fp.FloatParam(required=False, min=0) 
-        left_ports: Optional[fp.IPortOptions] = fp.PortOptionsParam(required=False) 
-        right_ports: Optional[fp.IPortOptions] = fp.PortOptionsParam(required=False) 
-        left_waveguide_type: Optional[fp.IWaveguideType] = fp.WaveguideTypeParam(required=False) 
-        right_waveguide_type: Optional[fp.IWaveguideType] = fp.WaveguideTypeParam(required=False) 
-        connect_length: float = fp.PositiveFloatParam(default=10) 
+        left_distance: Optional[float] = fp.FloatParam(required=False, min=0)
+        right_distance: Optional[float] = fp.FloatParam(required=False, min=0)
+        left_ports: Optional[fp.IPortOptions] = fp.PortOptionsParam(required=False)
+        right_ports: Optional[fp.IPortOptions] = fp.PortOptionsParam(required=False)
+        left_waveguide_type: Optional[fp.IWaveguideType] = fp.WaveguideTypeParam(required=False)
+        right_waveguide_type: Optional[fp.IWaveguideType] = fp.WaveguideTypeParam(required=False)
+        connect_length: float = fp.PositiveFloatParam(default=10)
 
         def build(self) -> Tuple[fp.InstanceSet, fp.ElementSet, fp.PortSet]:
             insts, elems, ports = super().build()
@@ -766,7 +773,7 @@ Define ``HFanout``
             insts += connected
             ports += connected.ports
             return insts, elems, ports
-            
+
 
 Create components and export layouts
 ==============================================

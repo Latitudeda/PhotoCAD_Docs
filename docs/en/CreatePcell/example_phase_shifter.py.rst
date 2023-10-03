@@ -12,7 +12,7 @@ Full script
   from gpdk.technology import get_technology
   from gpdk.technology.interfaces.wg import CoreCladdingWaveguideType
 
-  @dataclass(frozen=True)
+
   class PnPhaseShifterTemplate:
       waveguide_type: CoreCladdingWaveguideType = fp.WaveguideTypeParam(type=CoreCladdingWaveguideType).as_field()
       @cached_property
@@ -175,7 +175,7 @@ First, some parameters of the device are defined
 
 ::
 
-  @dataclass(frozen=True)
+
   class PnPhaseShifterTemplate:
       waveguide_type: CoreCladdingWaveguideType = fp.WaveguideTypeParam(type=CoreCladdingWaveguideType).as_field()
       @cached_property
