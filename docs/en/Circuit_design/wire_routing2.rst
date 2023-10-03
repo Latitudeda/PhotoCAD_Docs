@@ -407,7 +407,7 @@ We changed ``80`` to ``40`` and ran it again, and took the following part of the
 .. image:: ../example_image/11.8.png
 .. image:: ../example_image/11.9.png
 
-Finally, as shown in the following image segment, different line types appear in the same linked line. Refer to the relevant instructions in the (:doc:`example_linked_elec.py`) file for details on how to use it.
+Finally, as shown in the following image segment, different line types appear in the same linked line. Refer to the relevant instructions in the (:doc:`wire_routing2`) file for details on how to use it.
 
 .. image:: ../example_image/11.10.png
 .. image:: ../example_image/11.11.png
