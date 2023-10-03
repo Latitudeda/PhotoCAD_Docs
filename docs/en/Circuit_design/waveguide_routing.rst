@@ -1,5 +1,8 @@
+Waveguide Routing
+=======================
+
 Single-port to Single-port
-=============================
+-------------------------------
 
 
 There are a total of three types of connections from single port to single port:
@@ -15,7 +18,7 @@ Here's a comparison of the three options
 Among them, ``LinkBetween`` is relatively flexible and ``LINKER`` is relatively short and neat.
 
 Examples
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
 ::
 
     # Interconnecting device ports by calling fp.create_links
@@ -55,7 +58,7 @@ The differences between the two methods are:
 
 
 Multi-port to Multi-port
-==========================
+----------------------------
 
 
 There are two types of connections from multi-port to multi-port.
@@ -68,7 +71,7 @@ Here's a comparison of the two options
 .. image:: ../images/multiport_to_multiport_en.png
 
 ``fp.Linked`` example ( Recommendation★★★ )
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ::
 
     # Call the device
@@ -108,7 +111,7 @@ Here's a comparison of the two options
 .. image:: ../images/multi2multi.1.png
 
 ``fp.create_links`` example ( Recommendation★★★★★ )
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -164,7 +167,7 @@ The message box shows that the lengths of each of the three connected links are 
 
 
 Routing Path Selection
-=============================
+------------------------------
 
 There are two ways to choose a path.
 
@@ -185,7 +188,7 @@ Here's a comparison of the two options
 ^^^^^^^^^^^^^^^^^
 
 Absolute control points provided
----------------------------------
+""""""""""""""""""""""""""""""""""
 ::
 
     device = fp.LinkBetween(
@@ -204,7 +207,7 @@ By setting ``waylines`` , we can control the waveguide first passes through the 
 
 
 Relative control points provided
----------------------------------------
+""""""""""""""""""""""""""""""""""""
 ::
 
     device = fp.LinkBetween(
