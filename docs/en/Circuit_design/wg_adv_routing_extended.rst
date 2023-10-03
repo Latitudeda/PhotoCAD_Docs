@@ -1,3 +1,8 @@
+Extension of the ports
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The ``Extended`` class can be used to implement the device port in situations where the device port extension is required. A detailed illustration of this function definition is given in ``gpdk``> ``routing`` > ``extended.py``
+
 Extended
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -88,8 +93,8 @@ Full script
         # =============================================================
         fp.export_gds(library, file=gds_file)
         # fp.plot(library)
-        
-        
+
+
 Section Script Definition
 -------------------------------------
 
@@ -116,23 +121,24 @@ Create extended ports and export layout
         # =============================================================
         fp.export_gds(library, file=gds_file)
         # fp.plot(library)
-        
 
-Here we implement the device port extension by using the ``Extended`` class, where ``device`` receives the devices that need to be extended, ``waveguide_type`` receives the type of the extended waveguide, and ``lengths`` receives the length of each port that needs to be extended. The following figure shows the result of extending the port along.      
+
+Here we implement the device port extension by using the ``Extended`` class, where ``device`` receives the devices that need to be extended, ``waveguide_type`` receives the type of the extended waveguide, and ``lengths`` receives the length of each port that needs to be extended. The following figure shows the result of extending the port along.
 
 GDS Layout
 -----------------
 
 .. image:: ../images/extend1.png
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
 

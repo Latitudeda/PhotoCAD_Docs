@@ -1,4 +1,4 @@
-Linked Electrical wire
+Link Electrical pad with turning angle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Full script
 ------------------------------------------------------

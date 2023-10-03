@@ -1,4 +1,4 @@
-Linked Electrical Pad
+Link Electrical Pad
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Full script
