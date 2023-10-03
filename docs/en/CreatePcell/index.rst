@@ -12,9 +12,6 @@ Finally, the third section ``Mzm`` is created by calling the Pcells either in se
 .. toctree::
 
  parameter
- bendeuler
- taper
- splitter
- mzm
  fpPinPort
  cell_array
+ component
