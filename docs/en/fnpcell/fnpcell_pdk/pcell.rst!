@@ -34,7 +34,6 @@ Usage::
     
     from fnpcell import all as fp
 
-    @dataclass(eq=False)
     class UserDefinedPCell(fp.PCell):
         def build(self):
             insts, elems, ports = super().build()

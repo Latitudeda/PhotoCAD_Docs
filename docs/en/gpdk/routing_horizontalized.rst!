@@ -7,7 +7,6 @@ Bending waveguide port horizontalization.
 
 First we need to define the Horizontalized method::
 
-    @dataclass(eq=False)
     class Horizontalized(PCell):
         """
         Attributes:

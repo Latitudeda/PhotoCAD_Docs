@@ -38,7 +38,7 @@ Part III. Full script
     from gpdk.technology.waveguide_factory import EulerBendFactory
 
 
-    @dataclass(eq=False)
+
     class QKD(fp.PCell):
         def build(self):
             insts, elems, ports = super().build()

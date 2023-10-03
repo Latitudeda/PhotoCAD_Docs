@@ -60,7 +60,6 @@ Code details::
     from gpdk import all as pdk
     from gpdk.technology import get_technology, PCell
 
-    @dataclass(eq=False)
     class Linked(PCell):
         def build(self):
             insts, elems, ports = super().build()

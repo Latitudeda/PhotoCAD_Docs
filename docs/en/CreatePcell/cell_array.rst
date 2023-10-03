@@ -24,7 +24,7 @@ Full script
     from functools import cached_property
 
 
-    @dataclass(eq=False)
+
     class CellinRect(fp.PCell):
 
         length: float = fp.FloatParam(default=100)
@@ -93,9 +93,9 @@ Section Script Description
 
 #. Define a new PCell, and a custom class (here will be ``CellinRect``):
 
-   Inherit the new PCell via ``fp.PCell`` in fnpcell, which is a new basic component in gpdk. Then the new ``CellinRect`` class needs to be decorated by ``@dataclass(eq=False)``::
+   Inherit the new PCell via ``fp.PCell`` in fnpcell, which is a new basic component in gpdk. ::
 
-        @dataclass(eq=False)
+
         class CellinRect(fp.PCell):
 
 #. Define the properties and methods in the ``CellinRect`` class

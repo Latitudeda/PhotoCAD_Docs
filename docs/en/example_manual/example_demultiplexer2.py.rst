@@ -11,7 +11,7 @@ Full script
     from gpdk.technology import get_technology
 
 
-    @dataclass(eq=False)
+
     class Demultiplexer2(fp.PCell):
         def build(self):
             insts, elems, ports = super().build()

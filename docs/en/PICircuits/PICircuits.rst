@@ -25,7 +25,6 @@ Importing library files::
 
 Define class PICircuit::
 
-    @dataclass(eq=False)
     class PICircuit(fp.PCell):
         def build(self):
             global spacing

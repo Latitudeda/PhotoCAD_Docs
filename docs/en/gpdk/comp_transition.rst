@@ -20,7 +20,6 @@ Import library::
 
 Define class TaperLinear::
 
-    @dataclass(eq=False)
     class TaperLinear(fp.IWaveguideLike, fp.PCell):
 
         length: float = fp.PositiveFloatParam(default=10)

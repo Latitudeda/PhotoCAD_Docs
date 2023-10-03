@@ -9,7 +9,6 @@ Import the MMI circuit created in Step 2 (:doc:`Step2`)::
 
 Define the cascade MMI tree to easily call it directly later::
 
-    @dataclass(eq=False)
     class MMITree(fp.PCell):
         def build(self):
             insts, elems, ports = super().build()

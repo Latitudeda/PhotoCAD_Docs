@@ -12,7 +12,7 @@ Full script
     from gpdk.technology import get_technology
 
     @fp.pcell_class()
-    @dataclass(eq=False)
+
     class LinkedElec(fp.PCell):
         def build(self):
             insts, elems, ports = super().build()

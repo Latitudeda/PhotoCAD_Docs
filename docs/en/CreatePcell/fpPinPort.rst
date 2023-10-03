@@ -17,7 +17,7 @@ Full Script
     from gpdk.technology import get_technology, WG
     from fnpcell import all as fp
 
-    @dataclass(eq=False)
+
     class fpPinPort(fp.PCell):
 
         height: float = fp.PositiveFloatParam(default=10)

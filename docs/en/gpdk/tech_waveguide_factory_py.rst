@@ -90,7 +90,6 @@ There are two ways to implement ``waveguide_factory`` for further use, one is to
             class C(FWG_C):
                 @fpt.staticconst
                 def WIRE():
-                    @dataclass(frozen=True)
                     class WIRE(__class__):
                         core_design_width: float = FWG_C_WIRE_WIDTH
                         cladding_design_width: float = FWG_C_WIRE_WIDTH + FWG_C_TRENCH_WIDTH * 2

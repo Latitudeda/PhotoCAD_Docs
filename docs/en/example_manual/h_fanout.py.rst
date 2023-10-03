@@ -19,7 +19,7 @@ Full script
     from gpdk.util import all as util
 
 
-    @dataclass(eq=False)
+
     class HFanout(fp.PCell):
         """
         Attributes:
@@ -454,7 +454,7 @@ Define ``HFanout``
 ========================
 ::
 
-    @dataclass(eq=False)
+
     class HFanout(fp.PCell):
         """
         Attributes:

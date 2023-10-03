@@ -17,7 +17,7 @@ Full Script
         from gpdk.technology import WG, get_technology
 
 
-        @dataclass(eq=False)
+
         class Mzm(fp.PCell, band="C"):
 
             p_width: float = fp.PositiveFloatParam(default=1)
@@ -132,9 +132,9 @@ Section Script Description
 
 #. Define a new PCell, and a custom Mzm class:
 
-   Define the new parameterized cell via ``fp.PCell`` in fnpcell, which is a new component in gpdk. ``band=C`` creates a ``C`` marker on the layout for users to recognize the band using in this component and is restricted to only use ``C-band`` waveguides in this example.  Then, the new ``mzm`` class needs to be decorated by ``@dataclass(eq=False)``::
+   Define the new parameterized cell via ``fp.PCell`` in fnpcell, which is a new component in gpdk. ``band=C`` creates a ``C`` marker on the layout for users to recognize the band using in this component and is restricted to only use ``C-band`` waveguides in this example.  ::
 
-        @dataclass(eq=False)
+
         class Mzm(fp.PCell, band="C"):
 
 #. Define the properties and methods in the ``Mzm`` class

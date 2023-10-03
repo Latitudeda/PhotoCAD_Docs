@@ -18,7 +18,7 @@ Full script
     from gpdk.technology import get_technology
 
 
-    @dataclass(eq=False)
+
     class BendBezier(fp.IWaveguideLike, fp.PCell):
         """
         Attributes:

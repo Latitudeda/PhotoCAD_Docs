@@ -20,7 +20,7 @@ Section Script Description
 
 #. Define class ``Linked``::
 
-        @dataclass(eq=False)
+
         class Linked(fp.PCell):
 
 

@@ -20,7 +20,6 @@ Import Library::
 
 Define BendCircular class::
 
-    @dataclass(eq=False)
     class BendCircular(fp.IWaveguideLike, fp.PCell):
 
         degrees: float = fp.DegreeParam(default=90, min=-180, max=180, doc="Bend angle in degrees")
@@ -52,7 +51,6 @@ Define BendCircular at 90 degree angle::
 
 
 
-    @dataclass(eq=False)
     class BendCircular90(BendCircular):
         degrees: float = fp.DegreeParam(default=90, locked=True)
         waveguide_type: fp.IWaveguideType = fp.WaveguideTypeParam(locked=True)

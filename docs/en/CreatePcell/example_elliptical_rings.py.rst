@@ -12,7 +12,7 @@ Full script
 
 
   @fp.pcell_class()
-  @dataclass(eq=False)
+
   class EllipticalRings(fp.PCell):
       def build(self):
           insts, elems, ports = super().build()

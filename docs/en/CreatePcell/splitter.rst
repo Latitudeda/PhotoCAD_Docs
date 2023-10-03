@@ -17,7 +17,7 @@ Full Script
 
 
 
-    @dataclass(eq=False)
+
     class Splitter(fp.PCell):
 
         bend_radius: float = fp.PositiveFloatParam(default=15, doc="Bend radius")
@@ -107,9 +107,9 @@ Section Script Description
 
 #. Define a new PCell, and a custom Splitter class:
 
-   Define the new parameterized cell via ``fp.PCell`` in fnpcell, which is a new component in gpdk. Then, the new ``Splitter`` class needs to be decorated by ``@dataclass(eq=False)``::
+   Define the new parameterized cell via ``fp.PCell`` in fnpcell, which is a new component in gpdk. ::
 
-    @dataclass(eq=False)
+
     class Splitter(fp.PCell)
 
 #. Define the properties and methods in the ``Splitter`` class

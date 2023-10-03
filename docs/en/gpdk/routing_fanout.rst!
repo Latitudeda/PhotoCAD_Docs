@@ -7,7 +7,6 @@ fanout enables automatic layout routing of device ports to grating couplers.
 
 class fanout is defined as follows::
 
-    @dataclass(eq=False)
     class HFanout(PCell):
         """
         Attributes:

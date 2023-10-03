@@ -21,7 +21,6 @@ Define ``RingResonator``
 ------------------------------------
 ::
 
-    @dataclass(eq=False)
     class RingResonator(fp.PCell, band="C"):
         ring_radius: float = 5
         top_spacing: float = fp.PositiveFloatParam(default=0.2)
@@ -65,11 +64,7 @@ Define ``RingResonator``
             return insts, elems, ports
             
             
-Dataclass Decorator::
 
-    @dataclass(eq=False)
-    
-    
 Create a class called ``RingResonator`` and ``RingResonator`` will be used as a prefix for the name of the layout cell in the GDS file; ``fp.PCell`` then declares this to be a pcell via the module in ``fnpcell``::
 
     class RingResonator(fp.PCell, band="C")
@@ -172,7 +167,6 @@ Define ``RingResonator2``
 -----------------------------------------------------
 ::
 
-    @dataclass(eq=False)
     class RingResonator2(RingResonator, band="C"):
         ring_radius: float = fp.PositiveFloatParam(default=10) 
         computed_value: float = field(init=False)

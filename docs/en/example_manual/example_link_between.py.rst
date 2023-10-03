@@ -40,7 +40,7 @@ First, use the modifier to modify the pcell (in the subsequent design of the pro
 ::
 
     @fp.pcell_class()
-    @dataclass(eq=False)
+
     
 Then, the ``class`` function is defined. Users can consider the following four lines of code as a fixed template and just change the ``class`` name.   
 

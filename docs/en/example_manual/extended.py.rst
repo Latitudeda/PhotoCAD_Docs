@@ -15,7 +15,7 @@ Full script
     from gpdk.technology import get_technology
 
 
-    @dataclass(eq=False)
+
     class Extended(fp.PCell):
         """
         Attributes:

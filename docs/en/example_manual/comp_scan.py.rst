@@ -164,7 +164,7 @@ Full script
         return device_adapter(device=block_content).translated(tx, ty)
 
 
-    @dataclass(eq=False)
+
     class CompScan(fp.PCell):
         """
         Attributes:
@@ -729,7 +729,7 @@ Define ``CompScan``
 ===========================================================================
 ::
 
-    @dataclass(eq=False)
+
     class CompScan(fp.PCell):
         """
         Attributes:
