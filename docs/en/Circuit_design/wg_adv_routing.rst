@@ -15,6 +15,9 @@ These functions can be found in ``gpdk >> routing``.
   wg_adv_routing_extended
   wg_adv_routing_hfanout
   wg_adv_routing_hori
+  wg_adv_routing_linkbetween
+  wg_adv_routing_linked
+  wg_adv_routing_linksmooth
 
 
 Moreover, users are allowed to define their own waveguide connections, e.g, bend types, tapers, transitions, routing algorithm by:
@@ -23,8 +26,4 @@ Moreover, users are allowed to define their own waveguide connections, e.g, bend
 2. Connect different types of ports with auto transitions and bends.
 3. Define control points and generate curved line for specific routing.
 
-.. toctree::
 
-  wg_adv_routing_linkbetween
-  wg_adv_routing_linked
-  wg_adv_routing_linksmooth
