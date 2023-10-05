@@ -26,6 +26,7 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
    CreatePcell/index
    gpdk/QuickCreatePDK
    Circuit_design/index
+   post_simulation/index
    example_manual/useful_routing
    Tutorials/Quickstart
 
@@ -42,7 +43,8 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
    PICircuits/PICircuits
    example_manual/triangle_mzi.py
    example_manual/example_demultiplexer2.py
-   post_simulation/index
+   example_manual/example_cmz
+
 
 
 
