@@ -1,4 +1,4 @@
-**Link**: gpdk-based circuit-level design
+**Routing**: gpdk built-in routing method
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The routing subfolder in gpdk contains powerful circuit-level design templates, which contain some of the following features:

@@ -1,4 +1,4 @@
-QuickStart to PhotoCAD
+PhotoCAD Hands-on
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. note::
    **Important note: The script layout of the user manual cannot be identical to the format of the Python script, the code paragraphs in the manual are for illustrative purposes only. Please refer to the Python source code in the package for the actual code format.**

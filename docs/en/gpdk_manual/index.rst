@@ -1,4 +1,4 @@
-gpdk
+gpdk (generic PDK)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **gpdk** is a package for creating parametric device layout units based on Python scripts in the PhotoCAD platform. 

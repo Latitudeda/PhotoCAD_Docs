@@ -1,4 +1,4 @@
-**Technology**: Process related settings in gpdk
+**Technology**: gpdk-related process setting
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Default process
