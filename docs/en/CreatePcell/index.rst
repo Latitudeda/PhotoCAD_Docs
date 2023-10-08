@@ -1,4 +1,4 @@
-Create Parametrized Cell(PCell)
+Create a Parametrized Cell(PCell)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section is a tutorial for users how to create Pcells from the basic components of a photonics integrated circuits.
@@ -10,7 +10,7 @@ The second section ``Splitter`` is created by the Pcells generated in the first 
 Finally, the third section ``Mzm`` is created by calling the Pcells either in section I or II and then defining parameterizable parameters, rearranging and connecting them to generate the PCell with the highest level.
 
 .. toctree::
-
+ element
  parameter
  fpPinPort
  cell_array
