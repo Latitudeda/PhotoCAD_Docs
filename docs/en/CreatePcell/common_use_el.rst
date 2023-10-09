@@ -15,7 +15,7 @@ The api for common graphics mainly contains::
     fp.el.RegularPolygon
     fp.el.Line
     fp.el.Label
-    fp.el.PolyLine
+    fp.el.Polyline
 
 
 
@@ -91,6 +91,25 @@ The api for common graphics mainly contains::
             * ``fp.el.Label(content="PHOTOCAD", highlight=False, at=(0, 12), font=font, font_size=15, layer=TECH.LAYER.TEXT_NOTE)``
 
         .. image:: ../images/label.png
+
+* ``fp.el.Polyline``
+    * parameters: raw_polyline_points/stroke_width/final_stroke_width/stroke_offset/final_stroke_offset/taper_function/raw_end_orientations/miter_limit/extension/line_cap/origin/transform/layer
+    * ``line_cap``
+
+      * Used to adjust the corner of the start and end point.
+
+      * ``fp.el.LineCapButt/fp.el.CapRound/fp.el.CapTriangle``
+
+
+    * examples:
+
+            * ``points = [(0, 0), (10, 0), (15, 15)]``
+
+            * ``el_round = fp.el.Polyline(points, layer=TECH.LAYER.FLYLINE_MARK, line_cap=(None, fp.el.LineCapRound()))``
+
+            * ``el_triangle = fp.el.Polyline(points, layer=TECH.LAYER.FLYLINE_MARK, line_cap=(fp.el.LineCapRound(), fp.el.LineCapTriangle(ratio=0.4))).translated(30,0)``
+
+        .. image:: ../images/polyline.png
 
 
 To change the layer of an element from one component to another, users are allow to use ``fp.el.PolygonSet.with_layer()``  to easily adjust the layer of the element  from one to another::
