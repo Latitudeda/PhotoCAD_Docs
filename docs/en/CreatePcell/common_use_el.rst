@@ -15,6 +15,7 @@ The api for common graphics mainly contains::
     fp.el.RegularPolygon
     fp.el.Line
     fp.el.Label
+    fp.el.PolyLine
 
 
 
