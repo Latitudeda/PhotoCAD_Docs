@@ -21,8 +21,16 @@ The api for common graphics mainly contains::
 
 
 
-* ``fp.el.Rect``
-    * parameters: width/height/center/origin/bottom_left/transform/corner_radius/layer
+#. ``fp.el.Rect``
+    * parameters
+        * width
+        * height
+`       * center
+        * origin
+        * bottom_left
+        * transform
+        * corner_radius
+        *layer
     * examples:
 
             * ``fp.el.Rect(width=10, height=10, center=(0, 0), layer=TECH.LAYER.FWG_COR)``
@@ -32,7 +40,7 @@ The api for common graphics mainly contains::
         .. image:: ../images/rect.png
 
 
-* ``fp.el.Circle``
+#. ``fp.el.Circle``
     * parameters: radius/origin/initial_degrees/final_degrees/initial_radians/final_radians/transform/layer
     * examples:
 
@@ -42,7 +50,7 @@ The api for common graphics mainly contains::
 
         .. image:: ../images/circle.png
 
-* ``fp.el.Polygon``
+#. ``fp.el.Polygon``
     * parameters: raw_shape/origin/transform/layer
     * examples:
 
@@ -52,7 +60,7 @@ The api for common graphics mainly contains::
 
         .. image:: ../images/polygon.png
 
-* ``fp.el.ring``
+#. ``fp.el.ring``
     * parameters: outer_radius/inner_radius/origin/initial_degrees/final_degrees/initial_radians/final_radians/transform/layer
     * examples:
 
@@ -62,7 +70,7 @@ The api for common graphics mainly contains::
 
         .. image:: ../images/ring.png
 
-* ``fp.el.RegularPolygon``
+#. ``fp.el.RegularPolygon``
     * parameters: sides/side_length/origin/transform/layer
     * examples:
 
@@ -72,7 +80,7 @@ The api for common graphics mainly contains::
 
         .. image:: ../images/regularpolygon.png
 
-* ``fp.el.Line``
+#. ``fp.el.Line``
     * parameters: length/stroke_width/final_stroke_width/stroke_offset/final_stroke_offset/taper_function/end_hints/anchor/origin/transform/layer
     * examples:
 
@@ -82,7 +90,7 @@ The api for common graphics mainly contains::
 
         .. image:: ../images/line.png
 
-* ``fp.el.Label``
+#. ``fp.el.Label``
     * parameters: content/highlight/baseline/at/font/font_size/origin/anchor/transform/layer
     * examples:
 
@@ -94,7 +102,7 @@ The api for common graphics mainly contains::
 
         .. image:: ../images/label.png
 
-* ``fp.el.Polyline``
+#. ``fp.el.Polyline``
     * parameters: raw_polyline_points/stroke_width/final_stroke_width/stroke_offset/final_stroke_offset/taper_function/raw_end_orientations/miter_limit/extension/line_cap/origin/transform/layer
     * ``line_cap``
 
@@ -113,7 +121,7 @@ The api for common graphics mainly contains::
 
         .. image:: ../images/polyline.png
 
-* ``fp.el.EllipticalRing``
+#. ``fp.el.EllipticalRing``
     * parameters: outer_radius/inner_radius/initial_radians/initial_degrees/final_radians/final_degrees/origin/transform/layer
     * ``inner/outer_radius=[float, float]``: The first provided number will be parallel to x-axis, and the second will be parallel to y-axis. When only one number is provided, it becomes a circular ring.
 
@@ -127,7 +135,7 @@ The api for common graphics mainly contains::
 
         .. image:: ../images/ellipticalring.png
 
-* ``fp.el.EllipticalArc``
+#. ``fp.el.EllipticalArc``
     * parameters: radius/stroke_width/final_stroke_width/stroke_offset/final_stroke_offset/taper_function/initial_radians/initial_degrees/final_radians/final_degrees/extension/line_cap/origin/transform/layer
     * ``radius=[float, float]``: The first provided number will be parallel to x-axis, and the second will be parallel to y-axis. When only one number is provided, it becomes a circular ring.
     * ``stroke_width``: Width of the elliptical arc
