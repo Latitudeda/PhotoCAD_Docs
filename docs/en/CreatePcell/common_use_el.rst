@@ -25,7 +25,7 @@ The api for common graphics mainly contains::
     * parameters
         * width
         * height
-`       * center
+        * center
         * origin
         * bottom_left
         * transform
