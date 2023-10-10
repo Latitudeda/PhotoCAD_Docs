@@ -18,6 +18,7 @@ The api for common graphics mainly contains::
     fp.el.Polyline
     fp.el.EllipticalRing
     fp.el.EllipticalArc
+    fp.el.Text
 
 
 
@@ -155,6 +156,21 @@ The api for common graphics mainly contains::
             * ``fp.el.Label(content="PHOTOCAD", highlight=False, at=(0, 12), font=font, font_size=15, layer=TECH.LAYER.TEXT_NOTE)``
 
         .. image:: ../images/label.png
+
+#. ``fp.el.Text``
+    * parameters
+        * content
+        * text_anchor
+        * vertical_align
+        * at
+        * transform
+        * layer
+
+    * Returns a text which will not appear on the real layout.
+    * examples:
+
+            * ``text = fp.el.Text(content="test", layer=TECH.LAYER.GE_DRW)``
+
 
 #. ``fp.el.Polyline``
     * parameters
