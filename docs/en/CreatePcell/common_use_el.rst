@@ -30,7 +30,8 @@ The api for common graphics mainly contains::
         * bottom_left
         * transform
         * corner_radius
-        *layer
+        * layer
+
     * examples:
 
             * ``fp.el.Rect(width=10, height=10, center=(0, 0), layer=TECH.LAYER.FWG_COR)``
