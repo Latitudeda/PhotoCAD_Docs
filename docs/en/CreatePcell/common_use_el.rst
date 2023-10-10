@@ -127,6 +127,23 @@ The api for common graphics mainly contains::
 
         .. image:: ../images/ellipticalring.png
 
+* ``fp.el.EllipticalArc``
+    * parameters: radius/stroke_width/final_stroke_width/stroke_offset/final_stroke_offset/taper_function/initial_radians/initial_degrees/final_radians/final_degrees/extension/line_cap/origin/transform/layer
+    * ``radius=[float, float]``: The first provided number will be parallel to x-axis, and the second will be parallel to y-axis. When only one number is provided, it becomes a circular ring.
+    * ``stroke_width``: Width of the elliptical arc
+    * ``final_stroke_width``: Width of the elliptical arc at the final point
+
+
+
+    * examples:
+
+            * ``elliparc = fp.el.EllipticalArc(radius=[15, 10], stroke_width=2, layer=TECH.LAYER.PASS_MT)``
+
+            * ``ellip2 = fp.el.EllipticalRing(outer_radius=[5, 10], inner_radius=[3, 7], layer=TECH.LAYER.N_DRW).translated(0, 20)``
+
+
+        .. image:: ../images/ellipticalarc.png
+
 
 To change the layer of an element from one component to another, users are allow to use ``fp.el.PolygonSet.with_layer()``  to easily adjust the layer of the element  from one to another::
 
