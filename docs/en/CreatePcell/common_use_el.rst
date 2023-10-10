@@ -42,7 +42,16 @@ The api for common graphics mainly contains::
 
 
 #. ``fp.el.Circle``
-    * parameters: radius/origin/initial_degrees/final_degrees/initial_radians/final_radians/transform/layer
+    * parameters
+        * radius
+        * origin
+        * initial_degrees
+        * final_degrees
+        * initial_radians
+        * final_radians
+        * transform
+        * layer
+
     * examples:
 
             * ``fp.el.Circle(radius=10, origin=(0, 0), initial_degrees=30, final_degrees=90, layer=TECH.LAYER.M1_DRW)``
@@ -52,7 +61,12 @@ The api for common graphics mainly contains::
         .. image:: ../images/circle.png
 
 #. ``fp.el.Polygon``
-    * parameters: raw_shape/origin/transform/layer
+    * parameters
+        * raw_shape
+        * origin
+        * transform
+        * layer
+
     * examples:
 
             * ``fp.el.Polygon(raw_shape=[(0, 0), (6, 2), (7, 8), (2, 12)], origin=(0, 0), layer=TECH.LAYER.M2_DRW)``
@@ -62,7 +76,17 @@ The api for common graphics mainly contains::
         .. image:: ../images/polygon.png
 
 #. ``fp.el.ring``
-    * parameters: outer_radius/inner_radius/origin/initial_degrees/final_degrees/initial_radians/final_radians/transform/layer
+    * parameters
+        * outer_radius
+        * inner_radius
+        * origin
+        * initial_degrees
+        * final_degrees
+        * initial_radians
+        * final_radians
+        * transform
+        * layer
+
     * examples:
 
             * ``fp.el.Ring(outer_radius=5, inner_radius=2, initial_degrees=30, final_degrees=120, layer=TECH.LAYER.TIN_DRW)``
@@ -72,7 +96,13 @@ The api for common graphics mainly contains::
         .. image:: ../images/ring.png
 
 #. ``fp.el.RegularPolygon``
-    * parameters: sides/side_length/origin/transform/layer
+    * parameters
+        * sides
+        * side_length
+        * origin
+        * transform
+        * layer
+
     * examples:
 
             * ``fp.el.RegularPolygon(sides=3, side_length=5, layer=TECH.LAYER.IOPORT_EREC)``
@@ -82,7 +112,19 @@ The api for common graphics mainly contains::
         .. image:: ../images/regularpolygon.png
 
 #. ``fp.el.Line``
-    * parameters: length/stroke_width/final_stroke_width/stroke_offset/final_stroke_offset/taper_function/end_hints/anchor/origin/transform/layer
+    * parameters
+        * length
+        * stroke_width
+        * final_stroke_width
+        * stroke_offset
+        * final_stroke_offset
+        * taper_function
+        * end_hints
+        * anchor
+        * origin
+        * transform
+        * layer
+
     * examples:
 
             * ``fp.el.Line(length=10, stroke_width=5, final_stroke_width=8, layer=TECH.LAYER.NP_DRW)``
@@ -92,7 +134,18 @@ The api for common graphics mainly contains::
         .. image:: ../images/line.png
 
 #. ``fp.el.Label``
-    * parameters: content/highlight/baseline/at/font/font_size/origin/anchor/transform/layer
+    * parameters
+        * content
+        * highlight
+        * baseline
+        * at
+        * font
+        * font_size
+        * origin
+        * anchor
+        * transform
+        * layer
+
     * examples:
 
             * ``from gpdk.technology.font.font_std_vented import FONT as font``
@@ -104,7 +157,21 @@ The api for common graphics mainly contains::
         .. image:: ../images/label.png
 
 #. ``fp.el.Polyline``
-    * parameters: raw_polyline_points/stroke_width/final_stroke_width/stroke_offset/final_stroke_offset/taper_function/raw_end_orientations/miter_limit/extension/line_cap/origin/transform/layer
+    * parameters
+        * raw_polyline_points
+        * stroke_width
+        * final_stroke_width
+        * stroke_offset
+        * final_stroke_offset
+        * taper_function
+        * raw_end_orientations
+        * miter_limit
+        * extension
+        * line_cap
+        * origin
+        * transform
+        * layer
+
     * ``line_cap``
 
       * Used to adjust the corner of the start and end point.
@@ -123,7 +190,17 @@ The api for common graphics mainly contains::
         .. image:: ../images/polyline.png
 
 #. ``fp.el.EllipticalRing``
-    * parameters: outer_radius/inner_radius/initial_radians/initial_degrees/final_radians/final_degrees/origin/transform/layer
+    * parameters
+        * outer_radius
+        * inner_radius
+        * initial_radians
+        * initial_degrees
+        * final_radians
+        * final_degrees
+        * origin
+        * transform
+        * layer
+
     * ``inner/outer_radius=[float, float]``: The first provided number will be parallel to x-axis, and the second will be parallel to y-axis. When only one number is provided, it becomes a circular ring.
 
 
@@ -137,7 +214,23 @@ The api for common graphics mainly contains::
         .. image:: ../images/ellipticalring.png
 
 #. ``fp.el.EllipticalArc``
-    * parameters: radius/stroke_width/final_stroke_width/stroke_offset/final_stroke_offset/taper_function/initial_radians/initial_degrees/final_radians/final_degrees/extension/line_cap/origin/transform/layer
+    * parameters
+        * radius
+        * stroke_width
+        * final_stroke_width
+        * stroke_offset
+        * final_stroke_offset
+        * taper_function
+        * initial_radians
+        * initial_degrees
+        * final_radians
+        * final_degrees
+        * extension
+        * line_cap
+        * origin
+        * transform
+        * layer
+
     * ``radius=[float, float]``: The first provided number will be parallel to x-axis, and the second will be parallel to y-axis. When only one number is provided, it becomes a circular ring.
     * ``stroke_width``: Width of the elliptical arc
     * ``final_stroke_width``: Width of the elliptical arc at the final point
