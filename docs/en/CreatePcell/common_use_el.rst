@@ -16,6 +16,8 @@ The api for common graphics mainly contains::
     fp.el.Line
     fp.el.Label
     fp.el.Polyline
+    fp.el.EllipticalRing
+    fp.el.EllipticalArc
 
 
 
@@ -110,6 +112,20 @@ The api for common graphics mainly contains::
             * ``el_triangle = fp.el.Polyline(points, layer=TECH.LAYER.FLYLINE_MARK, line_cap=(fp.el.LineCapRound(), fp.el.LineCapTriangle(ratio=0.4))).translated(30,0)``
 
         .. image:: ../images/polyline.png
+
+* ``fp.el.EllipticalRing``
+    * parameters: outer_radius/inner_radius/initial_radians/initial_degrees/final_radians/final_degrees/origin/transform/layer
+    * ``inner/outer_radius=[float, float]``: The first provided number will be parallel to x-axis, and the second will be parallel to y-axis. When only one number is provided, it becomes a circular ring.
+
+
+    * examples:
+
+            * ``ellip1 = fp.el.EllipticalRing(outer_radius=[10, 5], layer=TECH.LAYER.PASS_MT)``
+
+            * ``ellip2 = fp.el.EllipticalRing(outer_radius=[5, 10], inner_radius=[3, 7], layer=TECH.LAYER.N_DRW).translated(0, 15)``
+
+
+        .. image:: ../images/ellipticalring.png
 
 
 To change the layer of an element from one component to another, users are allow to use ``fp.el.PolygonSet.with_layer()``  to easily adjust the layer of the element  from one to another::
