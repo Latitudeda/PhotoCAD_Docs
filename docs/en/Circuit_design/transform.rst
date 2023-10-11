@@ -39,6 +39,7 @@ place
      In this method, ``port_A`` will be connected to  ``port_B`` with an angle difference of 90 degrees.
 
      .. image:: ../images/fpPlaceEx4.png
+
 translated
 ^^^^^^^^^^^^^^^^^^
 
