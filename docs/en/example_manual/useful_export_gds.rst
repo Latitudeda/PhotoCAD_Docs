@@ -2,7 +2,8 @@ Importing/Exporting GDS/Json file
 ===================================
 
 
-#. Import GDS file:
+Import GDS file
+----------------------
 
    This often happens when we want to import PDK cell from a GDS file. You need to prepare the GDS file and write the corresponding json file indicating the layers and the port information of the cell.
 
@@ -110,7 +111,8 @@ Importing/Exporting GDS/Json file
 
 
 
-#. Export GDS file:
+Export GDS file
+---------------------
 
     ::
 
@@ -151,7 +153,8 @@ Importing/Exporting GDS/Json file
 
 
 
-#. Export Json file from existing cell:
+Export Json file
+-----------------------------------------
 
    This will export both gds file and json file at the same time.
 
