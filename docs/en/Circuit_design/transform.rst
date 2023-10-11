@@ -53,8 +53,8 @@ scaled
 
 * Usage: insts.scaled()
 * parameters: sx, sy
-* ``DirectionalCouplerBend().scaled(3)``: the cell is magnify both x and y coordinate to three times larger than origin.
-* ``DirectionalCouplerBend().scaled(3, 2)``: the cell is magnify three time larger on the x-axis and two times larger on the y-axis than origin.
+* ``DirectionalCouplerBend().scaled(3)``: the cell is magnified both x and y coordinate to three times larger than origin.
+* ``DirectionalCouplerBend().scaled(3, 2)``: the cell is magnified to three time larger on the x-axis and two times larger on the y-axis than origin.
 
 rotated
 ^^^^^^^^

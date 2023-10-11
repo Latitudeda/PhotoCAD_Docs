@@ -165,3 +165,19 @@ Importing/Exporting GDS/Json file
             auto_flatten=True, # default setting of auto_flatten is True.
             explicit_parameters=False, # default setting of explicit_parameters is False and is used to show the values of the waveguide types.
             )
+
+
+   User are allowed to export multiple cells to Json and GDS file at once using ``fp.export_jsons``
+
+   ::
+
+        fp.export_jsons(
+              content, # cell library and cell reference can be used as a content, multiple cells or instances can be stored in the library.
+              output_folder, # point out the location of the Json and GDS file
+              library_filename_template,
+              json_filename_template, # "{cellname}.json"
+              layer_mapper,
+              auto_flatten, # default setting of auto_flatten is True
+              explicit_layers,
+              explicit_parameters, # parameters wish to export to Json file
+              )
