@@ -190,7 +190,7 @@ Here we only show the script of the top circuit of the above example.
     if __name__ == "__main__":
         import sys
         from time import perf_counter
-        from gpdk_kaiwen.util.path import local_output_file
+        from gpdk.util.path import local_output_file
 
         gds_file = local_output_file(__file__).with_suffix(".gds")
         library = fp.Library()
