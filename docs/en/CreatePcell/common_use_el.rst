@@ -1,7 +1,7 @@
-Commonly used graphic design API
+fp.el API
 ==================================
 
-The graphics api mainly contains the api for common graphics drawing and the api for Boolean operations.
+The fp.el api mainly contains the api for common graphics drawing and the api for Boolean operations.
 
 ``fp.el``
 -----------------
