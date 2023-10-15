@@ -11,6 +11,7 @@ The api for common graphics mainly contains::
     fp.el.Arc
     fp.el.Rect
     fp.el.Circle
+    fp.el.Curve
     fp.el.Polygon
     fp.el.Ring
     fp.el.RegularPolygon
@@ -84,6 +85,19 @@ The api for common graphics mainly contains::
             * ``fp.el.Circle(radius=8, origin=(15, 0), initial_degrees=0, final_degrees=120, layer=TECH.LAYER.N_DRW)``
 
         .. image:: ../images/circle.png
+
+#. ``fp.el.CurvePaint``
+
+   #. ``fp.el.CurvePaint.ContinuousLayer``
+
+   #. ``fp.el.CurvePaint.PeriodicSampling``
+
+   #. ``fp.el.CurvePaint.Sampling``
+
+   #. ``fp.el.CurvePaint.Composite``
+
+   #. ``fp.el.CurvePaint.from_profile``
+
 
 #. ``fp.el.Polygon``
     * parameters
