@@ -3,7 +3,22 @@ Simplify layout by ``fp.use_sketch_view``
 
 In this section, we will introduce the function ``fp.use_sketch_view`` to help users become more efficiently when designing layouts. In a complicate photonic circuit, often building up with tens or hundreds of components, it is easy to face the situation that we need huge amount of time to generate GDS file but only want to see a small part of change in the circuit. The real case is that when implementing the waypoints or waylines between two components, we don't even care about what the components really looks like but focus on the connection between the ports.
 
-The function ``fp.use_sketch_view`` captures the geometry of every layer of the cell and simplify them into one single layer. During the first time of generating GDS file opening ``fp.use_sketch_view``, **PhotoCAD** will automatically generate a sketch-view GDS file and JSon file indicating ports and layers information of the cell. After that, the formation of the GDS file of the circuit will based on the sketch-view GDS file and the non-sketch view cells.
+The function ``fp.use_sketch_view`` captures the geometry of every layer of the cell and simplify them into one single layer. During the first time of generating GDS file opening ``fp.use_sketch_view``, **PhotoCAD** will automatically generate a sketch-view GDS file and JSon file indicating ports and layers information of the cell. After that, the formation of the GDS file of the circuit will based on the sketch-view GDS file and the non-sketch view cells.::
+
+
+
+fp.use_sketch_view(
+        cell_to_be_sketched,
+        conf = {
+                    sketch_layer, # layer to be assigned to the sketched cell
+                    marker_layer, # layer to be assigned to the marker(arrow) layer
+                    marker_width, # width of the arrow
+                    marker_length, # length of the arrow
+                    silhouette_mode, # Default to be False, if True, the sketched cell will generate a boundary indicating the look of the true cell
+
+                }
+        )
+
 
 Here is an example of using ``fp.use_sketch_view`` in a MZM circuit, containing three MZIs with pn phase shifter on the top arm. The three MZIs are totally different and are all GDS imported cell.
 
