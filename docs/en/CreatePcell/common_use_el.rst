@@ -8,6 +8,7 @@ The graphics api mainly contains the api for common graphics drawing and the api
 
 The api for common graphics mainly contains::
 
+    fp.el.Arc
     fp.el.Rect
     fp.el.Circle
     fp.el.Polygon
@@ -20,6 +21,29 @@ The api for common graphics mainly contains::
     fp.el.EllipticalArc
     fp.el.Text
 
+#. ``fp.el.Arc``
+    * parameters
+        * radius
+        * stroke_width
+        * final_stroke_width
+        * stroke_offset
+        * final_stroke_offset
+        * taper_function
+        * initial_radians/degress
+        * final_radians/degrees
+        * extension
+        * line_cap
+        * origin
+        * transform
+        * layer
+
+    * examples:
+
+            * ``fp.el.Arc(radius=5, initial_degrees=0, final_degrees=90, stroke_width=5, layer=TECH.LAYER.M1_DRW)``
+
+            * ``fp.el.Arc(radius=5, initial_degrees=30, final_degrees=120, stroke_width=3, final_stroke_width=5, layer=TECH.LAYER.M1_DRW).translated(0, 10)``
+
+        .. image:: ../images/arc.png
 
 
 #. ``fp.el.Rect``
