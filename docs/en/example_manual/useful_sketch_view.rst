@@ -46,36 +46,37 @@ Here is an example of using ``fp.use_sketch_view`` in a MZM circuit, containing 
 
 Implement ``fp.use_sketch_view``
 --------------------------------------------
+::
 
-* ``fp.use_sketch_view(
-        cell_to_be_sketched,
-        conf = {
-                    sketch_layer, # layer to be assigned to the sketched cell
-                    marker_layer, # layer to be assigned to the marker(arrow) layer
-                    marker_width, # width of the arrow
-                    marker_length, # length of the arrow
-                    silhouette_mode, # Boolean parameter. Default to be False, if True, the sketched cell will generate a boundary indicating the look of the true cell
+        fp.use_sketch_view(
+                cell_to_be_sketched,
+                conf = {
+                            sketch_layer, # layer to be assigned to the sketched cell
+                            marker_layer, # layer to be assigned to the marker(arrow) layer
+                            marker_width, # width of the arrow
+                            marker_length, # length of the arrow
+                            silhouette_mode, # Boolean parameter. Default to be False, if True, the sketched cell will generate a boundary indicating the look of the true cell
 
-                }
-        )``
+                        }
+                )
 
 
-  The configuration parameter sets the sketched cell to the designated layer. The example code above will assign the sketched cell to ``TEXT_NOTE`` layer, and by the ``marker_layer`` will show the direction of the ports with an arrow.
+The configuration parameter sets the sketched cell to the designated layer. The example code above will assign the sketched cell to ``TEXT_NOTE`` layer, and by the ``marker_layer`` will show the direction of the ports with an arrow.
 
-  * ``sketch_layer``
+* ``sketch_layer``
 
     .. image:: ../images/topcircuit1.png
 
-  * ``marker_layer``
+* ``marker_layer``
 
     .. image:: ../images/topcircuit2.png
 
-  * ``silhouette_mode=False(default)``
+* ``silhouette_mode=False(default)``
 
     .. image:: ../images/silhouette_modeFalse.png
 
 
-  * ``silhouette_mode=True``
+* ``silhouette_mode=True``
 
     .. image:: ../images/silhouette_modeTrue.png
 
