@@ -7,17 +7,7 @@ The function ``fp.use_sketch_view`` captures the geometry of every layer of the 
 
 
 
-fp.use_sketch_view(
-        cell_to_be_sketched,
-        conf = {
-                    sketch_layer, # layer to be assigned to the sketched cell
-                    marker_layer, # layer to be assigned to the marker(arrow) layer
-                    marker_width, # width of the arrow
-                    marker_length, # length of the arrow
-                    silhouette_mode, # Default to be False, if True, the sketched cell will generate a boundary indicating the look of the true cell
 
-                }
-        )
 
 
 Here is an example of using ``fp.use_sketch_view`` in a MZM circuit, containing three MZIs with pn phase shifter on the top arm. The three MZIs are totally different and are all GDS imported cell.
@@ -60,7 +50,18 @@ Here is an example of using ``fp.use_sketch_view`` in a MZM circuit, containing 
 Implement ``fp.use_sketch_view``
 --------------------------------------------
 
-* ``conf = fp.SketchConf(sketch_layer=TECH.LAYER.TEXT_NOTE, marker_layer=TECH.LAYER.FLYLINE_MARK)``
+* ``fp.use_sketch_view(
+        cell_to_be_sketched,
+        conf = {
+                    sketch_layer, # layer to be assigned to the sketched cell
+                    marker_layer, # layer to be assigned to the marker(arrow) layer
+                    marker_width, # width of the arrow
+                    marker_length, # length of the arrow
+                    silhouette_mode, # Boolean parameter. Default to be False, if True, the sketched cell will generate a boundary indicating the look of the true cell
+
+                }
+        )``
+
 
   The configuration parameter sets the sketched cell to the designated layer. The example code above will assign the sketched cell to ``TEXT_NOTE`` layer, and by the ``marker_layer`` will show the direction of the ports with an arrow.
 
@@ -71,6 +72,17 @@ Implement ``fp.use_sketch_view``
   * ``marker_layer``
 
     .. image:: ../images/topcircuit2.png
+
+  * ``silhouette_mode=False(default)``
+
+    .. image:: ../images/silhouette_modeFalse.png
+
+
+  * ``silhouette_mode=True``
+
+    .. image:: ../images/silhouette_modeTrue.png
+
+
 
 * ``fp.use_sketch_view(mzm_l_200_pn_25, conf=conf)``
 
