@@ -22,3 +22,4 @@ There are several methods to define the shape or geometry in a PCell.
 .. toctree::
 
  common_use_el
+ common_use_g
