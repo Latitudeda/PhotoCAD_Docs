@@ -5,7 +5,7 @@ First, a PCell can be simple (only contains one element e.g., ``Straight`` waveg
 
 There are several methods to define the shape or geometry in a PCell.
 
-#. Create with polygons
+#. Create with polygons from element
 
    This method uses simple polygons in ``fp.el`` function such as ``fp.el.Line``, ``fp.el.Circle``, ``fp.el.Polygon`` to define the shape and a given layer which belongs to the specific PDK. Users can find some ``fp.el.`` examples in the below section .
 
@@ -16,6 +16,10 @@ There are several methods to define the shape or geometry in a PCell.
    However, sometimes we wish to create a higher-level PCell which is based on some lower-level PCells. For example, in a ``MZM`` cell, a ``Splitter``, a ``Combiner`` and a ``PhaseShifter`` will be routed. This time we can call the existing PCells as a instance and add to the instance container.
 
    The existing PCells called by the higher-level PCell should be added to the instance container, mostly referred to ``insts``.
+
+#. Create curves from geometry for waveguides and metal lines
+
+   To generate some basic components such as straight waveguide, bends, ``raw_curve`` method is necessary for ***PhotoCAD** to trace the length and the angle of the port of the curve(straight or bend). Geometries from ``fp.g.`` are used to return the curves in the ``raw_curve`` method. After that, in the ``build`` method, users can set the curve of the waveguide to the ``raw_curve``, which will create the waveguide that follows the curve. For more implementation of ``fp.g.`` geometries, please see ``Bend_Bezier``, ``Bend_Circular``, ``Straight``, ``pn_phase_shifter``, and ``Ring_Filter``.
 
 
 
