@@ -10,7 +10,6 @@ The building steps are as follows:
 
 Import library::
 
-    from dataclasses import dataclass
     from functools import cached_property
     from typing import Tuple
 

@@ -14,7 +14,6 @@ Part I. Building a Rectangular Network
 
 Importing library files::
 
-    from dataclasses import dataclass
     from typing import Mapping, cast
 
     from fnpcell import all as fp

@@ -3,8 +3,7 @@ Commonly used interface
 
 The main types of interface functions commonly used by users are as follows:
 
-1. Graphics_
-2. Routing_
+1. Graphics_ㄙㄟ
 3. Transform_
 4. Information_
 

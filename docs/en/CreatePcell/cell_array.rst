@@ -18,7 +18,6 @@ Full script
 ::
 
     import math
-    from dataclasses import dataclass
     from fnpcell import all as fp
     from gpdk.technology import get_technology
     from functools import cached_property
@@ -86,7 +85,6 @@ Section Script Description
     ::
 
         import math
-        from dataclasses import dataclass
         from fnpcell import all as fp
         from gpdk.technology import get_technology
         from functools import cached_property

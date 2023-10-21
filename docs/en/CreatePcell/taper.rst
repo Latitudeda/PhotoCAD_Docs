@@ -6,7 +6,6 @@ Full script
 ========================
 ::
 
-        from dataclasses import dataclass
         from functools import cached_property
         from typing import Tuple
 
@@ -104,9 +103,8 @@ Section Script Description
 
 #. Import function packages:
 
-   To customize the basic components(straight waveguide/bends) in gpdk, several packages needs to be imported. ``dataclass``, ``cached_property``, ``Tuple`` are for data processing. ``fnpcell``, ``get_technology``, ``CoreCladdingWaveguideType``, ``Extended`` are for process information, data format , routing function, etc::
+   To customize the basic components(straight waveguide/bends) in gpdk, several packages needs to be imported. ``cached_property``, ``Tuple`` are for data processing. ``fnpcell``, ``get_technology``, ``CoreCladdingWaveguideType``, ``Extended`` are for process information, data format , routing function, etc::
 
-        from dataclasses import dataclass
         from functools import cached_property
         from pathlib import Path
         from typing import Optional, Tuple

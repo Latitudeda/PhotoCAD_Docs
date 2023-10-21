@@ -7,7 +7,6 @@ Import module
 -------------------------
 ::
 
-    from dataclasses import dataclass, field
     from typing import cast
 
     from fnpcell import all as fp

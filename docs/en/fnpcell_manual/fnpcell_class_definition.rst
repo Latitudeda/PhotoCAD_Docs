@@ -10,7 +10,6 @@ Full script
 
 ::
 
-    from dataclasses import dataclass
     from functools import cached_property
     from typing import Sequence, Tuple
 
@@ -64,9 +63,8 @@ Full script
 Section Script Description
 ----------------------------------
 
-The script firstly imports python function modules such as ``dataclass``, ``cached_property``, ``Sequence``, ``Tuple``, etc. (users can temporarily ignore their specific meaning). Secondly, it imports the process information in the function modules ``fnpcell`` and ``gpdk.technology`` module::
+The script firstly imports python function modules such as ``cached_property``, ``Sequence``, ``Tuple``, etc. (users can temporarily ignore their specific meaning). Secondly, it imports the process information in the function modules ``fnpcell`` and ``gpdk.technology`` module::
 
-    from dataclasses import dataclass
     from functools import cached_property
     from typing import Sequence, Tuple
 

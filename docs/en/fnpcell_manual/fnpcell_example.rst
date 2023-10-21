@@ -7,7 +7,6 @@ Full script
 ----------------
 ::
 
-    from dataclasses import dataclass
     from functools import cached_property
     from typing import Sequence, Tuple
 
@@ -15,7 +14,6 @@ Full script
     from gpdk.technology import get_technology
 
 
-    @dataclass(eq=False)
     class BendBezier(fp.IWaveguideLike, fp.PCell):
         """
         Attributes:
@@ -104,7 +102,6 @@ Full script
 -------------
 ::
 
-        from dataclasses import dataclass
         from functools import cached_property
         from typing import Tuple
 

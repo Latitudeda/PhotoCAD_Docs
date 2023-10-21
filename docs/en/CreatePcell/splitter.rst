@@ -7,7 +7,6 @@ Full Script
 ================
 ::
 
-    from dataclasses import dataclass
     from typing import Tuple
     from fnpcell import all as fp
     from gpdk.components.straight.straight import Straight
@@ -95,9 +94,8 @@ Section Script Description
 
 #. Importing necessary function packages
 
-   To customize the components in gpdk, ``fnpcell`` needs to be imported because modules such as data format, waveguide type( ``CoreCladdingWaveguideType`` ), graphics generation need to be used. Moreover, graphics in the component layout need to be generated on different process layers, so process information(``technology``) in gpdk needs to be imported. The python libraries ``dataclass`` and ``typing`` for data processing also need to be imported for this::
+   To customize the components in gpdk, ``fnpcell`` needs to be imported because modules such as data format, waveguide type( ``CoreCladdingWaveguideType`` ), graphics generation need to be used. Moreover, graphics in the component layout need to be generated on different process layers, so process information(``technology``) in gpdk needs to be imported. The python libraries ``typing`` for data processing also need to be imported for this::
 
-        from dataclasses import dataclass
         from typing import Tuple
         from fnpcell import all as fp
         from gpdk.components.straight.straight import Straight

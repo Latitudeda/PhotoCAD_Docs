@@ -105,7 +105,6 @@ The above examples are shown below：
 
 Full script::
 
-    from dataclasses import dataclass
     from typing import Tuple
 
     from fnpcell import all as fp

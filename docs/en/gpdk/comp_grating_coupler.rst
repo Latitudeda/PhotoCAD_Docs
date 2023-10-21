@@ -9,7 +9,6 @@ The building steps are as follows:
 
 Import library::
 
-    from dataclasses import dataclass
     import math
     from typing import List, Tuple, cast
     from fnpcell import all as fp

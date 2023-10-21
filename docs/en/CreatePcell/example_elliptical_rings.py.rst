@@ -6,7 +6,6 @@ Full script
 
 ::
 
-  from dataclasses import dataclass
   from fnpcell import all as fp
   from gpdk.technology import get_technology
 

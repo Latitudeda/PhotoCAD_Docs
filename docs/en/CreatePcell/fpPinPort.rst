@@ -38,7 +38,6 @@ Full Script
 ::
 
     import math
-    from dataclasses import dataclass
     from typing import Tuple
     from gpdk.technology import get_technology, WG
     from fnpcell import all as fp
@@ -94,10 +93,9 @@ Section Script Description
 
 #. Importing necessary function packages
 
-   To customize the components in gpdk, ``fnpcell`` , ``dataclass``, ``typing`` and ``math`` need to be imported because modules such as data format, graphics generation, data processing need to be used. Moreover, graphics in the component layout need to be generated on different process layers, so process information(``technology``, ``WG``) in gpdk needs to be imported::
+   To customize the components in gpdk, ``fnpcell`` , ``typing`` and ``math`` need to be imported because modules such as data format, graphics generation, data processing need to be used. Moreover, graphics in the component layout need to be generated on different process layers, so process information(``technology``, ``WG``) in gpdk needs to be imported::
 
         import math
-        from dataclasses import dataclass
         from typing import Tuple
         from gpdk.technology import get_technology, WG
         from fnpcell import all as fp

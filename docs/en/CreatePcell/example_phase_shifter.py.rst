@@ -6,7 +6,6 @@ Full script
 
 ::
 
-  from dataclasses import dataclass
   from functools import cached_property
   from fnpcell import all as fp
   from gpdk.technology import get_technology
@@ -146,7 +145,6 @@ Segment Description
 
 ::
 
-  from dataclasses import dataclass
   from functools import cached_property
   from fnpcell import all as fp
   from gpdk.technology import get_technology

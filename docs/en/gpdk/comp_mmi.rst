@@ -9,7 +9,6 @@ The building steps are as follows:
 
 Import library::
 
-    from dataclasses import dataclass
     from typing import Tuple
     from fnpcell import all as fp
     from gpdk.components.straight.straight import Straight

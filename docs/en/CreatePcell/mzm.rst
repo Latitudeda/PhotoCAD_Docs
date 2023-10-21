@@ -7,7 +7,6 @@ Full Script
 ================
 ::
 
-        from dataclasses import dataclass
         from typing import Tuple
 
         from fnpcell import all as fp
@@ -119,9 +118,8 @@ Section Script Description
 ===========================
 #. Importing necessary function packages
 
-   To customize the components in gpdk, ``fnpcell`` , ``dataclass``, ``typing`` need to be imported because modules such as data format, graphics generation, data processing need to be used. ``YCombiner``, ``PnPhaseShifter``, ``YSplitter`` are the PCells already generated in the previous section and we will use it as a cell to build up the mzm in this example. Moreover, graphics in the component layout need to be generated on different process layers, so process information(``technology``) in gpdk needs to be imported::
+   To customize the components in gpdk, ``fnpcell`` , ``typing`` need to be imported because modules such as data format, graphics generation, data processing need to be used. ``YCombiner``, ``PnPhaseShifter``, ``YSplitter`` are the PCells already generated in the previous section and we will use it as a cell to build up the mzm in this example. Moreover, graphics in the component layout need to be generated on different process layers, so process information(``technology``) in gpdk needs to be imported::
 
-        from dataclasses import dataclass
         from typing import Tuple
 
         from fnpcell import all as fp

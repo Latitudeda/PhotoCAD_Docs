@@ -16,7 +16,6 @@ Part II. Full script
 -----------------------------------------
 ::
 
-    from dataclasses import dataclass
     from typing import Mapping, cast
 
     import numpy

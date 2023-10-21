@@ -10,7 +10,6 @@ First, import the library file, where we need to use ``DirectionalCouplerSBend``
 
 ::
 
-    from dataclasses import dataclass
     from typing import Tuple
 
     from fnpcell import all as fp
@@ -140,7 +139,6 @@ First import the necessary library files.
 
 ::
 
-    from dataclasses import dataclass
     from typing import Tuple
 
     from fnpcell import all as fp
@@ -245,7 +243,6 @@ Again, the necessary library files are imported first:
 
 ::
 
-    from dataclasses import dataclass
     from typing import Tuple
 
     from fnpcell import all as fp

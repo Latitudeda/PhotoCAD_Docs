@@ -10,7 +10,6 @@ Full script
 -------------------
 ::
 
-    from dataclasses import dataclass
     from numbers import Number
     from typing import List, Mapping, Optional, Tuple
 

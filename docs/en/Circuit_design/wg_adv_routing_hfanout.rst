@@ -16,7 +16,6 @@ Full script
 -----------------------------
 ::
 
-    from dataclasses import dataclass
     from typing import Callable, List, Optional, Sequence, Tuple, cast
 
     from fnpcell import all as fp
@@ -447,7 +446,6 @@ Importing libraries and modules
 =======================================
 ::
 
-    from dataclasses import dataclass
     from typing import Callable, List, Optional, Sequence, Tuple, cast
 
     from fnpcell import all as fp

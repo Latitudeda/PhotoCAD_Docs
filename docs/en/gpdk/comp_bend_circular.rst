@@ -10,7 +10,6 @@ Steps are as follows:
 
 Import Library::
 
-    from dataclasses import dataclass
     from functools import cached_property
     from typing import Optional, Tuple
 

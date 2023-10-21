@@ -16,7 +16,6 @@ Full script
 ::
 
     import math
-    from dataclasses import dataclass
     from functools import partial
     from typing import Any, Callable, Iterable, List, Optional, Protocol, Sequence, Tuple, cast
 
@@ -553,7 +552,6 @@ Importing python libraries and functional modules of PhotoCAD
 ::
 
       import math
-      from dataclasses import dataclass
       from functools import partial
       from typing import Any, Callable, Iterable, List, Optional, Protocol, Sequence, Tuple, cast
 

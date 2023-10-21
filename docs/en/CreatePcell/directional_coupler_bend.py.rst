@@ -6,7 +6,6 @@ Full script
 
 ::
 
-  from dataclasses import dataclass
   from typing import Tuple, cast
   from fnpcell import all as fp
   from gpdk.components.bend.bend_circular import BendCircular
