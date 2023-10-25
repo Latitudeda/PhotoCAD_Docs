@@ -44,6 +44,7 @@ There are also several applications created by **Latitudeda** in the ``EXAMPLES`
    example_manual/triangle_mzi.py
    example_manual/example_demultiplexer2.py
    example_manual/example_cmz
+   jupyter_notebook/index
 
 
 
