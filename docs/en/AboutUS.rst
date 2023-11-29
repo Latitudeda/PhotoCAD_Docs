@@ -1,14 +1,10 @@
 About Us
 ====================
 
-- Official Website：https://www.latitudeda.com/
-- Sales： sales@latitudeda.com
-- Technical Support：support@latitudeda.com
+- Official Website：https://www.latitudeds.com/
+- Sales： sales@latitudeds.com
+- Technical Support：support@latitudeds.com
 - Other related software：
 
   - pSim
   - Advanced SDL
-
-
-
-
