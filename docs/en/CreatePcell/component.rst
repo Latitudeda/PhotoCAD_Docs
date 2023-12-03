@@ -12,3 +12,4 @@ List of gpdk components
   example_phase_shifter.py
   example_sampler_periodic.py
   mzm
+  linecap_gc
