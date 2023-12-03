@@ -119,12 +119,15 @@ Section Script Description
 
 #. User-defined parameters:
 
-    length: Length of the grating taper
-    half_degrees: Angle of the grating taper
-    ellipse_ratio: The aspect ratio of the ellipse
-    tooth_width: Width of the grating
-    etch_width: Spacing of the grating
-    teeth: Number of grating
+    ::
+
+        length: float = fp.PositiveFloatParam(default=25.0) # Length of the grating taper
+        half_degrees: float = fp.DegreeParam(default=20) # Angle of the grating taper
+        ellipse_ratio: float = fp.PositiveFloatParam(default=1.0, min=1.0, doc="Ellipse(Major/Minor)") # The aspect ratio of the ellipse
+        tooth_width: float = fp.PositiveFloatParam(default=0.5) # Width of the grating
+        etch_width: float = fp.PositiveFloatParam(default=0.5) # Spacing of the grating
+        teeth: int = fp.IntParam(default=30, min=0, doc="Number of tooth") # Number of grating
+
 
 #. Layout added in the build method:
 
@@ -154,9 +157,10 @@ Section Script Description
                 content.append(fp.el.Curve(curve, stroke_width=tooth_width, layer=TECH.LAYER.FWG_COR,
                                            line_cap=(fp.el.LineCapRound(), fp.el.LineCapRound())))
 
-        .. image:: ../images/GC_2.png
+
         .. image:: ../images/GC_2_round.png
         .. image:: ../images/GC_2_tri.png
+        .. image:: ../images/GC_2.png
 
 
    #. Trim the input port to connect with waveguide
