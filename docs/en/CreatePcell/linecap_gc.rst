@@ -5,114 +5,114 @@ This grating coupler design is used to avoid DRC error at places where turning a
 Full script
 --------------------------------------------------------
 
-::
+ ::
 
-import math
-from fnpcell import all as fp
-from typing_extensions import Tuple, List, cast
-from gpdk import all as pdk
-from gpdk.technology import get_technology
-from gpdk.technology.wg.types import CoreCladdingWaveguideType
-
-
-class GC_linecap(fp.PCell):
-
-    length: float = fp.PositiveFloatParam(default=25.0)
-    half_degrees: float = fp.DegreeParam(default=20)
-    ellipse_ratio: float = fp.PositiveFloatParam(default=1.0, min=1.0, doc="Ellipse(Major/Minor)")
-    tooth_width: float = fp.PositiveFloatParam(default=0.5)
-    etch_width: float = fp.PositiveFloatParam(default=0.5)
-    teeth: int = fp.IntParam(default=30, min=0, doc="Number of tooth")
-    waveguide_type: CoreCladdingWaveguideType = fp.WaveguideTypeParam(type=CoreCladdingWaveguideType, default=fp.USE_DEFAULT_FACTORY)
-    port_names: fp.IPortOptions = fp.PortOptionsParam(count=2, default=("op_0", "optfiber"))
-
-    def _default_waveguide_type(self):
-        return get_technology().WG.FWG.C.WIRE
-
-    def build(self) -> Tuple[fp.InstanceSet, fp.ElementSet, fp.PortSet]:
-        insts, elems, ports = super().build()
-        TECH = get_technology()
-
-        length = self.length
-        half_degrees = self.half_degrees
-        ellipse_ratio = self.ellipse_ratio
-        tooth_width = self.tooth_width
-        etch_width = self.etch_width
-        teeth = self.teeth
-        waveguide_type = self.waveguide_type
-        port_names = self.port_names
-
-        overlap = 1.0
-        fiber_pin_width = 5
-
-        half_angle = math.radians(half_degrees)
-        waveguide_width = waveguide_type.core_width
-        waveguide_cladding = waveguide_type.cladding_width
-        waveguide_layer = waveguide_type.core_layer
-        cladding_layer = waveguide_type.cladding_layer
-        si_etch1_layer = TECH.WG.MWG.C.WIRE.core_layer
-        fbrtgt = TECH.LAYER.FIBREC_NOTE
+        import math
+        from fnpcell import all as fp
+        from typing_extensions import Tuple, List, cast
+        from gpdk import all as pdk
+        from gpdk.technology import get_technology
+        from gpdk.technology.wg.types import CoreCladdingWaveguideType
 
 
-        content: List[fp.IPolygon] = [
-            fp.el.EllipticalRing(outer_radius=(length, length / ellipse_ratio), layer=waveguide_layer,
-                                 initial_degrees=-half_degrees, final_degrees=half_degrees)]
+        class GC_linecap(fp.PCell):
 
-        final_tooth_radius = length
-        for _ in range(teeth):
-            final_tooth_radius = final_tooth_radius + etch_width + tooth_width
+            length: float = fp.PositiveFloatParam(default=25.0)
+            half_degrees: float = fp.DegreeParam(default=20)
+            ellipse_ratio: float = fp.PositiveFloatParam(default=1.0, min=1.0, doc="Ellipse(Major/Minor)")
+            tooth_width: float = fp.PositiveFloatParam(default=0.5)
+            etch_width: float = fp.PositiveFloatParam(default=0.5)
+            teeth: int = fp.IntParam(default=30, min=0, doc="Number of tooth")
+            waveguide_type: CoreCladdingWaveguideType = fp.WaveguideTypeParam(type=CoreCladdingWaveguideType, default=fp.USE_DEFAULT_FACTORY)
+            port_names: fp.IPortOptions = fp.PortOptionsParam(count=2, default=("op_0", "optfiber"))
 
-            curve = fp.g.Arc(radius=final_tooth_radius - tooth_width / 2,
-                             initial_degrees=-half_degrees,
-                             final_degrees=half_degrees)
-            content.append(fp.el.Curve(curve, stroke_width=tooth_width, layer=TECH.LAYER.FWG_COR,
-                                       line_cap=(fp.el.LineCapRound(), fp.el.LineCapRound())))
+            def _default_waveguide_type(self):
+                return get_technology().WG.FWG.C.WIRE
 
-        triangle_h = (waveguide_width / 2.0) / math.tan(half_angle)
-        triangle = fp.el.Polygon(raw_shape=[(0, 0), (triangle_h, waveguide_width / 2.0), (triangle_h, - waveguide_width / 2.0)], layer=waveguide_layer)
+            def build(self) -> Tuple[fp.InstanceSet, fp.ElementSet, fp.PortSet]:
+                insts, elems, ports = super().build()
+                TECH = get_technology()
 
-        content = list(fp.el.PolygonSet(content, layer=waveguide_layer) - triangle)
+                length = self.length
+                half_degrees = self.half_degrees
+                ellipse_ratio = self.ellipse_ratio
+                tooth_width = self.tooth_width
+                etch_width = self.etch_width
+                teeth = self.teeth
+                waveguide_type = self.waveguide_type
+                port_names = self.port_names
 
-        fiber_pin_tooth = 1 + int(teeth / 2)  # 1 for wedge_polygon
-        fiber_pin_x = min(content[fiber_pin_tooth].polygon_points, key=lambda p: p[0])[0]
+                overlap = 1.0
+                fiber_pin_width = 5
 
-        cladding_x = final_tooth_radius + waveguide_cladding / 2
-        cladding_y = cladding_x / ellipse_ratio
-
-        cladding_polygon = fp.el.EllipticalRing(outer_radius=(cladding_x, cladding_y), layer=cladding_layer, transform=fp.rotate(radians=math.pi))
-        trapezoid = fp.el.Line(length=cladding_x - triangle_h,
-                               stroke_width=waveguide_cladding,
-                               final_stroke_width=math.tan(half_angle) * cladding_x * 2 + waveguide_cladding,
-                               layer=cladding_layer).translated(triangle_h, 0)
-        cladding_polygon &= trapezoid
-        content.append(trapezoid)
-
-
-        rec_end = fp.el.Rect(width=2, height=math.tan(half_angle) * cladding_x * 2 + waveguide_cladding, layer=cladding_layer, center=(cladding_x + 1, 0))
-        content.append(rec_end)
-
-        # fiber port
-        elements = cast(List[fp.IElement], content)
-        elements.extend(
-            [
-                fp.el.Line(length=fiber_pin_width, stroke_width=fiber_pin_width, layer=fbrtgt, transform=fp.translate(fiber_pin_x, 0)),
-                fp.el.Text(content="optFiber", text_anchor=fp.Anchor.CENTER, vertical_align=fp.VertialAlign.MIDDLE, layer=fbrtgt, at=(fiber_pin_x + fiber_pin_width / 2, 0)),
-            ]
-        )
-
-        elems += elements
+                half_angle = math.radians(half_degrees)
+                waveguide_width = waveguide_type.core_width
+                waveguide_cladding = waveguide_type.cladding_width
+                waveguide_layer = waveguide_type.core_layer
+                cladding_layer = waveguide_type.cladding_layer
+                si_etch1_layer = TECH.WG.MWG.C.WIRE.core_layer
+                fbrtgt = TECH.LAYER.FIBREC_NOTE
 
 
-        s = pdk.Straight(length=5, waveguide_type=waveguide_type)
-        s_left = fp.place(s, "op_1", at=(triangle_h, 0))
-        insts += s_left
+                content: List[fp.IPolygon] = [
+                    fp.el.EllipticalRing(outer_radius=(length, length / ellipse_ratio), layer=waveguide_layer,
+                                         initial_degrees=-half_degrees, final_degrees=half_degrees)]
 
-        ports += s_left["op_0"].with_name(port_names[0])
-        ports += fp.Port(name=port_names[1], position=(fiber_pin_x + fiber_pin_width / 2, 0), orientation=0,
-                         shape=fp.g.Rect(width=fiber_pin_width, height=fiber_pin_width,
-                         center=(fiber_pin_x + fiber_pin_width / 2, 0)), waveguide_type=waveguide_type)
+                final_tooth_radius = length
+                for _ in range(teeth):
+                    final_tooth_radius = final_tooth_radius + etch_width + tooth_width
 
-        return insts, elems, ports
+                    curve = fp.g.Arc(radius=final_tooth_radius - tooth_width / 2,
+                                     initial_degrees=-half_degrees,
+                                     final_degrees=half_degrees)
+                    content.append(fp.el.Curve(curve, stroke_width=tooth_width, layer=TECH.LAYER.FWG_COR,
+                                               line_cap=(fp.el.LineCapRound(), fp.el.LineCapRound())))
+
+                triangle_h = (waveguide_width / 2.0) / math.tan(half_angle)
+                triangle = fp.el.Polygon(raw_shape=[(0, 0), (triangle_h, waveguide_width / 2.0), (triangle_h, - waveguide_width / 2.0)], layer=waveguide_layer)
+
+                content = list(fp.el.PolygonSet(content, layer=waveguide_layer) - triangle)
+
+                fiber_pin_tooth = 1 + int(teeth / 2)  # 1 for wedge_polygon
+                fiber_pin_x = min(content[fiber_pin_tooth].polygon_points, key=lambda p: p[0])[0]
+
+                cladding_x = final_tooth_radius + waveguide_cladding / 2
+                cladding_y = cladding_x / ellipse_ratio
+
+                cladding_polygon = fp.el.EllipticalRing(outer_radius=(cladding_x, cladding_y), layer=cladding_layer, transform=fp.rotate(radians=math.pi))
+                trapezoid = fp.el.Line(length=cladding_x - triangle_h,
+                                       stroke_width=waveguide_cladding,
+                                       final_stroke_width=math.tan(half_angle) * cladding_x * 2 + waveguide_cladding,
+                                       layer=cladding_layer).translated(triangle_h, 0)
+                cladding_polygon &= trapezoid
+                content.append(trapezoid)
+
+
+                rec_end = fp.el.Rect(width=2, height=math.tan(half_angle) * cladding_x * 2 + waveguide_cladding, layer=cladding_layer, center=(cladding_x + 1, 0))
+                content.append(rec_end)
+
+                # fiber port
+                elements = cast(List[fp.IElement], content)
+                elements.extend(
+                    [
+                        fp.el.Line(length=fiber_pin_width, stroke_width=fiber_pin_width, layer=fbrtgt, transform=fp.translate(fiber_pin_x, 0)),
+                        fp.el.Text(content="optFiber", text_anchor=fp.Anchor.CENTER, vertical_align=fp.VertialAlign.MIDDLE, layer=fbrtgt, at=(fiber_pin_x + fiber_pin_width / 2, 0)),
+                    ]
+                )
+
+                elems += elements
+
+
+                s = pdk.Straight(length=5, waveguide_type=waveguide_type)
+                s_left = fp.place(s, "op_1", at=(triangle_h, 0))
+                insts += s_left
+
+                ports += s_left["op_0"].with_name(port_names[0])
+                ports += fp.Port(name=port_names[1], position=(fiber_pin_x + fiber_pin_width / 2, 0), orientation=0,
+                                 shape=fp.g.Rect(width=fiber_pin_width, height=fiber_pin_width,
+                                 center=(fiber_pin_x + fiber_pin_width / 2, 0)), waveguide_type=waveguide_type)
+
+                return insts, elems, ports
 
 Section Script Description
 ===========================
