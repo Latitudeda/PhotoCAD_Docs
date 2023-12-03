@@ -4,7 +4,7 @@ PhotoCAD User Manual
 
 For beginners who wants to create a PIC by themselves by using **PhotoCAD**, we recommend to look through the ``Guides`` section, and you can get a quick glimpse from creating PCells to building your own circuits.
 
-There are also several applications created by **Latitudeda** in the ``EXAMPLES`` section, users could also browse the examples to get an imagination how can **PhotoCAD** realize your ideas.
+There are also several applications created by **Latitudeds** in the ``EXAMPLES`` section, users could also browse the examples to get an imagination how can **PhotoCAD** realize your ideas.
 
 
 .. toctree::

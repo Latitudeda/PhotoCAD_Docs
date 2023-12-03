@@ -59,5 +59,4 @@ In **PhotoCAD** version 1.6.0, more useful and powerful functions are added and 
 
 
 
-Dear users, you can now contact support@latitudea.com to get the PhotoCAD V1.6.0 software to experience the above update.
-
+Dear users, you can now contact support@latitudeds.com to get the PhotoCAD V1.6.0 software to experience the above update.
