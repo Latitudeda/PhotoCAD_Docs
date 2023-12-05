@@ -3,7 +3,7 @@
 # -- Project information
 
 project = "PhotoCAD"
-copyright = "2022, Latitudeda.com"
+copyright = "2023, Latitudeda.com"
 author = "latitudeda.com"
 
 release = "1.6"
@@ -27,7 +27,7 @@ multiproject_projects = {
         "use_config_file": False,
         "config": {
             "project": "PhotoCAD",
-            "copyright": "2022, Latitudeds.com",
+            "copyright": "2023, Latitudeds.com",
             "author": "latitudeds.com",
         },
     },
@@ -35,7 +35,7 @@ multiproject_projects = {
         "use_config_file": False,
         "config": {
             "project": "PhotoCAD",
-            "copyright": "2022, Latitudeda.com",
+            "copyright": "2023, Latitudeda.com",
             "author": "latitudeda.com",
         },
     },
