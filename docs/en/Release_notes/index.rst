@@ -5,5 +5,4 @@ Release notes
 
   Release_notes_PhotoCAD_V150
   Release_notes_PhotoCAD_V160
-  Release_notes_PhotoCAD_V170
 
