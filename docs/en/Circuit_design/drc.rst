@@ -54,7 +54,7 @@ After the DRC process is done, a DRC result file will be exported and you can th
 
 All errors from the same rule will be collected together and will be marked red in the layout.
 
-.. image:: ../images/view_drc_results.png
+.. image:: ../images/view_drc_result.png
 
 
 Make adjustments or waive the error
