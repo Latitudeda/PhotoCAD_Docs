@@ -59,7 +59,9 @@ All errors from the same rule will be collected together and will be marked red 
 
 Make adjustments or waive the error
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Then, it is time to make necessary adjustments to the layout to correct the identified violations. This may involve modifying the placement, dimensions, or other characteristics of the components to ensure compliance with the design rules. Design rule check often need to be done several times until the layout is error-free and meets all design rule requirements. Sometimes it is possible to waive the errors and it must be done after discussion with the foundry.
+Then, it is time to make necessary adjustments to the layout to correct the identified violations. This may involve modifying the placement, dimensions, or other characteristics of the components to ensure compliance with the design rules.
+
+Design rule check often need to be done several times until the layout is error-free and meets all design rule requirements. Sometimes it is possible to waive the errors and it must be done after discussion with the foundry.
 
 
 
