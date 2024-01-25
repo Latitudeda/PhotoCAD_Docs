@@ -44,7 +44,7 @@ After designing your chip in **PhotoCAD**, a GDS file will be generated and you 
 
 .. image:: ../images/view_design_results.png
 
-Import DCR file to KLayout
+Import DRC file to KLayout
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Next, select the "DRC" from "Tools" and import the DRC file (.lydrc) of the specific foundry. It can be easily done by dragging the file into KLayout. DRC file contains a set of instructions and parameters that define the design rules and constraints to be verified during the DRC process. This file serves as input to KLayout, guiding the verification process and enabling the tool to check the physical layout against the specified criteria.
 
