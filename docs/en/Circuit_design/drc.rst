@@ -110,4 +110,4 @@ In the ``Klayout_DRC_test.lydrc`` file, we've set up rules for the minimum width
 
 In the example GDS layout file, we've created different shapes on layers ``FWG``, ``M1``, and ``M2`` to demonstrate how the rules work. Some shapes follow the design rules, while others don't. In real design work, it's crucial for designers to consider and follow the specific design rules provided by foundries. This helps ensure that the circuit designs are reliable and function as intended.
 
-:download:`example_drc.py <../Circuit_design/example_drc.py>`
+:download:`example_drc.py.gds <../Circuit_design/example_drc.py.gds>`
