@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<klayout-macro>
+ <description/>
+ <version/>
+ <category>drc</category>
+ <prolog/>
+ <epilog/>
+ <doc/>
+ <autorun>false</autorun>
+ <autorun-early>false</autorun-early>
+ <priority>0</priority>
+ <shortcut/>
+ <show-in-menu>true</show-in-menu>
+ <group-name>drc_scripts</group-name>
+ <menu-path>tools_menu.drc.end</menu-path>
+ <interpreter>dsl</interpreter>
+ <dsl-interpreter-name>drc-dsl-xml</dsl-interpreter-name>
+ <text>
+# Read about DRC scripts in the User Manual in "Design Rule Check (DRC)"
+
+# This is a sample:
+
+inputFile = $input
+inputCell = $cell
+if inputCell
+source(inputFile,inputCell)
+else
+source(inputFile)
+end
+cv = RBA::CellView::active
+
+if inputFile
+fileName = File.basename(inputFile)
+else
+fileName = cv.name
+end
+reportName = fileName.sub(".gds","").sub(".GDS","") + "_drc_result"
+
+if inputCell
+reportName = fileName.sub(".gds","").sub(".GDS","") + "_" + inputCell.to_s + "_drc_result"
+else
+end
+
+report("DRC",reportName)
+
+minW_FWG = 0.15
+minS_FWG = 0.15
+
+minW_M1 = 0.3
+minS_M1 = 0.6
+
+minW_M2 = 0.9
+minS_M2 = 0.9
+
+FWG_COR = input(1,1)
+FWG_CLD = input(1,2)
+FWG_TRE = input(1,4)
+
+M1_DRW = input(33,3)
+M2_DRW = input(35,3)
+
+FWG = (FWG_CLD - FWG_COR) or FWG_TRE
+M1 = M1_DRW
+M2 = M2_DRW
+FWG.width(minW_FWG).output("FWG width violation")
+M1.width(minW_M1).output("M1 width violation")
+M2.width(minW_M2).output("M2 width violation")
+
+FWG.space(minS_FWG).output("FWG space violation")
+M1.space(minS_M1).output("M1 space violation")
+M2.space(minS_M2).output("M2 space violation")</text>
+</klayout-macro>

@@ -46,7 +46,11 @@ After designing your chip in **PhotoCAD**, a GDS file will be generated and you 
 
 Import DRC file to KLayout
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Next, select the "DRC" from "Tools" and import the DRC file (.lydrc) of the specific foundry. It can be easily done by dragging the file into KLayout. DRC file contains a set of instructions and parameters that define the design rules and constraints to be verified during the DRC process. This file serves as input to KLayout, guiding the verification process and enabling the tool to check the physical layout against the specified criteria.
+Next, select the "DRC" from "Tools" and import the DRC file (.lydrc) of the specific foundry. It can be easily done by dragging the file into KLayout layout view window and install the macro. DRC file contains a set of instructions and parameters that define the design rules and constraints to be verified during the DRC process. This file serves as input to KLayout, guiding the verification process and enabling the tool to check the physical layout against the specified criteria.
+
+
+.. image:: ../images/drc_import2.png
+
 
 View design rule errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -64,6 +68,46 @@ Then, it is time to make necessary adjustments to the layout to correct the iden
 Design rule check often need to be done several times until the layout is error-free and meets all design rule requirements. Sometimes it is possible to waive the errors and it must be done after discussion with the foundry.
 
 
+Examples file to test your knowledge
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Here we provide a simple DRC file and an example GDS layout for ou to test your knowledge and get a glimpse of how design rule checking is done in KLayout.
+
+In the ``Klayout_DRC_test.lydrc`` file, we've set up rules for the minimum width and spacing of layers like ``FWG``, ``M1``, and ``M2``. These rules use the ``input`` function to assign layer numbers based on the recognized layer names, making it easy to check designs in KLayout.
+
+:download:`Klayout_DRC_test.lydrc <../Circuit_design/Klayout_DRC_test.lydrc>`
+
+::
+
+        minW_FWG = 0.15
+        minS_FWG = 0.15
+
+        minW_M1 = 0.3
+        minS_M1 = 0.6
+
+        minW_M2 = 0.9
+        minS_M2 = 0.9
+
+        FWG_COR = input(1,1)
+        FWG_CLD = input(1,2)
+        FWG_TRE = input(1,4)
+
+        M1_DRW = input(33,3)
+        M2_DRW = input(35,3)
+
+        FWG = (FWG_CLD - FWG_COR) or FWG_TRE
+        M1 = M1_DRW
+        M2 = M2_DRW
+        FWG.width(minW_FWG).output("FWG width violation")
+        M1.width(minW_M1).output("M1 width violation")
+        M2.width(minW_M2).output("M2 width violation")
+
+        FWG.space(minS_FWG).output("FWG space violation")
+        M1.space(minS_M1).output("M1 space violation")
+        M2.space(minS_M2).output("M2 space violation")
 
 
 
+In the example GDS layout file, we've created different shapes on layers ``FWG``, ``M1``, and ``M2`` to demonstrate how the rules work. Some shapes follow the design rules, while others don't. In real design work, it's crucial for designers to consider and follow the specific design rules provided by semiconductor foundries. This helps ensure that the circuit designs are reliable and function as intended.
+
+:download:`example_drc.py <../Circuit_design/example_drc.py>`
