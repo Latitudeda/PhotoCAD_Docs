@@ -68,8 +68,8 @@ Then, it is time to make necessary adjustments to the layout to correct the iden
 Design rule check often need to be done several times until the layout is error-free and meets all design rule requirements. Sometimes it is possible to waive the errors and it must be done after discussion with the foundry.
 
 
-Examples file to test your knowledge
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Examples files to test your knowledge
+------------------------------------------
 
 Here we provide a simple DRC file and an example GDS layout for ou to test your knowledge and get a glimpse of how design rule checking is done in KLayout.
 
