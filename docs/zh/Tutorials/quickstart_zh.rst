@@ -1,13 +1,13 @@
 PhotoCAD Hands-on
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. note::
-   **Important note: The script layout of the user manual cannot be identical to the format of the Python script, the code paragraphs in the manual are for illustrative purposes only. Please refer to the Python source code in the package for the actual code format.**
+   **重要说明：用户手册中的脚本布局不可能与 Python 脚本的格式完全一致，手册中的代码段落仅供参考。实际代码格式请参阅软件包中的 Python 源代码。**
 
-This section is for users who have installed PyCharm (Python 3.8) and are familiar with how to use PyCharm. For detailed documentation on **PhotoCAD**, please start from the Tutorial section.
+本部分适用于已安装 PyCharm (Python 3.8) 并熟悉如何使用 PyCharm 的用户。有关 **PhotoCAD** 的详细文档，请从 ``教程`` 部分开始。
 
-1. After obtaining the **PhotoCAD** installation package, unzip it and find the "Installation Instructions.pdf" file; follow the detailed instructions in "Installation Instructions.pdf".
+1. 获取 **PhotoCAD** 安装包后，解压缩并找到 "Installation Instructions.pdf" 文件，按照 "Installation Instructions.pdf" 中的详细说明进行操作。
 
-2. Once you have successfully installed **PhotoCAD** according to the installation instructions, you can continue with the following actions to quickly experience **PhotoCAD**. 
+2. 按照安装说明成功安装 **PhotoCAD** 后，您可以继续以下操作，快速体验 **PhotoCAD**.
 
 3. First look of the component unit script:
 
