@@ -3,7 +3,8 @@ Commonly used interface
 
 The main types of interface functions commonly used by users are as follows:
 
-1. Graphics_ㄙㄟ
+1. Graphics_
+2. Routing_
 3. Transform_
 4. Information_
 
@@ -131,7 +132,66 @@ The transform api mainly contains::
     v_mirrored
     c_mirrored
     scaled
-    repositioned
+
+* ``translated``
+    * parameters: tx/ty
+    * examples:
+
+            * ``a = fp.el.Rect(width=5, height=5, center=(0, 0), layer=TECH.LAYER.M1_DRW, corner_radius=1)``
+
+            * ``b = a.translated(10, 0)``
+
+        .. image:: ../images/translated.png
+
+* ``rotated``
+    * parameters: degrees/radians/origin/inplace
+    * examples:
+
+            * ``a = fp.el.RegularPolygon(sides=5, side_length=5, layer=TECH.LAYER.M2_DRW)``
+
+            * ``b = a.rotated(degrees=90).translated(10, 0)``
+
+        .. image:: ../images/rotated.png
+
+* ``h_mirrored``
+    * parameters: x/inplace
+    * examples:
+
+            * ``a = fp.el.Ring(outer_radius=5, inner_radius=2, initial_degrees=30, final_degrees=120, layer=TECH.LAYER.TIN_DRW)``
+
+            * ``b = a.h_mirrored(x=5)``
+
+        .. image:: ../images/h_mirrored.png
+
+* ``v_mirrored``
+    * parameters: y/inplace
+    * examples:
+
+            * ``a = fp.el.EllipticalRing(outer_radius=3, inner_radius=1, initial_degrees=45, final_degrees=180, layer=TECH.LAYER.MWG_COR)``
+
+            * ``b = a.v_mirrored(y=5)``
+
+        .. image:: ../images/v_mirrored.png
+
+* ``c_mirrored``
+    * parameters: origin/center/inplace
+    * examples:
+
+            * ``a = fp.el.Polygon(raw_shape=[(0, 0), (-3, -1),(-2, -5), (-1, -1)], layer=TECH.LAYER.PP_DRW)``
+
+            * ``b = a.c_mirrored(origin=(1, 1))``
+
+        .. image:: ../images/c_mirrored.png
+
+* ``scaled``
+    * parameters: sx/sy/origin/inplace
+    * examples:
+
+            * ``a = fp.el.Rect(width=2, height=2, center=(0, 0), layer=TECH.LAYER.TH_ISO_DRW)``
+
+            * ``b = a.scaled(2, 3).translated(5, 0)``
+
+        .. image:: ../images/scaled.png
 
 
 Information
