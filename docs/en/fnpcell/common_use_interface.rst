@@ -105,11 +105,54 @@ To change the layer of an element from one component to another, users are allow
 
 The Boolean api mainly contains::
 
-    bool = rect | circ
-    bool = rect & circ
-    bool = rect - circ
-    bool = rect ^ circ
+    OR
+    AND
+    NOT
+    XOR
 
+* ``OR``
+    * examples:
+
+            * ``rect = fp.el.Rect(width=10, height=5, center=(0, 0), layer=TECH.LAYER.M1_DRW)``
+
+            * ``circ = fp.el.Circle(radius=8, initial_degrees=0, final_degrees=180, layer=TECH.LAYER.M1_DRW)``
+
+            * ``bool = rect | circ``
+
+        .. image:: ../images/or.png
+
+* ``AND``
+    * examples:
+
+            * ``rect = fp.el.Rect(width=10, height=5, center=(0, 0), layer=TECH.LAYER.M1_DRW)``
+
+            * ``circ = fp.el.Circle(radius=8, initial_degrees=0, final_degrees=180, layer=TECH.LAYER.M1_DRW)``
+
+            * ``bool = rect & circ``
+
+        .. image:: ../images/and.png
+
+* ``NOT``
+    * examples:
+
+            * ``rect = fp.el.Rect(width=10, height=5, center=(0, 0), layer=TECH.LAYER.M1_DRW)``
+
+            * ``circ = fp.el.Circle(radius=8, initial_degrees=0, final_degrees=180, layer=TECH.LAYER.M1_DRW)``
+
+            * ``bool = rect - circ``
+
+        .. image:: ../images/not.png
+
+* ``XOR``
+    * examples:
+
+            * ``rect = fp.el.Rect(width=10, height=5, center=(0, 0), layer=TECH.LAYER.M1_DRW)``
+
+            * ``circ = fp.el.Circle(radius=8, initial_degrees=0, final_degrees=180, layer=TECH.LAYER.M1_DRW)``
+
+            * ``bool = rect ^ circ``
+
+        .. image:: ../images/xor.png
 
 Routing
 ^^^^^^^^^^^^^^^
