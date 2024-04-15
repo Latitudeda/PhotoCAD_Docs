@@ -12,6 +12,7 @@ PhotoCAD产品手册资料
    Introduction/index
    Installation/index
    Tutorials/quickstart_zh
+   gpdk_manual/index
    gpdk/QuickCreatePDK
    WaveguideRouting/Summary
 

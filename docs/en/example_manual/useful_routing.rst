@@ -11,3 +11,4 @@ Useful function when scripting PhotoCAD
   useful_add_pinport
   useful_get_coordinate
   useful_naming_policy
+  useful_Pytest

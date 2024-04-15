@@ -9,54 +9,54 @@ PhotoCAD Hands-on
 
 2. 按照安装说明成功安装 **PhotoCAD** 后，您可以继续以下操作，快速体验 **PhotoCAD**.
 
-3. First look of the component unit script:
+3. 初识元件脚本:
 
-   In the current project of PyCharm, find ``External Libraries`` > ``site-packages`` > ``gpdk`` > ``components`` > ``bend`` > ``bend_bezier.py`` file and double-click it, it will open the python source code of Bessel type bend (as shown below):
+   在 PyCharm 的当前项目中，找到 ``External Libraries`` > ``site-packages`` > ``gpdk`` > ``components`` > ``bend`` > ``bend_bezier.py`` 文件并双击，就会打开贝塞尔型弯曲波导的 python 源代码（如下图所示）：
    
    .. image:: ../images/quickstart1.png
    
    
-4. Run the script and view the layout:
+4. 运行脚本并查看布局:
 
-   After running ``bend_bezier.py``, a local folder will be generated under ``gpdk`` > ``components`` > ``bend``, and the ``bend_bezier.gds`` file will be generated in the local folder (currently there is already a local folder under the bend folder, no new local folder will be created after running the script, and the generated file will replace the file of the same name in the local folder by default). Note that there are two common ways to run this script file.
-  
-   4.1. Click the right button in the code editing area, and then click ``Run bend_bezier`` as indicated by the red arrow in the figure.
+   在运行 ``bend_bezier.py`` 后，会在 ``gpdk`` > ``components`` > ``bend`` 下生成一个 ``local`` 文件夹, 并在 ``local`` 文件夹下生成 ``bend_bezier.gds`` 文件（目前 bend 文件夹下已经有一个 local 文件夹，运行脚本后不会创建新的 local 文件夹，默认情况下，新生成的文件会替换本地文件夹中的同名文件）。请注意，运行该脚本文件有两种常见方式。
+
+   4.1 方式一：单击代码编辑区的右键，然后单击 ``Run bend_bezier`` ，如图中红色箭头所示。
    
    .. image:: ../images/quickstart2.png
    
-   4.2 Make sure that the first red arrow shows ``Current File`` or ``bend_bezier`` before clicking the button pointed to by the second arrow.
-   
+   4.2 方式二：如下图所示，首先确保第一个红色箭头显示 ``Current File`` 或者 ``bend_bezier`` ，再点击第二个箭头。
+
    .. image:: ../images/quickstart3.png
    
-   4.3 After running and succeeding, you can see the message shown below.
+   4.3 运行成功后，可以看到如下所示的信息。
    
    .. image:: ../images/quickstart4.png
    
-   4.4 Use a layout tool such as KLayout to open the GDS file to view the device. In the Cell list, you can see two layout cells: ``BendBezier`` and ``BendBezier_q``. The current display is ``BendBezier_q``.
+   4.4 使用 KLayout 等布局工具打开 GDS 文件以查看版图。在左侧箭头所示的列表中，您可以看到两个布局单元： ``BendBezier`` 和 ``BendBezier_q``，当前显示的是 ``BendBezier_q``.
    
    .. image:: ../images/quickstart5.png
 
-5. Use ``class`` to create the corresponding device (instance).
+5. 使用 ``class`` 创建相应的器件 (instance).
 
-   Viewing the ``bend_bezier.py`` source code in PyCharm, the source code creates two instances of ``class BendBezier()`` by ``library +=``::
+   在 PyCharm 中查看 ``bend_bezier.py`` 的源代码，源代码通过 ``library +=`` 创建了两个 ``class BendBezier()`` 实例::
    
       library += BendBezier()
       library += BendBezier(name="q", start=(0, 0), controls=[(30, 30)], end=(60, 0), waveguide_type=TECH.WG.FWG.C.WIRE), transform=fp.translate(0,40))
       
-   Where the first device is generated using the default parameters; the second device is generated using the following parameters::
+   其中，第一个器件使用默认参数生成；第二个器件使用以下参数生成::
    
-      name="q"                       Define the device specific name q;
-      start=(0, 0)                   Define the starting point of the Bezier curve as (0,0);
-      controls=[(30, 30)]            Define the Bezier curve passing through a control point (30,30);
-      end=(60, 0)                    Define the end point of the Bezier curve as (60,0);
-      waveguide_type=WG.FWG.C.WIRE   Defines the type of waveguide used for the curve;
-      transform=fp.translate(0, 40)) Defines the position of the layout cell with respect to the origin;
+      name="q"                       定义器件的特定名称 q;
+      start=(0, 0)                   定义贝塞尔曲线的起点为 (0,0);
+      controls=[(30, 30)]            定义贝塞尔曲线经过的控制点为 (30,30);
+      end=(60, 0)                    定义贝塞尔曲线的终点为 (60,0);
+      waveguide_type=WG.FWG.C.WIRE   定义曲线生成弯曲波导所使用的波导类型;
+      transform=fp.translate(0, 40)) 定义布局单元相对于原点的位置;
       
-   For a detailed description of the parameters of this device, please refer to the description in the python script shown in the figure:
-   
+   有关该设备参数的详细说明，请参阅图中 python 脚本的描述：
+
    .. image:: ../images/quickstart6.png
    
-6. Try to modify the number of instances and parameters generated in the bend_bezier.py source code, and observe the changes in the shape of its layout.
+6. 尝试修改 bend_bezier.py 源代码中生成的实例数量和参数，并观察其布局形状的变化。
 
 
 

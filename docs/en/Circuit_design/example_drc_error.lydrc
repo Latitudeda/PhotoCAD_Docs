@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<klayout-macro>
+ <description/>
+ <version/>
+ <category>drc</category>
+ <prolog/>
+ <epilog/>
+ <doc/>
+ <autorun>false</autorun>
+ <autorun-early>false</autorun-early>
+ <priority>0</priority>
+ <shortcut/>
+ <show-in-menu>true</show-in-menu>
+ <group-name>drc_scripts</group-name>
+ <menu-path>tools_menu.drc.end</menu-path>
+ <interpreter>dsl</interpreter>
+ <dsl-interpreter-name>drc-dsl-xml</dsl-interpreter-name>
+ <text>
+# Read about DRC scripts in the User Manual in "Design Rule Check (DRC)"
+
+# This is a sample:
+
+report("DRC report")
+
+# ---------------------------------
+# Drawing Layers
+# input LAYER &amp; DATATYPE
+
+FWG_COR    = input(1, 1) 
+FWG_CLD    = input(1, 2)
+M1_DRW     = input(33,3)
+VIA1_DRW   = input(34,3)
+M2_DRW     = input(35,3)
+VIA2_DRW   = input(36,3)
+TIN_DRW    = input(31,3)
+CONT_DRW   = input(32,3)
+
+# ---------------------------------
+# Design Rules
+# ---------------------------------
+
+minS_FWG_COR = 2.um
+minW_FWG_COR = 150.nm
+
+r_minS_FWG_COR = FWG_COR.space(minS_FWG_COR)
+r_minS_FWG_COR.output("minS_FWG_COR: FWG_COR space is &lt; #{'%.12g' % minS_FWG_COR} µm")
+
+r_minW_FWG_COR = FWG_COR.width(minW_FWG_COR)
+r_minW_FWG_COR.output("minW_FWG_COR: FWG_COR width is &lt; #{'%.12g' % minW_FWG_COR} µm") 
+
+# ---------------------------------
+
+minW_FWG_CLD = 2.5.um
+
+r_minW_FWG_CLD = FWG_CLD.width(minW_FWG_CLD)
+r_minW_FWG_CLD.output("minW_FWG_CLD: FWG_CLD width is &lt; #{'%.12g' % minW_FWG_CLD} µm") 
+
+# ---------------------------------
+
+r_inside_FWG = FWG_COR - FWG_COR.inside(FWG_CLD)
+r_inside_FWG.output("inside_FWG: FWG_COR not entirely inside FWG_CLD")
+
+# ---------------------------------
+
+cont_X = CONT_DRW - (CONT_DRW.inside(M1_DRW) + CONT_DRW.inside(M2_DRW))
+cont_X.output("cont_X: CONT_DRW not entirely inside M1_DRW or M2_DRW")
+
+# ---------------------------------
+
+minE_CONT_TIN = 500.nm
+
+r_minE_CONT_TIN = TIN_DRW.enclosing(CONT_DRW, minE_CONT_TIN)
+r_minE_CONT_TIN.output("minE_CONT_TIN: CONT_DRW enclosed by TIN_DRW with spacing  &lt; #{'%.12g' % minE_CONT_TIN} µm")
+
+# ---------------------------------
+
+r_VIA1_X = VIA1_DRW - VIA1_DRW.inside(TIN_DRW)
+r_VIA1_X.output("VIA1_X: VIA1_DRW not entirely inside TIN_DRW")
+
+minE_VIA1_M1 = 500.nm
+
+r_minE_VIA1_M1 = M1_DRW.enclosing(VIA1_DRW, minE_VIA1_M1)
+r_minE_VIA1_M1.output("minE_VIA1_M1: VIA1_DRW enclosed by M1_DRW with spacing  &lt; #{'%.12g' % minE_VIA1_M1} µm")
+
+# ---------------------------------
+
+minA_C_V = 0.25.um2
+
+r_minA_CONT = CONT_DRW.with_area(0, minA_C_V)
+r_minA_CONT.output("minA_CONT: CONT_DRW area &lt; #{'%.12g' % minA_C_V} µm²")
+
+r_minA_VIA1 = VIA1_DRW.with_area(0, minA_C_V)
+r_minA_VIA1.output("minA_VIA1: VIA1_DRW area &lt; #{'%.12g' % minA_C_V} µm²")
+
+r_minA_VIA2 = VIA2_DRW.with_area(0, minA_C_V)
+r_minA_VIA2.output("minA_VIA2: VIA2_DRW area &lt; #{'%.12g' % minA_C_V} µm²")
+
+# ---------------------------------
+
+r_VIA1_VIA2 = VIA1_DRW &amp; VIA2_DRW
+r_VIA1_VIA2.output("VIA1_VIA2: VIA1 not allowed under VIA2")
+
+# ---------------------------------
+
+minS_C_V = 500.nm
+
+r_minS_CONT = CONT_DRW.space(minS_C_V)
+r_minS_CONT.output("minS_CONT: CONT_DRW space is &lt; #{'%.12g' % minS_C_V} µm")
+
+r_minS_VIA1 = VIA1_DRW.space(minS_C_V)
+r_minS_VIA1.output("minS_VIA1: VIA1_DRW space is &lt; #{'%.12g' % minS_C_V} µm")
+
+r_minS_VIA2 = VIA2_DRW.space(minS_C_V)
+r_minS_VIA2.output("minS_VIA2: VIA2_DRW space is &lt; #{'%.12g' % minS_C_V} µm")
+
+# ---------------------------------
+
+minS_CONT_VIA2 = 300.nm
+
+r_minS_CONT_VIA2 = CONT_DRW.separation(VIA2_DRW, minS_CONT_VIA2)
+r_minS_CONT_VIA2.output("minS_CONT_VIA2: CONT_DRW to VIA2_DRW space &lt; #{'%.12g' % minS_CONT_VIA2} µm")
+
+# ---------------------------------
+
+min_edge_length_M2 = 3.um
+
+r_edge_length_M2 = M2_DRW.edges.with_length(0, min_edge_length_M2)
+r_edge_length_M2.output("edge_length_M2: edge length &lt; #{'%.12g' % min_edge_length_M2} µm")
+
+
+r_O_VIA2_CONT = VIA2_DRW.overlapping(CONT_DRW) - CONT_DRW
+r_O_VIA2_CONT.output("O_VIA2_CONT: VIA2_DRW must be either inside or outside CONT_DRW")
+
+
+
+
+
+</text>
+</klayout-macro>
