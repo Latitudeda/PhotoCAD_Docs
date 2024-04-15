@@ -12,3 +12,4 @@ Useful function when scripting PhotoCAD
   useful_get_coordinate
   useful_naming_policy
   useful_Pytest
+  useful_runner.py
