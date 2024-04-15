@@ -6,7 +6,6 @@ In this section, you can find:
 2. Method to extend the length of the existing PCell ports.
 3. Expand the footprint to downstream devices(HFanout).
 4. Horizontalized the ports.
-test
 
 These functions can be found in ``gpdk >> routing``.
 
