@@ -143,7 +143,7 @@ Export GDS file
 
         ::
 
-            gds_file = C://user//username//test.gds
+            gds_file = "C://user//username//test.gds"
 
             fp.export_gds(library, file=gds_file)
 
