@@ -3,11 +3,11 @@
 # -- Project information
 
 project = "PhotoCAD"
-copyright = "2023, Latitudeda.com"
+copyright = "2024, Latitudeda.com"
 author = "latitudeda.com"
 
-release = "1.6"
-version = "1.6.0"
+release = "1.7"
+version = "1.7.0"
 
 
 # -- General configuration
@@ -27,7 +27,7 @@ multiproject_projects = {
         "use_config_file": False,
         "config": {
             "project": "PhotoCAD",
-            "copyright": "2023, Latitudeds.com",
+            "copyright": "2024, Latitudeds.com",
             "author": "latitudeds.com",
         },
     },
@@ -35,7 +35,7 @@ multiproject_projects = {
         "use_config_file": False,
         "config": {
             "project": "PhotoCAD",
-            "copyright": "2023, Latitudeda.com",
+            "copyright": "2024, Latitudeda.com",
             "author": "latitudeda.com",
         },
     },
