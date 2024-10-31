@@ -99,13 +99,12 @@ Import GDS file
 
             from fnpcell import all as fp
             from gpdk.technology import get_technology
-            from gpdk.util.json_cell import JsonCell
 
 
-            class Edge_Coupler_1550(JsonCell, locked=True):
+            class Edge_Coupler_1550(fp.JsonCell[fp.IOwnedPort], locked=True):
 
                 json_path: fp.StrPath = "./json_file/edge_coupler_1550.json"
-                gds_path: fp.StrPath = "./gds_file/edge_coupler_1550.gds"
+                library_path: fp.StrPath = "./gds_file/edge_coupler_1550.gds"
 
 
 
