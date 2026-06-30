@@ -58,3 +58,12 @@ There are also several applications created by **Latitudeds** in the ``EXAMPLES`
    Release_notes/index
    Frequent_question/index
    AboutUS
+
+
+.. toctree::
+   :caption: 2p0
+   :hidden:
+
+   03_components/index
+   09_api/index
+
