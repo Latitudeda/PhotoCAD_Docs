@@ -1,7 +1,7 @@
 .. _Straight :
 
 
-Straight_TEST
+Straight
 ====================
 
 The straight waveguide is an indispensable component of the photonic integration circuit.
