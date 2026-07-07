@@ -3,7 +3,7 @@
 Straight
 =======================
 
-The straight waveguide is one of the most fundamental building blocks in photonic integrated circuits.
+The straight waveguide is one of the most fundamental building blocks in photonic integrated circuits. The full script can be found in ``gpdk`` > ``components`` > ``straight`` > ``staight.py``.
 
 Basic Usage
 ------------------
@@ -75,11 +75,10 @@ The complete definition of the ``Straight`` class:
             ports += [port.with_name(self.port_names[i]) for i, port in enumerate(wg.ports)]
             return insts, elems, ports
 
-Script & Parameter Description
+Section Script Description
 -------------------------------
 
-1. Parameters
-^^^^^^^^^^^^^^
+**Parameters:**
 
 .. list-table:: 
    :widths: 20 20 35
@@ -101,24 +100,37 @@ Script & Parameter Description
      - ``("op_0", "op_1")``
      - A sequence containing custom names assigned to the input and output ports.
 
-2. The raw_curve Property
-^^^^^^^^^^^^^^^^^^^^^^^^^
+**raw_curve:**
+
+.. code-block:: python
+  
+    @cached_property
+    def raw_curve(self):
+        return fp.g.Line( length=self.length, anchor=self.anchor )
 
 The ``raw_curve`` method efficiently calculates and caches a 1D geometric line (``fp.g.Line``) based on the component's defined ``length`` and ``anchor`` parameters.
 
-3. The build Method
-^^^^^^^^^^^^^^^^^^^
+**build Method:**
+
+.. code-block:: python
+
+    def build(self) -> Tuple[fp.InstanceSet, fp.ElementSet, fp.PortSet]:
+        insts, elems, ports = super().build()
+        wg = self.waveguide_type(curve=self.raw_curve)
+        insts += wg
+        ports += [port.with_name(self.port_names[i]) for i, port in enumerate(wg.ports)]
+        return insts, elems, ports
 
 The ``build()`` method generates the actual physical layout using a three-step assembly process:
 
-- **Extrusion**: It applies the physical profile (width and layer definitions from ``waveguide_type``) along the mathematical centerline (``raw_curve``) to create a concrete waveguide instance.
+- **Extrusion:** It applies the physical profile (width and layer definitions from ``waveguide_type``) along the mathematical centerline (``raw_curve``) to create a concrete waveguide instance.
 
-- **Integration**: It registers this new waveguide instance into the cell's instance set for GDS exporting.
+- **Integration:** It registers this new waveguide instance into the cell's instance set for GDS exporting.
 
-- **Port Mapping**: It maps and renames the default waveguide ports to the user-specified ``port_names`` for future connection referencing.
+- **Port Mapping:** It maps and renames the default waveguide ports to the user-specified ``port_names`` for future connection referencing.
 
-4. Parameter Variations
-^^^^^^^^^^^^^^^^^^^^^^^^
+Run and view the layout
+------------------------
 
 Modifying the parameters changes the generated structure. Observe the differences when varying lengths and waveguide types:
 
@@ -156,6 +168,10 @@ It operates as a wrapper function that calculates the required distance and angl
         waveguide_type: fp.IWaveguideType,
         port_names: fp.IPortOptions = ("op_0", "op_1"),
     ):
+        length = fp.distance_between(end, start)
+        orientation = fp.angle_between(end, start)
+        straight = Straight(length=length, waveguide_type=waveguide_type, port_names=port_names).rotated(radians=orientation).translated(start)
+        return straight
 
 **Parameters:** 
 
