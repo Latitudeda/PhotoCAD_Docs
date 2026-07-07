@@ -3,7 +3,7 @@
 Straight
 =======================
 
-The straight waveguide is one of the most fundamental building blocks in photonic integrated circuits. The full script can be found in ``gpdk`` > ``components`` > ``straight`` > ``staight.py``.
+The straight waveguide is one of the most fundamental building blocks in photonic integrated circuits. The full script can be found in ``gpdk`` > ``components`` > ``straight`` > ``straight.py``.
 
 Basic Usage
 ------------------
@@ -36,7 +36,7 @@ This produces a straight waveguide segment with optical ports at both ends.
 Full Script
 ------------------
 
-Import library:
+Import libraries:
 
 .. code-block:: python
 
@@ -92,13 +92,13 @@ Section Script Description
      - The physical length of the waveguide in micrometers. Must be non-negative.
    * - ``waveguide_type``
      - ``FWG.C.WIRE``
-     - The waveguide definition (core/cladding materials, width, etc.). Defaults to the technology's standard wire waveguide.
+     - The waveguide definition (core/cladding layers, width, etc.). Defaults to the technology's standard wire waveguide.
    * - ``anchor``
      - ``Anchor.START``
      - Controls where the origin of the cell is placed. Options: ``START``, ``CENTER``, ``END``.
    * - ``port_names``
      - ``("op_0", "op_1")``
-     - A sequence containing custom names assigned to the input and output ports.
+     - A sequence containing custom names assigned to the component's ports.
 
 **raw_curve:**
 
@@ -108,7 +108,7 @@ Section Script Description
     def raw_curve(self):
         return fp.g.Line( length=self.length, anchor=self.anchor )
 
-The ``raw_curve`` method efficiently calculates and caches a 1D geometric line (``fp.g.Line``) based on the component's defined ``length`` and ``anchor`` parameters.
+It calls a predefined line (``fp.g.Line``) and passes the PCell's ``length`` and ``anchor`` parameters to it.
 
 **build Method:**
 
@@ -121,13 +121,7 @@ The ``raw_curve`` method efficiently calculates and caches a 1D geometric line (
         ports += [port.with_name(self.port_names[i]) for i, port in enumerate(wg.ports)]
         return insts, elems, ports
 
-The ``build()`` method generates the actual physical layout using a three-step assembly process:
-
-- **Extrusion:** It applies the physical profile (width and layer definitions from ``waveguide_type``) along the mathematical centerline (``raw_curve``) to create a concrete waveguide instance.
-
-- **Integration:** It registers this new waveguide instance into the cell's instance set for GDS exporting.
-
-- **Port Mapping:** It maps and renames the default waveguide ports to the user-specified ``port_names`` for future connection referencing.
+The ``build`` method creates a waveguide instance using the defined ``waveguide_type`` and ``raw_curve``, adds it to the layout, and renames its ports according to ``port_names``.
 
 Run and view the layout
 ------------------------
