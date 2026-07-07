@@ -3,12 +3,14 @@
 Straight
 =======================
 
-The straight waveguide is one of the most fundamental building blocks in photonic integrated circuits. 
+The straight waveguide is one of the most fundamental building blocks in photonic integrated circuits.
 
 Basic Usage
 ------------------
 
-The simplest way to create a straight waveguide is to instantiate the ``Straight`` class with desired parameters::
+The simplest way to create a straight waveguide is to instantiate the ``Straight`` class with desired parameters and output the layout for visualization.
+
+.. code-block:: python
 
     from gpdk.technology import get_technology
     import fnpcell.all as fp
@@ -17,19 +19,67 @@ The simplest way to create a straight waveguide is to instantiate the ``Straight
     TECH = get_technology()
 
     # Create a 10μm straight waveguide using default settings
-    straight = pdk.Straight( length=10, waveguide_type=TECH.WG.FWG.C.WIRE)
+    straight = pdk.Straight(length=10, waveguide_type=TECH.WG.FWG.C.WIRE)
 
-    # Plot the layout
+    # Option 1: Plot the layout directly
     fp.plot(straight)
+
+    # Option 2: Export to GDS file for external viewers
+    # library = fp.Library()
+    # library += straight
+    # fp.export_gds(library, file=TECH.OUTPUT.local_output_file(__file__))
 
 .. image:: image/straight_1.png
 
 This produces a straight waveguide segment with optical ports at both ends.
 
-Parameters Reference
----------------------------
+Full Script
+------------------
 
-The ``Straight`` class accepts the following arguments to customize its geometric and structural properties:
+Import library:
+
+.. code-block:: python
+
+    from functools import cached_property
+    from typing import Tuple
+
+    from fnpcell import all as fp
+    from fnpcell.interfaces import angle_between, distance_between
+    from gpdk.technology import get_technology, PCell
+
+The complete definition of the ``Straight`` class: 
+
+.. code-block:: python
+
+    class Straight(fp.IWaveguideLike, fp.PCell[fp.IOwnedPort]):
+
+        length: float = fp.NonNegFloatParam(default=10)
+        waveguide_type: fp.IWaveguideType = fp.WaveguideTypeParam(default=fp.USE_DEFAULT_FACTORY)
+        anchor: fp.Anchor = fp.AnchorParam(default=fp.Anchor.START)
+        port_names: fp.IPortOptions = fp.PortOptionsParam(count=2, default=("op_0", "op_1"))
+
+        def _default_waveguide_type(self):
+            return get_technology().WG.FWG.C.WIRE
+
+        @cached_property
+        def raw_curve(self):
+            return fp.g.Line(
+                length=self.length,
+                anchor=self.anchor,
+            )
+
+        def build(self) -> Tuple[fp.InstanceSet, fp.ElementSet, fp.PortSet]:
+            insts, elems, ports = super().build()
+            wg = self.waveguide_type(curve=self.raw_curve)
+            insts += wg
+            ports += [port.with_name(self.port_names[i]) for i, port in enumerate(wg.ports)]
+            return insts, elems, ports
+
+Script & Parameter Description
+-------------------------------
+
+1. Parameters
+^^^^^^^^^^^^^^
 
 .. list-table:: 
    :widths: 20 20 35
@@ -51,14 +101,51 @@ The ``Straight`` class accepts the following arguments to customize its geometri
      - ``("op_0", "op_1")``
      - A sequence containing custom names assigned to the input and output ports.
 
+2. The raw_curve Property
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Connecting Two Coordinates
+The ``raw_curve`` method efficiently calculates and caches a 1D geometric line (``fp.g.Line``) based on the component's defined ``length`` and ``anchor`` parameters.
+
+3. The build Method
+^^^^^^^^^^^^^^^^^^^
+
+The ``build()`` method generates the actual physical layout using a three-step assembly process:
+
+- **Extrusion**: It applies the physical profile (width and layer definitions from ``waveguide_type``) along the mathematical centerline (``raw_curve``) to create a concrete waveguide instance.
+
+- **Integration**: It registers this new waveguide instance into the cell's instance set for GDS exporting.
+
+- **Port Mapping**: It maps and renames the default waveguide ports to the user-specified ``port_names`` for future connection referencing.
+
+4. Parameter Variations
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Modifying the parameters changes the generated structure. Observe the differences when varying lengths and waveguide types:
+
+**Variation A:** 50μm length with center anchor.
+
+.. code-block:: python
+
+    straight_var_a = pdk.Straight(length=50, anchor=fp.Anchor.CENTER)
+
+.. image:: image/straight_variation_a.png
+
+**Variation B:** 20μm length utilizing expanded waveguide type.
+
+.. code-block:: python
+
+    straight_var_b = pdk.Straight(length=20, waveguide_type=TECH.WG.FWG.C.EXPANDED)
+
+.. image:: image/straight_variation_b.png
+
+StraightBetween
 ---------------------------------
 
-Often, you will need to generate a straight waveguide that bridges two arbitrary coordinates dynamically. PhotoCAD provides a convenient utility function, ``StraightBetween``, for this exact scenario.
+The function ``StraightBetween`` can generate a straight waveguide that bridges two coordinates.
 
-.. note::
-   ``StraightBetween`` is not a separate component class. It is a wrapper function that calculates the required length and angle, internally instantiates the base ``Straight`` class, and applies the necessary rotation and translation to connect the two points.
+It operates as a wrapper function that calculates the required distance and angle between two points, internally instantiates the base ``Straight`` class, and applies the necessary rotation and translation to establish the connection.
+
+**Function:**
 
 .. code-block:: python
 
@@ -69,17 +156,8 @@ Often, you will need to generate a straight waveguide that bridges two arbitrary
         waveguide_type: fp.IWaveguideType,
         port_names: fp.IPortOptions = ("op_0", "op_1"),
     ):
-        """Create a straight waveguide exactly between two points."""
-        length = fp.distance_between(end, start)
-        orientation = fp.angle_between(end, start)
-        straight = Straight(
-            length=length, 
-            waveguide_type=waveguide_type, 
-            port_names=port_names
-        ).rotated(radians=orientation).translated(start)
-        return straight
 
-**StraightBetween Parameters**
+**Parameters:** 
 
 .. list-table:: 
    :widths: 20 20 35
@@ -99,8 +177,8 @@ Often, you will need to generate a straight waveguide that bridges two arbitrary
      - The waveguide definition (core/cladding materials, width, etc.) to apply.
    * - ``port_names``
      - ``("op_0", "op_1")``
-     - A sequence containing custom names assigned to the input and output ports.
-     
+     - Custom names assigned to the input and output ports.
+
 **Example usage:**
 
 .. code-block:: python
@@ -112,40 +190,3 @@ Often, you will need to generate a straight waveguide that bridges two arbitrary
     )
 
 .. image:: image/straight_2.png
-
-Anatomy of the Class
--------------------------------------------
-
-To understand how PhotoCAD constructs components internally, it is highly instructive to look at the class definition. This component is heavily used internally by the routing engine and forms the backbone of most photonic layouts.
-
-**1. The Raw Curve**
-
-Every basic waveguide component should define a ``raw_curve`` property. This geometric primitive is used by routing functions (``Linked``, ``LinkBetween``, etc.) to automatically compute lengths and place components.
-
-.. code-block:: python
-
-    @cached_property
-    def raw_curve(self):
-        """Define the geometric path of the waveguide."""
-        return fp.g.Line(
-            length=self.length,
-            anchor=self.anchor,
-        )
-
-When using routing functions, PhotoCAD will calculate the length between two ports and assign proper components based on this curve.
-
-**2. Building the Layout**
-
-Finally, the ``build()`` method assembles the layout by creating a waveguide instance from the chosen type and curve, adding the instance, and renaming ports.
-
-.. code-block:: python
-
-    def build(self) -> Tuple[fp.InstanceSet, fp.ElementSet, fp.PortSet]:
-        """Build the layout by instantiating the waveguide."""
-        insts, elems, ports = super().build()
-        wg = self.waveguide_type(curve=self.raw_curve)
-        insts += wg
-        
-        # Iterating through default ports to rename them based on user input
-        ports += [port.with_name(self.port_names[i]) for i, port in enumerate(wg.ports)]
-        return insts, elems, ports
