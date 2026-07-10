@@ -5,11 +5,13 @@ The three main components of gpdk are as follows:
 
 
 - :ref:`com_straight`
+- :ref:`com_bend_euler`
+- :ref:`com_taper_linear`
 
 .. toctree::
    :hidden:
 
    comp_straight
-   component2
-   component3
+   comp_bend_euler
+   comp_taper_linear
 
