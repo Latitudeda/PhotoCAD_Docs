@@ -50,25 +50,18 @@ Parameters
 Basic Usage
 -----------
 
-The common usage is to provide the rectangle size, position, and layer.
-``center`` places the rectangle by its center point, while ``bottom_left``
-places it by its lower-left corner.
+The following examples create a normal rectangle and a rounded rectangle.
 
 .. code-block:: python
 
-    import fnpcell.all as fp
-    from gpdk.technology import get_technology
-
-    TECH = get_technology()
-
-    rect_core = fp.el.Rect(
+    fp.el.Rect(
         width=10,
         height=10,
         center=(0, 0),
         layer=TECH.LAYER.FWG_COR,
     )
 
-    rect_metal = fp.el.Rect(
+    fp.el.Rect(
         width=8,
         height=8,
         center=(10, 0),
@@ -76,46 +69,6 @@ places it by its lower-left corner.
         layer=TECH.LAYER.M1_DRW,
     )
 
-    rect_examples = fp.Device(name="rect_examples", content=[rect_core, rect_metal])
-    fp.plot(rect_examples)
-
-``rect_core`` creates a normal rectangle on ``TECH.LAYER.FWG_COR``.
-``rect_metal`` creates a rounded rectangle on ``TECH.LAYER.M1_DRW`` by setting
-``corner_radius``.
-
 .. image:: image/elem_rect_basic.png
    :align: center
    :width: 520px
-
-Placement
----------
-
-Use ``center`` when the rectangle should be placed around a central point. Use
-``bottom_left`` when the rectangle should start from a known lower-left
-coordinate.
-
-.. code-block:: python
-
-    centered_rect = fp.el.Rect(
-        width=10,
-        height=5,
-        center=(0, 0),
-        layer=TECH.LAYER.M1_DRW,
-    )
-
-    bottom_left_rect = fp.el.Rect(
-        width=10,
-        height=5,
-        bottom_left=(0, 0),
-        layer=TECH.LAYER.M1_DRW,
-    )
-
-If neither ``center`` nor ``bottom_left`` is provided, the position can become
-ambiguous, so it is better to write one of them explicitly.
-
-The element can also be reused after creation. For example, a rectangle can be
-moved with ``translated``:
-
-.. code-block:: python
-
-    moved_rect = centered_rect.translated(15, 0)
