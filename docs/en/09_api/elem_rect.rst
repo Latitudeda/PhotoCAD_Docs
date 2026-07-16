@@ -4,12 +4,10 @@ Rect
 ====
 
 ``fp.el.Rect`` creates a rectangular layout element on a specified technology
-layer. It is a primitive element API under ``fp.el`` and is used when a layout
-needs a simple rectangular shape.
+layer.
 
-The function definition can be checked in
-``fnpcell`` > ``element`` > ``rect.pyi``. Through ``fnpcell.all``, the
-lower-level ``rect`` factory is exposed as ``fp.el.Rect``.
+The function definition is available in
+``fnpcell`` > ``element`` > ``rect.pyi``.
 
 Parameters
 ----------
