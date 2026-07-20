@@ -13,4 +13,5 @@ and performing Boolean operations.
    :maxdepth: 1
 
    elem_rect
+   elem_circle
 
