@@ -12,6 +12,7 @@ and performing Boolean operations.
 .. toctree::
    :maxdepth: 1
 
+   elem_arc
    elem_rect
    elem_circle
 
