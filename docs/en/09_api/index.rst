@@ -1,21 +1,18 @@
 API
 ===
 
-This chapter records commonly used PhotoCAD and FNPCELL APIs. The first part
-focuses on ``elements(fp.el)``, which provides basic layout elements such as
-rectangles, circles, polygons, lines, labels, and text.
+This chapter mainly documents the APIs provided by FNPCELL.
 
-Elements (fp.el)
-----------------
+Elements
+--------
 
-``fp.el`` is used to create primitive layout graphics. These elements are the
-basic shapes used inside many GPDK components.
+The ``fp.el`` API mainly provides functions for drawing common layout graphics
+and performing Boolean operations.
 
 .. toctree::
    :maxdepth: 1
 
-   api1
-   api2
-   api3
+   elem_arc
    elem_rect
+   elem_circle
 
