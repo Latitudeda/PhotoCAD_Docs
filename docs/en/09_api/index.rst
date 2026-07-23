@@ -15,4 +15,5 @@ and performing Boolean operations.
    elem_arc
    elem_rect
    elem_circle
+   elem_curve_paint
 
