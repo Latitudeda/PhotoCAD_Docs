@@ -8,6 +8,8 @@ The three main components of gpdk are as follows:
 - :ref:`com_bend_euler`
 - :ref:`com_taper_linear`
 - :ref:`com_mmi`
+- :ref:`com_ring`
+
 
 
 .. toctree::
@@ -17,4 +19,5 @@ The three main components of gpdk are as follows:
    comp_bend_euler
    comp_taper_linear
    comp_mmi
+   comp_ring
 
