@@ -13,35 +13,44 @@ Parameters
 ----------
 
 .. list-table::
-   :widths: 22 22 46
+   :widths: 18 24 27 41
    :header-rows: 1
 
    * - Parameter
-     - Default
+     - Type
+     - Example
      - Description
    * - ``radius``
-     - Required
+     - ``float``
+     - ``8``
      - Radius of the circle in layout units.
    * - ``initial_radians``
-     - ``None``
+     - ``Optional[float]``
+     - ``0``
      - Initial angle of the circular sector in radians.
    * - ``initial_degrees``
-     - ``None``
+     - ``Optional[float]``
+     - ``20``
      - Initial angle of the circular sector in degrees.
    * - ``final_radians``
-     - ``None``
+     - ``Optional[float]``
+     - ``2.4``
      - Final angle of the circular sector in radians.
    * - ``final_degrees``
-     - ``None``
+     - ``Optional[float]``
+     - ``160``
      - Final angle of the circular sector in degrees.
    * - ``origin``
-     - ``None``
+     - ``Optional[Point2D]``
+     - ``(0, 0)``
      - Center coordinate of the circle.
    * - ``transform``
-     - Identity transform
+     - ``Affine2D``
+     - ``fp.translate(0, 1)``
      - Applies a geometric transform when the element is created.
    * - ``layer``
-     - Required
+     - ``ILayer``
+     - ``TECH.LAYER.M1_DRW``
      - Technology layer where the circle is drawn.
 
 When no initial or final angle is specified, the element is a full circle.
@@ -50,24 +59,26 @@ The angular limits can be supplied in either radians or degrees.
 Basic Usage
 -----------
 
-The following examples create two circular sectors with different radii,
-origins, and angular ranges.
+The following examples cover every parameter listed above. The first sector
+uses degree angles, while the second sector uses radian angles.
 
 .. code-block:: python
 
-    fp.el.Circle(
-        radius=10,
+    circle_degrees = fp.el.Circle(
+        radius=8,
         origin=(0, 0),
-        initial_degrees=30,
-        final_degrees=90,
+        initial_degrees=20,
+        final_degrees=160,
+        transform=fp.translate(0, 1),
         layer=TECH.LAYER.M1_DRW,
     )
 
-    fp.el.Circle(
-        radius=8,
-        origin=(15, 0),
-        initial_degrees=0,
-        final_degrees=120,
+    circle_radians = fp.el.Circle(
+        radius=6,
+        origin=(18, 0),
+        initial_radians=0,
+        final_radians=2.4,
+        transform=fp.translate(0, -1),
         layer=TECH.LAYER.N_DRW,
     )
 
