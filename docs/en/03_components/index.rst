@@ -9,6 +9,8 @@ The three main components of gpdk are as follows:
 - :ref:`com_taper_linear`
 - :ref:`com_mmi`
 - :ref:`com_ring`
+- :ref:`com_mzm`
+
 
 
 
@@ -20,4 +22,5 @@ The three main components of gpdk are as follows:
    comp_taper_linear
    comp_mmi
    comp_ring
+   comp_mzm
 

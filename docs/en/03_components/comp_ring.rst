@@ -273,28 +273,23 @@ Run and view the layout
 
 Modifying the parameters changes the generated structure. Observe the differences when varying radii, spacing, and waveguide types:
 
-**Variation A:** A larger ring resonator with a 10μm radius and wider coupling gaps.
+**Variation A:** A resonator with a wider coupling gaps.
 
 .. code-block:: python
 
     ring_var_a = pdk.RingResonator(
-        ring_radius=10, 
         top_spacing=0.3, 
         bottom_spacing=0.3, 
-        ring_type=TECH.WG.FWG.C.WIRE
     )
 
 .. image:: image/ring_resonator_variation_a.png
 
-**Variation B:** A hybrid configuration using expanded waveguides for the bus lines and standard wire for the ring.
+**Variation B:** A larger ring resonator with a 15 μm radius.
 
 .. code-block:: python
 
     ring_var_b = pdk.RingResonator(
-        ring_radius=15, 
-        ring_type=TECH.WG.FWG.C.WIRE,
-        top_type=TECH.WG.FWG.C.EXPANDED, 
-        bottom_type=TECH.WG.FWG.C.EXPANDED
+        ring_radius=15,
     )
 
 .. image:: image/ring_resonator_variation_b.png
