@@ -142,8 +142,9 @@ LineBetween Parameters
 Basic Usage
 -----------
 
-The examples show a tapered ``Line`` and a ``LineBetween`` constructed from
-two explicit coordinates.
+The first two examples cover the taper, placement, and transform parameters.
+``cap_line`` is a fixed-width horizontal line without a transform, so the
+rounded start and triangular end can be compared directly.
 
 .. code-block:: python
 
@@ -162,10 +163,7 @@ two explicit coordinates.
        final_stroke_offset=1,
        taper_function=fp.TaperFunction.LINEAR,
        extension=(2, 3),
-       line_cap=(
-           fp.el.LineCapRound(),
-           fp.el.LineCapTriangle(ratio=0.6),
-       ),
+       line_cap=(None, None),
        origin=(-15, 8),
        transform=fp.rotate(degrees=5),
        layer=TECH.LAYER.FWG_COR,
@@ -181,18 +179,29 @@ two explicit coordinates.
        final_stroke_offset=0.5,
        taper_function=fp.TaperFunction.LINEAR,
        extension=(1, 1),
-       line_cap=(fp.el.LineCapRound(), fp.el.LineCapRound()),
+       line_cap=(None, None),
        origin=(12, 0),
        transform=fp.rotate(degrees=-5),
        layer=TECH.LAYER.M1_DRW,
    )
 
+   cap_line = fp.el.LineBetween(
+       start=(-10, -16),
+       end=(10, -16),
+       stroke_width=5,
+       line_cap=(
+           fp.el.LineCapRound(),
+           fp.el.LineCapTriangle(ratio=0.6),
+       ),
+       layer=TECH.LAYER.N_DRW,
+   )
+
    examples = fp.Device(
        name="line_examples",
-       content=[tapered_line, connected_line],
+       content=[tapered_line, connected_line, cap_line],
    )
    fp.plot(examples)
 
 .. image:: image/elem_line.png
-   :alt: Line and LineBetween examples
+   :alt: Line, LineBetween, and untransformed line cap examples
    :align: center

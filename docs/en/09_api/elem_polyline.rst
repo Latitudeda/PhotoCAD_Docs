@@ -77,7 +77,9 @@ Basic Usage
 -----------
 
 The first example exercises width, offset, tangent, corner, extension, and
-cap controls. The second shows a constant-width polyline.
+transform controls. The second shows a constant-width polyline.
+``cap_polyline`` uses simple raw coordinates without a transform so its rounded
+start and triangular end can be inspected directly.
 
 .. code-block:: python
 
@@ -98,10 +100,7 @@ cap controls. The second shows a constant-width polyline.
        raw_end_orientations=(0, -math.pi / 4),
        miter_limit=4,
        extension=(2, 2),
-       line_cap=(
-           fp.el.LineCapRound(),
-           fp.el.LineCapTriangle(ratio=0.5),
-       ),
+       line_cap=(None, None),
        origin=(-15, -3),
        transform=fp.rotate(degrees=8),
        layer=TECH.LAYER.FWG_COR,
@@ -114,12 +113,22 @@ cap controls. The second shows a constant-width polyline.
        layer=TECH.LAYER.M1_DRW,
    )
 
+   cap_polyline = fp.el.Polyline(
+       raw_polyline_points=[(-15, -17), (-5, -17), (3, -11)],
+       stroke_width=5,
+       line_cap=(
+           fp.el.LineCapRound(),
+           fp.el.LineCapTriangle(ratio=0.6),
+       ),
+       layer=TECH.LAYER.N_DRW,
+   )
+
    examples = fp.Device(
        name="polyline_examples",
-       content=[tapered_polyline, constant_polyline],
+       content=[tapered_polyline, constant_polyline, cap_polyline],
    )
    fp.plot(examples)
 
 .. image:: image/elem_polyline.png
-   :alt: Tapered and constant-width Polyline examples
+   :alt: Polyline and untransformed line cap examples
    :align: center
