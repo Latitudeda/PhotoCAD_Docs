@@ -124,7 +124,9 @@ Basic Usage
 
 The first example paints a continuous ``M1_DRW`` strip along an arc. The
 second example places rectangular ``N_DRW`` patterns periodically along
-another arc.
+another arc. The final example isolates ``line_cap`` on a straight curve
+without a transform so the rounded start and triangular end are easy to
+compare.
 
 .. code-block:: python
 
@@ -157,6 +159,21 @@ another arc.
         period=3,
     )
     periodic = periodic_paint(periodic_curve)
+
+    cap_curve = fp.g.Line(
+        length=18,
+        anchor=fp.Anchor.CENTER,
+        origin=(14, -15),
+    )
+    cap_paint = fp.el.CurvePaint.ContinuousLayer(
+        layer=TECH.LAYER.FWG_COR,
+        width=5,
+        line_cap=(
+            fp.el.LineCapRound(),
+            fp.el.LineCapTriangle(ratio=0.6),
+        ),
+    )
+    capped = cap_paint(cap_curve)
 
 .. image:: image/elem_curve_paint_basic.png
    :align: center

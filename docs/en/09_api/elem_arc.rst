@@ -93,9 +93,9 @@ or degrees.
 Basic Usage
 -----------
 
-The following examples cover every parameter listed above. The first arc uses
-degree angles, tapered width and offset, end extensions, line caps, and a
-transform. The second arc demonstrates the alternative radian angle inputs.
+The first two examples cover the angle, taper, extension, and transform
+parameters. ``cap_arc`` isolates ``line_cap`` on a fixed-width arc without a
+transform, making the rounded start and triangular end easy to compare.
 
 .. code-block:: python
 
@@ -110,7 +110,7 @@ transform. The second arc demonstrates the alternative radian angle inputs.
         final_degrees=120,
         angle_step=0.05,
         extension=(1, 2),
-        line_cap=(fp.el.LineCapRound(), fp.el.LineCapRound()),
+        line_cap=(None, None),
         origin=(0, 0),
         transform=fp.translate(0, 2),
         layer=TECH.LAYER.M1_DRW,
@@ -123,6 +123,19 @@ transform. The second arc demonstrates the alternative radian angle inputs.
         final_radians=1.5708,
         origin=(24, 0),
         layer=TECH.LAYER.N_DRW,
+    )
+
+    cap_arc = fp.el.Arc(
+        radius=6,
+        stroke_width=4,
+        initial_degrees=200,
+        final_degrees=340,
+        line_cap=(
+            fp.el.LineCapRound(),
+            fp.el.LineCapTriangle(ratio=0.6),
+        ),
+        origin=(12, -15),
+        layer=TECH.LAYER.FWG_COR,
     )
 
 .. image:: image/elem_arc_basic.png

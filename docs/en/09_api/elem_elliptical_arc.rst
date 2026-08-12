@@ -93,9 +93,9 @@ the element follows a full ``360``-degree elliptical path.
 Basic Usage
 -----------
 
-The following examples cover every parameter listed above. The first arc uses
-two radii, degree angles, tapered width and offset, extensions, line caps, and a
-transform. The second arc demonstrates a single radius and radian angle inputs.
+The first two examples cover the radius, angle, taper, extension, and transform
+parameters. ``cap_arc`` isolates ``line_cap`` on a fixed-width elliptical arc
+without a transform, making the two end shapes easier to inspect.
 
 .. code-block:: python
 
@@ -110,7 +110,7 @@ transform. The second arc demonstrates a single radius and radian angle inputs.
         final_stroke_offset=1,
         taper_function=fp.TaperFunction.LINEAR,
         extension=(1, 2),
-        line_cap=(fp.el.LineCapRound(), fp.el.LineCapRound()),
+        line_cap=(None, None),
         origin=(0, 0),
         transform=fp.translate(0, 1),
         layer=TECH.LAYER.M1_DRW,
@@ -123,6 +123,19 @@ transform. The second arc demonstrates a single radius and radian angle inputs.
         stroke_width=1.2,
         origin=(26, 0),
         layer=TECH.LAYER.N_DRW,
+    )
+
+    cap_arc = fp.el.EllipticalArc(
+        radius=(9, 5),
+        initial_degrees=200,
+        final_degrees=340,
+        stroke_width=4,
+        line_cap=(
+            fp.el.LineCapRound(),
+            fp.el.LineCapTriangle(ratio=0.6),
+        ),
+        origin=(14, -15),
+        layer=TECH.LAYER.FWG_COR,
     )
 
 .. image:: image/elem_elliptical_arc_basic.png

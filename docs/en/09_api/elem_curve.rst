@@ -73,8 +73,10 @@ Parameters
 Basic Usage
 -----------
 
-Create a geometric centerline first, then pass it to ``fp.el.Curve``. This
-example uses ``fp.g.Bezier`` as the centerline.
+Create a geometric centerline first, then pass it to ``fp.el.Curve``. The
+Bezier example covers the taper and transform parameters. ``cap_curve`` uses a
+straight centerline without a transform so the two ``line_cap`` shapes can be
+compared directly.
 
 .. code-block:: python
 
@@ -98,21 +100,32 @@ example uses ``fp.g.Bezier`` as the centerline.
        taper_function=fp.TaperFunction.LINEAR,
        miter_limit=4,
        extension=(2, 3),
-       line_cap=(
-           fp.el.LineCapRound(),
-           fp.el.LineCapTriangle(ratio=0.5),
-       ),
+       line_cap=(None, None),
        origin=(0, 0),
        transform=fp.rotate(degrees=8),
        layer=TECH.LAYER.FWG_COR,
    )
 
+   cap_curve = fp.el.Curve(
+       fp.g.Line(
+           length=18,
+           anchor=fp.Anchor.CENTER,
+           origin=(0, -14),
+       ),
+       stroke_width=4,
+       line_cap=(
+           fp.el.LineCapRound(),
+           fp.el.LineCapTriangle(ratio=0.6),
+       ),
+       layer=TECH.LAYER.M1_DRW,
+   )
+
    examples = fp.Device(
        name="curve_examples",
-       content=[curve],
+       content=[curve, cap_curve],
    )
    fp.plot(examples)
 
 .. image:: image/elem_curve.png
-   :alt: Curve created from a Bezier centerline
+   :alt: Curve and untransformed line cap examples
    :align: center
