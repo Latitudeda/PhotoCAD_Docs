@@ -12,6 +12,7 @@ The three main components of gpdk are as follows:
 - :ref:`com_gc`
 - :ref:`com_mzm`
 - :ref:`com_pd`
+- :ref:`com_ec`
 
 
 
@@ -27,4 +28,5 @@ The three main components of gpdk are as follows:
    comp_gc
    comp_mzm
    comp_pd
+   comp_ec
 
