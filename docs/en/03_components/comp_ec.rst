@@ -20,7 +20,7 @@ We recommend to follow the folder structure as follows:
 
      * cell name: The cell name indicated in the GDS file.
 
-     * layers: First point out all the layers in the GDS file, and assign them to the layers in your PDK. User are allowed to link the layers to PDK layers e.g., ``TECH.LAYER.FWG_COR``, ignore the layer in the GDS file e.g., "_IGNORE_", or directly use the layer ID in the PDK e.g., "80/30".
+     * layers: First point out all the layers in the GDS file, and assign them to the layers in your PDK. User are allowed to link the layers to PDK layers e.g., ``TECH.LAYER.FWG_COR``, ignore the layer in the GDS file e.g., "_IGNORE_", or directly use the layer ID in the PDK e.g., "80/30". If the layers in the imported GDS already match the current PDK layer definitions, you can directly use the statement ``"*": "<AUTO>"`` to map layer numbers automatically.
 
      * ports:
 
@@ -118,6 +118,9 @@ We recommend to follow the folder structure as follows:
                     },
 
 * ``edge_coupler_1550.py``:  Wraps the GDS-based device as a PhotoCAD device that can be instantiated and used in a photonic circuit.
+      * ``black_box=True``: This prevents suffixes such as _x1, _x2, and _x3 from being added when placing BlackBox Cells with mirrored, rotated, translated and other operations via FAB PDK. It satisfies the FAB's requirement for fixed BlackBox Cell names and simplifying the GDS export process.
+
+    .. image:: image/edge_coupler_1550_bb.png
 
 .. code-block:: python
 
@@ -153,15 +156,13 @@ Instantiate and connect the imported cells
 
 Once the device has been packaged, it can be instantiated and called just like other PDK cells. Since the optical port op_0 was defined in the JSON file, it can be accessed directly from the instantiated device. The two edge couplers can be connected using PhotoCAD's LinkBetween function:
 
-Once the cell has been packaged, it can be instantiated and called just like other PDK cells. For example, two edge couplers can be instantiated, placed at different positions, and connected with wires:
-
 .. code-block:: python
 
     from fnpcell import all as fp
     from gpdk.technology import get_technology
     from gpdk.components.edge_coupler_1550.edge_coupler_1550 import Edge_Coupler_1550
 
-    class Test_Edge_Coupler(fp.PCell):
+    class Edge_Coupler_link(fp.PCell):
         def build(self):
             insts, elems, ports = super().build()
             TECH = get_technology()
@@ -170,10 +171,11 @@ Once the cell has been packaged, it can be instantiated and called just like oth
 
             ec_1 = ec.translated(-300, 0)
             insts += ec_1
-            ec_2 = ec.rotated(degrees=180).translated(300, 200)
+            ec_2 = ec.translated(-300, 250)
             insts += ec_2
 
-            link_ec = fp.LinkBetween(ec_1["op_0"], ec_2["op_0"])
+            link_ec = fp.LinkBetween(ec_1["op_0"], ec_2["op_0"],
+                                     start_factory = 100)
             insts += link_ec
 
             return insts, elems, ports
@@ -185,10 +187,19 @@ Once the cell has been packaged, it can be instantiated and called just like oth
         library = fp.Library()
         # =============================================================
 
-        library += Test_Edge_Coupler()
+        library += Edge_Coupler_link()
         # =============================================================
         fp.export_gds(library, file=output_file)
         fp.plot(library)
 
 
 .. image:: image/edge_coupler_1550_3.png
+
+Common Issues and Considerations
+---------------------------------------------
+
+* **JSON Configuration**: Make sure that cell_name, port types, port orientations, and port dimensions are correctly configured. Pay particular attention to the operating wavelength band.
+
+* **Python File Validation**: Ensure that every .py file under the components directory can run successfully without errors.
+
+* **Path Configuration**: Check that ``json_path`` and ``library_path`` in the .py file point to the correct files and directories. Make sure that the paths and file names are consistent with the actual file structure.
