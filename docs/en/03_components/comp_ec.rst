@@ -86,6 +86,7 @@ We recommend to follow the folder structure as follows:
                 ]
             }
 
+           .. image:: image/edge_coupler_1550_2.png
 
        * If the imported cell has metal pins, instead of a line, a rectangle could be the case which a pin is. In this situation, use ``shape`` to form a rectangular or a polygon.
 
@@ -118,38 +119,42 @@ We recommend to follow the folder structure as follows:
                     },
 
 * ``edge_coupler_1550.py``:  Wraps the GDS-based device as a PhotoCAD device that can be instantiated and used in a photonic circuit.
-      * ``black_box=True``: This prevents suffixes such as _x1, _x2, and _x3 from being added when placing BlackBox Cells with mirrored, rotated, translated and other operations via FAB PDK. It satisfies the FAB's requirement for fixed BlackBox Cell names and simplifying the GDS export process.
-
-    .. image:: image/edge_coupler_1550_bb.png
 
 .. code-block:: python
 
-    import fnpcell.all as fp
-    from gpdk.technology import get_technology
+        import fnpcell.all as fp
+        from gpdk.technology import get_technology
 
-    class Edge_Coupler_1550(fp.JsonCell[fp.IOwnedPort], locked=True, black_box=True):  # type: ignore
-        """
-        Examples:
-        ```python
-        ec = Edge_Coupler_1550()
-        fp.plot(ec)
-        ```
-        """
-        json_path: fp.StrPath = "./json_file/edge_coupler_1550.json"
-        library_path: fp.StrPath = "./gds_file/edge_coupler_1550.gds"
+        class Edge_Coupler_1550(fp.JsonCell[fp.IOwnedPort], locked=True, black_box=True):  # type: ignore
+            """
+            Examples:
+            ```python
+            ec = Edge_Coupler_1550()
+            fp.plot(ec)
+            ```
+            """
+            json_path: fp.StrPath = "./json_file/edge_coupler_1550.json"
+            library_path: fp.StrPath = "./gds_file/edge_coupler_1550.gds"
 
-    if __name__ == "__main__":
-        TECH = get_technology()
-        output_file = TECH.OUTPUT.local_output_file(__file__)
-        library = fp.Library()
-        # =============================================================
+        if __name__ == "__main__":
+            TECH = get_technology()
+            output_file = TECH.OUTPUT.local_output_file(__file__)
+            library = fp.Library()
+            # =============================================================
 
-        library += Edge_Coupler_1550()
-        # =============================================================
-        fp.export_gds(library, file=output_file)
-        # fp.plot(library)
+            library += Edge_Coupler_1550()
+            # =============================================================
+            fp.export_gds(library, file=output_file)
+            # fp.plot(library)
 
-.. image:: image/edge_coupler_1550_2.png
+
+     * ``json_path``: Specifies the path to the JSON file that defines the layers and ports information.
+
+     * ``library_path``: Specifies the path to the GDS file containing the layout of the imported cell.
+
+     * ``black_box=True``: This prevents suffixes such as _x1, _x2, and _x3 from being added when placing BlackBox Cells with mirrored, rotated, translated and other operations via FAB PDK. It satisfies the FAB's requirement for fixed BlackBox Cell names and simplifying the GDS export process.
+
+    .. image:: image/edge_coupler_1550_bb.png
 
 Instantiate and connect the imported cells
 -------------------------------------------------------
@@ -201,5 +206,3 @@ Common Issues and Considerations
 * **JSON Configuration**: Make sure that cell_name, port types, port orientations, and port dimensions are correctly configured. Pay particular attention to the operating wavelength band.
 
 * **Python File Validation**: Ensure that every .py file under the components directory can run successfully without errors.
-
-* **Path Configuration**: Check that ``json_path`` and ``library_path`` in the .py file point to the correct files and directories. Make sure that the paths and file names are consistent with the actual file structure.
