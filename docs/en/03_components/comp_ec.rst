@@ -153,7 +153,7 @@ We recommend to follow the folder structure as follows:
 
      * ``black_box=True``: This prevents suffixes such as _x1, _x2, and _x3 from being added when placing BlackBox Cells with mirrored, rotated, translated and other operations via FAB PDK. It satisfies the FAB's requirement for fixed BlackBox Cell names and simplifying the GDS export process.
 
-.. image:: image/edge_coupler_1550_bb.png
+     .. image:: image/edge_coupler_1550_bb.png
 
 Instantiate and connect the imported cells
 -------------------------------------------------------
