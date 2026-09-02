@@ -87,6 +87,7 @@ We recommend to follow the folder structure as follows:
             }
 
        .. image:: image/edge_coupler_1550_2.png
+
        * If the imported cell has metal pins, instead of a line, a rectangle could be the case which a pin is. In this situation, use ``shape`` to form a rectangular or a polygon.
 
           * shape: The shape of the port. It defines the geometric boundary of the electrical port/pin, using a list of coordinate points.

@@ -65,6 +65,7 @@ There are also several applications created by **Latitudeds** in the ``EXAMPLES`
    :hidden:
 
    03_components/index
+   06_GPDK/index
    09_api/index
-   01_GPDK/index
+
 

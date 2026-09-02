@@ -48,7 +48,7 @@ File technology mainly stores some scripts related to the underlying layer. The 
 
 Note: The drc subfolder of technology contains the design rule check template based on the current process generated layout, the Calibre\ :sup:`TM` DRC rule deck template script.
    
-.. image:: images/gpdk_tech_1.png
+.. image:: image/gpdk_tech_1.png
 
 .. _technology-layers:
 
@@ -57,11 +57,11 @@ Customized process
 
 In order to be more convenient for users to use and customize the process information, mainly for ``layers.py`` and  ``display.py``, **technology** provides a convenient user-defined file ``layers.csv`` file, users can open ``gpdk`` > ``technology`` > ``layers.csv`` file to customize their relevant processes.
    
-.. image:: images/gpdk_tech_2.png
+.. image:: image/gpdk_tech_2.png
    
 First double-click on the file to open the table as shown below:
    
-.. image:: images/gpdk_tech_3.png
+.. image:: image/gpdk_tech_3.png
    
 * ``LAYER`` and ``DATATYPE`` together determine the number of the layer.
    
@@ -89,7 +89,7 @@ All these information are user-defined.
    
 Then, after customizing the relevant process information, running ``gpdk`` > ``technology`` > ``generate_layers_display_from_csv.py`` directly will generate new ``display.py``, ``layers.lyp`` and ``layers.py`` files in the generated folder under ``gpdk`` > ``technology``. Move the newly generated ``display.py`` and ``layers.py`` to the technology folder to replace the files with the same names, or modify the paths of these two files in ``tech.py``.
    
-.. image:: images/gpdk_tech_4.png
+.. image:: image/gpdk_tech_4.png
    
 Finally, we can use the relevant process setup files generated in the file via ``gpdk`` > ``technology`` > ``tech.py`` . Double-click to open the ``tech.py`` file to reveal the following scripts::
    
@@ -417,9 +417,9 @@ The waveguide settings are defined in the ``wg`` folder. It mainly defines vario
 
 In order to be more convenient for users to view the information of the waveguide process in use, **technology** provides a convenient method to reverse the python source file to generate a csv netlist file, you can open ``gpdk`` > ``technology`` > ``wg`` > ``__init__.py`` and run it, then the ``wg.csv`` and ``wg_bend.csv`` files will be generated in the generate folder, you can open the file to quickly view various information related to waveguide.
 
-.. image:: images/gpdk_tech_wg_1.png
+.. image:: image/gpdk_tech_wg_1.png
 
-.. image:: images/gpdk_tech_wg_2.png
+.. image:: image/gpdk_tech_wg_2.png
 
 .. _technology-metal:
 
@@ -804,7 +804,7 @@ We use waveguide routing method ``LinkBetween`` to demonstrate the auto transiti
             straight_type=TECH.WG.FWG.C.WIRE,
             bend_factory=TECH.WG.SWG.C.WIRE.BEND_CIRCULAR)
 
-.. image:: images/gpdk_tech_ts_1.png
+.. image:: image/gpdk_tech_ts_1.png
 
 .. _technology-via:
 
@@ -846,7 +846,7 @@ For detailed usage, please refer to ``example_linked_elec2.py`` under ``gpdk/exa
                 def __call__(self, waypoints: Sequence[fp.Point2D]) -> fp.ICurve:
                     return fp.g.Polyline(waypoints).smooth(bend_factory=self.bend_factory)
 
-.. image:: images/gpdk_tech_vias_1.png
+.. image:: image/gpdk_tech_vias_1.png
 
 auto_vias
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
