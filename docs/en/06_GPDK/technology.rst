@@ -16,11 +16,13 @@ File technology mainly stores some scripts related to the underlying layer. The 
    
 * ``auto_transition.py``: Automatic waveguide type transition (:ref:`technology-transition`)
 
-* ``fitting_function.py``, ``auto_via.py``, ``vias.py``: Metal wiring related settings (:ref:`technology-via`)
+* ``auto_via.py``, ``vias.py``: Metal wiring related settings (:ref:`technology-via`)
 
 * ``bands.py``: Define the supported optical bands for the PDK.
 
 * ``device.py``: Define the layers and annotation method used to display the band information of devices.
+
+* ``fitting_function.py``: Define the fitting functions used to generate routing curves from a sequence of waypoints.
 
 * ``font.py``: Define the default font and font types used in the layout.
 
@@ -45,8 +47,6 @@ File technology mainly stores some scripts related to the underlying layer. The 
 * ``tech.py``: Integrate and register all technology-related configurations into the PDK technology class.
 
 * ``terminal.py``: Define the pin and port parameters, including their length, offset, and associated layers.
-
-Note: The drc subfolder of technology contains the design rule check template based on the current process generated layout, the Calibre\ :sup:`TM` DRC rule deck template script.
    
 .. image:: image/gpdk_tech_1.png
 
@@ -79,11 +79,13 @@ First double-click on the file to open the table as shown below:
    
 * ``STROKE_COLOR`` is used to define the color of the border of the layer.
 
-* ``VISIBLE`` is used to .
+* ``VISIBLE`` is used to define whether the layer is visible by default in the layout viewer.
 
-* ``IN_USE`` is used to .
+* ``IN_USE`` specifies whether a layer is enabled and included in the generated PDK layers and display definitions.
 
-**NOTICE**: Make sure layer numbers are not duplicated for different ``PROCESS`` and ``PURPOSE``.
+**NOTICE**:
+    #. Make sure LAYER & DATATYPE numbers are not duplicated for different ``PROCESS`` and ``PURPOSE``.
+    #. You may look up valid entries for colors and fill patterns in ``.venv_XXX`` > ``Lib`` > ``site-packages`` > ``pdk`` > ``fnpcell`` > ``technology`` > ``display.pyi``.
    
 All these information are user-defined.
    
@@ -362,9 +364,9 @@ The waveguide settings are defined in the ``wg`` folder. It mainly defines vario
 
 * ``factory.py``:  Defines the straight and bend waveguide factories used by PhotoCAD to generate straight, circular, and Euler bend waveguides based on the specified waveguide type and geometric parameters.
 
- 1. ``StraightFactory``: Import the straight waveguide to use it for straight connection.
- 2. ``CircularBendFactory``: Import ``BendCircular`` from ``bend_circular`` and assigned each component to different situations.
- 3. ``EulerBendFactory``: Import ``BendEuler`` from ``bend_euler`` and assigned each component to different situations.
+ #. ``StraightFactory``: Import the straight waveguide to use it for straight connection.
+ #. ``CircularBendFactory``: Import ``BendCircular`` from ``bend_circular`` and assigned each component to different situations.
+ #. ``EulerBendFactory``: Import ``BendEuler`` from ``bend_euler`` and assigned each component to different situations.
 
 .. code-block:: python
 
@@ -434,7 +436,7 @@ The metal settings are defined in the ``metal`` folder. It contains the basic me
 | :ref:`types.py <metal-types>`    | Define the basic framework for single layer metal wires, and provide two pattern |
 |                                  | generation modes: Cracked and Slotted.                                           |
 +----------------------------------+----------------------------------------------------------------------------------+
-| :ref:`xxx.py <metal-xx>`         | Define the specific metal layers, including M1, M2, MT and PASS_MT.              |
+| :ref:`xx.py <metal-xx>`          | Define the specific metal layers, including M1, M2, MT and PASS_MT.              |
 +----------------------------------+----------------------------------------------------------------------------------+
 | :ref:`__init__.py <metal-init>`  | Define the available metal types and their standard line widths, which can be    |
 |                                  | directly accessed through TECH.METAL.                                            |
@@ -711,13 +713,17 @@ The second link method uses ``SWG.C.EXPANDED`` as the default link waveguide typ
 
 When setting ``linking_policy = TECH.LINKING_POLICY``, ``straight_type`` and ``bend_factory`` will not be needed to define. However, if ``linking_policy``, ``straight_type`` and ``bend_factory`` are all set at the same time, ``straight_type`` and ``bend_factory`` have higher priority over ``linking_policy``.
 
+#. Linked(linking_policy = TECH.LINKING_POLICY.DEFAULT)
+#. LinkBetween(linking_policy = TECH.LINKING_POLICY.DEFAULT)
+#. create_links(linking_policy = TECH.LINKING_POLICY.DEFAULT)
+
 
 .. _technology-transition:
 
 Auto_transition
 -----------------------------------------------------
 
-``auto_transition.py`` defines the automatic transition rules between different waveguide types in the GPDK. When two connected ports use different waveguide types, the corresponding transition component can be inserted automatically during routing.  It also provides automatic linear tapers for waveguides of the same type when their core widths are different.
+``auto_transition.py`` defines the automatic transition rules between different waveguide types in the ``gpdk``. When two connected ports use different waveguide types, the corresponding transition component can be inserted automatically during routing.  It also provides automatic linear tapers for waveguides of the same type when their core widths are different.
 
 Before this, users have to first create components such as ``FWG2MWGTransition`` to allow auto transition to work, and specified parameters such as transition length, shape will also be defined in the component (Ref: Lib/site-packages/gpdk/components/transition/fwg2mwg_transition.py).
 
@@ -811,42 +817,7 @@ We use waveguide routing method ``LinkBetween`` to demonstrate the auto transiti
 Via Configuration
 -----------------------------------------------------
 
-``fitting_function.py`` handles path geometry, ``auto_vias.py`` takes care of automatic via selection and combination, and ``vias.py`` defines the specific process and geometric parameters of vias. Together, they implement path generation and inter‑layer connections for metal routing.
-
-fitting_function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-``fitting_function.py`` defines the fitting functions used to generate routing curves from a sequence of waypoints. The fitting function determines the geometric shape at routing bends before the corresponding metal is generated.
-
-The current implementation provides two fitting methods:
-
-        **STUBBED**: generates a stubbed path according to stub_width and stub_right_angle.
-
-        **SMOOTH_CIRCULAR**: generates a smooth path by replacing the corners of the waypoint polyline with circular bends. The bend radius is specified by radius.
-
-For detailed usage, please refer to ``example_linked_elec2.py`` under ``gpdk/examples/``.
-
-.. code-block:: python
-
-        class FITTING_FUNCTION(fpt.TECH.FITTING_FUNCTION):
-            class STUBBED(fpt.FittingFunction):
-                stub_width: float
-                stub_right_angle: bool
-
-                def __call__(self, waypoints: Sequence[fp.Point2D]) -> fp.ICurve:
-                    return fp.g.Path.stubbed(waypoints=waypoints, stub_width=self.stub_width, stub_right_angle=self.stub_right_angle)
-
-            class SMOOTH_CIRCULAR(fpt.FittingFunction):
-                radius: float
-
-                def bend_factory(self, central_angle: float):
-                    bend = fp.g.CircularBend(radius=self.radius, radians=central_angle)
-                    return bend, self.radius
-
-                def __call__(self, waypoints: Sequence[fp.Point2D]) -> fp.ICurve:
-                    return fp.g.Polyline(waypoints).smooth(bend_factory=self.bend_factory)
-
-.. image:: image/gpdk_tech_vias_1.png
+``auto_vias.py`` takes care of automatic via selection and combination, ``vias.py`` defines the specific process and geometric parameters of vias. Together, they implement path generation and inter‑layer connections for metal routing.
 
 auto_vias
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

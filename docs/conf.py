@@ -20,6 +20,7 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.intersphinx",
     "sphinx.ext.mathjax",
+    "sphinx_design",
 ]
 
 multiproject_projects = {
