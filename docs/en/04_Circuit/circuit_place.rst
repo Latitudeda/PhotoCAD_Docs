@@ -1,76 +1,134 @@
 Common used transformation
-===================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Transformation functions are useful when one needs to move or mirror the instance(PCells) to other places. These functions can be used for the PCells multiple times and combine them together.
 
-1. place_
-2. translated_
-3. scaled_
-4. rotated_
-5. mirrored_
+1. translated_
+2. scaled_
+3. rotated_
+4. mirrored_
+5. place_
+
+
+translated
+---------------
+
+* Usage: insts.translated()
+* parameters: `tx`, `ty`
+* ``Straight().translated(10, 20)``: Translates the cell by 10 units along the x-axis and 20 units along the y-axis.
+* ``Straight().translated((10, 20))``: Translates the cell by the offset ``(10, 20)``.
+* The origin of the cell can be defined in the PCell
+
+.. image:: image/trans_1.png
+
+scaled
+---------------
+
+* Usage: insts.scaled()
+* parameters: `sx`, `sy`, `origin`, `inplace`
+* ``Straight().scaled(3)``: Scales the cell by a factor of 3 along both axes.
+
+.. image:: image/scaled_1.png
+
+* ``Straight().scaled(3, 2)``: Scales the cell by a factor of 3 along the x-axis and 2 along the y-axis.
+
+.. image:: image/scaled_2.png
+
+* ``origin`` specifies the scaling origin.
+
+rotated
+---------------
+
+* Usage: insts.rotated()
+* parameters: `degrees`, `radians`, `origin`, `inplace`
+* ``Straight().rotated(degrees=90)``: Rotates the cell by 90 degrees around the origin.
+
+.. image:: image/rotated_1.png
+
+* ``Straight().rotated(radians=0.7854)``: Rotates the cell by approximately 45 degrees around the origin.
+
+.. image:: image/rotated_2.png
+
+* Either ``degrees`` or ``radians`` must be provided. If both are specified, ``radians`` takes precedence.
+* ``origin`` specifies the rotation center.
+
+mirrored
+---------------
+
+* Usage: insts.*_mirrored()
+* Parameters: ``x`` for ``h_mirrored()``, ``y`` for ``v_mirrored()``, ``origin`` or ``center`` for ``c_mirrored()``, and ``inplace`` for all three methods.
+* ``Straight().h_mirrored()``: the cell with regard to the x-axis.
+* ``Straight().v_mirrored()``: Mirrors the cell with regard to the y-axis.
+* ``Straight().c_mirrored()``: Mirrors the cell with regard to the origin (0, 0).
 
 
 place
-^^^^^^^^
+---------------
 
-* This function is often used when one needs to place an instance(PCell) to a place where refers to another instance's position. Let's say there are two devices(``device_A(bend)``, ``device_B(straight)``) and we wish to move the ``device_A`` to a specific place where related to the position of ``device_B``.
+This function positions a device by aligning its port with a specified coordinate or another device's port. It automatically translates and rotates the device when required, simplifying device placement and port-to-port connections. Let's say there are two devices(``device_A(bend)``, ``device_B(straight)``) and we wish to move the ``device_A`` to a specific place where related to the position of ``device_B``.
 
+.. image:: image/place_1.png
 
-.. image:: ../images/fpPlaceOriginal.png
+* **Placement at coordinates:** When ``at`` is a coordinate tuple or ``Point2D``, the specified port is translated to the target position.
 
-* ``new_device_A = fp.place(device_A, “port_A”, at=device_B[”port_B”])``
+.. code-block:: python
 
-     In this method, the two ports will be connected.
+    new_device_A = fp.place(device_A, "port_A", at=(20, 0))
+    # This places port ``port_A`` at coordinate ``(x, y)`` while preserving the device orientation.
 
-     .. image:: ../images/fpPlaceEx1.png
+.. image:: image/place_2.png
 
-* ``new_device_A = fp.place(device_A, “port_A”, at=device_B[”port_B”].position)``
+* **Port alignment:** When ``at`` is another device's port, aligns the specified port with another device's port.
 
-     In this method, ``port_A`` will be placing at the position of ``port_B`` but remaining the port orientation.
+.. code-block:: python
 
-     .. image:: ../images/fpPlaceEx2.png
-* ``new_device_A = fp.place(device_A, “port_A”, at=device_B[”port_B”]).translated(x, y)``
+    new_device_A = fp.place(device_A, "port_A", at=device_B["port_B"])
+    # This connects port ``port_A`` and port ``port_B``.
 
-     In this method, ``port_A`` will first be aligned to ``port_B`` and move to ``(x, y)`` related to ``port_B``.
+.. image:: image/place_3.png
 
-     .. image:: ../images/fpPlaceEx3.png
-* ``new_device_A = fp.place(device_A, “port_A”, at=device_B[”port_B”].rotated(degrees=-90))``
+* **Placement by origin:** When ``alignment`` is omitted, the device origin is placed at the specified coordinates.
 
-     In this method, ``port_A`` will be connected to  ``port_B`` with an angle difference of 90 degrees.
+.. code-block:: python
 
-     .. image:: ../images/fpPlaceEx4.png
+    new_device_A = fp.place(device_A, at=(20, 0))
+    # This places the origin of device_A at coordinate (x, y).
 
-translated
-^^^^^^^^^^^^^^^^^^
+.. image:: image/place_4.png
 
-* Usage: insts.translated()
-* parameters: tx, ty
-* ``DirectionalCouplerBend().translated(10, 10)``: origin of the cell is translated to (10, 10).
-* The origin of the cell can be defined in the PCell
+* **Placement at port coordinates:** When ``at`` is the position of another device's port, the specified port is moved to the same coordinates while preserving the device orientation.
 
-scaled
-^^^^^^^^^
+.. code-block:: python
 
-* Usage: insts.scaled()
-* parameters: sx, sy
-* ``DirectionalCouplerBend().scaled(3)``: the cell is magnified both x and y coordinate to three times larger than origin.
-* ``DirectionalCouplerBend().scaled(3, 2)``: the cell is magnified to three time larger on the x-axis and two times larger on the y-axis than origin.
+    new_device_A = fp.place(device_A, "port_A", at=device_B["port_B"].position)
+    # This places ``port_A`` at the position of ``port_B`` but remaining the port orientation.
 
-rotated
-^^^^^^^^
+.. image:: image/place_5.png
 
-* Usage: insts.rotated()
-* parameters: degrees, radians, origin
-* ``DirectionalCouplerBend().rotated(degrees=90)``: the cell rotated 90 degree based on the origin of the cell.
+* **Placement with transformations:**
 
-mirrored
-^^^^^^^^^^^^^^^
+.. code-block:: python
 
-* Usage: insts.*_mirrored()
+    new_device_A = fp.place(device_A, "port_A", at=device_B["port_B"]).translated(20, 10)
+    # ``port_A`` will first be aligned to ``port_B`` and move to ``(x, y)`` related to ``port_B``.
 
-* c_mirrored(): mirroring the cell with regard to the origin (0, 0).
+.. image:: image/place_6.png
 
-* v_mirrored(): mirroring the cell with regard to the y-axis.
+.. code-block:: python
 
-* h_mirrored(): mirroring the cell with regard to the x-axis.
+    new_device_A = fp.place(device_A, "port_A", at=device_B["port_B"].rotated(degrees=-90))
+    # ``port_A`` will be connected to  ``port_B`` with an angle difference of 90 degrees.
 
+.. image:: image/place_7.png
+
+* **Placement using alignment:** The ``place()`` function supports nine alignment points through ``fp.Alignment``, allowing a device to be positioned by its corners, edges, or center without manually calculating offsets.
+
+    The available alignment points are ``TOP_LEFT``, ``TOP_CENTER``, ``TOP_RIGHT``, ``MIDDLE_LEFT``, ``MIDDLE_CENTER``, ``MIDDLE_RIGHT``, ``BOTTOM_LEFT``, ``BOTTOM_CENTER``, and ``BOTTOM_RIGHT``.
+
+    .. code-block:: python
+
+        mzi_array = MziArray()
+        mzi_array1 = fp.place(mzi_array, fp.Alignment.TOP_LEFT, at=(0, 0))
+        # Places the top left corner of the device at (0, 0).
+
+.. image:: image/place_8.png
