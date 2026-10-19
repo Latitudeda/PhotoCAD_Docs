@@ -5,4 +5,4 @@ This section is a tutorial for users how to create a circuit by using PCells and
 
 .. toctree::
 
- installation
+   circuit_place
