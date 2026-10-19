@@ -64,7 +64,10 @@ There are also several applications created by **Latitudeds** in the ``EXAMPLES`
    :caption: 2p0
    :hidden:
 
+   01_Installation/index
+   02_QuickStart/index
    03_components/index
+   04_Circuit/index
    06_GPDK/index
    09_api/index
 

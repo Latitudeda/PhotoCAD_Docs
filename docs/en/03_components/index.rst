@@ -1,6 +1,8 @@
 Components Test
 =============================
 
+.. _components:
+
 The three main components of gpdk are as follows:
 
 
