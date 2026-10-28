@@ -6,3 +6,4 @@ This section is a tutorial for users how to create a circuit by using PCells and
 .. toctree::
 
    circuit_place
+   circuit_waveguide_routing

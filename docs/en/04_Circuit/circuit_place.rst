@@ -125,10 +125,10 @@ This function positions a device by aligning its port with a specified coordinat
 
     The available alignment points are ``TOP_LEFT``, ``TOP_CENTER``, ``TOP_RIGHT``, ``MIDDLE_LEFT``, ``MIDDLE_CENTER``, ``MIDDLE_RIGHT``, ``BOTTOM_LEFT``, ``BOTTOM_CENTER``, and ``BOTTOM_RIGHT``.
 
-    .. code-block:: python
+.. code-block:: python
 
-        mzi_array = MziArray()
-        mzi_array1 = fp.place(mzi_array, fp.Alignment.TOP_LEFT, at=(0, 0))
-        # Places the top left corner of the device at (0, 0).
+    mzi_array = MziArray()
+    mzi_array1 = fp.place(mzi_array, fp.Alignment.TOP_LEFT, at=(0, 0))
+    # Places the top left corner of the device at (0, 0).
 
 .. image:: image/place_8.png

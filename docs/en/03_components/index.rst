@@ -1,4 +1,4 @@
-Components Test
+Components
 =============================
 
 .. _components:
