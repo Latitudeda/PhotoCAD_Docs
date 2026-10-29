@@ -64,31 +64,5 @@ Users can first study the examples and component implementations in gpdk to unde
 
 For detailed information about ``gpdk``, please refer to :ref:`gpdk<gpdk>`.
 
-Import FAB PDK into PhotoCAD
-----------------------------------------------------
-
-After creating a workspace, a Fab PDK can be added to the workspace for photonic device design. This section uses the open-source **CORNERSTONE SOI220nm PDK** as an example to demonstrate the basic PDK import process.
-
-First, make sure that the **CORNERSTONE SOI220nm PDK** version matches the version of **PhotoCAD**. The version of **PhotoCAD** can be obtained in ``Run`` by running scripts in **PhotoCAD**.
-
-Extract the ``CORNERSTONE_220_SI_PDK_Latitudeda`` zip archive and copy the pdk folder to the workspace folder. As shown in the figure below, the ``corner_stone_pdk_SOI220nm`` folder is in the demo folder and parallel to .vene_demo.
-
-.. image:: image/quickstart_6.png
-
-It's important to note that the PDK folder structure is the same as in the figure. Subfolders such as ``components`` and ``examples`` should be seen when expanding the ``corner_stone_pdk_SOI220nm`` folder. Otherwise, the import path will be wrong when you run the code.
-
-Open and run ``corner_stone_pdk_SOI220nm/examples/tech_test.py``. PDK will be imported successfully if there are no errors and ``tech_test.py.gds`` will be exported.
-
-.. image:: image/quickstart_7.png
-
-Notes
--------------
-
-#. When creating a project, avoid using paths containing Chinese characters, spaces, or other special characters.
-
-#. Before running the project, check the **PhotoCAD** version and the configured Python environment. If the code outputs ``Process finished with exit code 0``, the Python code executed successfully.
-
-#. If an error related to ``awg`` or another ``.whl`` module appears while loading the project, cancel the current operation and check the module installation and Python environment configuration.
-
 
 
